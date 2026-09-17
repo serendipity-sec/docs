@@ -1,0 +1,9 @@
+번호,제목,분류,출처 URL,발행일,확인일,핵심 내용,해석의 한계,조사자
+S06,Poisoning the well: AI supply chain attacks,보안 사례,https://www.acronis.com/en/tru/posts/poisoning-the-well-ai-supply-chain-attacks-on-hugging-face-and-openclaw/,2026-04-30,2026-09-16,13개 계정에서 악성 스킬 575개 이상 관측,피해자 수나 전체 악성 비율이 아님,양유상
+S07,Post-mortem: Unauthorized Cline CLI npm publish,보안 사례,https://cline.bot/blog/post-mortem-unauthorized-cline-cli-npm,2026-02-24,2026-09-16,비인가 CLI 패키지 배포 사고 공식 보고,지침 검사만으로 배포 계정 침해는 못 막음,양유상
+S08,OWASP Top 10 for Agentic Applications,표준,https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/,2025-12-09,2026-09-16,ASI04 Agentic Supply Chain Vulnerabilities 분류,발생 빈도 통계나 인증 기준은 아님,양유상
+S09,Automated security audits for skills.sh,기존 도구,https://vercel.com/changelog/automated-security-audits-now-available-for-skills-sh,2026-02-17,2026-09-16,Gen·Socket·Snyk와 보안 검사 및 결과 표시,공유+검사 자체는 이미 존재하는 기능,장준서
+S10,Cisco AI Defense — Skill Scanner,기존 도구,https://github.com/cisco-ai-defense/skill-scanner,,2026-09-16,정적 분석·선택적 LLM 분석·보고서 및 그래프,공개 기능 확인일 뿐 성능 비교 결과는 아님,장준서
+S11,Cisco AI Defense — MCP Scanner,기존 도구,https://github.com/cisco-ai-defense/mcp-scanner,,2026-09-16,"MCP 메타데이터·소스 검사, 오프라인 JSON 검사",직접 성능 검증 결과는 아님,장준서
+S12,Cisco AI Defense — DefenseClaw,기존 도구,https://github.com/cisco-ai-defense/defenseclaw,,2026-09-16,"사용 전 검사, 런타임 트래픽 검사, 감사 근거 내보내기",통합 보안 제품도 이미 존재함,장준서
+S13,Agent Skills Specification,표준,https://agentskills.io/specification,,2026-09-16,SKILL.md와 선택적 scripts·references·assets 구조,"allowed-tools는 실험적, 권한 강제 아님",김민우
