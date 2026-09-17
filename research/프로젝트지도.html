@@ -405,8 +405,8 @@
     <div class="meta">
       <span>조사일 <b>2026-09-17</b></span>
       <span>대상 <b>스킬 · MCP · 규칙 파일 · 플러그인</b></span>
-      <span>출처 <b>16건</b> (제안서 S01–S25 별도)</span>
-      <span>상태 <b>3주차 주제 초안용</b></span>
+      <span>출처 <b>20건</b> (제안서 S01–S25 별도)</span>
+      <span>2차 확인 <b>2026-09-17</b> · 매트릭스 수정됨</span>
     </div>
   </div>
 </header>
@@ -524,9 +524,9 @@
             <th scope="col">구성요소</th>
             <th scope="col">정적 검사</th>
             <th scope="col">런타임 관찰</th>
-            <th scope="col" class="col-target">변경 탐지 · AST07</th>
-            <th scope="col" class="col-target">결과 통합 · AST08</th>
-            <th scope="col">검토 기록 · AST09</th>
+            <th scope="col">findings 변경</th>
+            <th scope="col" class="col-target">capability 변경 · AST07</th>
+            <th scope="col" class="col-target">판정 불일치 해소 · AST08</th>
           </tr>
         </thead>
         <tbody>
@@ -534,23 +534,23 @@
             <th scope="row">스킬<span>SKILL.md + scripts/</span></th>
             <td>
               <span class="pill p-partial">우회됨</span>
-              <span class="tools">SkillSpector · Cisco Skill Scanner · Snyk agent-scan<br>SkillCloak에 90% 이상 통과당함</span>
+              <span class="tools">SkillSpector · Cisco · Snyk<br>SkillCloak에 90% 이상 통과당함</span>
             </td>
             <td>
               <span class="pill p-partial">부분</span>
               <span class="tools">skillfence · SkillDetonate<br>연구 단계 또는 신생</span>
             </td>
-            <td class="col-target">
-              <span class="pill p-gap">공백</span>
-              <span class="tools">셋업 패턴만 탐지. 진짜 rug pull 탐지는 시간에 따른 해시 비교가 필요하다고 명시됨</span>
-            </td>
-            <td class="col-target">
-              <span class="pill p-gap">공백</span>
-              <span class="tools">스캐너마다 판정이 다른데 통합하는 계층이 없음</span>
-            </td>
             <td>
-              <span class="pill p-partial">부분</span>
-              <span class="tools">레지스트리 자동 판정. 사람의 검토 기록은 아님</span>
+              <span class="pill p-ok">충분</span>
+              <span class="tools">SkillSpector <code>--baseline</code><br>새 findings만 표시</span>
+            </td>
+            <td class="col-target">
+              <span class="pill p-gap">공백</span>
+              <span class="tools">두 버전 모두 규칙을 안 건드리면 보고되지 않음</span>
+            </td>
+            <td class="col-target">
+              <span class="pill p-gap">공백</span>
+              <span class="tools">SARIF로 모을 수는 있으나 왜 갈렸는지는 안 보여줌</span>
             </td>
           </tr>
           <tr>
@@ -561,40 +561,40 @@
             </td>
             <td>
               <span class="pill p-partial">부분</span>
-              <span class="tools">DefenseClaw 런타임 트래픽 검사</span>
+              <span class="tools">DefenseClaw 런타임 트래픽</span>
+            </td>
+            <td>
+              <span class="pill p-ok">충분</span>
+              <span class="tools">Cisco Watchdog<br>설정 파일 무단 변경 감시</span>
             </td>
             <td class="col-target">
               <span class="pill p-ok">충분</span>
-              <span class="tools">MCP-Scan 도구 피닝 · mcpdef_pin · ETDI 서명<br><b>여기는 이미 풀렸다</b></span>
+              <span class="tools">MCP-Scan 피닝 · mcpdef_pin · ETDI 서명<br><b>여기는 이미 풀렸다</b></span>
             </td>
             <td class="col-target">
               <span class="pill p-gap">공백</span>
               <span class="tools">스킬과 같은 문제</span>
             </td>
-            <td>
-              <span class="pill p-partial">부분</span>
-              <span class="tools">레지스트리 메타데이터·버전 관리</span>
-            </td>
           </tr>
           <tr>
             <th scope="row">규칙 파일<span>CLAUDE.md · AGENTS.md</span></th>
             <td>
-              <span class="pill p-unknown">미확인</span>
-              <span class="tools">전용 도구를 찾지 못함. 없다고 단정하지 않고 추가 조사 필요</span>
+              <span class="pill p-ok">충분</span>
+              <span class="tools"><b>AgentShield</b> (MIT) · 268 규칙<br>hooks · subagents · slash commands 포함</span>
             </td>
             <td>
               <span class="pill p-gap">공백</span>
               <span class="tools">—</span>
             </td>
-            <td class="col-target">
-              <span class="pill p-gap">공백</span>
-              <span class="tools">—</span>
-            </td>
-            <td class="col-target">
-              <span class="pill p-gap">공백</span>
-              <span class="tools">—</span>
-            </td>
             <td>
+              <span class="pill p-ok">충분</span>
+              <span class="tools">AgentShield <code>--baseline</code><br>new / resolved / unchanged</span>
+            </td>
+            <td class="col-target">
+              <span class="pill p-gap">공백</span>
+              <span class="tools">스킬과 같은 문제</span>
+            </td>
+            <td class="col-target">
               <span class="pill p-gap">공백</span>
               <span class="tools">—</span>
             </td>
@@ -609,15 +609,15 @@
               <span class="pill p-gap">공백</span>
               <span class="tools">—</span>
             </td>
+            <td>
+              <span class="pill p-partial">부분</span>
+              <span class="tools">구성요소별로 따로. 묶음 단위는 아님</span>
+            </td>
             <td class="col-target">
               <span class="pill p-gap">공백</span>
               <span class="tools">매니페스트 버전 고정이 논의 단계</span>
             </td>
             <td class="col-target">
-              <span class="pill p-gap">공백</span>
-              <span class="tools">—</span>
-            </td>
-            <td>
               <span class="pill p-gap">공백</span>
               <span class="tools">—</span>
             </td>
@@ -630,15 +630,87 @@
       <div><span class="pill p-ok">충분</span> 전용 도구가 실제로 존재</div>
       <div><span class="pill p-partial">부분</span> 일부만 다루거나 한계가 문서화됨</div>
       <div><span class="pill p-gap">공백</span> 해당하는 도구를 확인하지 못함</div>
-      <div><span class="pill p-unknown">미확인</span> 더 조사해야 판단 가능</div>
     </div>
+
+    <div class="evidence" style="margin-top:22px">
+      <b>2026-09-17 수정.</b> 1차 조사에서 “규칙 파일은 전부 공백”, “변경 탐지는 MCP만 있음”으로
+      적었으나 <b>둘 다 틀렸다.</b> AgentShield(MIT)가 CLAUDE.md·AGENTS.md·hooks·subagents를
+      268개 규칙으로 검사하고 <code>--baseline</code> 드리프트 탐지까지 한다. SkillSpector도
+      베이스라인을 지원한다. 그래서 “변경 탐지” 열을 <b>findings 변경</b>과 <b>capability 변경</b>
+      둘로 쪼갰다 — 기존 도구가 차 있는 쪽과 비어 있는 쪽이 다르기 때문이다.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 2.5 핵심 구분 ═══════════════ -->
+<section>
+  <div class="spine">
+    <div class="eyebrow">03 · 핵심 구분</div>
+    <h2>findings가 바뀐 것과 capability가 바뀐 것은 다르다</h2>
+    <p class="sec-note">이 구분 하나가 우리 프로젝트가 남는 이유 전부다.</p>
+
+    <figure>
+      <div class="fig-wrap">
+        <svg viewBox="0 0 900 300" role="img"
+             aria-label="스킬 v1과 v2를 비교할 때, 기존 베이스라인 방식은 스캐너 규칙 발동 여부만 비교하므로 두 버전 모두 규칙을 건드리지 않으면 변화를 보고하지 않는다. 역량 비교 방식은 구성요소가 요구하는 접근과 연결을 직접 비교하므로 규칙 발동과 무관하게 변화를 잡아낸다.">
+          <defs>
+            <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5"
+                    markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <polygon points="0,1 9,5 0,9" fill="currentColor"/>
+            </marker>
+          </defs>
+
+          <!-- 입력 -->
+          <rect x="20" y="108" width="120" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.65"/>
+          <text x="80" y="130" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">스킬 v1</text>
+          <text x="80" y="148" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">로컬 문서만 읽음</text>
+
+          <rect x="20" y="178" width="120" height="50" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.65"/>
+          <text x="80" y="200" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">스킬 v2</text>
+          <text x="80" y="218" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.6">+ 결과를 외부 업로드</text>
+
+          <line x1="140" y1="133" x2="196" y2="90" stroke="currentColor" stroke-width="1.3" opacity="0.5" marker-end="url(#ah2)"/>
+          <line x1="140" y1="203" x2="196" y2="90" stroke="currentColor" stroke-width="1.3" opacity="0.5" marker-end="url(#ah2)"/>
+          <line x1="140" y1="133" x2="196" y2="228" stroke="currentColor" stroke-width="1.3" opacity="0.5" marker-end="url(#ah2)"/>
+          <line x1="140" y1="203" x2="196" y2="228" stroke="currentColor" stroke-width="1.3" opacity="0.5" marker-end="url(#ah2)"/>
+
+          <!-- 위: findings diff -->
+          <rect x="200" y="42" width="260" height="66" rx="4" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+          <text x="330" y="66" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">기존 · findings 비교</text>
+          <text x="330" y="86" text-anchor="middle" font-size="11.5" fill="currentColor" opacity="0.65">스캐너 규칙이 발동했는가</text>
+          <text x="330" y="101" text-anchor="middle" font-size="11" fill="currentColor" opacity="0.5">SkillSpector · AgentShield --baseline</text>
+
+          <line x1="460" y1="75" x2="514" y2="75" stroke="currentColor" stroke-width="1.5" marker-end="url(#ah2)"/>
+          <rect x="518" y="46" width="356" height="58" rx="4" fill="#B3261E" opacity="0.08"/>
+          <text x="536" y="70" font-size="13" font-weight="600" fill="#B3261E">보고 없음</text>
+          <text x="536" y="90" font-size="11.5" fill="#B3261E" opacity="0.9">두 버전 모두 규칙을 안 건드리면 변화가 안 보인다</text>
+
+          <!-- 아래: capability diff -->
+          <rect x="200" y="196" width="260" height="66" rx="4" fill="none" stroke="#2F5AA8" stroke-width="2"/>
+          <text x="330" y="220" text-anchor="middle" font-size="13" font-weight="600" fill="#2F5AA8">우리 · capability 비교</text>
+          <text x="330" y="240" text-anchor="middle" font-size="11.5" fill="#2F5AA8" opacity="0.85">무엇에 접근할 수 있게 됐는가</text>
+          <text x="330" y="255" text-anchor="middle" font-size="11" fill="#2F5AA8" opacity="0.6">접근 · 연결 · 실행 요청의 차집합</text>
+
+          <line x1="460" y1="229" x2="514" y2="229" stroke="#2F5AA8" stroke-width="1.8" marker-end="url(#ah2)" color="#2F5AA8"/>
+          <rect x="518" y="200" width="356" height="58" rx="4" fill="#2F5AA8" opacity="0.10"/>
+          <text x="536" y="224" font-size="13" font-weight="600" fill="#2F5AA8">새 외부 전송 대상 1건</text>
+          <text x="536" y="244" font-size="11.5" fill="#2F5AA8" opacity="0.9">근거: SKILL.md 42행 · scripts/upload.py 17행</text>
+        </svg>
+      </div>
+      <figcaption>
+        같은 두 버전을 넣어도 묻는 질문이 다르면 나오는 답이 다르다.
+        AST07 Update Drift의 본질은 <b>규칙 발동이 아니라 역량 변화</b>다.
+        다만 이것은 아직 <b>가설</b>이며, 기존 베이스라인이 정말 이 변화를 놓치는지는
+        직접 실험해 확인해야 한다 — 그게 우리 첫 실험이 되어야 한다.
+      </figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ═══════════════ 3. 빈 곳 ═══════════════ -->
 <section>
   <div class="spine">
-    <div class="eyebrow">03 · 빈 곳</div>
+    <div class="eyebrow">04 · 빈 곳</div>
     <h2>우리가 들어갈 수 있는 세 자리</h2>
     <p class="sec-note">세 자리 모두 OWASP가 이름을 붙여 둔 항목이다. 우리가 임의로 좁힌 범위가 아니라는 뜻이다.</p>
 
@@ -647,12 +719,12 @@
       <div class="gap-item">
         <div class="tag">AST07<em>Update Drift</em></div>
         <div>
-          <h3>승인한 다음에 바뀌는 것을 아무도 안 본다</h3>
+          <h3>승인한 다음에 “무엇을 할 수 있게 됐는지”를 아무도 안 본다</h3>
           <p>
-            MCP 서버는 해시 피닝·서명으로 이미 막혀 있다. 그런데 <b>스킬·규칙 파일·플러그인</b>에는
-            같은 장치가 없다. 기존 규칙은 rug pull을 <em>가능하게 하는</em> 셋업 패턴(원격 로딩, base64 실행,
-            post-install 훅)을 잡을 뿐이고, 실제 드리프트 탐지는 시간에 따른 비교가 필요하다고 규칙 문서가
-            직접 적고 있다.
+            MCP 서버는 해시 피닝·서명으로 막혀 있고, 스킬·규칙 파일도 <b>findings 베이스라인</b>은 있다.
+            비어 있는 건 그 위층이다 — 두 버전이 모두 스캐너 규칙을 건드리지 않으면서
+            <b>접근 범위만 넓어진 경우</b>를 보고하는 장치가 없다.
+            실제 드리프트 탐지는 시간에 따른 비교가 필요하다고 규칙 문서가 직접 적고 있다.
           </p>
           <div class="evidence">
             MCP 서버-버전 레코드 <b>28,959</b>건 대 서버 <b>9,652</b>건 — 평균 세 번 넘게 갱신됐다.
@@ -701,7 +773,7 @@
 <!-- ═══════════════ 4. 우리 위치 ═══════════════ -->
 <section>
   <div class="spine">
-    <div class="eyebrow">04 · 우리 위치</div>
+    <div class="eyebrow">05 · 우리 위치</div>
     <h2>그래서 무엇을 만드는가</h2>
     <p>
       정적 검사로 악성을 <em>판정</em>하겠다는 목표는 이미 학계가 실패를 입증했다 — SkillCloak이
@@ -713,8 +785,8 @@
       <div class="in">
         <h3>만든다</h3>
         <ul>
-          <li><b>버전 간 보안상 변경 비교</b> — 스킬·규칙 파일을 대상으로. 새 파일 접근, 새 외부 연결, 새 실행 요청을 단순 해시 변경과 구분한다</li>
-          <li><b>여러 스캐너 결과의 공통 형식 통합</b> — 어느 스캐너가 무엇을 근거로 지목했는지 나란히 놓는다</li>
+          <li><b>capability diff</b> — 스킬·규칙 파일의 두 버전이 요구하는 접근·연결·실행의 차집합. 스캐너 규칙 발동 여부와 독립적으로 계산한다</li>
+          <li><b>판정 근거 나란히 놓기</b> — 여러 스캐너의 SARIF를 같은 대상 위에 모으고, 어느 스캐너가 무엇을 근거로 지목했고 왜 갈렸는지 보여 준다</li>
           <li><b>관계 그래프</b> — 확인된 연결은 실선, 추정은 점선. 노드를 누르면 원본 파일과 행으로 간다</li>
           <li><b>검토 기록과 팀 공유</b> — 누가 어느 버전을 봤는지 남기고, 바뀐 버전에는 재검사를 요구한다</li>
         </ul>
@@ -722,10 +794,10 @@
       <div class="out">
         <h3>만들지 않는다</h3>
         <ul>
-          <li><b>MCP 변경 탐지</b> — 이미 MCP-Scan·mcpdef_pin·ETDI가 있다. 여기서 경쟁하지 않는다</li>
+          <li><b>스캐너 자체</b> — AgentShield(MIT)와 SkillSpector(Apache-2.0)를 붙여 쓴다. NVIDIA·Cisco·Snyk와 탐지 성능으로 붙지 않는다</li>
+          <li><b>MCP capability 변경 탐지</b> — MCP-Scan 피닝·mcpdef_pin·ETDI가 이미 있다</li>
+          <li><b>findings 베이스라인</b> — 두 엔진이 이미 <code>--baseline</code>으로 한다. 그 위층만 만든다</li>
           <li><b>런타임 실행·샌드박스 관찰</b> — skillfence·SkillDetonate의 영역이고, 한 학기에 안전하게 만들 수 없다</li>
-          <li><b>자체 탐지 엔진으로 기존 스캐너 이기기</b> — NVIDIA·Cisco·Snyk와 정면으로 붙지 않는다</li>
-          <li><b>전 언어·바이너리·동적 분석</b> — Python·JS/TS의 제한된 패턴부터 시작한다</li>
         </ul>
       </div>
     </div>
@@ -737,9 +809,11 @@
       우리 “스캐너 불일치” 가설을 검증할 재료가 그대로 들어 있다.
     </p>
     <div class="evidence">
-      주의 — 논문이 직접 밝힌 한계: 라벨은 레지스트리의 <b>자동 판정</b>이지 사람이 라벨링한 정답이 아니다
-      (silver-standard). <b>라이선스와 재배포 조건은 사용 전에 반드시 확인해야 한다.</b>
-      탐색·개발용으로 쓰고, 최종 평가용 소규모 세트는 제안서대로 사람이 라벨링하는 2단 구성이 현실적이다.
+      <b>확인 완료 — MIT 라이선스.</b> 학술·상업 사용, 수정, 재배포 모두 허용된다(저작권 고지 유지 조건).
+      66,200행이 train 46,300 / validation 9,930 / test 6,600 / <b>eval_holdout 3,340</b>으로
+      이미 분할돼 있어 제안서 16장의 “개발용과 최종 평가용 분리”가 그대로 해결된다.<br><br>
+      다만 논문이 직접 밝힌 한계 — 라벨은 레지스트리의 <b>자동 판정</b>이지 사람이 라벨링한 정답이 아니다
+      (silver-standard). 최종 평가용 소규모 세트는 제안서대로 사람이 라벨링하는 2단 구성이 여전히 필요하다.
       <span class="cite">[N01]</span>
     </div>
   </div>
@@ -748,7 +822,7 @@
 <!-- ═══════════════ 5. 일정 ═══════════════ -->
 <section>
   <div class="spine">
-    <div class="eyebrow">05 · 일정</div>
+    <div class="eyebrow">06 · 일정</div>
     <h2>15주에 어떻게 얹는가</h2>
     <p class="sec-note">9주차 중간발표 시점에 한 바퀴가 도는 최소 기능을 먼저 완성하고 나머지를 그 위에 올린다.</p>
 
@@ -792,26 +866,26 @@
 <!-- ═══════════════ 6. 결정 ═══════════════ -->
 <section>
   <div class="spine">
-    <div class="eyebrow">06 · 미결</div>
+    <div class="eyebrow">07 · 미결</div>
     <h2>다음 회의에서 결정할 것</h2>
     <p class="sec-note">결정과 담당은 노션 액션 아이템에 기록한다. 여기서는 무엇을 물어야 하는지만 적는다.</p>
 
     <div class="decide">
       <article>
-        <h3>세 빈 곳 중 무엇을 중심에 둘 것인가</h3>
-        <p>셋 다 하면 또 범위가 넓어진다. AST07(변경 탐지)을 중심에 두고 AST08(결과 통합)을 보조로 두는 안이 일정상 가장 현실적이다.</p>
+        <h3>capability diff를 중심에 둘 것인가</h3>
+        <p>2차 확인으로 빈 곳 두 자리가 줄었다. 남은 것은 findings가 아닌 <b>capability 변화</b>와, 스캐너 판정이 갈리는 이유를 보여 주는 계층이다. 이 둘로 좁히는 것을 제안한다.</p>
       </article>
       <article>
-        <h3>ClawHub 데이터셋을 쓸 수 있는가</h3>
-        <p>라이선스와 재배포 조건 확인이 먼저다. 못 쓰면 평가 자료를 직접 만들어야 하고 그만큼 일정이 밀린다.</p>
+        <h3>첫 실험을 무엇으로 할 것인가 — 가장 급하다</h3>
+        <p>“기존 베이스라인이 capability 변화를 놓친다”는 아직 <b>가설</b>이다. 규칙을 건드리지 않으면서 접근 범위만 넓힌 스킬 쌍을 만들어 SkillSpector·AgentShield에 넣어 보면 며칠 안에 검증된다. 여기서 틀리면 주제를 다시 잡아야 하므로 <b>계획서(4주차) 전에</b> 해야 한다.</p>
       </article>
       <article>
-        <h3>기존 스캐너를 실제로 붙일 것인가</h3>
-        <p>SkillSpector(Apache)·Snyk agent-scan·Cisco의 입출력 형식을 확인해야 공통 결과 모델을 설계할 수 있다. 라이선스는 <code>THIRD_PARTY.md</code>에 먼저 기록한다.</p>
+        <h3>어느 엔진을 붙일 것인가</h3>
+        <p>AgentShield(MIT, 규칙 파일·hooks·MCP 설정)와 SkillSpector(Apache-2.0, 스킬)가 둘 다 SARIF를 뱉는다. 둘 다 붙일지 하나만 붙일지 정하고 <code>THIRD_PARTY.md</code>에 먼저 기록한다.</p>
       </article>
       <article>
-        <h3>규칙 파일 검사 도구가 정말 없는가</h3>
-        <p>매트릭스에서 유일하게 “미확인”으로 남은 칸이다. 없다면 우리 기여가 명확해지고, 있다면 범위를 조정해야 한다.</p>
+        <h3>Cisco의 경로 분석 수준을 누가 확인할 것인가</h3>
+        <p>매트릭스에서 유일하게 공개 자료로 판단이 안 되는 항목이다. 직접 설치해 “cross-tool attack chains”가 실제로 무엇인지 봐야 한다. 그래프 기능이 이미 있다면 세 번째 빈 곳이 사라진다.</p>
       </article>
     </div>
   </div>
@@ -820,7 +894,7 @@
 <!-- ═══════════════ 출처 ═══════════════ -->
 <section>
   <div class="spine">
-    <div class="eyebrow">07 · 출처</div>
+    <div class="eyebrow">08 · 출처</div>
     <h2>확인한 자료</h2>
     <p class="sec-note">모두 2026-09-17 확인. 아래 수치는 각 연구·업체의 발표값이며 우리가 재현한 결과가 아니다.</p>
 
@@ -840,14 +914,18 @@
       <li><span class="cite">[N14]</span> ATR-2026-00126 Skill Rug Pull Setup Pattern · <a href="https://agentthreatrule.org/en/rules/ATR-2026-00126">agentthreatrule.org</a></li>
       <li><span class="cite">[N15]</span> MITRE ATT&amp;CK and ATLAS Agentic Gap Analysis — CSA · <a href="https://labs.cloudsecurityalliance.org/agentic/csa-research-note-atlas-agentic-gap-analysis-20260327/">cloudsecurityalliance.org</a></li>
       <li><span class="cite">[N16]</span> Introducing the AI Agent Security Scanner for IDEs — Cisco · <a href="https://blogs.cisco.com/ai/introducing-the-ai-agent-security-scanner-for-ides-verify-your-agents">blogs.cisco.com</a></li>
+      <li><span class="cite">[N17]</span> ClawHub Security Signals 데이터셋 (MIT, 66,200행) · <a href="https://huggingface.co/datasets/OpenClaw/clawhub-security-signals">huggingface.co/datasets/OpenClaw/clawhub-security-signals</a></li>
+      <li><span class="cite">[N18]</span> AgentShield Security Scan — MIT, 268 규칙, <code>--baseline</code> 드리프트 탐지 · <a href="https://github.com/marketplace/actions/agentshield-security-scan">github.com/marketplace/actions/agentshield-security-scan</a></li>
+      <li><span class="cite">[N19]</span> CLAUDE.md Security Auditor · <a href="https://apify.com/ianymu/claudemd-security-auditor">apify.com/ianymu/claudemd-security-auditor</a></li>
+      <li><span class="cite">[N20]</span> AGENTS.md — 크로스툴 에이전트 설정 파일 규약 · <a href="https://agents.md/">agents.md</a></li>
     </ol>
 
-    <h3>확인하지 못한 것</h3>
+    <h3>아직 확인하지 못한 것</h3>
     <ul>
-      <li>ClawHub Security Signals 데이터셋의 라이선스와 재배포 조건</li>
-      <li>Cisco IDE 스캐너의 “cross-tool attack chains”가 실제로 어느 수준인지 — 직접 설치해 확인 필요</li>
-      <li>SkillSpector·Snyk agent-scan의 실제 입출력 형식 — 공통 결과 모델 설계 전 확인 필요</li>
-      <li>규칙 파일(CLAUDE.md / AGENTS.md) 전용 검사 도구의 존재 여부</li>
+      <li>Cisco IDE 스캐너의 “cross-tool attack chains” 실제 수준 — 공개 문서에 기술 설명이 없다. <b>직접 설치해야 판단 가능</b></li>
+      <li>Snyk agent-scan의 출력 형식과 라이선스</li>
+      <li>skillfence · SkillDetonate의 성숙도 — 연구 단계인지 실사용 가능한지</li>
+      <li><b>기존 베이스라인이 capability 변화를 정말 놓치는지</b> — 이 지도의 핵심 주장이지만 아직 가설이다. 직접 실험해야 하며, 이것이 우리 첫 실험이 되어야 한다</li>
     </ul>
   </div>
 </section>
