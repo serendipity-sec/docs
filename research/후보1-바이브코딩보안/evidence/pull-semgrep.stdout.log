@@ -1,0 +1,41 @@
+1.177.0: Pulling from semgrep/semgrep
+b343805976d3: Pulling fs layer
+4d8e903c73eb: Pulling fs layer
+e3cf999f99d9: Pulling fs layer
+c99587e2f1a4: Pulling fs layer
+86de964fd639: Pulling fs layer
+ca088dc29a89: Pulling fs layer
+017f2f3badb9: Pulling fs layer
+101a07067531: Pulling fs layer
+084b49e0f217: Pulling fs layer
+bd9ddc54bea9: Pulling fs layer
+49d304e88a85: Pulling fs layer
+2161ff2ba716: Pulling fs layer
+bd9ddc54bea9: Download complete
+86de964fd639: Download complete
+e3cf999f99d9: Download complete
+2161ff2ba716: Download complete
+ca088dc29a89: Download complete
+b343805976d3: Download complete
+101a07067531: Download complete
+9a88ee3fd8a9: Download complete
+084b49e0f217: Download complete
+4d8e903c73eb: Download complete
+c99587e2f1a4: Download complete
+bd9ddc54bea9: Pull complete
+084b49e0f217: Pull complete
+c99587e2f1a4: Pull complete
+017f2f3badb9: Download complete
+017f2f3badb9: Pull complete
+49d304e88a85: Download complete
+4d8e903c73eb: Pull complete
+49d304e88a85: Pull complete
+86de964fd639: Pull complete
+e3cf999f99d9: Pull complete
+2161ff2ba716: Pull complete
+ca088dc29a89: Pull complete
+b343805976d3: Pull complete
+101a07067531: Pull complete
+Digest: sha256:acaac22ffc7b7cc5926de0751b223bce0b2491c33d18422fa72f632c78d81198
+Status: Downloaded newer image for semgrep/semgrep:1.177.0
+docker.io/semgrep/semgrep:1.177.0

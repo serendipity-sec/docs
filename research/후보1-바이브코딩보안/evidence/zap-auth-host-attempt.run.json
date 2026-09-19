@@ -1,0 +1,5 @@
+{
+  "error": "URLError(ConnectionRefusedError(10061, '\ub300\uc0c1 \ucef4\ud4e8\ud130\uc5d0\uc11c \uc5f0\uacb0\uc744 \uac70\ubd80\ud588\uc73c\ubbc0\ub85c \uc5f0\uacb0\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4', None, 10061, None))",
+  "elapsed_seconds": 275.09399999998277,
+  "checked_utc": "2026-09-19T19:33:19.276695+00:00"
+}

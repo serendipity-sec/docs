@@ -1,0 +1,24 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--name",
+    "capstone-zap-controller2",
+    "--network",
+    "capstone-vibe-lab",
+    "-e",
+    "CAPSTONE_IN_DOCKER=1",
+    "-v",
+    "C:\\capstone2\\platform\\experiments\\tool-comparison:/work-tools:ro",
+    "-v",
+    "C:\\capstone2\\docs\\research\\후보1-바이브코딩보안\\evidence:/out:rw",
+    "ghcr.io/zaproxy/zaproxy:2.17.0",
+    "python",
+    "/work-tools/zap_authenticated.py"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:36:00.738249+00:00",
+  "elapsed_seconds": 8.515,
+  "exit_code": 0
+}

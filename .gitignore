@@ -16,3 +16,6 @@ Desktop.ini
 # 빌드 산출물
 _build/
 *.pdf.tmp
+
+# 논문 원문 캐시 — 재배포 권리 없음. 해시·URL은 evidence/sources/manifest.json 참조
+research/**/evidence/sources/*.pdf

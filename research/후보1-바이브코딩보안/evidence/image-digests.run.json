@@ -1,0 +1,15 @@
+{
+  "command": [
+    "docker",
+    "image",
+    "inspect",
+    "bkimminich/juice-shop:v20.2.0",
+    "ghcr.io/zaproxy/zaproxy:2.17.0",
+    "--format",
+    "{{json .RepoDigests}}"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:21:46.089142+00:00",
+  "elapsed_seconds": 0.406,
+  "exit_code": 0
+}

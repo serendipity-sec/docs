@@ -1,0 +1,1647 @@
+[
+  {
+    "component": "core",
+    "kind": "view",
+    "method": "version",
+    "params": {},
+    "status": 200,
+    "result": {
+      "version": "2.17.0"
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "newSession",
+    "params": {
+      "name": "",
+      "overwrite": "true"
+    },
+    "status": 200,
+    "result": {
+      "Result": "OK"
+    }
+  },
+  {
+    "component": "context",
+    "kind": "action",
+    "method": "newContext",
+    "params": {
+      "contextName": "capstone-juice-only"
+    },
+    "status": 200,
+    "result": {
+      "contextId": "2"
+    }
+  },
+  {
+    "component": "context",
+    "kind": "action",
+    "method": "includeInContext",
+    "params": {
+      "contextName": "capstone-juice-only",
+      "regex": "http://capstone-juice:3000.*"
+    },
+    "status": 200,
+    "result": {
+      "Result": "OK"
+    }
+  },
+  {
+    "component": "replacer",
+    "kind": "view",
+    "method": "rules",
+    "params": {},
+    "status": 200,
+    "result": {
+      "rules": [
+        {
+          "method": "",
+          "matchType": "RESP_HEADER",
+          "description": "Remove CSP",
+          "matchString": "Content-Security-Policy",
+          "initiators": "",
+          "matchRegex": "false",
+          "replacement": "",
+          "url": "",
+          "enabled": "false"
+        },
+        {
+          "method": "",
+          "matchType": "RESP_HEADER",
+          "description": "Remove HSTS",
+          "matchString": "Strict-Transport-Security",
+          "initiators": "",
+          "matchRegex": "false",
+          "replacement": "",
+          "url": "",
+          "enabled": "false"
+        },
+        {
+          "method": "",
+          "matchType": "REQ_HEADER",
+          "description": "Replace User-Agent with shellshock attack",
+          "matchString": "User-Agent",
+          "initiators": "",
+          "matchRegex": "false",
+          "replacement": "() {:;}; /bin/cat /etc/passwd",
+          "url": "",
+          "enabled": "false"
+        },
+        {
+          "method": "",
+          "matchType": "RESP_HEADER_STR",
+          "description": "Disable Report-To or Report-Uri (CSP, etc)",
+          "matchString": "(?i)report-(?:to|uri)",
+          "initiators": "",
+          "matchRegex": "true",
+          "replacement": "report-disabled",
+          "url": "",
+          "enabled": "false"
+        },
+        {
+          "method": "",
+          "matchType": "REQ_HEADER",
+          "description": "Require non-cached response (Modified)",
+          "matchString": "if-modified-since",
+          "initiators": "",
+          "matchRegex": "false",
+          "replacement": "",
+          "url": "",
+          "enabled": "false"
+        },
+        {
+          "method": "",
+          "matchType": "REQ_HEADER",
+          "description": "Require non-cached response (Match)",
+          "matchString": "if-none-match",
+          "initiators": "",
+          "matchRegex": "false",
+          "replacement": "",
+          "url": "",
+          "enabled": "false"
+        },
+        {
+          "method": "",
+          "matchType": "REQ_HEADER",
+          "description": "Dummy A bearer on local target",
+          "matchString": "Authorization",
+          "initiators": "",
+          "matchRegex": "false",
+          "replacement": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2NDU5fQ.Sh1f8OqeAQJQv0nf-kHcBLqYqbrPbnydE6DB-pYHI_1V9ATcyxl5VXcoejNaNRkIodMpP_JoZSJrIZ856HhevjBW4hFRT5s5yFOhyMeBUBNRSJpmveCQ_dOv6J2xcN4g2ab4FbOQXnL1UbGlsCMiRImidrAzEmow8AHt8IZwl6w",
+          "url": "http://capstone-juice:3000.*",
+          "enabled": "true"
+        }
+      ]
+    }
+  },
+  {
+    "component": "replacer",
+    "kind": "action",
+    "method": "removeRule",
+    "params": {
+      "description": "Dummy A bearer on local target"
+    },
+    "status": 200,
+    "result": {
+      "Result": "OK"
+    }
+  },
+  {
+    "component": "replacer",
+    "kind": "action",
+    "method": "addRule",
+    "params": {
+      "description": "Dummy A bearer on local target",
+      "enabled": "true",
+      "matchType": "REQ_HEADER",
+      "matchRegex": "false",
+      "matchString": "Authorization",
+      "replacement": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs",
+      "url": "http://capstone-juice:3000.*"
+    },
+    "status": 200,
+    "result": {
+      "Result": "OK"
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "sendRequest",
+    "params": {
+      "request": "GET http://capstone-juice:3000/rest/basket/6 HTTP/1.1\r\nHost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+      "followRedirects": "false"
+    },
+    "status": 200,
+    "result": {
+      "sendRequest": [
+        {
+          "note": "",
+          "rtt": "60",
+          "responseBody": "{\"status\":\"success\",\"data\":{\"id\":6,\"coupon\":null,\"UserId\":25,\"createdAt\":\"2026-09-19T19:34:19.032Z\",\"updatedAt\":\"2026-09-19T19:34:19.032Z\",\"Products\":[]}}",
+          "cookieParams": "",
+          "requestBody": "",
+          "responseHeader": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 154\r\nETag: W/\"9a-0+/DwUSqGLxnEU4XVL6Ch8ZlMI8\"\r\nVary: Accept-Encoding\r\nDate: Sat, 19 Sep 2026 19:41:16 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+          "requestHeader": "GET http://capstone-juice:3000/rest/basket/6 HTTP/1.1\r\nhost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+          "id": "1",
+          "type": "15",
+          "timestamp": "1789846876348",
+          "tags": []
+        }
+      ]
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "sendRequest",
+    "params": {
+      "request": "GET http://capstone-juice:3000/rest/basket/7 HTTP/1.1\r\nHost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+      "followRedirects": "false"
+    },
+    "status": 200,
+    "result": {
+      "sendRequest": [
+        {
+          "note": "",
+          "rtt": "40",
+          "responseBody": "{\"status\":\"success\",\"data\":{\"id\":7,\"coupon\":null,\"UserId\":26,\"createdAt\":\"2026-09-19T19:34:19.072Z\",\"updatedAt\":\"2026-09-19T19:34:19.072Z\",\"Products\":[]}}",
+          "cookieParams": "",
+          "requestBody": "",
+          "responseHeader": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 154\r\nETag: W/\"9a-lO0IXLqureihKxkrRA7vrsBr2s8\"\r\nVary: Accept-Encoding\r\nDate: Sat, 19 Sep 2026 19:41:16 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+          "requestHeader": "GET http://capstone-juice:3000/rest/basket/7 HTTP/1.1\r\nhost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+          "id": "5",
+          "type": "15",
+          "timestamp": "1789846876428",
+          "tags": []
+        }
+      ]
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "sendRequest",
+    "params": {
+      "request": "GET http://capstone-juice:3000/rest/products/search?q=apple HTTP/1.1\r\nHost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+      "followRedirects": "false"
+    },
+    "status": 200,
+    "result": {
+      "sendRequest": [
+        {
+          "note": "",
+          "rtt": "31",
+          "responseBody": "{\"status\":\"success\",\"data\":[{\"id\":1,\"name\":\"Apple Juice (1000ml)\",\"description\":\"The all-time classic.\",\"price\":1.99,\"deluxePrice\":0.99,\"image\":\"apple_juice.jpg\",\"createdAt\":\"2026-09-19 19:21:47.888 +00:00\",\"updatedAt\":\"2026-09-19 19:21:47.888 +00:00\",\"deletedAt\":null},{\"id\":24,\"name\":\"Apple Pomace\",\"description\":\"Finest pressings of apples. Allergy disclaimer: Might contain traces of worms. Can be <a href=\\\"/#recycle\\\">sent back to us</a> for recycling.\",\"price\":0.89,\"deluxePrice\":0.89,\"image\":\"apple_pressings.jpg\",\"createdAt\":\"2026-09-19 19:21:47.893 +00:00\",\"updatedAt\":\"2026-09-19 19:21:47.893 +00:00\",\"deletedAt\":null},{\"id\":47,\"name\":\"Pineapple Juice (1000ml)\",\"description\":\"Tropical refreshment from the finest sun-ripened pineapples.\",\"price\":2.99,\"deluxePrice\":2.99,\"image\":\"pineapple_juice.png\",\"createdAt\":\"2026-09-19 19:21:47.894 +00:00\",\"updatedAt\":\"2026-09-19 19:21:47.894 +00:00\",\"deletedAt\":null}]}",
+          "cookieParams": "",
+          "requestBody": "",
+          "responseHeader": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 921\r\nETag: W/\"399-aJ1Uu/Ibv976mnIqM1Edob1LCyc\"\r\nVary: Accept-Encoding\r\nDate: Sat, 19 Sep 2026 19:41:16 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+          "requestHeader": "GET http://capstone-juice:3000/rest/products/search?q=apple HTTP/1.1\r\nhost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+          "id": "6",
+          "type": "15",
+          "timestamp": "1789846876479",
+          "tags": []
+        }
+      ]
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "sendRequest",
+    "params": {
+      "request": "GET http://capstone-juice:3000/rest/user/whoami HTTP/1.1\r\nHost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+      "followRedirects": "false"
+    },
+    "status": 200,
+    "result": {
+      "sendRequest": [
+        {
+          "note": "",
+          "rtt": "14",
+          "responseBody": "{\"user\":{}}",
+          "cookieParams": "",
+          "requestBody": "",
+          "responseHeader": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 11\r\nETag: W/\"b-/5bSboVjVhGw3qRgvUfZjE1r1Ns\"\r\nVary: Accept-Encoding\r\nDate: Sat, 19 Sep 2026 19:41:16 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+          "requestHeader": "GET http://capstone-juice:3000/rest/user/whoami HTTP/1.1\r\nhost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+          "id": "8",
+          "type": "15",
+          "timestamp": "1789846876534",
+          "tags": []
+        }
+      ]
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "sendRequest",
+    "params": {
+      "request": "POST http://capstone-juice:3000/rest/user/login HTTP/1.1\r\nHost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 66\r\n\r\n{\"email\": \"capstone_a@example.invalid\", \"password\": \"Dummy-2026!\"}",
+      "followRedirects": "false"
+    },
+    "status": 200,
+    "result": {
+      "sendRequest": [
+        {
+          "note": "",
+          "rtt": "60",
+          "responseBody": "{\"authentication\":{\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc3fQ.Sy6NA7U5-JthmkmOVTUSS69zC66XinJKxPFmqocPGMeiT9D1gwoB61HeqUxVs-u2Wt0r5OROHuAtkRBpv-tdrocxILO5xGW6SRrkO8IQaDxuI_4xKRvrOT5OZZkxQKnS45gcoEMI5g2zyP6xGkoJy2nSXSTvq7C7iuHDq8tiLxI\",\"bid\":6,\"umail\":\"capstone_a@example.invalid\"}}",
+          "cookieParams": "",
+          "requestBody": "{\"email\": \"capstone_a@example.invalid\", \"password\": \"Dummy-2026!\"}",
+          "responseHeader": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: application/json; charset=utf-8\r\nContent-Length: 815\r\nETag: W/\"32f-z8CQbyTi2Keg3oFHJcF+rjpO/lc\"\r\nVary: Accept-Encoding\r\nDate: Sat, 19 Sep 2026 19:41:16 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+          "requestHeader": "POST http://capstone-juice:3000/rest/user/login HTTP/1.1\r\nhost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 66\r\n\r\n",
+          "id": "10",
+          "type": "15",
+          "timestamp": "1789846876558",
+          "tags": []
+        }
+      ]
+    }
+  },
+  {
+    "component": "core",
+    "kind": "action",
+    "method": "sendRequest",
+    "params": {
+      "request": "GET http://capstone-juice:3000/ftp HTTP/1.1\r\nHost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+      "followRedirects": "false"
+    },
+    "status": 200,
+    "result": {
+      "sendRequest": [
+        {
+          "note": "",
+          "rtt": "6043",
+          "responseBody": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset='utf-8'> \n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no\" />\n    <title>listing directory /ftp</title>\n    <style>* {\n  margin: 0;\n  padding: 0;\n  outline: 0;\n}\n\nbody {\n  padding: 80px 100px;\n  font: 13px \"Helvetica Neue\", \"Lucida Grande\", \"Arial\";\n  background: #ECE9E9 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#ECE9E9));\n  background: #ECE9E9 -moz-linear-gradient(top, #fff, #ECE9E9);\n  background-repeat: no-repeat;\n  color: #555;\n  -webkit-font-smoothing: antialiased;\n}\nh1, h2, h3 {\n  font-size: 22px;\n  color: #343434;\n}\nh1 em, h2 em {\n  padding: 0 5px;\n  font-weight: normal;\n}\nh1 {\n  font-size: 60px;\n}\nh2 {\n  margin-top: 10px;\n}\nh3 {\n  margin: 5px 0 10px 0;\n  padding-bottom: 5px;\n  border-bottom: 1px solid #eee;\n  font-size: 18px;\n}\nul li {\n  list-style: none;\n}\nul li:hover {\n  cursor: pointer;\n  color: #2e2e2e;\n}\nul li .path {\n  padding-left: 5px;\n  font-weight: bold;\n}\nul li .line {\n  padding-right: 5px;\n  font-style: italic;\n}\nul li:first-child .path {\n  padding-left: 0;\n}\np {\n  line-height: 1.5;\n}\na {\n  color: #555;\n  text-decoration: none;\n}\na:hover {\n  color: #303030;\n}\n#stacktrace {\n  margin-top: 15px;\n}\n.directory h1 {\n  margin-bottom: 15px;\n  font-size: 18px;\n}\nul#files {\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\nul#files li {\n  float: left;\n  width: 30%;\n  line-height: 25px;\n  margin: 1px;\n}\nul#files li a {\n  display: block;\n  height: 25px;\n  border: 1px solid transparent;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  overflow: hidden;\n  white-space: nowrap;\n}\nul#files li a:focus,\nul#files li a:hover {\n  background: rgba(255,255,255,0.65);\n  border: 1px solid #ececec;\n}\nul#files li a.highlight {\n  -webkit-transition: background .4s ease-in-out;\n  background: #ffff4f;\n  border-color: #E9DC51;\n}\n#search {\n  display: block;\n  position: fixed;\n  top: 20px;\n  right: 20px;\n  width: 90px;\n  -webkit-transition: width ease 0.2s, opacity ease 0.4s;\n  -moz-transition: width ease 0.2s, opacity ease 0.4s;\n  -webkit-border-radius: 32px;\n  -moz-border-radius: 32px;\n  -webkit-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 1px 0px rgba(255, 255, 255, 0.03);\n  -moz-box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.25), inset 0px 1px 3px rgba(0, 0, 0, 0.7), 0px 1px 0px rgba(255, 255, 255, 0.03);\n  -webkit-font-smoothing: antialiased;\n  text-align: left;\n  font: 13px \"Helvetica Neue\", Arial, sans-serif;\n  padding: 4px 10px;\n  border: none;\n  background: transparent;\n  margin-bottom: 0;\n  outline: none;\n  opacity: 0.7;\n  color: #888;\n}\n#search:focus {\n  width: 120px;\n  opacity: 1.0; \n}\n\n/*views*/\n#files span {\n  display: inline-block;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  text-indent: 10px;\n}\n#files .name {\n  background-repeat: no-repeat;\n}\n#files .icon .name {\n  text-indent: 28px;\n}\n\n/*tiles*/\n.view-tiles .name {\n  width: 100%;\n  background-position: 8px 5px;\n}\n.view-tiles .size,\n.view-tiles .date {\n  display: none;\n}\n\n/*details*/\nul#files.view-details li {\n  float: none;\n  display: block;\n  width: 90%;\n}\nul#files.view-details li.header {\n  height: 25px;\n  background: #000;\n  color: #fff;\n  font-weight: bold;\n}\n.view-details .header {\n  border-radius: 5px;\n}\n.view-details .name {\n  width: 60%;\n  background-position: 8px 5px;\n}\n.view-details .size {\n  width: 10%;\n}\n.view-details .date {\n  width: 30%;\n}\n.view-details .size,\n.view-details .date {\n  text-align: right;\n  direction: rtl;\n}\n\n/*mobile*/\n@media (max-width: 768px) {\n  body {\n    font-size: 13px;\n    line-height: 16px;\n    padding: 0;\n  }\n  #search {\n    position: static;\n    width: 100%;\n    font-size: 2em;\n    line-height: 1.8em;\n    text-indent: 10px;\n    border: 0;\n    border-radius: 0;\n    padding: 10px 0;\n    margin: 0;\n  }\n  #search:focus {\n    width: 100%;\n    border: 0;\n    opacity: 1;\n  }\n  .directory h1 {\n    font-size: 2em;\n    line-height: 1.5em;\n    color: #fff;\n    background: #000;\n    padding: 15px 10px;\n    margin: 0;\n  }\n  ul#files {\n    border-top: 1px solid #cacaca;\n  }\n  ul#files li {\n    float: none;\n    width: auto !important;\n    display: block;\n    border-bottom: 1px solid #cacaca;\n    font-size: 2em;\n    line-height: 1.2em;\n    text-indent: 0;\n    margin: 0;\n  }\n  ul#files li:nth-child(odd) {\n    background: #e0e0e0;\n  }\n  ul#files li a {\n    height: auto;\n    border: 0;\n    border-radius: 0;\n    padding: 15px 10px;\n  }\n  ul#files li a:focus,\n  ul#files li a:hover {\n    border: 0;\n  }\n  #files .header,\n  #files .size,\n  #files .date {\n    display: none !important;\n  }\n  #files .name {\n    float: none;\n    display: inline-block;\n    width: 100%;\n    text-indent: 0;\n    background-position: 0 50%;\n  }\n  #files .icon .name {\n    text-indent: 41px;\n  }\n}\n#files .icon-directory .name {\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAAWtQTFRFAAAA/PPQ9Nhc2q402qQ12qs2/PTX2pg12p81+/LM89NE9dto2q82+/fp2rM22qY39d6U+/bo2qo2/frx/vz32q812qs12qE279SU8c4w9NZP+/LK//367s9y7s925cp0/vzw9t92//342po2/vz25s1579B6+OSO2bQ0/v799NyT8tE79dld8Msm+OrC/vzx79KA2IYs7s6I9d6R4cJe9+OF/PLI/fry79OF/v30//328tWB89RJ8c9p8c0u9eCf//7+9txs6sts5Mdr+++5+u2z/vrv+/fq6cFz8dBs8tA57cpq+OaU9uGs27Y8//799NdX/PbY9uB89unJ//z14sNf+emh+emk+vDc+uys9+OL8dJy89NH+eic8tN5+OaV+OWR9N2n9dtl9t529+KF9+GB9Nue9NdU8tR/9t5y89qW9dpj89iO89eG/vvu2pQ12Y4z/vzy2Ict/vvv48dr/vzz4sNg///+2Igty3PqwQAAAAF0Uk5TAEDm2GYAAACtSURBVBjTY2AgA2iYlJWVhfohBPg0yx38y92dS0pKVOVBAqIi6sb2vsWWpfrFeTI8QAEhYQEta28nCwM1OVleZqCAmKCEkUdwYWmhQnFeOStQgL9cySqkNNDHVJGbiY0FKCCuYuYSGRsV5KgjxcXIARRQNncNj09JTgqw0ZbkZAcK5LuFJaRmZqfHeNnpSucDBQoiEtOycnIz4qI9bfUKQA6pKKqAgqIKQyK8BgAZ5yfODmnHrQAAAABJRU5ErkJggg==);\n}\n#files .icon-text .name {\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAADoSURBVBgZBcExblNBGAbA2ceegTRBuIKOgiihSZNTcC5LUHAihNJR0kGKCDcYJY6D3/77MdOinTvzAgCw8ysThIvn/VojIyMjIyPP+bS1sUQIV2s95pBDDvmbP/mdkft83tpYguZq5Jh/OeaYh+yzy8hTHvNlaxNNczm+la9OTlar1UdA/+C2A4trRCnD3jS8BB1obq2Gk6GU6QbQAS4BUaYSQAf4bhhKKTFdAzrAOwAxEUAH+KEM01SY3gM6wBsEAQB0gJ+maZoC3gI6iPYaAIBJsiRmHU0AALOeFC3aK2cWAACUXe7+AwO0lc9eTHYTAAAAAElFTkSuQmCC);\n}\n#files .icon-default .name {\n  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAC4SURBVCjPdZFbDsIgEEWnrsMm7oGGfZrohxvU+Iq1TyjU60Bf1pac4Yc5YS4ZAtGWBMk/drQBOVwJlZrWYkLhsB8UV9K0BUrPGy9cWbng2CtEEUmLGppPjRwpbixUKHBiZRS0p+ZGhvs4irNEvWD8heHpbsyDXznPhYFOyTjJc13olIqzZCHBouE0FRMUjA+s1gTjaRgVFpqRwC8mfoXPPEVPS7LbRaJL2y7bOifRCTEli3U7BMWgLzKlW/CuebZPAAAAAElFTkSuQmCC);\n}\n</style>\n    <script>\n      function $(id){\n        var el = 'string' == typeof id\n          ? document.getElementById(id)\n          : id;\n\n        el.on = function(event, fn){\n          if ('content loaded' == event) {\n            event = window.attachEvent ? \"load\" : \"DOMContentLoaded\";\n          }\n          el.addEventListener\n            ? el.addEventListener(event, fn, false)\n            : el.attachEvent(\"on\" + event, fn);\n        };\n\n        el.all = function(selector){\n          return $(el.querySelectorAll(selector));\n        };\n\n        el.each = function(fn){\n          for (var i = 0, len = el.length; i < len; ++i) {\n            fn($(el[i]), i);\n          }\n        };\n\n        el.getClasses = function(){\n          return this.getAttribute('class').split(/\\s+/);\n        };\n\n        el.addClass = function(name){\n          var classes = this.getAttribute('class');\n          el.setAttribute('class', classes\n            ? classes + ' ' + name\n            : name);\n        };\n\n        el.removeClass = function(name){\n          var classes = this.getClasses().filter(function(curr){\n            return curr != name;\n          });\n          this.setAttribute('class', classes.join(' '));\n        };\n\n        return el;\n      }\n\n      function search() {\n        var str = $('search').value.toLowerCase();\n        var links = $('files').all('a');\n\n        links.each(function(link){\n          var text = link.textContent.toLowerCase();\n\n          if ('..' == text) return;\n          if (str.length && ~text.indexOf(str)) {\n            link.addClass('highlight');\n          } else {\n            link.removeClass('highlight');\n          }\n        });\n      }\n\n      $(window).on('content loaded', function(){\n        $('search').on('keyup', search);\n      });\n    </script>\n  </head>\n  <body class=\"directory\">\n    <input id=\"search\" type=\"text\" placeholder=\"Search\" autocomplete=\"off\" />\n    <div id=\"wrapper\">\n      <h1><a href=\".\">~</a> / <a href=\"ftp\">ftp</a></h1>\n      <ul id=\"files\" class=\"view-tiles\"><li><a href=\"ftp/quarantine\" class=\"icon icon-directory\" title=\"quarantine\"><span class=\"name\">quarantine</span><span class=\"size\"></span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/acquisitions.md\" class=\"icon icon icon-md icon-text\" title=\"acquisitions.md\"><span class=\"name\">acquisitions.md</span><span class=\"size\">909</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/announcement_encrypted.md\" class=\"icon icon icon-md icon-text\" title=\"announcement_encrypted.md\"><span class=\"name\">announcement_encrypted.md</span><span class=\"size\">369237</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/coupons_2013.md.bak\" class=\"icon icon icon-bak icon-default\" title=\"coupons_2013.md.bak\"><span class=\"name\">coupons_2013.md.bak</span><span class=\"size\">131</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/eastere.gg\" class=\"icon icon icon-gg icon-default\" title=\"eastere.gg\"><span class=\"name\">eastere.gg</span><span class=\"size\">324</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/encrypt.pyc\" class=\"icon icon icon-pyc icon-default\" title=\"encrypt.pyc\"><span class=\"name\">encrypt.pyc</span><span class=\"size\">573</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/incident-support.kdbx\" class=\"icon icon icon-kdbx icon-default\" title=\"incident-support.kdbx\"><span class=\"name\">incident-support.kdbx</span><span class=\"size\">3246</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/legal.md\" class=\"icon icon icon-md icon-text\" title=\"legal.md\"><span class=\"name\">legal.md</span><span class=\"size\">3047</span><span class=\"date\">9/19/2026 7:21:46 PM</span></a></li>\n<li><a href=\"ftp/package-lock.json.bak\" class=\"icon icon icon-bak icon-default\" title=\"package-lock.json.bak\"><span class=\"name\">package-lock.json.bak</span><span class=\"size\">750353</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/package.json.bak\" class=\"icon icon icon-bak icon-default\" title=\"package.json.bak\"><span class=\"name\">package.json.bak</span><span class=\"size\">4263</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li>\n<li><a href=\"ftp/suspicious_errors.yml\" class=\"icon icon icon-yml icon-text\" title=\"suspicious_errors.yml\"><span class=\"name\">suspicious_errors.yml</span><span class=\"size\">723</span><span class=\"date\">8/10/2026 9:36:13 PM</span></a></li></ul>\n    </div>\n  </body>\n</html>",
+          "cookieParams": "",
+          "requestBody": "",
+          "responseHeader": "HTTP/1.1 200 OK\r\nAccess-Control-Allow-Origin: *\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nFeature-Policy: payment 'self'\r\nX-Recruiting: /#/jobs\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 11319\r\nVary: Accept-Encoding\r\nDate: Sat, 19 Sep 2026 19:41:16 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+          "requestHeader": "GET http://capstone-juice:3000/ftp HTTP/1.1\r\nhost: capstone-juice:3000\r\nAuthorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJkYXRhIjp7ImlkIjoyNSwidXNlcm5hbWUiOiIiLCJlbWFpbCI6ImNhcHN0b25lX2FAZXhhbXBsZS5pbnZhbGlkIiwicGFzc3dvcmQiOiI3OGIxODgzZTYwZDBjNjM0MzY4NmJiMjc3ODFiOWZmNyIsInJvbGUiOiJjdXN0b21lciIsImRlbHV4ZVRva2VuIjoiIiwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjYtMDktMTkgMTk6MzQ6MTguOTA3ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImJpZCI6NiwiaWF0IjoxNzg5ODQ2ODc1fQ.JNyoW9Hxoer9ol5yDqVnmHvlQT8tA8jj_ohgvUeBSAbnw8VkbXuCmihC0Owno22iuV73D7OLSDEYzqEY_Gb3oAQnkgD25h7Ii8NyxYS_EpreVzcArr6w1_evSLmNrt9y3jRnf1XZuHBfJIewdnh8yLD8vKOKzvgFNWQy3scQEKs\r\nContent-Type: application/json\r\nContent-Length: 0\r\n\r\n",
+          "id": "11",
+          "type": "15",
+          "timestamp": "1789846876633",
+          "tags": []
+        }
+      ]
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "action",
+    "method": "setOptionMaxRuleDurationInMins",
+    "params": {
+      "Integer": 1
+    },
+    "status": 200,
+    "result": {
+      "Result": "OK"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "action",
+    "method": "setOptionMaxScanDurationInMins",
+    "params": {
+      "Integer": 5
+    },
+    "status": 200,
+    "result": {
+      "Result": "OK"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "action",
+    "method": "scan",
+    "params": {
+      "url": "http://capstone-juice:3000",
+      "recurse": "true",
+      "inScopeOnly": "true"
+    },
+    "status": 200,
+    "result": {
+      "scan": "0"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "0"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "3"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "4"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "4"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "11"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "11"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "22"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "26"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "35"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "37"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "41"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "58"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "62"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "71"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "86"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "92"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "98"
+    }
+  },
+  {
+    "component": "ascan",
+    "kind": "view",
+    "method": "status",
+    "params": {
+      "scanId": "0"
+    },
+    "status": 200,
+    "result": {
+      "status": "100"
+    }
+  },
+  {
+    "component": "pscan",
+    "kind": "view",
+    "method": "recordsToScan",
+    "params": {},
+    "status": 200,
+    "result": {
+      "recordsToScan": "0"
+    }
+  },
+  {
+    "component": "core",
+    "kind": "view",
+    "method": "alerts",
+    "params": {
+      "baseurl": "http://capstone-juice:3000",
+      "start": 0,
+      "count": 10000
+    },
+    "status": 200,
+    "result": {
+      "alerts": [
+        {
+          "nodeName": "http://capstone-juice:3000/rest/basket/6",
+          "sourceid": "3",
+          "other": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.",
+          "method": "GET",
+          "evidence": "Access-Control-Allow-Origin: *",
+          "pluginId": "10098",
+          "cweid": "264",
+          "confidence": "Medium",
+          "sourceMessageId": 1,
+          "wascid": "14",
+          "description": "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.",
+          "messageId": "1",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/basket/6",
+          "tags": {
+            "OWASP_2021_A01": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "OWASP_2025_A01": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/",
+            "OWASP_2017_A05": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html",
+            "CWE-264": "https://cwe.mitre.org/data/definitions/264.html"
+          },
+          "reference": "https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy",
+          "solution": "Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).\nConfigure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.",
+          "alert": "Cross-Domain Misconfiguration",
+          "param": "",
+          "attack": "",
+          "name": "Cross-Domain Misconfiguration",
+          "risk": "Medium",
+          "id": "0",
+          "alertRef": "10098"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/basket/7",
+          "sourceid": "3",
+          "other": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.",
+          "method": "GET",
+          "evidence": "Access-Control-Allow-Origin: *",
+          "pluginId": "10098",
+          "cweid": "264",
+          "confidence": "Medium",
+          "sourceMessageId": 5,
+          "wascid": "14",
+          "description": "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.",
+          "messageId": "5",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/basket/7",
+          "tags": {
+            "OWASP_2021_A01": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "OWASP_2025_A01": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/",
+            "OWASP_2017_A05": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html",
+            "CWE-264": "https://cwe.mitre.org/data/definitions/264.html"
+          },
+          "reference": "https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy",
+          "solution": "Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).\nConfigure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.",
+          "alert": "Cross-Domain Misconfiguration",
+          "param": "",
+          "attack": "",
+          "name": "Cross-Domain Misconfiguration",
+          "risk": "Medium",
+          "id": "1",
+          "alertRef": "10098"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "3",
+          "other": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.",
+          "method": "POST",
+          "evidence": "Access-Control-Allow-Origin: *",
+          "pluginId": "10098",
+          "cweid": "264",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "14",
+          "description": "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.",
+          "messageId": "10",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "OWASP_2021_A01": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "OWASP_2025_A01": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/",
+            "OWASP_2017_A05": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html",
+            "CWE-264": "https://cwe.mitre.org/data/definitions/264.html"
+          },
+          "reference": "https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy",
+          "solution": "Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).\nConfigure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.",
+          "alert": "Cross-Domain Misconfiguration",
+          "param": "",
+          "attack": "",
+          "name": "Cross-Domain Misconfiguration",
+          "risk": "Medium",
+          "id": "2",
+          "alertRef": "10098"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/whoami",
+          "sourceid": "3",
+          "other": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.",
+          "method": "GET",
+          "evidence": "Access-Control-Allow-Origin: *",
+          "pluginId": "10098",
+          "cweid": "264",
+          "confidence": "Medium",
+          "sourceMessageId": 8,
+          "wascid": "14",
+          "description": "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.",
+          "messageId": "8",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/whoami",
+          "tags": {
+            "OWASP_2021_A01": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "OWASP_2025_A01": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/",
+            "OWASP_2017_A05": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html",
+            "CWE-264": "https://cwe.mitre.org/data/definitions/264.html"
+          },
+          "reference": "https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy",
+          "solution": "Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).\nConfigure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.",
+          "alert": "Cross-Domain Misconfiguration",
+          "param": "",
+          "attack": "",
+          "name": "Cross-Domain Misconfiguration",
+          "risk": "Medium",
+          "id": "3",
+          "alertRef": "10098"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/products/search (q)",
+          "sourceid": "3",
+          "other": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.",
+          "method": "GET",
+          "evidence": "Access-Control-Allow-Origin: *",
+          "pluginId": "10098",
+          "cweid": "264",
+          "confidence": "Medium",
+          "sourceMessageId": 6,
+          "wascid": "14",
+          "description": "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.",
+          "messageId": "6",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/products/search?q=apple",
+          "tags": {
+            "OWASP_2021_A01": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "OWASP_2025_A01": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/",
+            "OWASP_2017_A05": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html",
+            "CWE-264": "https://cwe.mitre.org/data/definitions/264.html"
+          },
+          "reference": "https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy",
+          "solution": "Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).\nConfigure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.",
+          "alert": "Cross-Domain Misconfiguration",
+          "param": "",
+          "attack": "",
+          "name": "Cross-Domain Misconfiguration",
+          "risk": "Medium",
+          "id": "4",
+          "alertRef": "10098"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "3",
+          "other": "userParam=email\nuserValue=capstone_a@example.invalid\npasswordParam=password",
+          "method": "POST",
+          "evidence": "password",
+          "pluginId": "10111",
+          "cweid": "-1",
+          "confidence": "High",
+          "sourceMessageId": 10,
+          "wascid": "-1",
+          "description": "The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.",
+          "messageId": "10",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {},
+          "reference": "https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/",
+          "solution": "This is an informational alert rather than a vulnerability and so there is nothing to fix.",
+          "alert": "Authentication Request Identified",
+          "param": "email",
+          "attack": "",
+          "name": "Authentication Request Identified",
+          "risk": "Informational",
+          "id": "5",
+          "alertRef": "10111"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "3",
+          "other": "json:authentication.token",
+          "method": "POST",
+          "evidence": "authentication.token",
+          "pluginId": "10112",
+          "cweid": "-1",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "-1",
+          "description": "The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.",
+          "messageId": "10",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {},
+          "reference": "https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id/",
+          "solution": "This is an informational alert rather than a vulnerability and so there is nothing to fix.",
+          "alert": "Session Management Response Identified",
+          "param": "authentication.token",
+          "attack": "",
+          "name": "Session Management Response Identified",
+          "risk": "Informational",
+          "id": "6",
+          "alertRef": "10112"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/ftp",
+          "sourceid": "3",
+          "other": "",
+          "method": "GET",
+          "evidence": "",
+          "pluginId": "10038",
+          "cweid": "693",
+          "confidence": "High",
+          "sourceMessageId": 11,
+          "wascid": "15",
+          "description": "Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.",
+          "messageId": "11",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/ftp",
+          "tags": {
+            "OWASP_2021_A05": "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CWE-693": "https://cwe.mitre.org/data/definitions/693.html",
+            "OWASP_2017_A06": "https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html",
+            "OWASP_2025_A02": "https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/"
+          },
+          "reference": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP\nhttps://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html\nhttps://www.w3.org/TR/CSP/\nhttps://w3c.github.io/webappsec-csp/\nhttps://web.dev/articles/csp\nhttps://caniuse.com/#feat=contentsecuritypolicy\nhttps://content-security-policy.com/",
+          "solution": "Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.",
+          "alert": "Content Security Policy (CSP) Header Not Set",
+          "param": "",
+          "attack": "",
+          "name": "Content Security Policy (CSP) Header Not Set",
+          "risk": "Medium",
+          "id": "7",
+          "alertRef": "10038-1"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/ftp",
+          "sourceid": "3",
+          "other": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.",
+          "method": "GET",
+          "evidence": "Access-Control-Allow-Origin: *",
+          "pluginId": "10098",
+          "cweid": "264",
+          "confidence": "Medium",
+          "sourceMessageId": 11,
+          "wascid": "14",
+          "description": "Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.",
+          "messageId": "11",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/ftp",
+          "tags": {
+            "OWASP_2021_A01": "https://owasp.org/Top10/A01_2021-Broken_Access_Control/",
+            "POLICY_QA_STD": "",
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "OWASP_2025_A01": "https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/",
+            "OWASP_2017_A05": "https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html",
+            "CWE-264": "https://cwe.mitre.org/data/definitions/264.html"
+          },
+          "reference": "https://vulncat.fortify.com/en/detail?category=HTML5&subcategory=Overly%20Permissive%20CORS%20Policy",
+          "solution": "Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).\nConfigure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.",
+          "alert": "Cross-Domain Misconfiguration",
+          "param": "",
+          "attack": "",
+          "name": "Cross-Domain Misconfiguration",
+          "risk": "Medium",
+          "id": "8",
+          "alertRef": "10098"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "HTTP/1.1 500 Internal Server Error",
+          "pluginId": "40018",
+          "cweid": "89",
+          "confidence": "Low",
+          "sourceMessageId": 10,
+          "wascid": "19",
+          "description": "SQL injection may be possible.",
+          "messageId": "348",
+          "inputVector": "json",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_SEQUENCE": "",
+            "OWASP_2021_A03": "https://owasp.org/Top10/A03_2021-Injection/",
+            "PCI_DSS": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance",
+            "CWE-89": "https://cwe.mitre.org/data/definitions/89.html",
+            "POLICY_QA_CICD": "",
+            "POLICY_DEV_CICD": "",
+            "OWASP_2025_A05": "https://owasp.org/Top10/2025/A05_2025-Injection/",
+            "WSTG-v42-INPV-05": "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection",
+            "POLICY_API": "",
+            "POLICY_DEV_FULL": "",
+            "POLICY_QA_STD": "",
+            "POLICY_QA_FULL": "",
+            "POLICY_PENTEST": "",
+            "HIPAA": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance",
+            "OWASP_2017_A01": "https://owasp.org/www-project-top-ten/2017/A1_2017-Injection.html",
+            "API_2023_API10": "https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/",
+            "POLICY_DEV_STD": ""
+          },
+          "reference": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+          "solution": "Do not trust client side input, even if there is client side validation in place.\nIn general, type check all data on the server side.\nIf the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'\nIf the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.\nIf database Stored Procedures can be used, use them.\nDo *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!\nDo not create dynamic SQL queries using simple string concatenation.\nEscape all data received from the client.\nApply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.\nApply the principle of least privilege by using the least privileged database user possible.\nIn particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.\nGrant the minimum database access that is necessary for the application.",
+          "alert": "SQL Injection",
+          "param": "email",
+          "attack": "'",
+          "name": "SQL Injection",
+          "risk": "High",
+          "id": "9",
+          "alertRef": "40018"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/products/search (q)",
+          "sourceid": "1",
+          "other": "",
+          "method": "GET",
+          "evidence": "HTTP/1.1 500 Internal Server Error",
+          "pluginId": "40018",
+          "cweid": "89",
+          "confidence": "Low",
+          "sourceMessageId": 6,
+          "wascid": "19",
+          "description": "SQL injection may be possible.",
+          "messageId": "352",
+          "inputVector": "querystring",
+          "url": "http://capstone-juice:3000/rest/products/search?q=apple%27",
+          "tags": {
+            "POLICY_SEQUENCE": "",
+            "OWASP_2021_A03": "https://owasp.org/Top10/A03_2021-Injection/",
+            "PCI_DSS": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance",
+            "CWE-89": "https://cwe.mitre.org/data/definitions/89.html",
+            "POLICY_QA_CICD": "",
+            "POLICY_DEV_CICD": "",
+            "OWASP_2025_A05": "https://owasp.org/Top10/2025/A05_2025-Injection/",
+            "WSTG-v42-INPV-05": "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection",
+            "POLICY_API": "",
+            "POLICY_DEV_FULL": "",
+            "POLICY_QA_STD": "",
+            "POLICY_QA_FULL": "",
+            "POLICY_PENTEST": "",
+            "HIPAA": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#compliance",
+            "OWASP_2017_A01": "https://owasp.org/www-project-top-ten/2017/A1_2017-Injection.html",
+            "API_2023_API10": "https://owasp.org/API-Security/editions/2023/en/0xaa-unsafe-consumption-of-apis/",
+            "POLICY_DEV_STD": ""
+          },
+          "reference": "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+          "solution": "Do not trust client side input, even if there is client side validation in place.\nIn general, type check all data on the server side.\nIf the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by '?'\nIf the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries.\nIf database Stored Procedures can be used, use them.\nDo *not* concatenate strings into queries in the stored procedure, or use 'exec', 'exec immediate', or equivalent functionality!\nDo not create dynamic SQL queries using simple string concatenation.\nEscape all data received from the client.\nApply an 'allow list' of allowed characters, or a 'deny list' of disallowed characters in user input.\nApply the principle of least privilege by using the least privileged database user possible.\nIn particular, avoid using the 'sa' or 'db-owner' database users. This does not eliminate SQL injection, but minimizes its impact.\nGrant the minimum database access that is necessary for the application.",
+          "alert": "SQL Injection",
+          "param": "q",
+          "attack": "apple'",
+          "name": "SQL Injection",
+          "risk": "High",
+          "id": "10",
+          "alertRef": "40018"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1135",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "11",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1213",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "12",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1218",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "13",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1223",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (Windows NT 10.0; Trident/7.0; rv:11.0) like Gecko",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "14",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1228",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3739.0 Safari/537.36 Edg/75.0.109.0",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "15",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1232",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "16",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1237",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "msnbot/1.1 (+http://search.msn.com/msnbot.htm)",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "17",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1240",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (compatible; Yahoo! Slurp; http://help.yahoo.com/help/us/ysearch/slurp)",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "18",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1245",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_0 like Mac OS X; en-us) AppleWebKit/528.18 (KHTML, like Gecko) Version/4.0 Mobile/7A341 Safari/528.16",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "19",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1248",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0_2 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A366 Safari/600.1.4",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "20",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1253",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:93.0) Gecko/20100101 Firefox/91.0",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "21",
+          "alertRef": "10104"
+        },
+        {
+          "nodeName": "http://capstone-juice:3000/rest/user/login ()({email,password})",
+          "sourceid": "1",
+          "other": "",
+          "method": "POST",
+          "evidence": "",
+          "pluginId": "10104",
+          "cweid": "0",
+          "confidence": "Medium",
+          "sourceMessageId": 10,
+          "wascid": "0",
+          "description": "Check for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). Compares the response statuscode and the hashcode of the response body with the original response.",
+          "messageId": "1256",
+          "inputVector": "",
+          "url": "http://capstone-juice:3000/rest/user/login",
+          "tags": {
+            "POLICY_PENTEST": "",
+            "SYSTEMIC": "https://www.zaproxy.org/docs/desktop/addons/common-library/alerttags/#systemic",
+            "CUSTOM_PAYLOADS": ""
+          },
+          "reference": "https://owasp.org/wstg",
+          "solution": "",
+          "alert": "User Agent Fuzzer",
+          "param": "Header User-Agent",
+          "attack": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+          "name": "User Agent Fuzzer",
+          "risk": "Informational",
+          "id": "22",
+          "alertRef": "10104"
+        }
+      ]
+    }
+  }
+]

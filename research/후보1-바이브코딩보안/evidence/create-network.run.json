@@ -1,0 +1,13 @@
+{
+  "command": [
+    "docker",
+    "network",
+    "create",
+    "--internal",
+    "capstone-vibe-lab"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:21:44.479025+00:00",
+  "elapsed_seconds": 0.453,
+  "exit_code": 0
+}

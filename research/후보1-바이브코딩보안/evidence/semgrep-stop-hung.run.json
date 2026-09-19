@@ -1,0 +1,11 @@
+{
+  "command": [
+    "docker",
+    "stop",
+    "615ac98c8739"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:40:11.604047+00:00",
+  "elapsed_seconds": 2.593,
+  "exit_code": 0
+}

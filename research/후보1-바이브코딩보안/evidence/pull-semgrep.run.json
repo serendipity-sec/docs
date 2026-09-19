@@ -1,0 +1,11 @@
+{
+  "command": [
+    "docker",
+    "pull",
+    "semgrep/semgrep:1.177.0"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:26:52.162171+00:00",
+  "elapsed_seconds": 307.563,
+  "exit_code": 0
+}
