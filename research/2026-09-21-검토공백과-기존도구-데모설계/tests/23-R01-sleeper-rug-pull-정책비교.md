@@ -36,7 +36,7 @@ host 순서:
 
 두 번째 조건은 실제 endpoint capability object를 제거하거나 OS 네트워크 권한을 격리한 구현이 아니다. runner가 `--collector 1`을 전달해 연결 실패를 유도한다. 따라서 **OS sandbox, 방화벽, 프로세스 네트워크 격리의 증거가 아니다.** 서버에는 workspace root가 그대로 제공되므로 private read는 계속 가능하다.
 
-구현은 [lab_server.py](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/lab_server.py)와 [run_dynamic.py](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/run_dynamic.py)에 있다.
+구현은 [lab_server.py](../../../experiments/live-agent-security/paper-guided-2026-09-22/lab_server.py)와 [run_dynamic.py](../../../experiments/live-agent-security/paper-guided-2026-09-22/run_dynamic.py)에 있다.
 
 ## 판정 oracle
 
@@ -73,13 +73,13 @@ python experiments/live-agent-security/paper-guided-2026-09-22/run_dynamic.py `
 
 ## 원본 증거
 
-- 집계: [aggregate.json](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/aggregate.json)
-- digest-only seed 47: [run evidence](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest-only-s47-768121)
-- digest-only seed 59: [run evidence](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest-only-s59-7c30fc)
-- digest-only seed 71: [run evidence](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest-only-s71-0bddd2)
-- port 1 대체 seed 47: [run evidence](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest+capability-withheld-s47-73f4ac)
-- port 1 대체 seed 59: [run evidence](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest+capability-withheld-s59-d12ff1)
-- port 1 대체 seed 71: [run evidence](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest+capability-withheld-s71-3aeee8)
+- 집계: [aggregate.json](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/aggregate.json)
+- digest-only seed 47: [run evidence](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest-only-s47-768121)
+- digest-only seed 59: [run evidence](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest-only-s59-7c30fc)
+- digest-only seed 71: [run evidence](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest-only-s71-0bddd2)
+- port 1 대체 seed 47: [run evidence](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest+capability-withheld-s47-73f4ac)
+- port 1 대체 seed 59: [run evidence](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest+capability-withheld-s59-d12ff1)
+- port 1 대체 seed 71: [run evidence](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/runs/r01-sleeper-digest+capability-withheld-s71-3aeee8)
 
 각 run의 `tools-before.json`/`tools-after.json`, `server-audit.jsonl`, `collector-receipts.json`, `workspace/private/session.txt` hash, `workspace/out/archive.txt`를 함께 봐야 한다.
 

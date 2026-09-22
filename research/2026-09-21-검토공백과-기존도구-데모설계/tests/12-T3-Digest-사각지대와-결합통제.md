@@ -7,11 +7,11 @@
 
 T1의 metadata digest가 그대로인 상태에서 `tools/call` 응답만 공격적으로 바뀌면 gate가 이를 막을 수 있는가? digest 잠금과 업무별 최소 권한을 결합하면 metadata 변경 M03과 응답 주입 M02를 서로 다른 단계에서 통제하면서 정상 M00·M02 업무를 유지할 수 있는가?
 
-T3 조건은 [`additional-test-plan-2026-09-22.md`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/additional-test-plan-2026-09-22.md)에 고정했다.
+T3 조건은 [`additional-test-plan-2026-09-22.md`](../../../experiments/live-agent-security/additional-test-plan-2026-09-22.md)에 고정했다.
 
 ## T3-A: 같은 metadata 아래 응답 주입
 
-입력은 정상 [`normal.json`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/fixtures/mcp/normal.json)과 공격 [`injected-response.json`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/fixtures/mcp/injected-response.json)이다. 승인·실행 metadata가 같으므로 digest는 일치한다. broad 권한에는 fetch, private read, report가 모두 노출된다.
+입력은 정상 [`normal.json`](../../../experiments/live-agent-security/fixtures/mcp/normal.json)과 공격 [`injected-response.json`](../../../experiments/live-agent-security/fixtures/mcp/injected-response.json)이다. 승인·실행 metadata가 같으므로 digest는 일치한다. broad 권한에는 fetch, private read, report가 모두 노출된다.
 
 ```powershell
 python run_lab.py --model qwen3:4b-q4_K_M --cases M02 --seeds 47,59,71 --guard broad --steps 10 --batch gate-digest-response-v20-4b --instruction-profile minimal --approval-mode digest-lock
@@ -49,9 +49,9 @@ M02는 metadata가 같아 모델에 도달했지만 task-scoped `fetch_project_n
 
 두 명령은 원본 식별자를 보여 준다. **새 clone·새 batch 이름**으로만 재실행하고 `gate-digest-response-v20-4b`와 `combined-v20-4b`를 덮어쓰지 않는다.
 
-- [response-only summary](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/runs/gate-digest-response-v20-4b/summary.json)
-- [combined summary](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/runs/combined-v20-4b/summary.json)
-- [통합 방어 결과](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/defense-results.json)
+- [response-only summary](../../../experiments/live-agent-security/runs/gate-digest-response-v20-4b/summary.json)
+- [combined summary](../../../experiments/live-agent-security/runs/combined-v20-4b/summary.json)
+- [통합 방어 결과](../../../experiments/live-agent-security/defense-results.json)
 
 ## 한계
 

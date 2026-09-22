@@ -17,9 +17,9 @@ python run_gate_contract.py
 
 runner는 최상위 `gate-contract-results.json`을 덮어쓴다. 검증 재실행은 반드시 **새 clone 또는 원본과 분리한 복사본**에서 수행한다.
 
-- runner: [`run_gate_contract.py`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/run_gate_contract.py)
-- 정책: [`gate_policy.py`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/gate_policy.py)
-- 결과: [`gate-contract-results.json`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/gate-contract-results.json)
+- runner: [`run_gate_contract.py`](../../../experiments/live-agent-security/run_gate_contract.py)
+- 정책: [`gate_policy.py`](../../../experiments/live-agent-security/gate_policy.py)
+- 결과: [`gate-contract-results.json`](../../../experiments/live-agent-security/gate-contract-results.json)
 
 ## canonicalization과 정책
 

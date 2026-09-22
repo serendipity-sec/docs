@@ -21,7 +21,7 @@
 | B. 실행 권한 변경 | Skill 코드는 같은데 파일 도구의 실제 접근 범위가 넓어짐 | 새로 읽을 수 있게 된 자료와 정책 위반 | 좁은 권한, 권한 축소, 실효 권한 미확인 |
 | C. 불완전한 검사 | 필수 검사 timeout·응답 오류·참조 파일 누락 | 미완료를 통과로 표시하는지 | 실제 완료·무발견인 정상 입력 |
 
-총 **12개 검토 공백 사례 명세**를 [cases.json](cases.json)에 저장했다. 이 A·B·C 명세 전체를 그대로 구현한 것은 아니다. 후속 요청에 따라 별도의 9개 Skill·MCP 사례와 실제 LLM 하네스를 [`platform/experiments/live-agent-security`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/README.md)에 만들었고, 초기 선택 실행 54회와 고정 v2 통제 실행 51회를 완료했다. 두 사례 집합과 각 실행 분모를 섞지 않는다.
+총 **12개 검토 공백 사례 명세**를 [cases.json](cases.json)에 저장했다. 이 A·B·C 명세 전체를 그대로 구현한 것은 아니다. 후속 요청에 따라 별도의 9개 Skill·MCP 사례와 실제 LLM 하네스를 [`platform/experiments/live-agent-security`](../../experiments/live-agent-security/README.md)에 만들었고, 초기 선택 실행 54회와 고정 v2 통제 실행 51회를 완료했다. 두 사례 집합과 각 실행 분모를 섞지 않는다.
 
 ## 문서 안내
 

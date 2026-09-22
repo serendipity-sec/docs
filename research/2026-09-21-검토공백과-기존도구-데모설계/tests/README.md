@@ -104,16 +104,16 @@
 
 ## 검증과 증거 보존
 
-플랫폼 증거 커밋: [`4bd3ca337dd000fa60791207f94025807dff8a0c`](https://github.com/serendipity-sec/platform/commit/4bd3ca337dd000fa60791207f94025807dff8a0c). 문서 링크는 이 SHA에 고정되어 이후 main 변경과 구분된다.
+코드·원본 증거는 모두 이 docs 저장소의 [실험 폴더](../../../experiments/live-agent-security/README.md)에 함께 보관한다. 이전 platform 커밋 `4bd3ca337dd000fa60791207f94025807dff8a0c`의 3,620개 파일을 바이트 그대로 가져왔다. [이관 검증](../../../experiments/live-agent-security-import.json)에 원본 출처와 비교 결과를 기록했으며, 아래 링크는 모두 같은 docs 저장소 안에서 열린다.
 
-- [저장 범위·재검증 명령·Git 바이트 보존 방식](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/publication-guide.md)
-- [초기 효과 체인 112회 재검증](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/evidence-verification.json)
-- [초기 scanner 20건·입력 24개·공식 출처 29개 검증](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/scanner-evidence-verification.json)
-- [논문 기반 81회·무결성 8건·probe 2건 검증](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/verification.json)
-- [사후 T01 12회 receipt 재검토](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/egress-oracle-audit.json)
+- [저장 범위·재검증 명령·Git 바이트 보존 방식](../../../experiments/live-agent-security/publication-guide.md)
+- [초기 효과 체인 112회 재검증](../../../experiments/live-agent-security/evidence-verification.json)
+- [초기 scanner 20건·입력 24개·공식 출처 29개 검증](../../../experiments/live-agent-security/scanner-evidence-verification.json)
+- [논문 기반 81회·무결성 8건·probe 2건 검증](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/verification.json)
+- [사후 T01 12회 receipt 재검토](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/egress-oracle-audit.json)
 
 커밋에서 꺼낸 깨끗한 사본에서도 위 검증기를 실행해 저장 근거의 issue_count=0을 확인했다. 그러나 이 검증이 충분한 공격·utility oracle, 제품 안전성, 생태계 전체 탐지율을 보장하지는 않는다. 검증된 범위와 실제 발견된 oracle 누락을 함께 남긴다.
 
-문서 자체의 검사 기록: [고정 증거·내부 링크 검증](document-validation.json), [Skill 무결성 8건 읽기 전용 재계산](skill-integrity-recheck.json).
+문서 자체의 검사 기록: [동일 저장소 증거·내부 링크 검증](document-validation.json), [Skill 무결성 8건 읽기 전용 재계산](skill-integrity-recheck.json).
 
 [실험 전체 요약으로 돌아가기](../README.md)

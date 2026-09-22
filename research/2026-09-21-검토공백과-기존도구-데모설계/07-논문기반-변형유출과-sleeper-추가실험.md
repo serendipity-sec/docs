@@ -142,11 +142,11 @@ Cisco MCP Scanner 4.8.4의 고정 로컬 설치에서 YARA 정적 resources 모�
 
 ## 원본 증거
 
-- [플랫폼 실험 결론](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/findings.md)
-- [사전 고정 설계와 smoke 수정 기록](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/test-plan.md)
-- [동적 결과 표](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/aggregate.md)
-- [Skill 전체 패키지 결과](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/skill-integrity/results.md)
-- [정적 scanner probe](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/results.md)
-- [재검증 결과](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/verification.json)
+- [플랫폼 실험 결론](../../experiments/live-agent-security/paper-guided-2026-09-22/findings.md)
+- [사전 고정 설계와 smoke 수정 기록](../../experiments/live-agent-security/paper-guided-2026-09-22/test-plan.md)
+- [동적 결과 표](../../experiments/live-agent-security/paper-guided-2026-09-22/results/paper-v2-qwen4b/aggregate.md)
+- [Skill 전체 패키지 결과](../../experiments/live-agent-security/paper-guided-2026-09-22/results/skill-integrity/results.md)
+- [정적 scanner probe](../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/results.md)
+- [재검증 결과](../../experiments/live-agent-security/paper-guided-2026-09-22/results/verification.json)
 
 최종 동적 분모에서 제외한 `paper-v1-qwen4b`에는 정상 T00 완료 4회와 프로세스 중단으로 `result.json`이 없는 T01 디렉터리 1개가 있다. 중단 run은 private 읽기 단계까지만 남아 있으며 성공·실패 어느 분모에도 넣지 않았다. 마지막 줄바꿈 정규화 오류를 최종 공격 batch 전에 고쳤고, 수정 이유와 새 batch 분리는 설계·제외 기록에 남겼다.

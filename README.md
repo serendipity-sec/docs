@@ -30,6 +30,8 @@
 
 ## 주요 조사 자료
 
+- [사전조사 실험 코드·원본 증거](experiments/README.md): 테스트 상세 문서와 함께 이 docs 저장소에 통합 보관합니다. 입력·실행 기록·실제 수신·파일 변경·재검증 코드를 포함합니다.
+
 - [테스트별 상세 기록 (2026-09-22)](research/2026-09-21-검토공백과-기존도구-데모설계/tests/README.md): 각 사례의 입력·실행 명령·seed별 관측·판정 기준·원본 증거·한계를 정리했습니다. 동적 평가 186회와 별도 계약·검사기 실행을 구분하며, 유출 oracle의 누락을 발견한 독립 재검토와 정정도 포함합니다.
 
 - [질문 3·4 데모와 논문 기반 추가 실험 (2026-09-21~22)](research/2026-09-21-검토공백과-기존도구-데모설계/README.md): 악성 Skill·MCP 입력의 실제 읽기·loopback 전송·승인 파일 변조, 정적 검사기 비교, 승인 digest·최소 권한·검사 완료 gate에 이어 Base64 변형 유출, source-to-sink lineage, 동일 metadata sleeper, Skill 전체 트리 무결성, MCP 공격 단계 4종까지 연결했습니다. false-error/tool-transfer의 실제 receipt와 intent-lock 차단 뒤 step-limit을 함께 확인했습니다. 승인은 `lab_simulated`이며 사용자 관찰, 실제 OS sandbox, 자유 형식 의미 변환 추적은 후속 과제입니다.

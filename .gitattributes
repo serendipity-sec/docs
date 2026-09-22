@@ -11,3 +11,6 @@
 *.png   binary
 *.jpg   binary
 *.gif   binary
+
+# Recorded experiment hashes require byte-for-byte preservation.
+experiments/live-agent-security/** -text

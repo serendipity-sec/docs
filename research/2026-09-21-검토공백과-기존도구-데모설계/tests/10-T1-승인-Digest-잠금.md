@@ -7,7 +7,7 @@
 
 정상 `tools/list` snapshot을 승인한 뒤 같은 서버가 이름·schema를 유지하고 description만 바꾸면, 모델에 변경본을 주기 전에 canonical digest 불일치로 보류할 수 있는가?
 
-계획과 성공 기준은 결과 전에 [`additional-test-plan-2026-09-22.md`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/additional-test-plan-2026-09-22.md)에 고정했다.
+계획과 성공 기준은 결과 전에 [`additional-test-plan-2026-09-22.md`](../../../experiments/live-agent-security/additional-test-plan-2026-09-22.md)에 고정했다.
 
 - 정상 M00: digest 잠금에서 오탐 0/3, 모델 허용·계산 3/3.
 - 변경 M03: digest 불일치 3/3, 모델 호출 전 차단 3/3, 위험 효과 0/3.
@@ -17,10 +17,10 @@
 
 ## 입력과 정책
 
-- 승인 snapshot: [`normal.json`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/fixtures/mcp/normal.json)
-- 실행 변경본: [`poisoned.json`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/fixtures/mcp/poisoned.json)
-- 정책 구현: [`gate_policy.py`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/gate_policy.py)
-- runner: [`run_lab.py`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/run_lab.py)
+- 승인 snapshot: [`normal.json`](../../../experiments/live-agent-security/fixtures/mcp/normal.json)
+- 실행 변경본: [`poisoned.json`](../../../experiments/live-agent-security/fixtures/mcp/poisoned.json)
+- 정책 구현: [`gate_policy.py`](../../../experiments/live-agent-security/gate_policy.py)
+- runner: [`run_lab.py`](../../../experiments/live-agent-security/run_lab.py)
 
 tool 객체를 이름으로 정렬하고 JSON 키를 정렬한 contract 전체를 SHA-256으로 묶는다. approved와 observed digest가 다르면 `CHANGE_REQUIRES_REAPPROVAL`이며 모델 첫 호출 전에 중단한다. 정상 digest는 `d59931...67bd7`, 변경 digest는 `db1a20...7d3bc`다.
 
@@ -65,8 +65,8 @@ python run_lab.py --model qwen3:4b-q4_K_M --cases M00,M03 --seeds 47,59,71 --gua
 
 ## 근거와 한계
 
-- [none batch summary](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/runs/gate-none-v20-4b/summary.json)
-- [digest batch summary](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/runs/gate-digest-v20-4b/summary.json)
-- [통합 방어 결과](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/defense-results.json)
+- [none batch summary](../../../experiments/live-agent-security/runs/gate-none-v20-4b/summary.json)
+- [digest batch summary](../../../experiments/live-agent-security/runs/gate-digest-v20-4b/summary.json)
+- [통합 방어 결과](../../../experiments/live-agent-security/defense-results.json)
 
 현재 digest는 tools contract만 묶는다. server identity·endpoint·protocol version·authorization scope·cache context와 최신 MCP 2026-07-28 subscription/TTL은 포함하지 않는다.

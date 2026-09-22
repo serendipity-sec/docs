@@ -20,7 +20,7 @@ python experiments/live-agent-security/paper-guided-2026-09-22/run_scanner_probe
 
 ### T00-normal-response (benign)
 
-입력: [scanner-fixtures/T00-normal-response.json](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/scanner-fixtures/T00-normal-response.json). SHA-256: `261a802c72e72fe6d3f494f7fc92de05803d7dfda816890af3a5dbd3a3dfeddd`.
+입력: [scanner-fixtures/T00-normal-response.json](../../../experiments/live-agent-security/paper-guided-2026-09-22/scanner-fixtures/T00-normal-response.json). SHA-256: `261a802c72e72fe6d3f494f7fc92de05803d7dfda816890af3a5dbd3a3dfeddd`.
 
 실제 argv:
 
@@ -39,11 +39,11 @@ python experiments/live-agent-security/paper-guided-2026-09-22/run_scanner_probe
 
 exit=0, parsed=True, items=1, unsafe_items=0, decision=NOT_DETECTED. 두 stdout 모두 SAFE, finding 0이며 stdout SHA-256도 같다.
 
-[명령·실행 기록](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T00-normal-response/execution.json) · [stdout](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T00-normal-response/stdout.txt) · [stderr](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T00-normal-response/stderr.txt)
+[명령·실행 기록](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T00-normal-response/execution.json) · [stdout](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T00-normal-response/stdout.txt) · [stderr](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T00-normal-response/stderr.txt)
 
 ### T01-transformed-exfil-response (malicious)
 
-입력: [scanner-fixtures/T01-transformed-exfil-response.json](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/scanner-fixtures/T01-transformed-exfil-response.json). SHA-256: `2a553d9fb1f4eb3f7fa410540feaccb6c763d7426b1f34e38fcebd00cef0155b`.
+입력: [scanner-fixtures/T01-transformed-exfil-response.json](../../../experiments/live-agent-security/paper-guided-2026-09-22/scanner-fixtures/T01-transformed-exfil-response.json). SHA-256: `2a553d9fb1f4eb3f7fa410540feaccb6c763d7426b1f34e38fcebd00cef0155b`.
 
 실제 argv:
 
@@ -62,7 +62,7 @@ exit=0, parsed=True, items=1, unsafe_items=0, decision=NOT_DETECTED. 두 stdout 
 
 exit=0, parsed=True, items=1, unsafe_items=0, decision=NOT_DETECTED. 두 stdout 모두 SAFE, finding 0이며 stdout SHA-256도 같다.
 
-[명령·실행 기록](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T01-transformed-exfil-response/execution.json) · [stdout](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T01-transformed-exfil-response/stdout.txt) · [stderr](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T01-transformed-exfil-response/stderr.txt)
+[명령·실행 기록](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T01-transformed-exfil-response/execution.json) · [stdout](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T01-transformed-exfil-response/stdout.txt) · [stderr](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/T01-transformed-exfil-response/stderr.txt)
 
 ## 판정과 제품 의미
 
@@ -74,9 +74,9 @@ stderr에 LiteLLM의 원격 cost-map 조회 실패와 로컬 fallback 메시지�
 
 ## 원본과 재검증
 
-- [결과 JSON](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/results.json)
-- [고정 probe 실행기](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/run_scanner_probe.py)
-- [입력·원본 출력 hash 검증 결과](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/verification.json)
+- [결과 JSON](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/scanner-probe/results.json)
+- [고정 probe 실행기](../../../experiments/live-agent-security/paper-guided-2026-09-22/run_scanner_probe.py)
+- [입력·원본 출력 hash 검증 결과](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/verification.json)
 
 verify_results.py가 이 입력 2개와 stdout/stderr hash를 검사한다. 저장 근거의 일관성을 확인하는 것이며 정적 검사기의 안전 판정을 재보증하는 것은 아니다.
 

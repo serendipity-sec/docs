@@ -55,7 +55,7 @@ Project Atlas: build completed. Tests are pending. Deployment is not approved.
 아래 실행기는 case 필터가 없어 48회 전체를 만든다. 기존 batch를 재사용하면 보존 증거와 섞일 수 있으므로 새 clone 또는 고유한 새 `--batch`를 사용한다.
 
 ```powershell
-# platform 저장소 루트
+# docs 저장소 루트
 $batch = "mcp-attacks-repro-$((Get-Date).ToUniversalTime().ToString('yyyyMMdd-HHmmss'))"
 python experiments/live-agent-security/paper-guided-2026-09-22/run_attack_matrix.py `
   --model qwen3:4b-q4_K_M --seeds 47,59,71 --steps 8 --batch $batch
@@ -63,7 +63,7 @@ python experiments/live-agent-security/paper-guided-2026-09-22/summarize_attack_
 python experiments/live-agent-security/paper-guided-2026-09-22/verify_attack_matrix.py --batch $batch
 ```
 
-코드 hash는 `attack_matrix_server.py=24ebf4e9...fd143`, `run_attack_matrix.py=58ffcc3d...04462`, `mcp-attack-plan.md=55730b4a...243f`다. 전체 값은 [manifest](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/manifest.json)에 있다.
+코드 hash는 `attack_matrix_server.py=24ebf4e9...fd143`, `run_attack_matrix.py=58ffcc3d...04462`, `mcp-attack-plan.md=55730b4a...243f`다. 전체 값은 [manifest](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/manifest.json)에 있다.
 
 ## seed별 결과
 
@@ -80,10 +80,10 @@ broad와 intent-lock 모두 공격 효과 `0/3`, 정상 업무 `3/3`, PUA `1.00`
 
 ## 원본 증거
 
-- [고정 계획](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/mcp-attack-plan.md) · [실행기](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/run_attack_matrix.py) · [payload를 생성한 MCP 서버](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/attack_matrix_server.py)
-- [runtime](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runtime.json) · [aggregate](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/aggregate.json) · [verification](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/verification.json)
-- broad: [seed 47](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-broad-s47-3698a5) · [seed 59](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-broad-s59-fa9d97) · [seed 71](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-broad-s71-5f5993)
-- intent-lock: [seed 47](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-intent-lock-s47-5264ab) · [seed 59](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-intent-lock-s59-ae51c0) · [seed 71](https://github.com/serendipity-sec/platform/tree/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-intent-lock-s71-4c18cc)
+- [고정 계획](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/mcp-attack-plan.md) · [실행기](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/run_attack_matrix.py) · [payload를 생성한 MCP 서버](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/code/attack_matrix_server.py)
+- [runtime](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runtime.json) · [aggregate](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/aggregate.json) · [verification](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/verification.json)
+- broad: [seed 47](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-broad-s47-3698a5) · [seed 59](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-broad-s59-fa9d97) · [seed 71](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-broad-s71-5f5993)
+- intent-lock: [seed 47](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-intent-lock-s47-5264ab) · [seed 59](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-intent-lock-s59-ae51c0) · [seed 71](../../../experiments/live-agent-security/paper-guided-2026-09-22/results/mcp-attacks-v2-qwen4b/runs/p04a-intent-lock-s71-4c18cc)
 
 각 run에서 `initial-request.json`과 `tools.json`은 공격 metadata 노출을, `actions.json`은 모델의 실제 인자와 host 결정을, `server-audit.jsonl`은 서버까지 도달한 실제 read를, `result.json`은 effect·utility oracle을 확인하는 원본이다.
 

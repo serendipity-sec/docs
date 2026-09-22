@@ -23,10 +23,10 @@ python run_scan_gate_contract.py
 
 runner는 저장된 실제 scanner 산출물과 synthetic envelope를 읽고 `scan-gate-results.json`·`.md`를 다시 쓴다. 원본 보존을 위해 **새 clone 또는 분리된 복사본에서만 실행**한다.
 
-- runner: [`run_scan_gate_contract.py`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/run_scan_gate_contract.py)
-- 정책: [`scan_gate_policy.py`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/scan_gate_policy.py)
-- 구조화 결과: [`scan-gate-results.json`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/scan-gate-results.json)
-- 설명 결과: [`scan-gate-results.md`](https://github.com/serendipity-sec/platform/blob/4bd3ca337dd000fa60791207f94025807dff8a0c/experiments/live-agent-security/scan-gate-results.md)
+- runner: [`run_scan_gate_contract.py`](../../../experiments/live-agent-security/run_scan_gate_contract.py)
+- 정책: [`scan_gate_policy.py`](../../../experiments/live-agent-security/scan_gate_policy.py)
+- 구조화 결과: [`scan-gate-results.json`](../../../experiments/live-agent-security/scan-gate-results.json)
+- 설명 결과: [`scan-gate-results.md`](../../../experiments/live-agent-security/scan-gate-results.md)
 
 ## 실제 저장 산출물 5개
 

@@ -1,12 +1,13 @@
 {
-  "date": "2026-09-22",
-  "platform_commit": "4bd3ca337dd000fa60791207f94025807dff8a0c",
-  "markdown_files_checked": 54,
+  "storage_repository": "serendipity-sec/docs",
+  "source_evidence_commit": "4bd3ca337dd000fa60791207f94025807dff8a0c",
   "detailed_documents": 42,
-  "platform_commit_links_checked": 553,
-  "relative_links_checked": 130,
-  "external_source_links_present_not_refetched": 66,
+  "markdown_files_checked": 55,
+  "local_links_checked": 690,
+  "local_evidence_links_checked": 559,
+  "archived_evidence_files_compared": 3620,
+  "archived_evidence_bytes_compared": 6597576,
   "issue_count": 0,
   "issues": [],
-  "scope": "Current experiment documentation and modified indices; validates file targets and immutable platform tree, not live third-party URLs or semantic completeness."
+  "scope": "Authored documentation links and exact archive byte preservation; original third-party snapshots and historical paths inside evidence are preserved."
 }
