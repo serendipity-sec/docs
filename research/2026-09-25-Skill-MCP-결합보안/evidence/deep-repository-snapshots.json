@@ -1,0 +1,133 @@
+{
+  "checked_on": "2026-09-25",
+  "snapshots": [
+    {
+      "name": "agentcap",
+      "commit": "1886fd50dbd51344c62acd1d224375054ac076e9",
+      "origin": "https://github.com/yunwei37/agentcap.git",
+      "root_license_files": [],
+      "license_observation": "No root LICENSE/COPYING found; reuse rights not established",
+      "selected_files": [
+        {
+          "path": "src/intentcap/checker.py",
+          "sha256": "d83cb329ad6a49e6181e766f6d8cd491debcf02098416fdc7d5c00c86741be87"
+        },
+        {
+          "path": "src/intentcap/live_gateway.py",
+          "sha256": "d9c0ce290bf5c34c01bd5d7eb8a9c186e0549fb5c2bca201a297714357ecf4f6"
+        },
+        {
+          "path": "tests/test_checker.py",
+          "sha256": "3b852ad3ba5e220e6f3ca2e8c9cbc09aa19e991427bf8594a32ac3db4a1fb94f"
+        }
+      ],
+      "execution": "pure checker only"
+    },
+    {
+      "name": "skil",
+      "commit": "9016d9a21c5e1a2b5fb9c11b97100d444f7d7071",
+      "origin": "https://github.com/domehahn/skil.git",
+      "root_license_files": [
+        "LICENSE"
+      ],
+      "license_observation": "Apache-2.0",
+      "selected_files": [
+        {
+          "path": "internal/compose/compose.go",
+          "sha256": "30159345a840f4e75a88db3b255bc45e60be40aa8b06f1331724718b94c3aa1b"
+        },
+        {
+          "path": "internal/composeassure/composeassure.go",
+          "sha256": "f3b34202927d7074deaecb059c4040ac02afe95eba5b3d338dc5995180c58778"
+        }
+      ],
+      "execution": "not executed"
+    },
+    {
+      "name": "ramparts",
+      "commit": "70457dbf2b64c92bb4601951bc74d36d6dbf7551",
+      "origin": "https://github.com/highflame-ai/ramparts.git",
+      "root_license_files": [
+        "LICENSE"
+      ],
+      "license_observation": "Apache-2.0",
+      "selected_files": [
+        {
+          "path": "src/skills.rs",
+          "sha256": "d0b98e3ba6e156d4b5f8d9657d999d8c6faf87bb7f9034b3394b7d976f14da30"
+        },
+        {
+          "path": "src/main.rs",
+          "sha256": "1611d8fd3f8e501a1c032b65c1dc71a07709541085dee9991eac5197f91ac47c"
+        },
+        {
+          "path": "rules/pre/skill_tool_chaining_abuse.yar",
+          "sha256": "a30a1ada4b87d31a0d21c6023757b337c71601b4986e118df78fccd463f126e0"
+        }
+      ],
+      "execution": "not executed"
+    },
+    {
+      "name": "SkillGuard-paper",
+      "commit": "d7934021b388b1553f2b002c786df569d341454d",
+      "origin": "https://github.com/Dianshu-Liao/SkilLGuard.git",
+      "root_license_files": [],
+      "license_observation": "No root LICENSE/COPYING found; reuse rights not established",
+      "selected_files": [
+        {
+          "path": "README.md",
+          "sha256": "fb48bbd43f41ce80cabcdc68f138f1e7ba2f225c10ae8778d122be10d2580b0e"
+        },
+        {
+          "path": "tests/test_manifest.py",
+          "sha256": "bd2aba2e9afc1892db563eb294c4e166754be3113ebb24f60f37d9a75c1f8b39"
+        },
+        {
+          "path": "experiments/_base.py",
+          "sha256": "b07f0a691cd22fd6cc0bc463c255e48af55e31034e801ecf726ff8315e1ce60d"
+        }
+      ],
+      "execution": "not executed",
+      "gitlink": "160000 commit 6a9cbe2dcac6e7c2f1371a8c72e450e65b27fa96\tskillguard",
+      "gitmodules_present": false,
+      "advertised_hook_present": false,
+      "limitation": "Evaluation repository inspected; core runtime gitlink was not obtained."
+    },
+    {
+      "name": "harness-eval",
+      "commit": "e0079bb70186676accf24ea174205fd3119550f0",
+      "origin": "https://github.com/redhat-community-ai-tools/harness-eval.git",
+      "root_license_files": [
+        "LICENSE"
+      ],
+      "license_observation": "Apache-2.0",
+      "selected_files": [
+        {
+          "path": "src/harness_eval/analysis/component_graph.py",
+          "sha256": "af24935165160f7d8cc7206ab176d716415980ef949be475cad3e7446ead72e0"
+        },
+        {
+          "path": "src/harness_eval/inspection/rules/security/cross_component_flow.py",
+          "sha256": "f457275615f3ce8bf0e0b91ee7170e004fb94a8ec3646969a642587b78fb8a6a"
+        }
+      ],
+      "execution": "not executed"
+    },
+    {
+      "name": "ext-skills",
+      "commit": "b0b3272f1d4c01a79c8171252c70b06dcada18bf",
+      "origin": "https://github.com/modelcontextprotocol/ext-skills.git",
+      "root_license_files": [
+        "LICENSE"
+      ],
+      "license_observation": "Apache-2.0",
+      "selected_files": [
+        {
+          "path": "specification/stable/skills.mdx",
+          "sha256": "2d5dfae8dfbfc89736c914e7d55389b4deb5facba7821ae157ebb55caa7dfb38"
+        }
+      ],
+      "execution": "not executed"
+    }
+  ]
+}

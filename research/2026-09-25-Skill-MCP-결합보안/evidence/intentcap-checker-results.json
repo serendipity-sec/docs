@@ -1,0 +1,411 @@
+{
+  "checked_on": "2026-09-25",
+  "repository": "https://github.com/yunwei37/agentcap",
+  "commit": "1886fd50dbd51344c62acd1d224375054ac076e9",
+  "checker_sha256": "d83cb329ad6a49e6181e766f6d8cd491debcf02098416fdc7d5c00c86741be87",
+  "python": "3.13.13 (main, Jun  2 2026, 22:38:31) [MSC v.1944 64 bit (AMD64)]",
+  "scope": "pure check_trace; synthetic input; no live enforcement",
+  "limitations": [
+    "Hand-authored trusted labels, leases, and provenance",
+    "No automatic extraction or provenance authenticity validation",
+    "Four cases are a behavior check, not an accuracy or ASR evaluation"
+  ],
+  "cases": [
+    {
+      "name": "authorized_destination_and_source",
+      "trace": {
+        "labels": {
+          "user:task": {
+            "allowed": {
+              "select": [
+                "destination"
+              ]
+            }
+          },
+          "document:body": {
+            "allowed": {}
+          }
+        },
+        "leases": [
+          {
+            "id": "task-lease",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": {
+                "equals": "team/private"
+              }
+            },
+            "allowed_arg_keys": [
+              "repo",
+              "body"
+            ],
+            "budget": {
+              "invocations": 1
+            },
+            "control_may_depend_on": [
+              "user:task"
+            ],
+            "data_may_depend_on": [
+              "document:body"
+            ],
+            "intent": {
+              "must_derive_from": [
+                "user:task"
+              ],
+              "requires_approval": [
+                "approval:team-only"
+              ]
+            }
+          }
+        ],
+        "events": [
+          {
+            "id": "publish-1",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": "team/private",
+              "body": "CANARY SUMMARY"
+            },
+            "decision": "destination",
+            "mode": "select",
+            "control_provenance": [
+              "user:task"
+            ],
+            "data_provenance": [
+              "document:body"
+            ],
+            "intent_provenance": [
+              "user:task"
+            ],
+            "approvals": [
+              "approval:team-only"
+            ]
+          }
+        ]
+      },
+      "expected": [
+        true
+      ],
+      "actual": [
+        true
+      ],
+      "verdicts": [
+        {
+          "event_id": "publish-1",
+          "allowed": true,
+          "reason": "allowed",
+          "lease_id": "task-lease"
+        }
+      ]
+    },
+    {
+      "name": "document_cannot_choose_destination",
+      "trace": {
+        "labels": {
+          "user:task": {
+            "allowed": {
+              "select": [
+                "destination"
+              ]
+            }
+          },
+          "document:body": {
+            "allowed": {}
+          }
+        },
+        "leases": [
+          {
+            "id": "task-lease",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": {
+                "equals": "team/private"
+              }
+            },
+            "allowed_arg_keys": [
+              "repo",
+              "body"
+            ],
+            "budget": {
+              "invocations": 1
+            },
+            "control_may_depend_on": [
+              "user:task"
+            ],
+            "data_may_depend_on": [
+              "document:body"
+            ],
+            "intent": {
+              "must_derive_from": [
+                "user:task"
+              ],
+              "requires_approval": [
+                "approval:team-only"
+              ]
+            }
+          }
+        ],
+        "events": [
+          {
+            "id": "publish-1",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": "team/private",
+              "body": "CANARY SUMMARY"
+            },
+            "decision": "destination",
+            "mode": "select",
+            "control_provenance": [
+              "document:body"
+            ],
+            "data_provenance": [
+              "document:body"
+            ],
+            "intent_provenance": [
+              "user:task"
+            ],
+            "approvals": [
+              "approval:team-only"
+            ]
+          }
+        ]
+      },
+      "expected": [
+        false
+      ],
+      "actual": [
+        false
+      ],
+      "verdicts": [
+        {
+          "event_id": "publish-1",
+          "allowed": false,
+          "reason": "task-lease: control source 'document:body' not allowed by lease",
+          "lease_id": null
+        }
+      ]
+    },
+    {
+      "name": "destination_outside_lease",
+      "trace": {
+        "labels": {
+          "user:task": {
+            "allowed": {
+              "select": [
+                "destination"
+              ]
+            }
+          },
+          "document:body": {
+            "allowed": {}
+          }
+        },
+        "leases": [
+          {
+            "id": "task-lease",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": {
+                "equals": "team/private"
+              }
+            },
+            "allowed_arg_keys": [
+              "repo",
+              "body"
+            ],
+            "budget": {
+              "invocations": 1
+            },
+            "control_may_depend_on": [
+              "user:task"
+            ],
+            "data_may_depend_on": [
+              "document:body"
+            ],
+            "intent": {
+              "must_derive_from": [
+                "user:task"
+              ],
+              "requires_approval": [
+                "approval:team-only"
+              ]
+            }
+          }
+        ],
+        "events": [
+          {
+            "id": "publish-1",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": "public/demo",
+              "body": "CANARY SUMMARY"
+            },
+            "decision": "destination",
+            "mode": "select",
+            "control_provenance": [
+              "user:task"
+            ],
+            "data_provenance": [
+              "document:body"
+            ],
+            "intent_provenance": [
+              "user:task"
+            ],
+            "approvals": [
+              "approval:team-only"
+            ]
+          }
+        ]
+      },
+      "expected": [
+        false
+      ],
+      "actual": [
+        false
+      ],
+      "verdicts": [
+        {
+          "event_id": "publish-1",
+          "allowed": false,
+          "reason": "no matching lease",
+          "lease_id": null
+        }
+      ]
+    },
+    {
+      "name": "single_use_budget",
+      "trace": {
+        "labels": {
+          "user:task": {
+            "allowed": {
+              "select": [
+                "destination"
+              ]
+            }
+          },
+          "document:body": {
+            "allowed": {}
+          }
+        },
+        "leases": [
+          {
+            "id": "task-lease",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": {
+                "equals": "team/private"
+              }
+            },
+            "allowed_arg_keys": [
+              "repo",
+              "body"
+            ],
+            "budget": {
+              "invocations": 1
+            },
+            "control_may_depend_on": [
+              "user:task"
+            ],
+            "data_may_depend_on": [
+              "document:body"
+            ],
+            "intent": {
+              "must_derive_from": [
+                "user:task"
+              ],
+              "requires_approval": [
+                "approval:team-only"
+              ]
+            }
+          }
+        ],
+        "events": [
+          {
+            "id": "publish-1",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": "team/private",
+              "body": "CANARY SUMMARY"
+            },
+            "decision": "destination",
+            "mode": "select",
+            "control_provenance": [
+              "user:task"
+            ],
+            "data_provenance": [
+              "document:body"
+            ],
+            "intent_provenance": [
+              "user:task"
+            ],
+            "approvals": [
+              "approval:team-only"
+            ]
+          },
+          {
+            "id": "publish-2",
+            "op": "publish",
+            "object": "mock:issues",
+            "holder": "report-agent",
+            "args": {
+              "repo": "team/private",
+              "body": "CANARY SUMMARY"
+            },
+            "decision": "destination",
+            "mode": "select",
+            "control_provenance": [
+              "user:task"
+            ],
+            "data_provenance": [
+              "document:body"
+            ],
+            "intent_provenance": [
+              "user:task"
+            ],
+            "approvals": [
+              "approval:team-only"
+            ]
+          }
+        ]
+      },
+      "expected": [
+        true,
+        false
+      ],
+      "actual": [
+        true,
+        false
+      ],
+      "verdicts": [
+        {
+          "event_id": "publish-1",
+          "allowed": true,
+          "reason": "allowed",
+          "lease_id": "task-lease"
+        },
+        {
+          "event_id": "publish-2",
+          "allowed": false,
+          "reason": "task-lease: invocation budget exhausted: 1/1",
+          "lease_id": null
+        }
+      ]
+    }
+  ]
+}

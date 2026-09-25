@@ -278,21 +278,277 @@
     {
       "id": "GAP01",
       "type": "research_question",
-      "status": "hypothesis_unvalidated",
-      "text": "Does environment-conditioned mixed analysis distinguish policy violations better than individual/cross-skill/capability-union baselines?"
+      "status": "revised_after_closest_prior_work; hypothesis_unvalidated",
+      "text": "Can grounded evidence acquisition under incomplete Skill/MCP configurations improve risk and coverage under equal-information comparisons with close prior work?"
     },
     {
       "id": "ARCH01",
       "type": "architecture",
       "status": "proposed_not_implemented",
-      "text": "Evidence-backed Skill-MCP graph with binding, provenance, audience, scope and task authorization; uncertainty preserved.",
+      "text": "Evidence acquisition and contract validation before a fixed policy engine; data/control provenance, remote Skill manifest identity, separate instruction/grant lifetime; no new security primitive claimed.",
       "document": "../04-Gap과-아키텍처.md"
     },
     {
       "id": "EVAL01",
       "type": "evaluation_plan",
       "status": "not_executed",
-      "text": "12 workflows x 8 policy contexts, B0-B3 baselines, ablations and controlled causal comparisons; cluster related variants."
+      "text": "12 workflows x 8 policy contexts; oracle/automatic/missing-conflicting evidence; same policy engine; harness-eval/skil/IntentCap and applicable runtime/TFA baselines; coverage and clustered variants."
+    },
+    {
+      "id": "R13",
+      "title": "IntentCap",
+      "url": "https://arxiv.org/html/2609.14631v1",
+      "type": "source",
+      "scope": "설계·평가·한계와 checker/live gateway 코드; 순수 checker 부분 실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "preprint"
+    },
+    {
+      "id": "R14",
+      "title": "SkillGuard: A Permission Framework for Agent Skills",
+      "url": "https://arxiv.org/html/2606.03024v1",
+      "type": "source",
+      "scope": "설계·평가·§11.2; README와 평가 코드 확인, hook 구현 gitlink 미확보",
+      "checked_on": "2026-09-25",
+      "source_kind": "preprint"
+    },
+    {
+      "id": "R15",
+      "title": "Securing AI Agents with Information-Flow Control (Fides)",
+      "url": "https://arxiv.org/html/2505.23643v1",
+      "type": "source",
+      "scope": "설계·§5·§9, Microsoft Research 및 현재 framework 문서; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "research paper; venue not verified"
+    },
+    {
+      "id": "R16",
+      "title": "Policy Compiler for Secure Agentic Systems (PCAS)",
+      "url": "https://arxiv.org/html/2602.16708v1",
+      "type": "source",
+      "scope": "설계 개요·§6.1 계측 가정; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "preprint"
+    },
+    {
+      "id": "R17",
+      "title": "Progent",
+      "url": "https://arxiv.org/html/2504.11703v2",
+      "type": "source",
+      "scope": "초록·설계 개요; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "research paper; venue not verified"
+    },
+    {
+      "id": "R18",
+      "title": "Task Shield",
+      "url": "https://aclanthology.org/2025.acl-long.1435/",
+      "type": "source",
+      "scope": "학회 초록·PDF 개요; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "ACL 2025"
+    },
+    {
+      "id": "R19",
+      "title": "AgentSpec",
+      "url": "https://arxiv.org/abs/2503.18666",
+      "type": "source",
+      "scope": "초록·저자 게재판 표지/개요; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "ICSE 2026 author copy checked"
+    },
+    {
+      "id": "R20",
+      "title": "AgentBound: Securing Execution Boundaries of AI Agents",
+      "url": "https://arxiv.org/abs/2510.21236v3",
+      "type": "source",
+      "scope": "초록·저자판/Zenodo 정보; 3.6GB artifact 미다운로드",
+      "checked_on": "2026-09-25",
+      "source_kind": "FSE 2026 journal reference checked"
+    },
+    {
+      "id": "R21",
+      "title": "Scanning the Harness",
+      "url": "https://arxiv.org/html/2609.07360v1",
+      "type": "source",
+      "scope": "§4.7·5·6, graph/cross-component rule 코드; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "preprint"
+    },
+    {
+      "id": "R22",
+      "title": "Causality Laundering",
+      "url": "https://arxiv.org/html/2604.04035v1",
+      "type": "source",
+      "scope": "초록·§7.6; 저자의 합성 실험과 실제 agent 평가 구별",
+      "checked_on": "2026-09-25",
+      "source_kind": "preprint"
+    },
+    {
+      "id": "R23",
+      "title": "AI Infra Guard",
+      "url": "https://arxiv.org/abs/2606.31227",
+      "type": "source",
+      "scope": "초록·공식 repo README; 내부 구현·실행 미확인",
+      "checked_on": "2026-09-25",
+      "source_kind": "preprint"
+    },
+    {
+      "id": "R24",
+      "title": "Confused Deputy Attack Against Model Context Protocol (Puppet)",
+      "url": "https://doi.org/10.1145/3830467",
+      "type": "source",
+      "scope": "출판사 초록; 전문·코드·실험 미확인",
+      "checked_on": "2026-09-25",
+      "source_kind": "ACM TOSEM publisher abstract"
+    },
+    {
+      "id": "R25",
+      "title": "Skill-Inject",
+      "url": "https://arxiv.org/abs/2602.20156",
+      "type": "source",
+      "scope": "초록·저자 repo README; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "research paper; venue not verified"
+    },
+    {
+      "id": "R26",
+      "title": "AgentDojo",
+      "url": "https://arxiv.org/abs/2406.13352",
+      "type": "source",
+      "scope": "초록·공식 repo README/평가 개요; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "NeurIPS 2024 Datasets and Benchmarks"
+    },
+    {
+      "id": "R27",
+      "title": "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+      "url": "https://arxiv.org/abs/2302.12173v2",
+      "type": "source",
+      "scope": "초록·저자 repo; 기초 계보 참고, 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "arXiv version; venue not checked here"
+    },
+    {
+      "id": "R28",
+      "title": "Toward Secure LLM Agents: Threat Surfaces, Attacks, Defenses, and Evaluation",
+      "url": "https://arxiv.org/html/2606.10749v2",
+      "type": "source",
+      "scope": "초록·§3·10·Appendix A; 247개 인용 논문은 우리 독해 수에 포함하지 않음",
+      "checked_on": "2026-09-25",
+      "source_kind": "survey preprint"
+    },
+    {
+      "id": "S04",
+      "title": "Skills over MCP stable specification",
+      "url": "https://github.com/modelcontextprotocol/ext-skills/blob/b0b3272f1d4c01a79c8171252c70b06dcada18bf/specification/stable/skills.mdx",
+      "type": "source",
+      "scope": "identity/manifest/digest/approval/dynamic/lazy retrieval/security 확인",
+      "checked_on": "2026-09-25",
+      "source_kind": "official normative extension"
+    },
+    {
+      "id": "S05",
+      "title": "SEP-2640 merged PR",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2640",
+      "type": "source",
+      "scope": "2026-09-13 merged와 Final 상태; 모든 host 지원을 뜻하지 않음",
+      "checked_on": "2026-09-25",
+      "source_kind": "official protocol repository"
+    },
+    {
+      "id": "S06",
+      "title": "Skills over MCP overview",
+      "url": "https://modelcontextprotocol.io/extensions/skills/overview",
+      "type": "source",
+      "scope": "확장 상태와 SDK/client 지원 구별",
+      "checked_on": "2026-09-25",
+      "source_kind": "official documentation"
+    },
+    {
+      "id": "S07",
+      "title": "Claude Code Skills",
+      "url": "https://code.claude.com/docs/en/skills",
+      "type": "source",
+      "scope": "allowed-tools의 turn-scoped preapproval와 컨텍스트 잔류; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "official host documentation"
+    },
+    {
+      "id": "S08",
+      "title": "Agent Security with FIDES",
+      "url": "https://learn.microsoft.com/en-us/agent-framework/agents/security",
+      "type": "source",
+      "scope": "label/principal/session/approval/MCP trust 및 current limitations; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "official framework documentation; updated 2026-09-16"
+    },
+    {
+      "id": "C07",
+      "title": "Check Point Claude Code project-file vulnerabilities",
+      "url": "https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/",
+      "type": "source",
+      "scope": "CVE-2025-59536/CVE-2026-21852 공개·수정 사례; benign+benign 실피해 증거 아님",
+      "checked_on": "2026-09-25",
+      "source_kind": "researcher disclosure"
+    },
+    {
+      "id": "G06",
+      "title": "agentcap",
+      "url": "https://github.com/yunwei37/agentcap",
+      "type": "source",
+      "scope": "checker.py 전체, live_gateway.py, tests 일부; pure check_trace 4조건 실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "author-linked source repository"
+    },
+    {
+      "id": "G07",
+      "title": "skil",
+      "url": "https://github.com/domehahn/skil",
+      "type": "source",
+      "scope": "compose/composeassure 자원 경유 correlation 코드; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "public tool source"
+    },
+    {
+      "id": "G08",
+      "title": "Ramparts",
+      "url": "https://github.com/highflame-ai/ramparts",
+      "type": "source",
+      "scope": "Skills pipeline·analyze_skill_set·chaining YARA; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "public tool source"
+    },
+    {
+      "id": "G09",
+      "title": "SkillGuard",
+      "url": "https://github.com/Dianshu-Liao/SkilLGuard",
+      "type": "source",
+      "scope": "README·평가 manifest 코드·gitlink 확인; 핵심 hook 파일 미확보",
+      "checked_on": "2026-09-25",
+      "source_kind": "author-linked repository"
+    },
+    {
+      "id": "G10",
+      "title": "harness-eval",
+      "url": "https://github.com/redhat-community-ai-tools/harness-eval",
+      "type": "source",
+      "scope": "component_graph와 cross_component_flow 구현; 미실행",
+      "checked_on": "2026-09-25",
+      "source_kind": "research-linked public tool source"
+    },
+    {
+      "id": "E5",
+      "type": "experiment",
+      "status": "partial_execution",
+      "document": "intentcap-checker-results.json",
+      "text": "IntentCap pure check_trace, 4 hand-authored cases and 5 events; no live enforcement or extraction evaluation."
+    },
+    {
+      "id": "K06",
+      "type": "claim",
+      "status": "supported_with_scope",
+      "text": "Intent/source-aware capabilities and mixed configuration graphs already exist; proposed novelty narrowed to evidence acquisition/evaluation."
     }
   ],
   "edges": [
@@ -455,6 +711,102 @@
       "from": "E2",
       "to": "ARCH01",
       "relation": "component_baseline_only"
+    },
+    {
+      "from": "R13",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "R13",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "R14",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "R14",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "R15",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "R15",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "R16",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "R16",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "R21",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "R21",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "G07",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "G07",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "G10",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "G10",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "S04",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "S04",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "S08",
+      "to": "K06",
+      "relation": "supports"
+    },
+    {
+      "from": "S08",
+      "to": "GAP01",
+      "relation": "limits_novelty_claim"
+    },
+    {
+      "from": "E5",
+      "to": "K06",
+      "relation": "existing_checker_behavior_only"
     }
-  ]
+  ],
+  "revision_note": "2026-09-25 deeper web review: claims revised after direct overlap with IntentCap, SkillGuard and mixed configuration analyzers."
 }

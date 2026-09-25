@@ -1,0 +1,382 @@
+{
+  "checked_on": "2026-09-25",
+  "review_type": "targeted expanded review; not an exhaustive systematic review",
+  "search_waves": [
+    {
+      "wave": 1,
+      "queries": [
+        "\"agent skills\" \"MCP\" compositional security paper vulnerability",
+        "\"SkillReact\" \"CompoSkill\" security",
+        "\"SkillProbe\" \"2603.21019\"",
+        "\"skill\" \"MCP\" \"confused deputy\" security research"
+      ],
+      "purpose": "Seed and prior-work audit"
+    },
+    {
+      "wave": 2,
+      "queries": [
+        "\"Skill\" \"MCP\" \"composition\" security arxiv September 2026",
+        "\"agent\" \"intent\" \"data flow\" \"policy\" \"MCP\" security paper",
+        "\"TaskShield\" \"AgentSpec\" prompt injection",
+        "\"MCP\" \"skill\" \"capability\" security scanner github"
+      ],
+      "purpose": "Intent, data-flow and mixed-stack competitors"
+    },
+    {
+      "wave": 3,
+      "queries": [
+        "\"TaskShield\" prompt injection arxiv",
+        "\"AgentSpec\" runtime enforcement arxiv",
+        "\"IntentCap\" github",
+        "\"SkillReact\" github \"SkillFuzz\""
+      ],
+      "purpose": "Direct novelty challenge and implementation lookup"
+    },
+    {
+      "wave": 4,
+      "queries": [
+        "TaskShield task alignment agent prompt injection paper github",
+        "IntentCap Zheng Zhang Mao source code",
+        "Progent programmable privilege control LLM agents paper",
+        "AgentDojo benchmark prompt injection github"
+      ],
+      "purpose": "Task-aligned and capability-enforcement baselines; benchmark provenance"
+    },
+    {
+      "wave": 5,
+      "queries": [
+        "\"SkillGuard\" \"2606.03024\" github",
+        "\"Scanning the Harness\" github",
+        "\"Fides\" \"Securing AI Agents with Information-Flow Control\"",
+        "\"Policy Compiler for Secure Agentic Systems\""
+      ],
+      "purpose": "Follow IntentCap references to permission and information-flow competitors"
+    },
+    {
+      "wave": 6,
+      "queries": [
+        "\"Skill MCP\" vulnerability composition security",
+        "site:research.checkpoint.com \"Claude Code\" \"59536\"",
+        "site:anthropic.com \"skills\" \"security\" \"MCP\"",
+        "site:arxiv.org \"Causality Laundering\""
+      ],
+      "purpose": "Direct incidents and counterexamples to provenance/policy defenses"
+    },
+    {
+      "wave": 7,
+      "queries": [
+        "\"AgentBound\" \"Securing Execution Boundaries\" github",
+        "\"Causality Laundering: Denial-Feedback\" arxiv",
+        "\"Skill-Inject\" benchmark github",
+        "\"SkillReact\" \"github.com\""
+      ],
+      "purpose": "Execution boundaries, denied-action feedback, injection benchmarks, missing code"
+    },
+    {
+      "wave": 8,
+      "queries": [
+        "\"SkillFuzz\" github implementation",
+        "\"When Safe Skills Collide\" code",
+        "\"AgentBound\" arxiv github programming group",
+        "\"AI-Infra-Guard\" \"skill\" audit github"
+      ],
+      "purpose": "Verify missing release links and broad scanner architecture"
+    },
+    {
+      "wave": 9,
+      "queries": [
+        "\"Skill\" \"MCP\" security \"September\" 2026 research",
+        "\"AgentBound: Securing Execution Boundaries\" \"arxiv\"",
+        "site:modelcontextprotocol.io/specification \"confused deputy\"",
+        "site:code.claude.com/docs/en/skills \"allowed-tools\""
+      ],
+      "purpose": "Current mixed-stack research and host/specification verification"
+    },
+    {
+      "wave": 10,
+      "queries": [
+        "site:modelcontextprotocol.io \"skills/list\" \"skills/get\"",
+        "site:github.com/modelcontextprotocol \"2640\" \"Final\"",
+        "site:github.com/modelcontextprotocol/ext-skills \"stable\" \"digest\"",
+        "site:code.claude.com/docs/en/skills \"allowed-tools\" \"permission\""
+      ],
+      "purpose": "Verify newly discovered Skills-over-MCP standard against authoritative sources"
+    },
+    {
+      "wave": 11,
+      "queries": [
+        "\"Confused Deputy Attack Against Model Context Protocol\" arxiv",
+        "site:arxiv.org \"Skill\" \"MCP\" \"compositional\"",
+        "site:github.com \"SkillFuzz\" \"MCTS\"",
+        "site:modelcontextprotocol.io \"skills\" \"client support\""
+      ],
+      "purpose": "Final direct-relevance search, code availability, host support distinction"
+    },
+    {
+      "wave": 12,
+      "queries": [
+        "site.arxiv.org survey agent security skills MCP information flow 2026",
+        "site.usenix.org prompt injection indirect LLM integrated applications Greshake 2023",
+        "site.dl.acm.org confused deputy Hardy 1988",
+        "site.microsoft.com research Fides securing AI agents information flow control paper"
+      ],
+      "purpose": "Respond to prior-work coverage concern: conceptual roots and peer-reviewed anchor papers"
+    }
+  ],
+  "query_count": 48,
+  "sources": [
+    {
+      "id": "R13",
+      "title": "IntentCap",
+      "url": "https://arxiv.org/html/2609.14631v1",
+      "type": "preprint",
+      "scope": "설계·평가·한계와 checker/live gateway 코드; 순수 checker 부분 실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R14",
+      "title": "SkillGuard: A Permission Framework for Agent Skills",
+      "url": "https://arxiv.org/html/2606.03024v1",
+      "type": "preprint",
+      "scope": "설계·평가·§11.2; README와 평가 코드 확인, hook 구현 gitlink 미확보",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R15",
+      "title": "Securing AI Agents with Information-Flow Control (Fides)",
+      "url": "https://arxiv.org/html/2505.23643v1",
+      "type": "research paper; venue not verified",
+      "scope": "설계·§5·§9, Microsoft Research 및 현재 framework 문서; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R16",
+      "title": "Policy Compiler for Secure Agentic Systems (PCAS)",
+      "url": "https://arxiv.org/html/2602.16708v1",
+      "type": "preprint",
+      "scope": "설계 개요·§6.1 계측 가정; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R17",
+      "title": "Progent",
+      "url": "https://arxiv.org/html/2504.11703v2",
+      "type": "research paper; venue not verified",
+      "scope": "초록·설계 개요; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R18",
+      "title": "Task Shield",
+      "url": "https://aclanthology.org/2025.acl-long.1435/",
+      "type": "ACL 2025",
+      "scope": "학회 초록·PDF 개요; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R19",
+      "title": "AgentSpec",
+      "url": "https://arxiv.org/abs/2503.18666",
+      "type": "ICSE 2026 author copy checked",
+      "scope": "초록·저자 게재판 표지/개요; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R20",
+      "title": "AgentBound: Securing Execution Boundaries of AI Agents",
+      "url": "https://arxiv.org/abs/2510.21236v3",
+      "type": "FSE 2026 journal reference checked",
+      "scope": "초록·저자판/Zenodo 정보; 3.6GB artifact 미다운로드",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R21",
+      "title": "Scanning the Harness",
+      "url": "https://arxiv.org/html/2609.07360v1",
+      "type": "preprint",
+      "scope": "§4.7·5·6, graph/cross-component rule 코드; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R22",
+      "title": "Causality Laundering",
+      "url": "https://arxiv.org/html/2604.04035v1",
+      "type": "preprint",
+      "scope": "초록·§7.6; 저자의 합성 실험과 실제 agent 평가 구별",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R23",
+      "title": "AI Infra Guard",
+      "url": "https://arxiv.org/abs/2606.31227",
+      "type": "preprint",
+      "scope": "초록·공식 repo README; 내부 구현·실행 미확인",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R24",
+      "title": "Confused Deputy Attack Against Model Context Protocol (Puppet)",
+      "url": "https://doi.org/10.1145/3830467",
+      "type": "ACM TOSEM publisher abstract",
+      "scope": "출판사 초록; 전문·코드·실험 미확인",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R25",
+      "title": "Skill-Inject",
+      "url": "https://arxiv.org/abs/2602.20156",
+      "type": "research paper; venue not verified",
+      "scope": "초록·저자 repo README; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R26",
+      "title": "AgentDojo",
+      "url": "https://arxiv.org/abs/2406.13352",
+      "type": "NeurIPS 2024 Datasets and Benchmarks",
+      "scope": "초록·공식 repo README/평가 개요; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R27",
+      "title": "Not what you've signed up for: Compromising Real-World LLM-Integrated Applications with Indirect Prompt Injection",
+      "url": "https://arxiv.org/abs/2302.12173v2",
+      "type": "arXiv version; venue not checked here",
+      "scope": "초록·저자 repo; 기초 계보 참고, 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "R28",
+      "title": "Toward Secure LLM Agents: Threat Surfaces, Attacks, Defenses, and Evaluation",
+      "url": "https://arxiv.org/html/2606.10749v2",
+      "type": "survey preprint",
+      "scope": "초록·§3·10·Appendix A; 247개 인용 논문은 우리 독해 수에 포함하지 않음",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "S04",
+      "title": "Skills over MCP stable specification",
+      "url": "https://github.com/modelcontextprotocol/ext-skills/blob/b0b3272f1d4c01a79c8171252c70b06dcada18bf/specification/stable/skills.mdx",
+      "type": "official normative extension",
+      "scope": "identity/manifest/digest/approval/dynamic/lazy retrieval/security 확인",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "S05",
+      "title": "SEP-2640 merged PR",
+      "url": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2640",
+      "type": "official protocol repository",
+      "scope": "2026-09-13 merged와 Final 상태; 모든 host 지원을 뜻하지 않음",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "S06",
+      "title": "Skills over MCP overview",
+      "url": "https://modelcontextprotocol.io/extensions/skills/overview",
+      "type": "official documentation",
+      "scope": "확장 상태와 SDK/client 지원 구별",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "S07",
+      "title": "Claude Code Skills",
+      "url": "https://code.claude.com/docs/en/skills",
+      "type": "official host documentation",
+      "scope": "allowed-tools의 turn-scoped preapproval와 컨텍스트 잔류; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "S08",
+      "title": "Agent Security with FIDES",
+      "url": "https://learn.microsoft.com/en-us/agent-framework/agents/security",
+      "type": "official framework documentation; updated 2026-09-16",
+      "scope": "label/principal/session/approval/MCP trust 및 current limitations; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "C07",
+      "title": "Check Point Claude Code project-file vulnerabilities",
+      "url": "https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/",
+      "type": "researcher disclosure",
+      "scope": "CVE-2025-59536/CVE-2026-21852 공개·수정 사례; benign+benign 실피해 증거 아님",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "G06",
+      "title": "agentcap",
+      "url": "https://github.com/yunwei37/agentcap",
+      "type": "author-linked source repository",
+      "scope": "checker.py 전체, live_gateway.py, tests 일부; pure check_trace 4조건 실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "G07",
+      "title": "skil",
+      "url": "https://github.com/domehahn/skil",
+      "type": "public tool source",
+      "scope": "compose/composeassure 자원 경유 correlation 코드; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "G08",
+      "title": "Ramparts",
+      "url": "https://github.com/highflame-ai/ramparts",
+      "type": "public tool source",
+      "scope": "Skills pipeline·analyze_skill_set·chaining YARA; 미실행",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "G09",
+      "title": "SkillGuard",
+      "url": "https://github.com/Dianshu-Liao/SkilLGuard",
+      "type": "author-linked repository",
+      "scope": "README·평가 manifest 코드·gitlink 확인; 핵심 hook 파일 미확보",
+      "checked_on": "2026-09-25"
+    },
+    {
+      "id": "G10",
+      "title": "harness-eval",
+      "url": "https://github.com/redhat-community-ai-tools/harness-eval",
+      "type": "research-linked public tool source",
+      "scope": "component_graph와 cross_component_flow 구현; 미실행",
+      "checked_on": "2026-09-25"
+    }
+  ],
+  "excluded_or_unresolved": [
+    {
+      "item": "Hardy, The Confused Deputy, DOI 10.1145/54289.871709",
+      "reason": "publisher full text 403; not counted as read"
+    },
+    {
+      "item": "SkillFuzz/SkillReact code",
+      "reason": "official public implementation not confirmed by targeted searches; nonexistence not asserted"
+    },
+    {
+      "item": "same-name SkillGuard, AgentSpec and AgentBound projects",
+      "reason": "not linked to a paper without verifying identity"
+    },
+    {
+      "item": "reposts, Reddit, AI summaries",
+      "reason": "discovery only; not used as primary support"
+    }
+  ],
+  "claim_revisions": [
+    {
+      "prior": "Intent + provenance + Skill/MCP bindings might distinguish our proposal",
+      "new": "IntentCap and SkillGuard directly overlap. Novelty unproven; evaluate evidence acquisition separately."
+    },
+    {
+      "prior": "Mixed configuration graph may distinguish us",
+      "new": "harness-eval already parses Skill/agent/MCP configuration; include it as baseline."
+    },
+    {
+      "prior": "Simple union is a useful main baseline",
+      "new": "skil correlates concrete resources. Strong prior methods and equal-information baselines are required."
+    },
+    {
+      "prior": "Change-bound approvals as a candidate distinctive feature",
+      "new": "MCP Skills extension and FIDES document approval invalidation/binding. Treat as existing requirements."
+    }
+  ],
+  "execution_scope": "Only IntentCap pure checker added this round; four hand-authored traces, five events; no victim agent, skill, MCP server or public sink executed."
+}
