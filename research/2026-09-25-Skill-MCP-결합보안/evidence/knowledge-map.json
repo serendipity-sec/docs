@@ -1,0 +1,460 @@
+{
+  "schema": "provisional-research-map-v1",
+  "schema_status": "Team knowledge-map schema was not available; this is a provisional mapping.",
+  "checked_on": "2026-09-25",
+  "nodes": [
+    {
+      "id": "S01",
+      "type": "source",
+      "title": "Agent Skills Specification",
+      "url": "https://agentskills.io/specification",
+      "checked_on": "2026-09-25",
+      "scope": "SKILL.md·선택 파일·progressive disclosure·allowed-tools의 실험 상태"
+    },
+    {
+      "id": "S02",
+      "type": "source",
+      "title": "MCP Architecture, 2025-11-25",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25/architecture",
+      "checked_on": "2026-09-25",
+      "scope": "호스트·클라이언트·서버, 컨텍스트 집계와 통제 책임"
+    },
+    {
+      "id": "S03",
+      "type": "source",
+      "title": "MCP Tools, 2025-11-25",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+      "checked_on": "2026-09-25",
+      "scope": "tools/list·tools/call·annotation 신뢰·변경 통지"
+    },
+    {
+      "id": "R01",
+      "type": "source",
+      "title": "SkillProbe: Security Auditing for Emerging Agent Skill Marketplaces via Multi-Agent Collaboration",
+      "url": "https://arxiv.org/html/2603.21019v1",
+      "checked_on": "2026-09-25",
+      "scope": "방법 중심 원문 확인 / 미실행"
+    },
+    {
+      "id": "R02",
+      "type": "source",
+      "title": "When Safe Skills Collide: Measuring Compositional Risk in Agent Skill Ecosystems",
+      "url": "https://arxiv.org/html/2606.00448v1",
+      "checked_on": "2026-09-25",
+      "scope": "추출·보정 단위·실행 대조·한계 / 미실행"
+    },
+    {
+      "id": "R03",
+      "type": "source",
+      "title": "Benign in Isolation, Harmful in Composition: Security Risks in Agent Skill Ecosystems",
+      "url": "https://arxiv.org/html/2606.15242v1",
+      "checked_on": "2026-09-25",
+      "scope": "방법·한계와 공개 코드 / 미실행"
+    },
+    {
+      "id": "R04",
+      "type": "source",
+      "title": "SkillFuzz: Fuzzing Skill Composition for Implicit Intents Discovery in Open Skill Marketplaces",
+      "url": "https://arxiv.org/html/2607.02345v1",
+      "checked_on": "2026-09-25",
+      "scope": "contract·탐색·plan-drift 개념 / 미실행"
+    },
+    {
+      "id": "R05",
+      "type": "source",
+      "title": "CompoSkill: Compositional Skill Chain Attacks from Individually Scanner-Passing LLM Agent Skills",
+      "url": "https://arxiv.org/html/2608.16246v1",
+      "checked_on": "2026-09-25",
+      "scope": "그래프·실험 지표·코드 / 그래프 단계만 실행"
+    },
+    {
+      "id": "R06",
+      "type": "source",
+      "title": "Formal Security Analysis of Agent Protocol Composition",
+      "url": "https://arxiv.org/html/2606.28690v1",
+      "checked_on": "2026-09-25",
+      "scope": "AgentThread 방법·결합 의무 분모·한계 / 미실행"
+    },
+    {
+      "id": "R07",
+      "type": "source",
+      "title": "Defeating Prompt Injections by Design",
+      "url": "https://arxiv.org/html/2503.18813v2",
+      "checked_on": "2026-09-25",
+      "scope": "CaMeL 설계·정책·부채널 한계 / 미실행"
+    },
+    {
+      "id": "R08",
+      "type": "source",
+      "title": "From Component Manipulation to System Compromise: Understanding and Detecting Malicious MCP Servers",
+      "url": "https://arxiv.org/abs/2604.01905",
+      "checked_on": "2026-09-25",
+      "scope": "초록과 [Connor 저장소](https://github.com/yiheng98/Connor)의 구성 개요 / 구현 상세·성능 재현 미완료"
+    },
+    {
+      "id": "R09",
+      "type": "source",
+      "title": "MCPTox: A Benchmark for Tool Poisoning Attack on Real-World MCP Servers",
+      "url": "https://arxiv.org/abs/2508.14925",
+      "checked_on": "2026-09-25",
+      "scope": "초록·평가 개요 / 미실행"
+    },
+    {
+      "id": "R10",
+      "type": "source",
+      "title": "MCP-SafetyBench: A Benchmark for Safety Evaluation of Large Language Models with Real-World MCP Servers",
+      "url": "https://arxiv.org/abs/2512.15163",
+      "checked_on": "2026-09-25",
+      "scope": "초록·[ICLR 2026 판본](https://openreview.net/pdf?id=7XYjeL46co) 개요 / 미실행"
+    },
+    {
+      "id": "R11",
+      "type": "source",
+      "title": "Do Skill Descriptions Tell the Truth? Detecting Undisclosed Security Behaviors in Code-Backed LLM Skills",
+      "url": "https://arxiv.org/abs/2605.12875",
+      "checked_on": "2026-09-25",
+      "scope": "초록 확인, 추가 정독 후보"
+    },
+    {
+      "id": "R12",
+      "type": "source",
+      "title": "Towards Secure Agent Skills: Architecture, Threat Taxonomy, and Security Analysis",
+      "url": "https://arxiv.org/abs/2604.02837",
+      "checked_on": "2026-09-25",
+      "scope": "초록 확인, 생애주기 분류 참고"
+    },
+    {
+      "id": "T01",
+      "type": "source",
+      "title": "Invariant Toxic Flow Analysis, 2025-07-29",
+      "url": "https://invariantlabs.ai/blog/toxic-flow-analysis",
+      "checked_on": "2026-09-25",
+      "scope": "기능 원리·정적/동적 정보 결합. 벤더 연구 발표, 독립 비교 실험과 구분"
+    },
+    {
+      "id": "C01",
+      "type": "source",
+      "title": "GitHub MCP Exploited, 2025-05-26",
+      "url": "https://invariantlabs.ai/blog/mcp-github-vulnerability",
+      "checked_on": "2026-09-25",
+      "scope": "공개 이슈→비공개 자료→공개 PR, 연구자 시연"
+    },
+    {
+      "id": "C02",
+      "type": "source",
+      "title": "WhatsApp MCP Exploited, 2025-04-07",
+      "url": "https://invariantlabs.ai/blog/whatsapp-mcp-exploited",
+      "checked_on": "2026-09-25",
+      "scope": "악성 MCP 실험과 메시지만 주입한 실험 구분"
+    },
+    {
+      "id": "C03",
+      "type": "source",
+      "title": "Tool Poisoning Attacks, 2025-04-01",
+      "url": "https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks",
+      "checked_on": "2026-09-25",
+      "scope": "설명 오염·shadowing·rug pull"
+    },
+    {
+      "id": "C04a",
+      "type": "source",
+      "title": "CVE-2025-68143 / GHSA-5cgr-j3jf-jw3v",
+      "url": "https://github.com/advisories/GHSA-5cgr-j3jf-jw3v",
+      "checked_on": "2026-09-25",
+      "scope": "개별 Git MCP 구현 결함·패치"
+    },
+    {
+      "id": "C04b",
+      "type": "source",
+      "title": "CVE-2025-68144 / GHSA-9xwc-hfwc-8w59",
+      "url": "https://github.com/advisories/GHSA-9xwc-hfwc-8w59",
+      "checked_on": "2026-09-25",
+      "scope": "개별 Git MCP 인자 주입·패치"
+    },
+    {
+      "id": "C04c",
+      "type": "source",
+      "title": "CVE-2025-68145 / GHSA-j22h-9j4x-23w5",
+      "url": "https://github.com/advisories/GHSA-j22h-9j4x-23w5",
+      "checked_on": "2026-09-25",
+      "scope": "저장소 경로 범위 검증·패치"
+    },
+    {
+      "id": "C05",
+      "type": "source",
+      "title": "Snyk ToxicSkills, 2026-02",
+      "url": "https://snyk.io/blog/toxicskills-malicious-ai-agent-skills-clawhub/",
+      "checked_on": "2026-09-25",
+      "scope": "시장 스캔의 보안 문제와 확인 악성 Skill을 별도 집계"
+    },
+    {
+      "id": "G01",
+      "type": "source",
+      "title": "Cisco Skill Scanner",
+      "url": "https://github.com/cisco-ai-defense/skill-scanner",
+      "checked_on": "2026-09-25",
+      "scope": "`4f8bec3437dd9af8dc024b63fdaf23422f3a148e` | Apache-2.0, 배포 패키지 2.1.0 별도 실행"
+    },
+    {
+      "id": "G02",
+      "type": "source",
+      "title": "Cisco MCP Scanner",
+      "url": "https://github.com/cisco-ai-defense/mcp-scanner",
+      "checked_on": "2026-09-25",
+      "scope": "`9e47aabdf2017b82e78f3419f39a75f20b6f98fa` | Apache-2.0, 배포 패키지 4.8.4 실행"
+    },
+    {
+      "id": "G03",
+      "type": "source",
+      "title": "Snyk Agent Scan",
+      "url": "https://github.com/snyk/agent-scan",
+      "checked_on": "2026-09-25",
+      "scope": "`4e8d20dba67916b2e837f108c1708f7c2049eaf3` | Apache-2.0, 공개 클라이언트 코드만 분석"
+    },
+    {
+      "id": "G04",
+      "type": "source",
+      "title": "SCR-Bench",
+      "url": "https://github.com/saint-viperx/SCR_Bench",
+      "checked_on": "2026-09-25",
+      "scope": "`b8bb3e9e3cf7e72db091655f2d5e8ef15b273848` | MIT, 검사 대상 실행 없이 읽기"
+    },
+    {
+      "id": "G05",
+      "type": "source",
+      "title": "CompoSkill",
+      "url": "https://github.com/Limax666/CompoSkill",
+      "checked_on": "2026-09-25",
+      "scope": "`d7dc9d314f491eaace0b9e7c18e0c21ed3b71577` | 소프트웨어 라이선스 명확성 미확인, 원본 재배포 안 함"
+    },
+    {
+      "id": "E1",
+      "type": "experiment",
+      "file": "skill-scanner-results.json",
+      "status": "executed_offline"
+    },
+    {
+      "id": "E2",
+      "type": "experiment",
+      "file": "mcp-scanner-results.json",
+      "status": "executed_offline_yara_only"
+    },
+    {
+      "id": "E3",
+      "type": "experiment",
+      "file": "composkill-graph-results.json",
+      "status": "executed_graph_only"
+    },
+    {
+      "id": "K01",
+      "type": "claim",
+      "status": "supported",
+      "text": "Cross-component composition risk and detection already exist; not a novel discovery."
+    },
+    {
+      "id": "K02",
+      "type": "claim",
+      "status": "observed_narrowly",
+      "text": "Cisco 2.1.0 produced one group finding for the lexical pair, zero individual findings, and no findings for the MCP-named pair."
+    },
+    {
+      "id": "K03",
+      "type": "claim",
+      "status": "inference",
+      "text": "Actual binding, audience, permissions and trusted authorization can change policy validity without changing Skill text."
+    },
+    {
+      "id": "K04",
+      "type": "claim",
+      "status": "not_established",
+      "text": "Snyk hosted analysis misses Skill-MCP composition. This claim has NOT been established."
+    },
+    {
+      "id": "K05",
+      "type": "claim",
+      "status": "supported",
+      "text": "Individual vulnerable MCP implementations and malicious Skills are not evidence of benign-plus-benign composition."
+    },
+    {
+      "id": "GAP01",
+      "type": "research_question",
+      "status": "hypothesis_unvalidated",
+      "text": "Does environment-conditioned mixed analysis distinguish policy violations better than individual/cross-skill/capability-union baselines?"
+    },
+    {
+      "id": "ARCH01",
+      "type": "architecture",
+      "status": "proposed_not_implemented",
+      "text": "Evidence-backed Skill-MCP graph with binding, provenance, audience, scope and task authorization; uncertainty preserved.",
+      "document": "../04-Gap과-아키텍처.md"
+    },
+    {
+      "id": "EVAL01",
+      "type": "evaluation_plan",
+      "status": "not_executed",
+      "text": "12 workflows x 8 policy contexts, B0-B3 baselines, ablations and controlled causal comparisons; cluster related variants."
+    }
+  ],
+  "edges": [
+    {
+      "from": "R01",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "R02",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "R03",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "R04",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "R05",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "T01",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "G01",
+      "to": "K01",
+      "relation": "supports"
+    },
+    {
+      "from": "G01",
+      "to": "K02",
+      "relation": "code_support"
+    },
+    {
+      "from": "E1",
+      "to": "K02",
+      "relation": "observation_support"
+    },
+    {
+      "from": "S02",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "S03",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "R03",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "R06",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "R07",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "T01",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "C01",
+      "to": "K03",
+      "relation": "informs"
+    },
+    {
+      "from": "G03",
+      "to": "K04",
+      "relation": "insufficient_to_establish"
+    },
+    {
+      "from": "T01",
+      "to": "K04",
+      "relation": "limits_claim"
+    },
+    {
+      "from": "C03",
+      "to": "K05",
+      "relation": "illustrates_distinction"
+    },
+    {
+      "from": "C04a",
+      "to": "K05",
+      "relation": "illustrates_distinction"
+    },
+    {
+      "from": "C04b",
+      "to": "K05",
+      "relation": "illustrates_distinction"
+    },
+    {
+      "from": "C04c",
+      "to": "K05",
+      "relation": "illustrates_distinction"
+    },
+    {
+      "from": "C05",
+      "to": "K05",
+      "relation": "illustrates_distinction"
+    },
+    {
+      "from": "K01",
+      "to": "GAP01",
+      "relation": "motivates_with_limits"
+    },
+    {
+      "from": "K02",
+      "to": "GAP01",
+      "relation": "motivates_with_limits"
+    },
+    {
+      "from": "K03",
+      "to": "GAP01",
+      "relation": "motivates_with_limits"
+    },
+    {
+      "from": "T01",
+      "to": "GAP01",
+      "relation": "closest_prior_work_requires_comparison"
+    },
+    {
+      "from": "GAP01",
+      "to": "ARCH01",
+      "relation": "proposed_response"
+    },
+    {
+      "from": "EVAL01",
+      "to": "GAP01",
+      "relation": "must_test"
+    },
+    {
+      "from": "ARCH01",
+      "to": "EVAL01",
+      "relation": "requires_validation"
+    },
+    {
+      "from": "E3",
+      "to": "ARCH01",
+      "relation": "graph_feasibility_only"
+    },
+    {
+      "from": "E2",
+      "to": "ARCH01",
+      "relation": "component_baseline_only"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "commit": "d7dc9d314f491eaace0b9e7c18e0c21ed3b71577",
+  "scope": "Pure graph search smoke test only; roles and edges hand-authored; not ASR reproduction",
+  "connected": [
+    {
+      "path": [
+        "read",
+        "summarize",
+        "publish"
+      ],
+      "score": 0.25,
+      "edge_w": [
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "broken": []
+}

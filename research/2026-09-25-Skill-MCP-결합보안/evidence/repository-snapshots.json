@@ -1,0 +1,180 @@
+{
+  "recorded_at_utc": "2026-09-25T06:23:47.140924+00:00",
+  "snapshots": [
+    {
+      "source_id": "G01",
+      "repository": "https://github.com/cisco-ai-defense/skill-scanner.git",
+      "commit": "4f8bec3437dd9af8dc024b63fdaf23422f3a148e",
+      "commit_date": "2026-09-22T01:08:48-04:00",
+      "license_observation": "Apache-2.0",
+      "inspected_files": [
+        {
+          "path": "skill_scanner/core/analyzers/behavioral_analyzer.py",
+          "sha256": "af78492004b8ea63078faeda07e9c90deb854084185b2ed34eb33adc5a6ad218",
+          "lines": 695
+        },
+        {
+          "path": "skill_scanner/core/analyzers/cross_skill_scanner.py",
+          "sha256": "0746b5f4db683f7493c273da9da31e9e78936dfde84576e9e9eed8212014cd9e",
+          "lines": 500
+        },
+        {
+          "path": "skill_scanner/core/scanner.py",
+          "sha256": "525ebca446dd5d31dc1c298944c011d760421898e8c9f6bf11fce5494660257d",
+          "lines": 1921
+        }
+      ]
+    },
+    {
+      "source_id": "G02",
+      "repository": "https://github.com/cisco-ai-defense/mcp-scanner.git",
+      "commit": "9e47aabdf2017b82e78f3419f39a75f20b6f98fa",
+      "commit_date": "2026-09-18T17:02:03-07:00",
+      "license_observation": "Apache-2.0",
+      "inspected_files": [
+        {
+          "path": "mcpscanner/core/analyzers/static_analyzer.py",
+          "sha256": "8c7978401dc318542f382bee2537566abec68ed80a51c21a4c37037d71c9165c",
+          "lines": 594
+        },
+        {
+          "path": "mcpscanner/core/analyzers/yara_analyzer.py",
+          "sha256": "607cee614fffefe26f96279cbad705f1ba66f067365c1bc15e8e11634febe7d3",
+          "lines": 198
+        },
+        {
+          "path": "mcpscanner/core/analyzers/behavioral/code_analyzer.py",
+          "sha256": "1aa6b85b899744869835b0efc26e35886aa311872c32e3ebfa9203e9900d619d",
+          "lines": 1138
+        },
+        {
+          "path": "mcpscanner/data/yara_rules/prompt_injection.yara",
+          "sha256": "83c346cbf3abbc6805b9a109a755352c1b0fa707b13f8a7a57e64d1f3cb142e8",
+          "lines": 101
+        }
+      ]
+    },
+    {
+      "source_id": "G03",
+      "repository": "https://github.com/snyk/agent-scan.git",
+      "commit": "4e8d20dba67916b2e837f108c1708f7c2049eaf3",
+      "commit_date": "2026-09-24T16:11:17+02:00",
+      "license_observation": "Apache-2.0",
+      "inspected_files": [
+        {
+          "path": "src/agent_scan/inspect.py",
+          "sha256": "29fb22357f159727361b68a6b8dfbf33291b1991297bd8a4ef74b7580d9c95e3",
+          "lines": 513
+        },
+        {
+          "path": "src/agent_scan/skill_client.py",
+          "sha256": "8a89af7d06524c79c55f00d100b6d8dabb1b3d672702f3ed53eb860fee49d445",
+          "lines": 275
+        },
+        {
+          "path": "src/agent_scan/mcp_client.py",
+          "sha256": "6a1e23924cfc3a5539a48307e8f325372a001dc77ecd0e12350dd4598f009db5",
+          "lines": 449
+        },
+        {
+          "path": "src/agent_scan/verify_api.py",
+          "sha256": "a6862f7dd8a1ed6ee50ca29a8fba0444f8f730c63ea32c8c2ef3088964380bd6",
+          "lines": 607
+        },
+        {
+          "path": "src/agent_scan/models/api/v20260710.py",
+          "sha256": "871ed30767016384f8b79894c8ff958675bda6ce152d1af5f6f6eb485e61fb12",
+          "lines": 259
+        }
+      ]
+    },
+    {
+      "source_id": "G04",
+      "repository": "https://github.com/saint-viperx/SCR_Bench.git",
+      "commit": "b8bb3e9e3cf7e72db091655f2d5e8ef15b273848",
+      "commit_date": "2026-06-21T17:28:24+08:00",
+      "license_observation": "MIT",
+      "inspected_files": [
+        {
+          "path": "SCR-CapFlow/run_privilege_experiment_pipeline.py",
+          "sha256": "272c5309ceba0620ee8cb6e2b0f708f1f8fc39ed16388dff140ee3e4e95e106d",
+          "lines": 48
+        },
+        {
+          "path": "SCR-CapFlow/run_all_privilege_experiments.py",
+          "sha256": "036deacbfb247d87e9675a7a0b93eabd3e7e43993319b88747536845f9e10c8e",
+          "lines": 253
+        },
+        {
+          "path": "SCR-CapFlow/scripts/experiment_case1.py",
+          "sha256": "2c08aa2056c2940f58bc8ad23e4a814e653bfe6e5009e3f3a9d2c57ddfcea2af",
+          "lines": 240
+        }
+      ]
+    },
+    {
+      "source_id": "G05",
+      "repository": "https://github.com/Limax666/CompoSkill.git",
+      "commit": "d7dc9d314f491eaace0b9e7c18e0c21ed3b71577",
+      "commit_date": "2026-08-13T16:24:52+08:00",
+      "license_observation": "Unclear software redistribution license; no root LICENSE found",
+      "inspected_files": [
+        {
+          "path": "scripts/chain_search_ksp.py",
+          "sha256": "e9ad5754595c655fe5910acb18485c0d22d5cda908a90601bbcc08f314e7131b",
+          "lines": 482
+        },
+        {
+          "path": "scripts/msc_llm.py",
+          "sha256": "d6adbec0d06e85b75e1b2acab66dc94e13b6b7004d8e9752939c4cd43e521732",
+          "lines": 151
+        }
+      ]
+    },
+    {
+      "installed_environment": "venv",
+      "primary_package": "cisco-ai-skill-scanner",
+      "note": "Installed distribution files; hashes are separate from the inspected Git checkout.",
+      "selected_installed_files": [
+        {
+          "path": "skill_scanner/core/analyzers/cross_skill_scanner.py",
+          "sha256": "0746b5f4db683f7493c273da9da31e9e78936dfde84576e9e9eed8212014cd9e",
+          "lines": 500
+        },
+        {
+          "path": "skill_scanner/core/analyzers/behavioral_analyzer.py",
+          "sha256": "af78492004b8ea63078faeda07e9c90deb854084185b2ed34eb33adc5a6ad218",
+          "lines": 695
+        },
+        {
+          "path": "skill_scanner/core/scanner.py",
+          "sha256": "f0aeb1f93249f571e62dffa2270435a25f18f6833d89aad7df865b7359342d97",
+          "lines": 1820
+        }
+      ]
+    },
+    {
+      "installed_environment": "venv-mcp",
+      "primary_package": "cisco-ai-mcp-scanner",
+      "note": "Installed distribution files; hashes are separate from the inspected Git checkout.",
+      "selected_installed_files": [
+        {
+          "path": "mcpscanner/core/analyzers/static_analyzer.py",
+          "sha256": "4355008642e554730f5c639ffc09534c04861d9b81ec94eca1453150987c4e22",
+          "lines": 594
+        },
+        {
+          "path": "mcpscanner/core/analyzers/yara_analyzer.py",
+          "sha256": "950abeb2a14e0f6b5b90e092bf8c92e490de16a8bd65230fdd67a87d97b505b9",
+          "lines": 198
+        },
+        {
+          "path": "mcpscanner/data/yara_rules/prompt_injection.yara",
+          "sha256": "d34ac8ff7bfa367cbe7da5fc28d7db02f4882734316eadc5884ff4d398da7c94",
+          "lines": 101
+        }
+      ]
+    }
+  ],
+  "note": "Selected inspected files only, not a complete repository archive. No third-party source redistribution."
+}

@@ -1,0 +1,483 @@
+{
+  "time_utc": "2026-09-25T06:07:00.527649+00:00",
+  "python": "3.13.13",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "scanner_version": "2.1.0",
+  "fixtures_sha256": "5be13cc7e5998bf57c4311a4c4de5a5403e59a47f974addb4d2b3309a6abfbf8",
+  "scope": "Offline package scanning only. No victim agent, live server, LLM, or network actions.",
+  "runs": [
+    {
+      "set": "mcp_named_pair",
+      "command": [
+        "C:\\capstone2\\tmp\\skill-mcp-research\\venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "skill_scanner.cli.cli",
+        "scan-all",
+        "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\mcp_named_pair",
+        "--recursive",
+        "--check-overlap",
+        "--use-behavioral",
+        "--format",
+        "json",
+        "--output",
+        "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\mcp_named_pair.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Report saved to: C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\mcp_named_pair.json\n",
+      "stderr": "",
+      "report": {
+        "summary": {
+          "total_skills_scanned": 2,
+          "total_findings": 0,
+          "safe_skills": 2,
+          "findings_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "timestamp": "2026-09-25T06:06:46.077194+00:00"
+        },
+        "results": [
+          {
+            "skill_name": "digest-publisher",
+            "skill_path": "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\mcp_named_pair\\digest-publisher",
+            "is_safe": true,
+            "max_severity": "SAFE",
+            "findings_count": 0,
+            "findings": [],
+            "scan_duration_seconds": 0.6263015270233154,
+            "duration_ms": 626,
+            "analyzers_used": [
+              "static_analyzer",
+              "bytecode",
+              "pipeline",
+              "correlation",
+              "behavioral_analyzer"
+            ],
+            "timestamp": "2026-09-25T06:06:46.722618+00:00",
+            "scan_metadata": {
+              "policy_name": "default",
+              "policy_version": "1.0",
+              "policy_preset_base": "balanced",
+              "policy_fingerprint_sha256": "26ada30a1f502eecdbe7b7e35a3fe7a324be2298494208e1019b75e72b0bc516",
+              "cel": {
+                "mode": "shadow",
+                "runtime": "cel-go",
+                "runtime_version": "v0.32.0;helper=2.1.0",
+                "fact_schema": "v1",
+                "expression_set_hash": "f26459b8f4a46a974d7ab0aaae34127b5b6a40d693e266e12fca03a69a6d26aa",
+                "evaluated": 0,
+                "retained": 0,
+                "would_suppress": 0,
+                "suppressed": 0,
+                "fallbacks": 0,
+                "projection_incomplete": 0,
+                "elapsed_ms": 0.0,
+                "projection_ms": 0.0,
+                "evaluation_ms": 0.0,
+                "errors": [],
+                "per_rule": {},
+                "suppressed_candidates": []
+              },
+              "rule_contract": {
+                "status": "passed",
+                "schema_version": 2,
+                "checked": 0,
+                "invalid_findings": 0,
+                "errors": []
+              }
+            }
+          },
+          {
+            "skill_name": "record-reader",
+            "skill_path": "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\mcp_named_pair\\record-reader",
+            "is_safe": true,
+            "max_severity": "SAFE",
+            "findings_count": 0,
+            "findings": [],
+            "scan_duration_seconds": 0.005239963531494141,
+            "duration_ms": 5,
+            "analyzers_used": [
+              "static_analyzer",
+              "bytecode",
+              "pipeline",
+              "correlation",
+              "behavioral_analyzer"
+            ],
+            "timestamp": "2026-09-25T06:06:46.735715+00:00",
+            "scan_metadata": {
+              "policy_name": "default",
+              "policy_version": "1.0",
+              "policy_preset_base": "balanced",
+              "policy_fingerprint_sha256": "26ada30a1f502eecdbe7b7e35a3fe7a324be2298494208e1019b75e72b0bc516",
+              "cel": {
+                "mode": "shadow",
+                "runtime": "cel-go",
+                "runtime_version": "v0.32.0;helper=2.1.0",
+                "fact_schema": "v1",
+                "expression_set_hash": "f26459b8f4a46a974d7ab0aaae34127b5b6a40d693e266e12fca03a69a6d26aa",
+                "evaluated": 0,
+                "retained": 0,
+                "would_suppress": 0,
+                "suppressed": 0,
+                "fallbacks": 0,
+                "projection_incomplete": 0,
+                "elapsed_ms": 0.0,
+                "projection_ms": 0.0,
+                "evaluation_ms": 0.0,
+                "errors": [],
+                "per_rule": {},
+                "suppressed_candidates": []
+              },
+              "rule_contract": {
+                "status": "passed",
+                "schema_version": 2,
+                "checked": 0,
+                "invalid_findings": 0,
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "set": "lexical_pair",
+      "command": [
+        "C:\\capstone2\\tmp\\skill-mcp-research\\venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "skill_scanner.cli.cli",
+        "scan-all",
+        "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\lexical_pair",
+        "--recursive",
+        "--check-overlap",
+        "--use-behavioral",
+        "--format",
+        "json",
+        "--output",
+        "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\lexical_pair.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Report saved to: C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\lexical_pair.json\n",
+      "stderr": "",
+      "report": {
+        "summary": {
+          "total_skills_scanned": 2,
+          "total_findings": 1,
+          "safe_skills": 2,
+          "findings_by_severity": {
+            "critical": 0,
+            "high": 1,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "timestamp": "2026-09-25T06:06:52.867499+00:00"
+        },
+        "results": [
+          {
+            "skill_name": "record-reader",
+            "skill_path": "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\lexical_pair\\record-reader",
+            "is_safe": true,
+            "max_severity": "SAFE",
+            "findings_count": 0,
+            "findings": [],
+            "scan_duration_seconds": 0.8718397617340088,
+            "duration_ms": 871,
+            "analyzers_used": [
+              "static_analyzer",
+              "bytecode",
+              "pipeline",
+              "correlation",
+              "behavioral_analyzer"
+            ],
+            "timestamp": "2026-09-25T06:06:53.748456+00:00",
+            "scan_metadata": {
+              "policy_name": "default",
+              "policy_version": "1.0",
+              "policy_preset_base": "balanced",
+              "policy_fingerprint_sha256": "26ada30a1f502eecdbe7b7e35a3fe7a324be2298494208e1019b75e72b0bc516",
+              "cel": {
+                "mode": "shadow",
+                "runtime": "cel-go",
+                "runtime_version": "v0.32.0;helper=2.1.0",
+                "fact_schema": "v1",
+                "expression_set_hash": "f26459b8f4a46a974d7ab0aaae34127b5b6a40d693e266e12fca03a69a6d26aa",
+                "evaluated": 0,
+                "retained": 0,
+                "would_suppress": 0,
+                "suppressed": 0,
+                "fallbacks": 0,
+                "projection_incomplete": 0,
+                "elapsed_ms": 0.0,
+                "projection_ms": 0.0,
+                "evaluation_ms": 0.0,
+                "errors": [],
+                "per_rule": {},
+                "suppressed_candidates": []
+              },
+              "rule_contract": {
+                "status": "passed",
+                "schema_version": 2,
+                "checked": 0,
+                "invalid_findings": 0,
+                "errors": []
+              }
+            }
+          },
+          {
+            "skill_name": "webhook-publisher",
+            "skill_path": "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\lexical_pair\\webhook-publisher",
+            "is_safe": true,
+            "max_severity": "SAFE",
+            "findings_count": 0,
+            "findings": [],
+            "scan_duration_seconds": 0.018966197967529297,
+            "duration_ms": 18,
+            "analyzers_used": [
+              "static_analyzer",
+              "bytecode",
+              "pipeline",
+              "correlation",
+              "behavioral_analyzer"
+            ],
+            "timestamp": "2026-09-25T06:06:53.775148+00:00",
+            "scan_metadata": {
+              "policy_name": "default",
+              "policy_version": "1.0",
+              "policy_preset_base": "balanced",
+              "policy_fingerprint_sha256": "26ada30a1f502eecdbe7b7e35a3fe7a324be2298494208e1019b75e72b0bc516",
+              "cel": {
+                "mode": "shadow",
+                "runtime": "cel-go",
+                "runtime_version": "v0.32.0;helper=2.1.0",
+                "fact_schema": "v1",
+                "expression_set_hash": "f26459b8f4a46a974d7ab0aaae34127b5b6a40d693e266e12fca03a69a6d26aa",
+                "evaluated": 0,
+                "retained": 0,
+                "would_suppress": 0,
+                "suppressed": 0,
+                "fallbacks": 0,
+                "projection_incomplete": 0,
+                "elapsed_ms": 0.0,
+                "projection_ms": 0.0,
+                "evaluation_ms": 0.0,
+                "errors": [],
+                "per_rule": {},
+                "suppressed_candidates": []
+              },
+              "rule_contract": {
+                "status": "passed",
+                "schema_version": 2,
+                "checked": 0,
+                "invalid_findings": 0,
+                "errors": []
+              }
+            }
+          }
+        ],
+        "cross_skill_findings": [
+          {
+            "id": "CROSS_SKILL_RELAY_37e44d72",
+            "rule_id": "CROSS_SKILL_DATA_RELAY",
+            "category": "data_exfiltration",
+            "severity": "HIGH",
+            "title": "Potential data relay attack pattern detected",
+            "description": "Skills appear to form a data relay chain. Collectors (record-reader) access sensitive data while exfiltrators (webhook-publisher) send data to external destinations. This pattern may indicate a coordinated attack.",
+            "file_path": "(cross-skill analysis)",
+            "line_number": null,
+            "snippet": null,
+            "remediation": "Review these skills together to ensure they are not collaborating to exfiltrate sensitive data. Consider disabling one or both skills.",
+            "analyzer": "cross_skill",
+            "metadata": {
+              "collectors": [
+                "record-reader"
+              ],
+              "exfiltrators": [
+                "webhook-publisher"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "set": "single_workflow",
+      "command": [
+        "C:\\capstone2\\tmp\\skill-mcp-research\\venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "skill_scanner.cli.cli",
+        "scan-all",
+        "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\single_workflow",
+        "--recursive",
+        "--check-overlap",
+        "--use-behavioral",
+        "--format",
+        "json",
+        "--output",
+        "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\single_workflow.json"
+      ],
+      "exit_code": 0,
+      "stdout": "Report saved to: C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\single_workflow.json\n",
+      "stderr": "",
+      "report": {
+        "summary": {
+          "total_skills_scanned": 1,
+          "total_findings": 0,
+          "safe_skills": 1,
+          "findings_by_severity": {
+            "critical": 0,
+            "high": 0,
+            "medium": 0,
+            "low": 0,
+            "info": 0
+          },
+          "timestamp": "2026-09-25T06:06:59.566885+00:00"
+        },
+        "results": [
+          {
+            "skill_name": "report-workflow",
+            "skill_path": "C:\\capstone2\\tmp\\skill-mcp-research\\fixtures\\single_workflow\\report-workflow",
+            "is_safe": true,
+            "max_severity": "SAFE",
+            "findings_count": 0,
+            "findings": [],
+            "scan_duration_seconds": 0.819634199142456,
+            "duration_ms": 819,
+            "analyzers_used": [
+              "static_analyzer",
+              "bytecode",
+              "pipeline",
+              "correlation",
+              "behavioral_analyzer"
+            ],
+            "timestamp": "2026-09-25T06:07:00.398864+00:00",
+            "scan_metadata": {
+              "policy_name": "default",
+              "policy_version": "1.0",
+              "policy_preset_base": "balanced",
+              "policy_fingerprint_sha256": "26ada30a1f502eecdbe7b7e35a3fe7a324be2298494208e1019b75e72b0bc516",
+              "cel": {
+                "mode": "shadow",
+                "runtime": "cel-go",
+                "runtime_version": "v0.32.0;helper=2.1.0",
+                "fact_schema": "v1",
+                "expression_set_hash": "f26459b8f4a46a974d7ab0aaae34127b5b6a40d693e266e12fca03a69a6d26aa",
+                "evaluated": 0,
+                "retained": 0,
+                "would_suppress": 0,
+                "suppressed": 0,
+                "fallbacks": 0,
+                "projection_incomplete": 0,
+                "elapsed_ms": 0.0,
+                "projection_ms": 0.0,
+                "evaluation_ms": 0.0,
+                "errors": [],
+                "per_rule": {},
+                "suppressed_candidates": []
+              },
+              "rule_contract": {
+                "status": "passed",
+                "schema_version": 2,
+                "checked": 0,
+                "invalid_findings": 0,
+                "errors": []
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "context_illustration": [
+    {
+      "id": "C1_private_to_public",
+      "source_label": "private",
+      "sink_audience": "public",
+      "path_connected": true,
+      "scope_allows": true,
+      "explicit_release": false,
+      "expected": "candidate",
+      "actual": "candidate"
+    },
+    {
+      "id": "C2_private_to_authorized_team",
+      "source_label": "private",
+      "sink_audience": "authorized_team",
+      "path_connected": true,
+      "scope_allows": true,
+      "explicit_release": false,
+      "expected": "no_candidate_under_policy",
+      "actual": "no_candidate_under_policy"
+    },
+    {
+      "id": "C3_public_to_public",
+      "source_label": "public",
+      "sink_audience": "public",
+      "path_connected": true,
+      "scope_allows": true,
+      "explicit_release": false,
+      "expected": "no_candidate_under_policy",
+      "actual": "no_candidate_under_policy"
+    },
+    {
+      "id": "C4_no_data_path",
+      "source_label": "private",
+      "sink_audience": "public",
+      "path_connected": false,
+      "scope_allows": true,
+      "explicit_release": false,
+      "expected": "no_candidate_under_policy",
+      "actual": "no_candidate_under_policy"
+    },
+    {
+      "id": "C5_server_scope_denied",
+      "source_label": "private",
+      "sink_audience": "public",
+      "path_connected": true,
+      "scope_allows": false,
+      "explicit_release": false,
+      "expected": "blocked_by_control",
+      "actual": "blocked_by_control"
+    },
+    {
+      "id": "C6_explicit_authorized_release",
+      "source_label": "private",
+      "sink_audience": "public",
+      "path_connected": true,
+      "scope_allows": true,
+      "explicit_release": true,
+      "expected": "no_candidate_under_policy",
+      "actual": "no_candidate_under_policy"
+    },
+    {
+      "id": "C7_unknown_destination",
+      "source_label": "private",
+      "sink_audience": "unknown",
+      "path_connected": true,
+      "scope_allows": true,
+      "explicit_release": false,
+      "expected": "insufficient_evidence",
+      "actual": "insufficient_evidence"
+    },
+    {
+      "id": "C8_scope_unknown",
+      "source_label": "private",
+      "sink_audience": "public",
+      "path_connected": true,
+      "scope_allows": null,
+      "explicit_release": false,
+      "expected": "insufficient_evidence",
+      "actual": "insufficient_evidence"
+    }
+  ],
+  "context_warning": "Manually annotated policy cases; checking these is not evidence of detection accuracy. The Cisco input stays the same for all eight contexts."
+}
