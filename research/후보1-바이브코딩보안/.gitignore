@@ -1,8 +1,0 @@
-evidence/sources/*.html
-evidence/sources/*.pdf
-evidence/sources/*-pdf.txt
-evidence/sources/*.txt
-!evidence/sources/*license.txt
-evidence/datasets/
-# Large upstream repository tree retained only as local research cache.
-evidence/repository-metadata.json

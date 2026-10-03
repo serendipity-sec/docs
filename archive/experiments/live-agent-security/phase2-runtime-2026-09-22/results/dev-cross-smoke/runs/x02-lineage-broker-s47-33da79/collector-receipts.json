@@ -1,0 +1,11 @@
+[
+  {
+    "receipt_id": "586c0f8b96c44865aac56931534cc043",
+    "time": "2026-09-22T04:07:07.454997+00:00",
+    "path": "/collect",
+    "payload": {
+      "body": "public status",
+      "source": "report__send"
+    }
+  }
+]

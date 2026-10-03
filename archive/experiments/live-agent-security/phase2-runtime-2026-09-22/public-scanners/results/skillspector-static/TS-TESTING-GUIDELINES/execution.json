@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scanner": "skillspector-static",
+  "case": "TS-TESTING-GUIDELINES",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\skillspector\\Scripts\\skillspector.exe",
+    "scan",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\testing-guidelines",
+    "--no-llm",
+    "--format",
+    "json",
+    "--output",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\skillspector-static\\TS-TESTING-GUIDELINES\\report.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/testing-guidelines/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 1344,
+      "sha256": "eda318dd0755fdce66c53e4105387853321169dc7f9671e783a7e31c2d35c49a"
+    }
+  ],
+  "started_at": "2026-09-22T04:12:21.038517+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 60.703,
+  "finished_at": "2026-09-22T04:13:21.754366+00:00"
+}

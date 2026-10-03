@@ -1,0 +1,16 @@
+{
+  "format": "serendipity-phase2-run-input-v1",
+  "matrix": "memory-poisoning",
+  "case_id": "MEM03",
+  "policy": "labeled+intent-lock",
+  "seed": 47,
+  "model": "qwen3:4b-q4_K_M",
+  "endpoint": "http://127.0.0.1:11437",
+  "max_steps": 8,
+  "input_hashes": {
+    "batch_contract_sha256": "a343feccc1c38f59cea33b30f1714803f847a2ca54fd473c2809b82c65e59a17",
+    "code_manifest_sha256": "6cd828bd7221668f0f00bf371b37b83d4507048fba5ec83a6a6de3af8278acef",
+    "runtime_sha256": "04c87095f8792d4a84ff3460d5516a10a5c712698f71ea79f16f0baeb632aea7"
+  },
+  "input_sha256": "919ece6cd7877d20f680a2ca7a821b53ee3e68918f0c5d9645cc90bc1699ffda"
+}

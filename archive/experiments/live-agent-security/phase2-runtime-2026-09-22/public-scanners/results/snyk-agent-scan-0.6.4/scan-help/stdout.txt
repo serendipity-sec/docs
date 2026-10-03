@@ -1,0 +1,96 @@
+usage: C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\python.exe C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\snyk-agent-scan.exe scan --help scan
+       [-h] [--storage-file FILE] [--analysis-url URL]
+       [--verification-H VERIFICATION_H]
+       [--mcp-oauth-tokens-path MCP_OAUTH_TOKENS_PATH] [--verbose]
+       [--print-errors] [--print-full-descriptions] [--json]
+       [--skip-ssl-verify] [--skills | --no-skills] [--no-bootstrap]
+       [--scan-all-users] [--show-analysis-results] [--ci]
+       [--config-file FILE] [--ignore-risks IGNORE_RISKS]
+       [--ignore-failure-codes IGNORE_FAILURE_CODES] [--show-full-discovery]
+       [--server-timeout SECONDS] [--suppress-mcpserver-io BOOL]
+       [--dangerously-run-mcp-servers] [--checks-per-server NUM]
+       [--control-server CONTROL_SERVER] [--control-server-H CONTROL_SERVER_H]
+       [--control-identifier CONTROL_IDENTIFIER] [--push-key KEY]
+       [--machine-id ID]
+       [CONFIG_FILE ...]
+
+Scan one or more MCP configuration files for security risks. If no files are
+specified, well-known config locations will be checked.
+
+positional arguments:
+  CONFIG_FILE           Path(s) to MCP config file(s). If not provided, well-
+                        known paths will be checked
+
+options:
+  -h, --help            show this help message and exit
+  --storage-file FILE   Path to store scan results and scanner state
+  --analysis-url URL    URL endpoint for the verification server; Agent Scan
+                        always uses the 2026-07-10 API version
+  --verification-H VERIFICATION_H
+                        Additional headers for the verification server
+  --mcp-oauth-tokens-path MCP_OAUTH_TOKENS_PATH
+                        Path of the file where the MCP OAuth tokens are
+                        stored.
+  --verbose             Enable detailed logging output
+  --print-errors        Show error details and tracebacks
+  --print-full-descriptions
+                        Show full entity and skill-file descriptions without
+                        truncation
+  --json                Output results in JSON format instead of rich text
+  --skip-ssl-verify     Disable SSL certificate verification
+  --skills, --no-skills
+                        Scan skills beyond mcp servers (default: enabled). Use
+                        --no-skills to disable.
+  --no-bootstrap        No-op retained for backward compatibility; does not
+                        change behavior.
+  --scan-all-users      Scan all users on the machine.
+  --show-analysis-results
+                        Show the scan results. Overrides the default behavior
+                        when using push keys.
+  --ci                  Exit with a non-zero code when there are analysis
+                        findings or runtime failures. Requires --dangerously-
+                        run-mcp-servers.
+  --config-file FILE    Load CLI arguments from a YAML config file. Precedence
+                        is code defaults < config file < explicit CLI flags:
+                        any flag you also pass on the command line overrides
+                        the file.
+  --ignore-risks IGNORE_RISKS
+                        Comma-separated risk names to omit from --ci output
+                        and exit evaluation
+  --ignore-failure-codes IGNORE_FAILURE_CODES
+                        Comma-separated X-codes to omit from --ci exit
+                        evaluation
+  --show-full-discovery
+                        Show every MCP entity and skill file in human-readable
+                        scan output
+  --checks-per-server NUM
+                        No-op retained for backward compatibility; does not
+                        change behavior.
+  --control-server CONTROL_SERVER
+                        Upload scan results to this control server URL. Must
+                        be paired with a --control-identifier for that same
+                        server block. Can be specified multiple times.
+  --control-server-H CONTROL_SERVER_H
+                        Additional header for the current --control-server
+                        block (repeatable)
+  --control-identifier CONTROL_IDENTIFIER
+                        Required per --control-server block. Non-anonymous
+                        identifier for that control server (for example:
+                        email, hostname, serial number).
+  --push-key KEY        Push key used to authenticate with the analysis
+                        server.
+  --machine-id ID       Non-anonymous identifier for this machine (for
+                        example: hostname, serial number).
+
+MCP Server Options:
+  --server-timeout SECONDS
+                        Seconds to wait before timing out server connections
+                        (default: 10)
+  --suppress-mcpserver-io BOOL
+                        Suppress stderr from stdio MCP servers (stdout carries
+                        the JSON-RPC protocol and is never shown). Default:
+                        False for interactive runs (stderr is streamed with a
+                        [server-name] prefix), True otherwise.
+  --dangerously-run-mcp-servers
+                        Skip the interactive consent prompt and start every
+                        stdio MCP server listed in the scanned configs.

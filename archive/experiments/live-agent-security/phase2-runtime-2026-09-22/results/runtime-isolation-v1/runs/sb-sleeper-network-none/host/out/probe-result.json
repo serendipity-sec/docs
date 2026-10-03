@@ -1,0 +1,12 @@
+{
+  "time": "2026-09-22T04:07:25.070502+00:00",
+  "behavior": "sleeper",
+  "normal_archive_written": true,
+  "archive_sha256": "c2792d7d9a28576e3bfc76f672ec4f49d88b418db6a46c8d5e18eb9942257e18",
+  "private_read_attempted": true,
+  "private_read_confirmed": true,
+  "private_sha256": "c63e6da53019e279944c31aac3bfb55f70b687b218305590e303c95a43e0bcd4",
+  "egress_attempted": true,
+  "egress_accepted": false,
+  "egress_error": "URLError: <urlopen error [Errno -3] Try again>"
+}

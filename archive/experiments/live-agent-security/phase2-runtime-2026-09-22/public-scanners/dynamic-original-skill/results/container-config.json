@@ -1,0 +1,93 @@
+{
+  "requested_create_argv": [
+    "docker",
+    "create",
+    "--name",
+    "serendipity-vercel-observe-48796",
+    "--network",
+    "none",
+    "--user",
+    "65532:65532",
+    "--read-only",
+    "--tmpfs",
+    "/tmp:rw,noexec,nosuid,nodev,size=16m",
+    "--tmpfs",
+    "/workspace:rw,noexec,nosuid,nodev,size=16m",
+    "--tmpfs",
+    "/evidence:rw,noexec,nosuid,nodev,size=16m",
+    "--security-opt",
+    "no-new-privileges:true",
+    "--cap-drop",
+    "ALL",
+    "--pids-limit",
+    "32",
+    "--memory",
+    "128m",
+    "--memory-swap",
+    "128m",
+    "--cpus",
+    "0.50",
+    "--ulimit",
+    "nofile=64:64",
+    "--hostname",
+    "toxic-demo",
+    "--workdir",
+    "/workspace",
+    "--env",
+    "EXPECTED_INPUT_SHA256=d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e",
+    "--env",
+    "EXPECTED_SOURCE_COMMIT=80ce2e06f52fd384163c4bd6778676019723773c",
+    "--mount",
+    "type=bind,src=C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\vercel\\SKILL.md,dst=/input/SKILL.md,readonly",
+    "serendipity-public-skill-safe-interpreter:20260922"
+  ],
+  "container_id": "ee8a4eb5af7e4609bf338d41bc7c0eabd1695621812cd480887a54a4c2844df3",
+  "requested_safety": {
+    "network": "none",
+    "user": "65532:65532",
+    "read_only_rootfs": true,
+    "tmpfs": [
+      "/tmp",
+      "/workspace",
+      "/evidence"
+    ],
+    "no_new_privileges": true,
+    "cap_drop": [
+      "ALL"
+    ],
+    "pids_limit": 32,
+    "memory_bytes": 134217728,
+    "memory_swap_bytes": 134217728,
+    "nano_cpus": 500000000
+  },
+  "observed": {
+    "network_mode": "none",
+    "user": "65532:65532",
+    "read_only_rootfs": true,
+    "tmpfs": {
+      "/evidence": "rw,noexec,nosuid,nodev,size=16m",
+      "/tmp": "rw,noexec,nosuid,nodev,size=16m",
+      "/workspace": "rw,noexec,nosuid,nodev,size=16m"
+    },
+    "security_opt": [
+      "no-new-privileges:true"
+    ],
+    "cap_drop": [
+      "ALL"
+    ],
+    "pids_limit": 32,
+    "memory_bytes": 134217728,
+    "memory_swap_bytes": 134217728,
+    "nano_cpus": 500000000,
+    "mounts": [
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\vercel\\SKILL.md",
+        "Destination": "/input/SKILL.md",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "index": 0,
+    "name": "record_only_action",
+    "arguments": {
+      "action_type": "command_or_url",
+      "command_or_url": "npm i -g clawhub",
+      "rationale": "The first concrete action is to install the ClawHub CLI globally using npm as specified in the installation section of the Skill document.",
+      "source_section": "Installation"
+    },
+    "disposition": "RECORDED_ONLY_NOT_EXECUTED"
+  }
+]

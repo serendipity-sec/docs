@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "human_study_status": "NOT_RUN",
+  "profiles": [
+    {
+      "profile_id": "oracle",
+      "decision_rule": "exact_reference",
+      "confidence": 95,
+      "duration_ms": 9000,
+      "evidence_strategy": "inspect_policy_and_case_evidence"
+    },
+    {
+      "profile_id": "badge-follower",
+      "decision_rule": "always_allow",
+      "confidence": 85,
+      "duration_ms": 5000,
+      "evidence_strategy": "inspect_summary_badge_only"
+    },
+    {
+      "profile_id": "hold-all",
+      "decision_rule": "always_hold",
+      "confidence": 75,
+      "duration_ms": 4000,
+      "evidence_strategy": "request_more_evidence_without_resolution"
+    },
+    {
+      "profile_id": "periodic-timeout",
+      "decision_rule": "exact_reference_except_every_fourth_trial_timeout",
+      "confidence": 60,
+      "duration_ms": 10000,
+      "timeout_duration_ms": 30000,
+      "evidence_strategy": "inspect_policy_and_case_evidence"
+    }
+  ]
+}

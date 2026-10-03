@@ -1,0 +1,17 @@
+{
+  "format": "serendipity-phase2-run-input-v1",
+  "matrix": "expression-twins",
+  "case_id": "ADAPTA",
+  "variant": "adaptive-v1",
+  "policy": "broad",
+  "seed": 47,
+  "model": "qwen3:4b-q4_K_M",
+  "endpoint": "http://127.0.0.1:11437",
+  "max_steps": 8,
+  "input_hashes": {
+    "batch_contract_sha256": "4c73bd0c31a9ec83a15228c6ac8a1ca96eab03e351c40bc23129412ed181bbb9",
+    "code_manifest_sha256": "2aab5a6b19a900c00d86820db3ca5922ce912d63a657d1d0fdfdd911681f236e",
+    "runtime_sha256": "767a8e920100601a8967e762470fd6d24087174a97264f5736546ea0f7a3aab9"
+  },
+  "input_sha256": "140ebf7005b8eb6d8656abd018dcbdddddef59cb1f12d68e7d336724976db652"
+}

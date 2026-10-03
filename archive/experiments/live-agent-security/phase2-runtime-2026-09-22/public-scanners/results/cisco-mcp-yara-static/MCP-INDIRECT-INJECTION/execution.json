@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scanner": "cisco-mcp-yara-static",
+  "case": "MCP-INDIRECT-INJECTION",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-mcp\\Scripts\\mcp-scanner.exe",
+    "--analyzers",
+    "yara",
+    "--format",
+    "raw",
+    "static",
+    "--resources",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\inputs\\mcp\\appsecco-indirect-injection-resources.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-indirect-injection-resources.json",
+      "status": "READABLE",
+      "size_bytes": 1438,
+      "sha256": "a6bb97ff19537b6658d1ebe3920c06be68bb5097a896ede5338fbd3b09f7aa7f"
+    },
+    {
+      "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-indirect-prompt-injection/index.js",
+      "status": "READABLE",
+      "size_bytes": 5126,
+      "sha256": "1a681ee4d656a8c844788ba4f6c748f35233bb6ca1af3dcc008172b1001ec065"
+    }
+  ],
+  "started_at": "2026-09-22T04:17:44.608918+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 48.968,
+  "finished_at": "2026-09-22T04:18:33.587625+00:00"
+}

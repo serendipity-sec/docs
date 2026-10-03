@@ -1,0 +1,18 @@
+{
+  "tools": [
+    {
+      "name": "get_qotd",
+      "description": "Fetches a quote of the day from a free API with optional custom formatting",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "type": "string",
+            "description": "Custom format string for quote output (supports JavaScript expressions for advanced formatting)",
+            "default": "default"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "scope": "20 deterministic Skill runtime integrity and TOCTOU runs",
+  "row_count": 20,
+  "all_expected": true,
+  "issue_count": 0,
+  "issues": [],
+  "checks": [
+    {
+      "run_id": "rt00-clean-verify-once-path",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt00-clean-rehash-before-use",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt00-clean-sealed-snapshot",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt00-clean-sealed+runtime",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt01-after-scan-swap-verify-once-path",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt01-after-scan-swap-rehash-before-use",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt01-after-scan-swap-sealed-snapshot",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt01-after-scan-swap-sealed+runtime",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt02-after-rehash-swap-verify-once-path",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt02-after-rehash-swap-rehash-before-use",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt02-after-rehash-swap-sealed-snapshot",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt02-after-rehash-swap-sealed+runtime",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt03-self-modify-verify-once-path",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt03-self-modify-rehash-before-use",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt03-self-modify-sealed-snapshot",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt03-self-modify-sealed+runtime",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt04-copy-execute-verify-once-path",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt04-copy-execute-rehash-before-use",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt04-copy-execute-sealed-snapshot",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "rt04-copy-execute-sealed+runtime",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "manifest_digests": true,
+        "container_policy": true,
+        "case_specific_evidence": true,
+        "code_snapshot": true
+      }
+    }
+  ],
+  "verifier_sha256": "3d6339c70c0ff6a2e53cb561d0c829106b3b10147907ea65dc4b149dea0c72d7"
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "attempt": 1,
+    "returncode": 75,
+    "stderr": "evidence not ready: ready\n"
+  },
+  {
+    "attempt": 2,
+    "returncode": 75,
+    "stderr": "evidence not ready: ready\n"
+  },
+  {
+    "attempt": 3,
+    "returncode": 75,
+    "stderr": "evidence not ready: ready\n"
+  },
+  {
+    "attempt": 4,
+    "returncode": 75,
+    "stderr": "evidence not ready: ready\n"
+  },
+  {
+    "attempt": 5,
+    "returncode": 0,
+    "stderr": ""
+  }
+]

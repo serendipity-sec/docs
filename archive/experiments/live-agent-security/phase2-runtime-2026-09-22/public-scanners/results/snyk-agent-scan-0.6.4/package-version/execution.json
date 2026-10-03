@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "scanner": "snyk-agent-scan-0.6.4",
+  "case": "package-version",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\public-scanners-snyk-0.6.4\\Scripts\\python.exe",
+    "-c",
+    "import importlib.metadata; print(importlib.metadata.version('snyk-agent-scan'))"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [],
+  "started_at": "2026-09-22T04:44:10.953894+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 0.625,
+  "finished_at": "2026-09-22T04:44:11.575858+00:00"
+}

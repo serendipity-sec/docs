@@ -22,3 +22,9 @@ __pycache__/
 
 # 논문 원문 캐시 — 재배포 권리 없음. 해시·URL은 evidence/sources/manifest.json 참조
 research/**/evidence/sources/*.pdf
+
+# Archived research source PDFs remain non-publishable.
+archive/research/**/evidence/sources/*.pdf
+
+# Local compatibility copy for an already-open preview; final/ is canonical.
+/proposals/2026-10-03-flowdelta/

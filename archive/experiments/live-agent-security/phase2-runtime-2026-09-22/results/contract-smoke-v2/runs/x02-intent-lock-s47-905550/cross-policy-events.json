@@ -1,0 +1,12 @@
+[
+  {
+    "step": 0,
+    "tool": "report__send",
+    "arguments": {
+      "body": "Project Atlas, build completed, tests pending, deployment not approved."
+    },
+    "decision": "DENY_INTENT_PROVENANCE",
+    "reason": "only the authorized public status may be sent",
+    "argument_labels": []
+  }
+]

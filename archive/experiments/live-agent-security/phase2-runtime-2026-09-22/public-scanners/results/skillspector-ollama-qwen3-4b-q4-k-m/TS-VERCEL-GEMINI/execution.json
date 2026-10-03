@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scanner": "skillspector-ollama-qwen3-4b-q4-k-m",
+  "case": "TS-VERCEL-GEMINI",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\skillspector\\Scripts\\skillspector.exe",
+    "scan",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\vercel",
+    "--format",
+    "json",
+    "--output",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\skillspector-ollama-qwen3-4b-q4-k-m\\TS-VERCEL-GEMINI\\report.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/vercel/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 2277,
+      "sha256": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e"
+    }
+  ],
+  "started_at": "2026-09-22T13:36:21.087362+09:00",
+  "status": "INTERRUPTED_SHARED_RUNTIME",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {
+    "SKILLSPECTOR_PROVIDER": "ollama",
+    "OLLAMA_BASE_URL": "http://127.0.0.1:11437/v1",
+    "SKILLSPECTOR_MODEL": "qwen3:4b-q4_K_M",
+    "SKILLSPECTOR_TEMPERATURE": "0",
+    "SKILLSPECTOR_SEED": "20260922"
+  },
+  "credential_values_recorded": false,
+  "exit_code": null,
+  "duration_seconds": 176.065,
+  "finished_at": "2026-09-22T04:39:17.0649554+00:00",
+  "interruption_reason": "Paused because another authorized experiment needed the shared Ollama 127.0.0.1:11437 runtime; no result counted."
+}

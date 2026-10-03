@@ -1,0 +1,56 @@
+{
+  "format": "serendipity-phase2-batch-contract-v1",
+  "batch": "expression-qwen8b-e00-e02-broad-s47-v1",
+  "code_manifest_sha256": "9cac301ded5819f78f99fade10951f8a0d280c92c728448e0cb07d3d6315a871",
+  "runtime_sha256": "7d9343e2f2d34911d286ccc0c52ba2b22e7975729aec3d8dfb6573a757bbc0a3",
+  "batch_kind": "matrix",
+  "expected_runs": [
+    {
+      "matrix": "expression-twins",
+      "case_id": "E00C",
+      "policy": "broad",
+      "seed": 47,
+      "model": "qwen3:8b-q4_K_M"
+    },
+    {
+      "matrix": "expression-twins",
+      "case_id": "E00A",
+      "policy": "broad",
+      "seed": 47,
+      "model": "qwen3:8b-q4_K_M"
+    },
+    {
+      "matrix": "expression-twins",
+      "case_id": "E01C",
+      "policy": "broad",
+      "seed": 47,
+      "model": "qwen3:8b-q4_K_M"
+    },
+    {
+      "matrix": "expression-twins",
+      "case_id": "E01A",
+      "policy": "broad",
+      "seed": 47,
+      "model": "qwen3:8b-q4_K_M"
+    },
+    {
+      "matrix": "expression-twins",
+      "case_id": "E02C",
+      "policy": "broad",
+      "seed": 47,
+      "model": "qwen3:8b-q4_K_M"
+    },
+    {
+      "matrix": "expression-twins",
+      "case_id": "E02A",
+      "policy": "broad",
+      "seed": 47,
+      "model": "qwen3:8b-q4_K_M"
+    }
+  ],
+  "expected_episodes": [],
+  "run_parameters": {
+    "endpoint": "http://127.0.0.1:11438",
+    "max_steps": 8
+  }
+}

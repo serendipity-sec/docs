@@ -1,0 +1,254 @@
+[
+  {
+    "Id": "07db451b923a06d5c5e9c9c79c822098011b0bb35dafb9dc548055ec4261d90e",
+    "Created": "2026-09-22T04:01:10.849283194Z",
+    "Path": "python",
+    "Args": [
+      "-B",
+      "-u",
+      "/app/container_probe.py",
+      "collector",
+      "--data-dir",
+      "/data",
+      "--port",
+      "8080"
+    ],
+    "State": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 69039,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-09-22T04:01:17.398668924Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "Image": "sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111",
+    "ResolvConfPath": "/var/lib/docker/containers/07db451b923a06d5c5e9c9c79c822098011b0bb35dafb9dc548055ec4261d90e/resolv.conf",
+    "HostnamePath": "/var/lib/docker/containers/07db451b923a06d5c5e9c9c79c822098011b0bb35dafb9dc548055ec4261d90e/hostname",
+    "HostsPath": "/var/lib/docker/containers/07db451b923a06d5c5e9c9c79c822098011b0bb35dafb9dc548055ec4261d90e/hosts",
+    "LogPath": "/var/lib/docker/containers/07db451b923a06d5c5e9c9c79c822098011b0bb35dafb9dc548055ec4261d90e/07db451b923a06d5c5e9c9c79c822098011b0bb35dafb9dc548055ec4261d90e-json.log",
+    "Name": "/serendipity-ri-bac0c46577-sink",
+    "RestartCount": 0,
+    "Driver": "overlayfs",
+    "Platform": "linux",
+    "MountLabel": "",
+    "ProcessLabel": "",
+    "AppArmorProfile": "",
+    "ExecIDs": null,
+    "HostConfig": {
+      "Binds": null,
+      "ContainerIDFile": "",
+      "LogConfig": {
+        "Type": "json-file",
+        "Config": {}
+      },
+      "NetworkMode": "serendipity-ri-bac0c46577-net",
+      "PortBindings": {},
+      "RestartPolicy": {
+        "Name": "no",
+        "MaximumRetryCount": 0
+      },
+      "AutoRemove": false,
+      "VolumeDriver": "",
+      "VolumesFrom": null,
+      "ConsoleSize": [
+        0,
+        0
+      ],
+      "CapAdd": null,
+      "CapDrop": null,
+      "CgroupnsMode": "private",
+      "Dns": null,
+      "DnsOptions": [],
+      "DnsSearch": [],
+      "ExtraHosts": null,
+      "GroupAdd": null,
+      "IpcMode": "private",
+      "Cgroup": "",
+      "Links": null,
+      "OomScoreAdj": 0,
+      "PidMode": "",
+      "Privileged": false,
+      "PublishAllPorts": false,
+      "ReadonlyRootfs": false,
+      "SecurityOpt": null,
+      "UTSMode": "",
+      "UsernsMode": "",
+      "ShmSize": 67108864,
+      "Runtime": "runc",
+      "Isolation": "",
+      "CpuShares": 0,
+      "Memory": 0,
+      "NanoCpus": 0,
+      "CgroupParent": "",
+      "BlkioWeight": 0,
+      "BlkioWeightDevice": [],
+      "BlkioDeviceReadBps": [],
+      "BlkioDeviceWriteBps": [],
+      "BlkioDeviceReadIOps": [],
+      "BlkioDeviceWriteIOps": [],
+      "CpuPeriod": 0,
+      "CpuQuota": 0,
+      "CpuRealtimePeriod": 0,
+      "CpuRealtimeRuntime": 0,
+      "CpusetCpus": "",
+      "CpusetMems": "",
+      "Devices": [],
+      "DeviceCgroupRules": null,
+      "DeviceRequests": null,
+      "MemoryReservation": 0,
+      "MemorySwap": 0,
+      "MemorySwappiness": null,
+      "OomKillDisable": null,
+      "PidsLimit": null,
+      "Ulimits": [],
+      "CpuCount": 0,
+      "CpuPercent": 0,
+      "IOMaximumIOps": 0,
+      "IOMaximumBandwidth": 0,
+      "Mounts": [
+        {
+          "Type": "bind",
+          "Source": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\container_probe.py",
+          "Target": "/app/container_probe.py",
+          "ReadOnly": true
+        },
+        {
+          "Type": "bind",
+          "Source": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\results\\runtime-isolation-v1\\runs\\sb-stable-container-broad\\collector",
+          "Target": "/data"
+        }
+      ],
+      "MaskedPaths": [
+        "/proc/acpi",
+        "/proc/asound",
+        "/proc/interrupts",
+        "/proc/kcore",
+        "/proc/keys",
+        "/proc/latency_stats",
+        "/proc/sched_debug",
+        "/proc/scsi",
+        "/proc/timer_list",
+        "/proc/timer_stats",
+        "/sys/devices/virtual/powercap",
+        "/sys/firmware"
+      ],
+      "ReadonlyPaths": [
+        "/proc/bus",
+        "/proc/fs",
+        "/proc/irq",
+        "/proc/sys",
+        "/proc/sysrq-trigger"
+      ]
+    },
+    "Storage": {
+      "RootFS": {
+        "Snapshot": {
+          "Name": "overlayfs"
+        }
+      }
+    },
+    "Mounts": [
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\container_probe.py",
+        "Destination": "/app/container_probe.py",
+        "Mode": "",
+        "RW": false,
+        "Propagation": "rprivate"
+      },
+      {
+        "Type": "bind",
+        "Source": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\results\\runtime-isolation-v1\\runs\\sb-stable-container-broad\\collector",
+        "Destination": "/data",
+        "Mode": "",
+        "RW": true,
+        "Propagation": "rprivate"
+      }
+    ],
+    "Config": {
+      "Hostname": "07db451b923a",
+      "Domainname": "",
+      "User": "",
+      "AttachStdin": false,
+      "AttachStdout": true,
+      "AttachStderr": true,
+      "Tty": false,
+      "OpenStdin": false,
+      "StdinOnce": false,
+      "Env": [
+        "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+        "LANG=C.UTF-8",
+        "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+        "PYTHON_VERSION=3.12.14",
+        "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a"
+      ],
+      "Cmd": [
+        "python",
+        "-B",
+        "-u",
+        "/app/container_probe.py",
+        "collector",
+        "--data-dir",
+        "/data",
+        "--port",
+        "8080"
+      ],
+      "Image": "python@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111",
+      "Volumes": null,
+      "WorkingDir": "/",
+      "Entrypoint": null,
+      "Labels": {}
+    },
+    "NetworkSettings": {
+      "SandboxID": "b310850fcdc4b79305e294175fac2c6e8a85918612a46780e398eff6c914944e",
+      "SandboxKey": "/var/run/docker/netns/b310850fcdc4",
+      "Ports": {},
+      "Networks": {
+        "serendipity-ri-bac0c46577-net": {
+          "IPAMConfig": null,
+          "Links": null,
+          "Aliases": null,
+          "DriverOpts": null,
+          "GwPriority": 0,
+          "NetworkID": "409b610221ae9880f793728e166ca5e7bbf5fdf3c6f9cd39341355d1e459db06",
+          "EndpointID": "1ef89917c98fd38afbd8bb5fc0b24cf6149d8cf43d973e3784ce0921aa273609",
+          "Gateway": "",
+          "IPAddress": "172.26.0.2",
+          "MacAddress": "7a:9c:a0:0f:a5:17",
+          "IPPrefixLen": 16,
+          "IPv6Gateway": "",
+          "GlobalIPv6Address": "",
+          "GlobalIPv6PrefixLen": 0,
+          "DNSNames": [
+            "serendipity-ri-bac0c46577-sink",
+            "07db451b923a"
+          ]
+        }
+      }
+    },
+    "ImageManifestDescriptor": {
+      "mediaType": "application/vnd.oci.image.manifest.v1+json",
+      "digest": "sha256:9b8dad7f66b5c7751df6cb7a64a07812e86bed85d0116efe82b3a11209f1440d",
+      "size": 1735,
+      "annotations": {
+        "com.docker.official-images.bashbrew.arch": "amd64",
+        "org.opencontainers.image.base.digest": "sha256:d56c381f961d307a21b3ca004cf1e3910f106644aefb1f43e654c8a56c4fd395",
+        "org.opencontainers.image.base.name": "alpine:3.24",
+        "org.opencontainers.image.created": "2026-09-17T21:47:46Z",
+        "org.opencontainers.image.revision": "688a0b86bb44289df16a363e9f41d90514c1a5f9",
+        "org.opencontainers.image.source": "https://github.com/docker-library/python.git#688a0b86bb44289df16a363e9f41d90514c1a5f9:3.12/alpine3.24",
+        "org.opencontainers.image.url": "https://hub.docker.com/_/python",
+        "org.opencontainers.image.version": "3.12.14-alpine3.24"
+      },
+      "platform": {
+        "architecture": "amd64",
+        "os": "linux"
+      }
+    }
+  }
+]

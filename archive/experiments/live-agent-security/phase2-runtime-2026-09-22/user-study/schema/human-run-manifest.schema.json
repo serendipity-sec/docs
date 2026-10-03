@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://serendipity-sec.local/schemas/human-field-study-run-v1.json",
+  "title": "Human field study run manifest",
+  "type": "object",
+  "required": [
+    "schema_version", "record_type", "template", "study_id", "status", "protocol_path",
+    "protocol_sha256", "preregistration_uri", "ethics_review", "reference_set",
+    "recruitment", "allocation", "data_collection", "exclusions", "analysis", "privacy",
+    "synthetic_data_included", "human_data_files", "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "human_field_study_run"},
+    "template": {"type": "boolean"},
+    "study_id": {"type": ["string", "null"]},
+    "status": {"enum": ["NOT_RUN", "READY", "ACTIVE", "COMPLETE", "CANCELLED"]},
+    "protocol_path": {"type": "string"},
+    "protocol_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "preregistration_uri": {"type": ["string", "null"]},
+    "ethics_review": {"type": "object"},
+    "reference_set": {"type": "object"},
+    "recruitment": {"type": "object"},
+    "allocation": {"type": "object"},
+    "data_collection": {"type": "object"},
+    "exclusions": {"type": "object"},
+    "analysis": {"type": "object"},
+    "privacy": {"type": "object"},
+    "synthetic_data_included": {"const": false},
+    "human_data_files": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "NOT_RUN"}}},
+      "then": {
+        "properties": {
+          "study_id": {"type": "null"},
+          "human_data_files": {"maxItems": 0}
+        }
+      }
+    }
+  ]
+}

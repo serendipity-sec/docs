@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scanner": "cisco-mcp-yara-static",
+  "case": "MCP-MALICIOUS-TOOLS",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-mcp\\Scripts\\mcp-scanner.exe",
+    "--analyzers",
+    "yara",
+    "--format",
+    "raw",
+    "static",
+    "--resources",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\inputs\\mcp\\appsecco-malicious-tools-resources.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-malicious-tools-resources.json",
+      "status": "READABLE",
+      "size_bytes": 535,
+      "sha256": "70e4f8bf4f07a48aea8179c9510a3db4dd2f751bf8e134adf2513d7c4f592739"
+    },
+    {
+      "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-malicious-tools/index.js",
+      "status": "READABLE",
+      "size_bytes": 4783,
+      "sha256": "653ad3b61b36a0cdb0ea0c4523cf651a12d87f7ed00ed850d4bf486afb7244e6"
+    }
+  ],
+  "started_at": "2026-09-22T04:18:33.604749+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 92.531,
+  "finished_at": "2026-09-22T04:20:06.140459+00:00"
+}

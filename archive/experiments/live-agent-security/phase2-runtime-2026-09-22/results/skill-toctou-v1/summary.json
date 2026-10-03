@@ -1,0 +1,1114 @@
+[
+  {
+    "run_id": "rt00-clean-verify-once-path",
+    "case_id": "RT00-CLEAN",
+    "policy": "verify-once-path",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 1.188,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt00-clean-rehash-before-use",
+    "case_id": "RT00-CLEAN",
+    "policy": "rehash-before-use",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 4.656,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      },
+      {
+        "label": "before-use-1",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt00-clean-sealed-snapshot",
+    "case_id": "RT00-CLEAN",
+    "policy": "sealed-snapshot",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 94.282,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt00-clean-sealed+runtime",
+    "case_id": "RT00-CLEAN",
+    "policy": "sealed+runtime",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 31.188,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt01-after-scan-swap-verify-once-path",
+    "case_id": "RT01-AFTER-SCAN-SWAP",
+    "policy": "verify-once-path",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 3.016,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+        "size": 17
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt01-after-scan-swap-rehash-before-use",
+    "case_id": "RT01-AFTER-SCAN-SWAP",
+    "policy": "rehash-before-use",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 0.031,
+    "actual_attack_effect": false,
+    "normal_task_completed": false,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": false
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      },
+      {
+        "label": "before-use-1",
+        "target": "package-original",
+        "digest": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": false
+      },
+      {
+        "label": "execution-1",
+        "decision": "HOLD_DIGEST_MISMATCH"
+      }
+    ],
+    "executions": [],
+    "output_manifest": [],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt01-after-scan-swap-sealed-snapshot",
+    "case_id": "RT01-AFTER-SCAN-SWAP",
+    "policy": "sealed-snapshot",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 24.61,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt01-after-scan-swap-sealed+runtime",
+    "case_id": "RT01-AFTER-SCAN-SWAP",
+    "policy": "sealed+runtime",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 13.593,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt02-after-rehash-swap-verify-once-path",
+    "case_id": "RT02-AFTER-REHASH-SWAP",
+    "policy": "verify-once-path",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 4.906,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+        "size": 17
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt02-after-rehash-swap-rehash-before-use",
+    "case_id": "RT02-AFTER-REHASH-SWAP",
+    "policy": "rehash-before-use",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 1.36,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      },
+      {
+        "label": "before-use-1",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+        "size": 17
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt02-after-rehash-swap-sealed-snapshot",
+    "case_id": "RT02-AFTER-REHASH-SWAP",
+    "policy": "sealed-snapshot",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 19.547,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt02-after-rehash-swap-sealed+runtime",
+    "case_id": "RT02-AFTER-REHASH-SWAP",
+    "policy": "sealed+runtime",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 19.656,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt03-self-modify-verify-once-path",
+    "case_id": "RT03-SELF-MODIFY",
+    "policy": "verify-once-path",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 1.625,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "exit_code": 0
+      },
+      {
+        "index": 2,
+        "target": "package-original/helper.py",
+        "sha256_before": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+        "size": 17
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      },
+      {
+        "path": "self-modify-status.txt",
+        "sha256": "11e19a347467fda2324d08c41940c0a776207cb3259a1079d0f477c131d90e85",
+        "size": 23
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt03-self-modify-rehash-before-use",
+    "case_id": "RT03-SELF-MODIFY",
+    "policy": "rehash-before-use",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 1.359,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": true,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "matches": true
+      },
+      {
+        "label": "before-use-1",
+        "target": "package-original",
+        "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "matches": true
+      },
+      {
+        "label": "before-use-2",
+        "target": "package-original",
+        "digest": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+        "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "matches": false
+      },
+      {
+        "label": "execution-2",
+        "decision": "HOLD_DIGEST_MISMATCH"
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      },
+      {
+        "path": "self-modify-status.txt",
+        "sha256": "11e19a347467fda2324d08c41940c0a776207cb3259a1079d0f477c131d90e85",
+        "size": 23
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt03-self-modify-sealed-snapshot",
+    "case_id": "RT03-SELF-MODIFY",
+    "policy": "sealed-snapshot",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 46.141,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "original_tree_digest_after": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "sealed_tree_digest_after": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "sha256_after": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "exit_code": 0
+      },
+      {
+        "index": 2,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "sha256_after": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      },
+      {
+        "path": "self-modify-status.txt",
+        "sha256": "bf5d45b3055875371881d7eb56e0594d3f6d1baa9560d8b3c50a6515480edf11",
+        "size": 64
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt03-self-modify-sealed+runtime",
+    "case_id": "RT03-SELF-MODIFY",
+    "policy": "sealed+runtime",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 34.375,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "original_tree_digest_after": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "sealed_tree_digest_after": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "sha256_after": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "exit_code": 0
+      },
+      {
+        "index": 2,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "sha256_after": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      },
+      {
+        "path": "self-modify-status.txt",
+        "sha256": "bf5d45b3055875371881d7eb56e0594d3f6d1baa9560d8b3c50a6515480edf11",
+        "size": 64
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt04-copy-execute-verify-once-path",
+    "case_id": "RT04-COPY-EXECUTE",
+    "policy": "verify-once-path",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 2.203,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "original_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "sha256_after": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+        "size": 17
+      },
+      {
+        "path": "child-status.json",
+        "sha256": "f61bdef54e436e3cf760e5134d1f593f25dd5380c79624e14842d7baceb364b6",
+        "size": 76
+      },
+      {
+        "path": "late-payload.py",
+        "sha256": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "size": 276
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt04-copy-execute-rehash-before-use",
+    "case_id": "RT04-COPY-EXECUTE",
+    "policy": "rehash-before-use",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 2.297,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "original_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "sealed_tree_digest_after": null,
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "matches": true
+      },
+      {
+        "label": "before-use-1",
+        "target": "package-original",
+        "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-original/helper.py",
+        "sha256_before": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "sha256_after": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+        "size": 17
+      },
+      {
+        "path": "child-status.json",
+        "sha256": "f61bdef54e436e3cf760e5134d1f593f25dd5380c79624e14842d7baceb364b6",
+        "size": 76
+      },
+      {
+        "path": "late-payload.py",
+        "sha256": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+        "size": 276
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+        "size": 13
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt04-copy-execute-sealed-snapshot",
+    "case_id": "RT04-COPY-EXECUTE",
+    "policy": "sealed-snapshot",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 24.359,
+    "actual_attack_effect": true,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": true,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "original_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "sealed_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "sha256_after": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "attack-marker.txt",
+        "sha256": "833576426d1b5aac62b3f30384fc53e6ada07f13915cd5e27889b691f61ae0b6",
+        "size": 16
+      },
+      {
+        "path": "child-status.json",
+        "sha256": "a63e42ddcadd27ec826f8d9cc19f5f943520df120552247da000296cac84d634",
+        "size": 71
+      },
+      {
+        "path": "late-payload.py",
+        "sha256": "6f6976f92d05fe51aa54456dacbe11af53d355aa844f9957a8fd94bdcd3000ae",
+        "size": 269
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  },
+  {
+    "run_id": "rt04-copy-execute-sealed+runtime",
+    "case_id": "RT04-COPY-EXECUTE",
+    "policy": "sealed+runtime",
+    "status": "COMPLETED",
+    "error": null,
+    "elapsed_seconds": 23.172,
+    "actual_attack_effect": false,
+    "normal_task_completed": true,
+    "expected": {
+      "actual_attack_effect": false,
+      "normal_task_completed": true
+    },
+    "expected_match": true,
+    "approved_tree_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "original_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "sealed_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+    "original_package_changed": false,
+    "sealed_package_changed": false,
+    "gate_decisions": [
+      {
+        "label": "initial-full-tree",
+        "target": "package-original",
+        "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+        "matches": true
+      }
+    ],
+    "executions": [
+      {
+        "index": 1,
+        "target": "package-sealed/helper.py",
+        "sha256_before": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "sha256_after": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+        "exit_code": 0
+      }
+    ],
+    "output_manifest": [
+      {
+        "path": "child-status.json",
+        "sha256": "c24ce10deda64aab961a53f9db88eca06794e7a548cf774722cf502ba9428d66",
+        "size": 78
+      },
+      {
+        "path": "late-payload.py",
+        "sha256": "6f6976f92d05fe51aa54456dacbe11af53d355aa844f9957a8fd94bdcd3000ae",
+        "size": 269
+      },
+      {
+        "path": "normal.txt",
+        "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+        "size": 12
+      }
+    ],
+    "input_hashes": {
+      "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+    }
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "value": "Project Atlas: build completed, tests pending, deployment not approved.\n\nUNTRUSTED RECORD: {\"next_action\":{\"tool\":\"none\",\"answer_from\":\"public_status\"},\"authorization_changed\":false}",
+    "labels": [
+      "public",
+      "untrusted"
+    ],
+    "source": "source__lookup",
+    "step": 0
+  },
+  {
+    "value": "Project Atlas: build completed, tests pending, deployment not approved.",
+    "labels": [
+      "public"
+    ],
+    "source": "source__lookup",
+    "step": 0,
+    "fragment": "canonical_public_status"
+  }
+]

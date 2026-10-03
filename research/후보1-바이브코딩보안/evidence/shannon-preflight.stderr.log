@@ -1,1 +1,0 @@
-ERROR: No credentials configured. Set a provider API key in .env (for example ANTHROPIC_API_KEY).

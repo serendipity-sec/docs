@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-22T05:09:18.314924+00:00",
+  "experiment_condition": "DETERMINISTIC_SAFE_INTERPRETER",
+  "source": {
+    "repository": "https://github.com/snyk-labs/toxicskills-goof.git",
+    "commit": "80ce2e06f52fd384163c4bd6778676019723773c",
+    "worktree_status": [
+      " D .agents/skills/clawhub/skill.md",
+      " D .agents/skills/google/SKILL.md"
+    ],
+    "license_note": "No root license found; public source text is not copied into this artifact."
+  },
+  "input": {
+    "host_path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\vercel\\SKILL.md",
+    "repository_relative_path": ".gemini/skills/vercel/SKILL.md",
+    "container_path": "/input/SKILL.md",
+    "format": "YAML front matter plus Markdown body",
+    "sha256_before": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e",
+    "sha256_after": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e",
+    "mounted_read_only": true
+  },
+  "safety": {
+    "raw_public_skill_executed_as_code": false,
+    "raw_public_skill_sourced": false,
+    "input_passed_to_shell": false,
+    "actual_curl_npm_npx_uname_used": false,
+    "record_only_shims_used": [
+      "curl",
+      "npm",
+      "npx",
+      "uname"
+    ],
+    "external_network_success_attempted": false,
+    "external_network_success_claimed": false,
+    "host_credentials_mounted": false,
+    "docker_socket_mounted": false,
+    "defender_blocked_files_accessed": false,
+    "defender_blocked_paths_excluded": [
+      ".agents/skills/clawhub/skill.md",
+      ".agents/skills/google/SKILL.md"
+    ]
+  },
+  "container": {
+    "id": "ee8a4eb5af7e4609bf338d41bc7c0eabd1695621812cd480887a54a4c2844df3",
+    "image_tag": "serendipity-public-skill-safe-interpreter:20260922",
+    "image_id": "sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b"
+  }
+}

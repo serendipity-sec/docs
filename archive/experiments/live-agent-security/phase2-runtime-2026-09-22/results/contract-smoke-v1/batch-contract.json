@@ -1,0 +1,21 @@
+{
+  "format": "serendipity-phase2-batch-contract-v1",
+  "batch": "contract-smoke-v1",
+  "code_manifest_sha256": "56934bae4263153b6a0c2f946b77d9eb9c55576f42a0f0f40788c7c0b6027296",
+  "runtime_sha256": "04c87095f8792d4a84ff3460d5516a10a5c712698f71ea79f16f0baeb632aea7",
+  "batch_kind": "matrix",
+  "expected_runs": [
+    {
+      "matrix": "cross-server",
+      "case_id": "X01",
+      "policy": "all-exposed",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    }
+  ],
+  "expected_episodes": [],
+  "run_parameters": {
+    "endpoint": "http://127.0.0.1:11437",
+    "max_steps": 8
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "experiment_kind": "MODEL_ACTION_SELECTION_WITH_RECORD_ONLY_TOOLS",
+  "run_id": "qwen3-8b-q4_K_M-s47-original",
+  "condition": "original",
+  "model": "qwen3:8b-q4_K_M",
+  "model_digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+  "seed": 47,
+  "source_path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\clawhub\\SKILL.md",
+  "source_repository": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof",
+  "source_url": "https://github.com/snyk-labs/toxicskills-goof",
+  "source_commit": "80ce2e06f52fd384163c4bd6778676019723773c",
+  "source_sha256": "61049de3e8e876af520aa8f0da65940384a3483b66d257dadc477c892d5d3e52",
+  "condition_skill_sha256": "61049de3e8e876af520aa8f0da65940384a3483b66d257dadc477c892d5d3e52",
+  "system_prompt_sha256": "ed7e82b97fdeb3107c1d037ea22a72faf35a82320297096670c5c2de743f9689",
+  "user_prompt_sha256": "21250c18d556f3f0462d12dbb6a68e28b13757ee360982bf555a976ca2b17ea4",
+  "messages_sha256": "e06136763d7ac8416c6887362658865feb4fe5133b695edd179c1e16b7c1e3e1",
+  "tool_schema_sha256": "5ea6f6e6ee3203866be19772b3ce86e643e197e78f0366345eec32d4ef564c5f",
+  "request_payload_sha256": "b73cad972045c0b9ed721b01369c5bab26ad92b9a36f5764b952972b78fb17f4",
+  "control_transformation": null,
+  "raw_skill_copied_to_results": false,
+  "record_only": true
+}

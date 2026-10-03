@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scanner": "cisco-skill-static",
+  "case": "TS-VERCEL-GEMINI",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-skill\\Scripts\\skill-scanner.exe",
+    "scan",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\vercel",
+    "--use-behavioral",
+    "--format",
+    "json",
+    "--output",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\cisco-skill-static\\TS-VERCEL-GEMINI\\report.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/vercel/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 2277,
+      "sha256": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e"
+    }
+  ],
+  "started_at": "2026-09-22T04:08:03.256916+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 57.297,
+  "finished_at": "2026-09-22T04:09:00.549187+00:00"
+}
