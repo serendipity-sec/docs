@@ -36,6 +36,8 @@ FIRST_MEETING = date(2026, 9, 15)
 MEETING_TIMES = {3: time(14), 5: time(20)}
 
 DELIVERABLES_CSV = "notion/01_제출물.csv"
+# 승인 1명 이상이 필요한 저장소. docs는 사람별 브랜치에서 승인 없이 바로 머지한다
+REVIEW_REQUIRED = {"platform"}
 REVIEW_WAIT_DAYS = 2
 ISSUE_LINK_RE = re.compile(r"\b(close[sd]?|fix(e[sd])?|resolve[sd]?|refs?)\s*:?\s*#\d+", re.I)
 
@@ -140,7 +142,7 @@ def collect_repo(repo, since, now, people, flags):
                       "why": "규칙상 main 직접 push 금지. Free 플랜 private 저장소라 브랜치 보호가 꺼져 있음"})
 
     # PR
-    open_prs = []
+    open_prs, unapproved = [], []
     for pr in safe(lambda: gh_list(f"{base}/pulls?state=all&sort=updated&direction=desc"), []):
         updated = ts(pr["updated_at"])
         if pr["state"] != "open" and updated < since:
@@ -163,7 +165,16 @@ def collect_repo(repo, since, now, people, flags):
                 person(rv_login)["reviews_given"] += 1
                 did(rv_login, "review", f"{rv['state']} on {title}", rv_at)
 
-        if pr["state"] == "open":
+        approved = any(rv["state"] == "APPROVED" and (rv.get("user") or {}).get("login") != author for rv in reviews)
+        if (merged and merged >= since and repo in REVIEW_REQUIRED
+                and not approved and not author.endswith("[bot]")):
+            unapproved.append({"number": pr["number"], "title": pr["title"], "author": name(author), "at": kst(merged)})
+
+        if pr["state"] == "open" and repo not in REVIEW_REQUIRED:
+            open_prs.append({"number": pr["number"], "title": pr["title"], "author": name(author),
+                             "age_days": (now - created).days, "draft": pr.get("draft", False),
+                             "review_states": ["승인 불필요"], "url": pr["html_url"]})
+        elif pr["state"] == "open":
             age = (now - created).days
             reviewed = any((rv.get("user") or {}).get("login") != author for rv in reviews)
             linked = bool(ISSUE_LINK_RE.search(pr.get("body") or ""))
@@ -184,11 +195,14 @@ def collect_repo(repo, since, now, people, flags):
                 flags.append({"severity": 1, "type": "pr_without_issue", "repo": repo,
                               "items": [{"number": pr["number"], "title": pr["title"]}],
                               "why": "PR 본문에 Closes #N 없음. 머지해도 이슈가 자동으로 안 닫힘"})
+    if unapproved:
+        flags.append({"severity": 2, "type": "merged_without_approval", "repo": repo, "items": unapproved,
+                      "why": "승인 1명 이상 받고 머지하는 규칙. Free 플랜이라 GitHub가 막지 못함"})
 
-    # 이슈 (PR 제외)
+    # 이슈 (PR 제외, 자동 생성 주간 현황 제외)
     open_issues = []
     for it in safe(lambda: gh_list(f"{base}/issues?state=all&sort=updated&direction=desc"), []):
-        if "pull_request" in it:
+        if "pull_request" in it or any(lb["name"] == "weekly-report" for lb in it.get("labels", [])):
             continue
         opener, created, closed = it["user"]["login"], ts(it["created_at"]), ts(it.get("closed_at"))
         title = f"#{it['number']} {it['title']}"
@@ -223,9 +237,13 @@ def collect_repo(repo, since, now, people, flags):
             p["last_activity"] = at
 
     # CI
-    runs = safe(lambda: gh(f"{base}/actions/runs?per_page=20"), {}).get("workflow_runs", [])
+    # 워크플로·브랜치별 가장 최근 실행만 본다. 이미 다시 성공한 실패는 경고하지 않는다
+    runs = safe(lambda: gh(f"{base}/actions/runs?per_page=50"), {}).get("workflow_runs", [])
+    latest = {}
+    for r in runs:  # API는 최신순
+        latest.setdefault((r["name"], r["head_branch"]), r)
     failed = [{"workflow": r["name"], "branch": r["head_branch"], "at": kst(ts(r["created_at"])), "url": r["html_url"]}
-              for r in runs if r.get("conclusion") == "failure" and ts(r["created_at"]) >= since]
+              for r in latest.values() if r.get("conclusion") == "failure" and ts(r["created_at"]) >= since]
     if failed:
         flags.append({"severity": 2, "type": "ci_failed", "repo": repo, "items": failed, "why": "워크플로 실패"})
 
@@ -291,6 +309,7 @@ FLAG_TITLES = {
     "unlinked_commits": "계정 연결 안 된 커밋",
     "ci_failed": "워크플로 실패",
     "pr_without_issue": "이슈 연결 없는 PR",
+    "merged_without_approval": "승인 없이 머지된 PR",
     "no_activity_in_window": "기간 내 GitHub 활동 없음",
 }
 
