@@ -8,10 +8,13 @@
   "channel_scope": "public_channels",
   "channel_ids": [],
   "timezone": "Asia/Seoul",
-  "raw_interval_hours": 1,
-  "summary_time": "23:00",
+  "raw_interval_hours": 24,
+  "raw_time": "01:00",
+  "summary_time": "01:00",
+  "execution_order": ["collect_raw", "publish_raw", "summarize", "publish_summaries"],
+  "automation_id": "2-slack",
   "repository": "serendipity-sec/docs",
   "publish_branch": "automation/slack-archive",
   "runtime": "Codex desktop scheduled tasks with the connected Slack plugin",
-  "connection_status": "ACCOUNT_ADDED_PENDING_TOOL_SELECTION"
+  "connection_status": "TOOL_WORKSPACE_MISMATCH"
 }
