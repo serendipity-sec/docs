@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "workspace_label": "캡스톤2",
+  "workspace_name": "capstone2",
+  "workspace_url": "https://capstone2-cxs4239.slack.com",
+  "expected_workspace_id": "T0C2Y9MNME1",
+  "workspace_id": null,
+  "channel_scope": "public_channels",
+  "channel_ids": [],
+  "timezone": "Asia/Seoul",
+  "raw_interval_hours": 1,
+  "summary_time": "23:00",
+  "repository": "serendipity-sec/docs",
+  "publish_branch": "automation/slack-archive",
+  "runtime": "Codex desktop scheduled tasks with the connected Slack plugin",
+  "connection_status": "ACCOUNT_ADDED_PENDING_TOOL_SELECTION"
+}
