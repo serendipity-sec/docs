@@ -22,12 +22,12 @@ ORG = "serendipity-sec"
 REPOS = ["docs", "platform"]
 KST = timezone(timedelta(hours=9))
 
-# GitHub ID → 이름. "(추정)"은 팀에 확인 후 고칠 것
+# GitHub ID → 이름 (2026-10-06 팀 확인)
 MEMBERS = {
     "vmaca123": "김민우",
     "yangyu0330": "양유상",
-    "bear300811": "장준서(추정)",
-    "uptime-zero": "박용준(추정)",
+    "bear300811": "장준서",
+    "uptime-zero": "박용준",
 }
 
 SEMESTER_START = date(2026, 8, 31)  # 1주차 월요일 (docs/notion/02_주차계획.csv)
