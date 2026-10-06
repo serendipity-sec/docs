@@ -1,0 +1,52 @@
+name: weekly-status
+
+# 목요일 오프라인 회의 1시간 전(13:00 KST)에 지난 7일 팀 현황을 이슈로 게시하고 지난주 이슈를 닫습니다.
+# platform 저장소까지 읽어야 해서 GITHUB_TOKEN 대신 읽기 전용 토큰(STATUS_TOKEN)을 씁니다.
+# 이슈 작성은 이 저장소의 GITHUB_TOKEN으로 합니다.
+
+on:
+  schedule:
+    - cron: "0 4 * * 4" # 목 04:00 UTC = 13:00 KST
+  workflow_dispatch:
+    inputs:
+      days:
+        description: 집계 기간(일)
+        default: "7"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 현황 수집
+        env:
+          GH_TOKEN: ${{ secrets.STATUS_TOKEN }}
+          DAYS: ${{ inputs.days || '7' }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error title=STATUS_TOKEN 없음::저장소 Settings → Secrets → Actions에 STATUS_TOKEN을 등록해 주세요 (팀-온보딩.md 7번)"
+            exit 1
+          fi
+          python3 .github/scripts/team_status.py --days "$DAYS" --md > report.md
+          head -1 report.md | sed 's/^# //' > title.txt
+          tail -n +2 report.md > body.md
+          cat body.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 이슈 게시
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          prev=$(gh issue list --label weekly-report --state open --json number --jq '.[].number')
+          url=$(gh issue create --title "$(cat title.txt)" --body-file body.md --label weekly-report)
+          echo "게시: $url"
+          for n in $prev; do
+            gh issue close "$n" --comment "다음 주간 현황: $url"
+          done

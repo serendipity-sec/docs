@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # 워크플로에 SHA로 고정한 Action의 새 버전을 매주 PR로 올립니다.
+  # docs 저장소는 패키지 의존성이 없어 Action만 대상입니다.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Seoul
+    commit-message:
+      prefix: chore
+      include: scope

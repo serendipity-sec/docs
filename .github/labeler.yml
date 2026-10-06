@@ -1,0 +1,20 @@
+# 바뀐 경로 → 라벨
+meeting:
+  - changed-files:
+      - any-glob-to-any-file: ['meetings/**']
+
+deliverable:
+  - changed-files:
+      - any-glob-to-any-file: ['deliverables/**']
+
+research:
+  - changed-files:
+      - any-glob-to-any-file: ['research/**']
+
+proposal:
+  - changed-files:
+      - any-glob-to-any-file: ['proposals/**']
+
+automation:
+  - changed-files:
+      - any-glob-to-any-file: ['.github/**']
