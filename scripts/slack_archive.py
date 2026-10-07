@@ -123,7 +123,20 @@ def seen_threads(pages):
     parents = set()
     for page in pages:
         for value in connector_data(page["result"]):
-            for message in value.get("messages", []):
+            messages = value.get("messages", [])
+            if isinstance(messages, str):
+                # The live connector can return formatted history as JSON text.
+                for block in re.split(r"(?=^=== Message from )", messages, flags=re.M):
+                    ts = re.search(r"^Message TS: (\d+\.\d+)$", block, flags=re.M)
+                    replies = re.search(r"^Thread: ([1-9]\d*) replies", block, flags=re.M)
+                    if ts and replies:
+                        parents.add(ts.group(1))
+                continue
+            if not isinstance(messages, list):
+                raise ArchiveError("Unexpected Slack message representation")
+            for message in messages:
+                if not isinstance(message, dict):
+                    raise ArchiveError("Invalid structured Slack message")
                 if message.get("reply_count", 0) > 0 and message.get("ts"):
                     parents.add(message["ts"])
     return parents

@@ -24,7 +24,11 @@
 
 ## 원문 수집
 
-1. Slack 플러그인의 워크스페이스 목록을 페이지 끝까지 확인한다. 대상은
+1. Slack 도구의 계정 목록에서 `profile_workspace_id=T0C2Y9MNME1`인 캡스톤2 연결을 선택한다.
+   `config.json`의 `slack_connection_link_id`를 **모든 Slack 조회의 `link_id`에 명시**한다.
+   현재 값은 `link_6ac4858051b0819190e2bee5fef03bca`다. 값이 도구의 실제 계정 목록에
+   없으면 다른 계정으로 대체하지 않고 연결 장애로 기록한다. `whs-agentic-ai` 연결도 유지한다.
+   해당 연결의 워크스페이스 목록을 페이지 끝까지 확인한다. 대상은
    `capstone2` / `T0C2Y9MNME1` / `capstone2-cxs4239.slack.com`이다.
    `whs-agentic-ai` 등 다른 워크스페이스의 대화는 수집하지 않는다.
    `team_id` 요청 인수만으로 올바른 워크스페이스에 접근했다고 판정하지 않는다.
@@ -36,7 +40,10 @@
    python scripts/slack_archive.py bind-workspace --source .runtime/slack-batches/workspace.json
    ```
 
-3. 해당 워크스페이스의 공개 채널 목록을 전부 조회한다. 도구가 다른 팀의 채널을 반환하거나
+3. `slack_list_user_conversations(types="public_channel", team_id="T0C2Y9MNME1")`로
+   연결 계정에 보이는 공개 채널을 모든 페이지 끝까지 조회한다. `limit`은 100 이하로 둔다.
+   채널의 `context_team_id`가 대상 ID이고 `is_private=false`인지 확인한다.
+   도구가 다른 팀의 채널을 반환하거나
    팀 정보가 생략되면 알려진 대상 채널 ID와 워크스페이스 정보를 추가 확인한다.
    DM과 비공개 채널은 읽지 않는다. 설정의 `channel_ids`가 지정돼 있으면 그 채널로만 제한한다.
 4. 채널별로 `slack_read_channel`을 `response_format="detailed"`로 호출한다.
@@ -88,7 +95,9 @@
    이 예시는 계약 설명이다. placeholder를 실제 raw로 등록하지 않는다.
    스레드가 없으면 `threads`와 `thread_parents`는 빈 배열이다.
    두 번째 페이지부터 `arguments.cursor`에 직전의 실제 다음 cursor를 넣는다.
-   기본 필드 외에 실제 사용한 `limit`, `latest`, `response_format`도 보존한다.
+   기본 필드 외에 실제 사용한 `link_id`, `limit`, `latest`, `response_format`도 보존한다.
+   응답의 `messages`가 텍스트이면 `Message TS`와 `Thread: N replies`를 확인해 부모 목록을
+   만든다. `pagination_info`에 다음 cursor가 있으면 끝까지 따라가며 종료 문구를 확인한다.
    배치를 저장할 때 shell 문자열에 Slack 메시지를 직접 보간하지 않는다.
 
 7. 채널별 배치를 저장 도구로 검증하고 등록한다.
@@ -136,7 +145,7 @@
 실제 워크스페이스 목록과 확인 시각, 실패한 단계를 `.runtime/last-run.json`에 기록한다.
 `config.json`의 `connection_status`에는 `TOOL_WORKSPACE_MISMATCH`를 표시한다.
 브라우저에서 캡스톤2가 선택된 사실만으로 현재 채팅의 도구 연결이 갱신됐다고 간주하지 않는다.
-현재 도구에는 연결 계정을 고르는 인수가 없으며 `team_id`는 인증 계정을 바꾸지 않는다.
+현재 도구는 `link_id`로 연결 계정을 선택한다. `team_id`는 인증 계정을 바꾸지 않는다.
 초기 연결 승인 페이지는 ChatGPT 플러그인의 Slack → 다른 계정 연결에서 열 수 있다.
 워크스페이스 선택이 `capstone2`인지 확인한 뒤 사용자가 승인한 범위로 연결한다.
 OAuth 권한 승인과 로그인 입력은 예약 작업이 대신 진행하지 않는다.

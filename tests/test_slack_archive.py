@@ -90,6 +90,25 @@ class ArchiveTests(unittest.TestCase):
             archive.ingest(self.root, self.batch)
         self.assertFalse((self.root / "slack/state").exists())
 
+    def test_live_formatted_history_preserves_text_and_requires_replies(self):
+        ts = "1791266400.000001"
+        native = {"content": [{"type": "text", "text": json.dumps({
+            "messages": "Channel: #fixture (CTEST1)\n\n"
+                        "=== Message from fixture at 2026-10-06 15:00:00 KST ===\n"
+                        f"Message TS: {ts}\nfixture only\nThread: 1 replies\n",
+            "pagination_info": "There are no more messages available.\n"})}],
+                  "isError": False}
+        self.batch["history"][0]["result"] = native
+        with self.assertRaises(archive.ArchiveError):
+            archive.ingest(self.root, self.batch)
+        self.assertFalse((self.root / "slack/raw").exists())
+        self.batch["threads"] = [{"ts": ts, "pages": [page([], thread=ts)]}]
+        self.assertEqual(archive.ingest(self.root, self.batch)["new_pages"], 2)
+        source = next((self.root / "slack/raw").glob("*/*.jsonl"))
+        stored = [json.loads(line) for line in source.read_text(encoding="utf-8").splitlines()]
+        self.assertEqual(stored[0]["result"], native)
+        self.assertEqual(archive.ingest(self.root, self.batch)["new_pages"], 0)
+
     def test_summary_receipt_detects_later_raw_changes(self):
         archive.ingest(self.root, self.batch)
         self.assertEqual(len(archive.summary_plan(self.root)), 1)
