@@ -12,6 +12,7 @@ import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import unquote
 
 KST = timezone(timedelta(hours=9))
 CHANNEL_ID = re.compile(r"^[CG][A-Z0-9]+$")
@@ -142,6 +143,36 @@ def seen_threads(pages):
     return parents
 
 
+def validate_reply_counts(history, threads):
+    """A terminal cursor alone cannot prove replies were returned by the connector."""
+    counts = {}
+    for page in history:
+        for value in connector_data(page["result"]):
+            messages = value.get("messages", [])
+            if isinstance(messages, str):
+                for block in re.split(r"(?=^=== Message from )", messages, flags=re.M):
+                    ts = re.search(r"^Message TS: (\d+\.\d+)$", block, re.M)
+                    count = re.search(r"^Thread: (\d+) replies", block, re.M)
+                    if ts and count:
+                        counts[ts.group(1)] = max(counts.get(ts.group(1), 0), int(count.group(1)))
+            elif isinstance(messages, list):
+                for message in messages:
+                    if message.get("ts") and message.get("reply_count", 0):
+                        counts[message["ts"]] = max(counts.get(message["ts"], 0), message["reply_count"])
+    for thread in threads:
+        returned = set()
+        for page in thread["pages"]:
+            for value in connector_data(page["result"]):
+                messages = value.get("messages", [])
+                if isinstance(messages, str):
+                    returned.update(re.findall(r"^Message TS: (\d+\.\d+)$", messages, re.M))
+                elif isinstance(messages, list):
+                    returned.update(m["ts"] for m in messages if m.get("ts"))
+        returned.discard(thread["ts"])
+        if len(returned) < counts.get(thread["ts"], 0):
+            raise ArchiveError("Thread contains fewer replies than channel history reported")
+
+
 def ingest(root, batch):
     config = config_at(root)
     workspace = batch.get("workspace", {})
@@ -177,6 +208,7 @@ def ingest(root, batch):
         raise ArchiveError("Thread replies are missing or undeclared")
     for thread in threads:
         validate_pages(thread.get("pages"), cid, thread["ts"])
+    validate_reply_counts(history, threads)
 
     # Validate the entire batch before writing anything or advancing progress.
     existing = {row["fingerprint"] for _, row in records(root)}
@@ -267,6 +299,82 @@ def save_summary(root, day, cid, text):
     return {"summary": target.relative_to(root).as_posix()}
 
 
+ORGANIZATION_PREFIXES = ("meetings/slack/", "research/slack/", "proposals/slack/")
+
+
+def raw_hashes(root):
+    return {p.relative_to(root).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in sorted((root / "slack/raw").glob("*/*.jsonl"))}
+
+
+def organization_document(root, name):
+    if not isinstance(name, str) or "\\" in name:
+        raise ArchiveError("Invalid classification path")
+    path = Path(name)
+    if path.is_absolute() or ".." in path.parts or path.suffix != ".md":
+        raise ArchiveError("Invalid classification path")
+    if name != "slack/INDEX.md" and not name.startswith(ORGANIZATION_PREFIXES):
+        raise ArchiveError("Classification is outside repository categories")
+    target = (root / path).resolve()
+    if not target.is_relative_to(root.resolve()):
+        raise ArchiveError("Classification path leaves the checkout")
+    return target
+
+
+def organization_plan(root):
+    sources = raw_hashes(root)
+    if not sources:
+        return {"needed": False, "sources": {}, "documents": []}
+    receipt_path = root / "slack/state/organization.json"
+    previous = load(receipt_path) if receipt_path.exists() else {}
+    documents = previous.get("documents", {})
+    needed = previous.get("sources") != sources or not documents
+    for name, saved_hash in documents.items():
+        path = organization_document(root, name)
+        if not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() != saved_hash:
+            needed = True
+    return {"needed": needed, "sources": sources, "documents": sorted(documents)}
+
+
+def save_organization(root, manifest):
+    sources = raw_hashes(root)
+    if not sources or manifest.get("sources") != sources:
+        raise ArchiveError("Classification source snapshot is missing or stale")
+    documents = manifest.get("documents")
+    if not isinstance(documents, list) or "slack/INDEX.md" not in documents:
+        raise ArchiveError("Classification requires the source navigation index")
+    if len(documents) != len(set(documents)):
+        raise ArchiveError("Duplicate classification documents")
+    hashes, linked = {}, set()
+    for name in documents:
+        path = organization_document(root, name)
+        text = path.read_text(encoding="utf-8")
+        if "## 수집 범위" not in text:
+            raise ArchiveError("Classification must declare source coverage")
+        local_sources = set()
+        for link in re.findall(r"\]\(([^)]+)\)", text):
+            link = unquote(link.strip("<>").split("#", 1)[0])
+            if ":" in link or not link:
+                continue
+            target = (path.parent / link).resolve()
+            if target.is_relative_to(root.resolve()):
+                relative = target.relative_to(root.resolve()).as_posix()
+                if relative.startswith("slack/raw/"):
+                    if relative not in sources:
+                        raise ArchiveError("Classification links a missing raw source")
+                    local_sources.add(relative)
+        if not local_sources:
+            raise ArchiveError("Classification must link an archived raw source")
+        linked.update(local_sources)
+        hashes[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+    if linked != set(sources):
+        raise ArchiveError("Classification index does not cover all archived channels and days")
+    write_json(root / "slack/state/organization.json", {
+        "schema_version": 1, "sources": sources, "documents": hashes,
+        "generator": "Codex in the scheduled chat; no separate API key"})
+    return {"documents": sorted(hashes), "source_files": len(sources)}
+
+
 def status(root):
     config = config_at(root)
     rows = list(records(root))
@@ -276,6 +384,7 @@ def status(root):
             "archived_native_pages": len(rows),
             "archived_channels": sorted({row["channel"]["id"] for _, row in rows}),
             "pending_summaries": len(summary_plan(root)),
+            "pending_organization": organization_plan(root)["needed"],
             "live_collection_confirmed": bool(rows)}
 
 
@@ -285,6 +394,9 @@ def main():
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("status")
     sub.add_parser("summary-plan")
+    sub.add_parser("organization-plan")
+    organizer = sub.add_parser("save-organization")
+    organizer.add_argument("--manifest", required=True, type=Path)
     binder = sub.add_parser("bind-workspace")
     binder.add_argument("--source", required=True, type=Path)
     collector = sub.add_parser("ingest")
@@ -299,6 +411,10 @@ def main():
             result = status(args.root)
         elif args.command == "summary-plan":
             result = summary_plan(args.root)
+        elif args.command == "organization-plan":
+            result = organization_plan(args.root)
+        elif args.command == "save-organization":
+            result = save_organization(args.root, load(args.manifest))
         elif args.command == "bind-workspace":
             result = bind(args.root, load(args.source))
         elif args.command == "ingest":

@@ -83,7 +83,7 @@ class ArchiveTests(unittest.TestCase):
         with self.assertRaises(archive.ArchiveError):
             archive.ingest(self.root, self.batch)
         self.batch["thread_parents"] = [ts]
-        self.batch["threads"] = [{"ts": ts, "pages": [page([], thread=ts)]}]
+        self.batch["threads"] = [{"ts": ts, "pages": [page([{"ts": "1791266401.000001"}], thread=ts)]}]
         self.batch["threads"][0]["pages"][0]["result"]["structuredContent"] = {
             "ok": False, "error": "missing_scope"}
         with self.assertRaises(archive.ArchiveError):
@@ -102,12 +102,52 @@ class ArchiveTests(unittest.TestCase):
         with self.assertRaises(archive.ArchiveError):
             archive.ingest(self.root, self.batch)
         self.assertFalse((self.root / "slack/raw").exists())
-        self.batch["threads"] = [{"ts": ts, "pages": [page([], thread=ts)]}]
+        self.batch["threads"] = [{"ts": ts, "pages": [page([{"ts": "1791266401.000001"}], thread=ts)]}]
         self.assertEqual(archive.ingest(self.root, self.batch)["new_pages"], 2)
         source = next((self.root / "slack/raw").glob("*/*.jsonl"))
         stored = [json.loads(line) for line in source.read_text(encoding="utf-8").splitlines()]
         self.assertEqual(stored[0]["result"], native)
         self.assertEqual(archive.ingest(self.root, self.batch)["new_pages"], 0)
+
+    def test_terminal_thread_without_reported_replies_is_rejected(self):
+        ts = "1791266400.000001"
+        self.batch["history"] = [page([{"ts": ts, "reply_count": 2}])]
+        self.batch["threads"] = [{"ts": ts, "pages": [page([{"ts": ts}], thread=ts)]}]
+        with self.assertRaises(archive.ArchiveError):
+            archive.ingest(self.root, self.batch)
+        self.assertFalse((self.root / "slack/raw").exists())
+
+    def organization_fixture(self):
+        archive.ingest(self.root, self.batch)
+        doc = self.root / "slack/INDEX.md"
+        doc.write_text("# fixture\n\n## 수집 범위\n[raw](raw/2026-10-06/CTEST1.jsonl)\n", encoding="utf-8")
+        return {"sources": archive.organization_plan(self.root)["sources"],
+                "documents": ["slack/INDEX.md"]}
+
+    def test_organization_receipt_detects_raw_and_document_changes(self):
+        manifest = self.organization_fixture()
+        self.assertTrue(archive.organization_plan(self.root)["needed"])
+        archive.save_organization(self.root, manifest)
+        self.assertFalse(archive.organization_plan(self.root)["needed"])
+        doc = self.root / "slack/INDEX.md"
+        doc.write_text(doc.read_text(encoding="utf-8") + "edited\n", encoding="utf-8")
+        self.assertTrue(archive.organization_plan(self.root)["needed"])
+        archive.save_organization(self.root, manifest)
+        self.batch["history"][0]["result"]["structuredContent"]["messages"][0]["text"] = "edited"
+        archive.ingest(self.root, self.batch)
+        self.assertTrue(archive.organization_plan(self.root)["needed"])
+        with self.assertRaises(archive.ArchiveError):
+            archive.save_organization(self.root, manifest)
+
+    def test_organization_cannot_register_unlinked_channels_or_wrong_paths(self):
+        manifest = self.organization_fixture()
+        (self.root / "slack/INDEX.md").write_text("## 수집 범위\nmissing raw\n", encoding="utf-8")
+        with self.assertRaises(archive.ArchiveError):
+            archive.save_organization(self.root, manifest)
+        for name in ["README.md", "research/slack/../../README.md", "../outside.md"]:
+            with self.assertRaises(archive.ArchiveError):
+                archive.organization_document(self.root, name)
+        self.assertFalse((self.root / "slack/state/organization.json").exists())
 
     def test_summary_receipt_detects_later_raw_changes(self):
         archive.ingest(self.root, self.batch)

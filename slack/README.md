@@ -1,6 +1,7 @@
-# 캡스톤2 Slack 원문과 Codex 요약
+# 캡스톤2 Slack 원문·요약·저장소 분류
 
-Codex가 연결된 Slack 플러그인으로 대화를 읽고 이 저장소에 원문과 한국어 요약을 저장한다.
+Codex가 연결된 Slack 플러그인으로 대화를 읽고 원문과 한국어 요약을 저장한 뒤,
+저장소의 회의·조사·제안 분류에 연결한다. [Slack 지식 목록](INDEX.md)에서 주제별로 읽는다.
 별도 OpenAI API 키, Slack 봇 토큰, 요약 서버를 사용하지 않는다.
 예약 실행은 GitHub Actions가 아니라 사용자의 Codex 앱에서 수행한다.
 
@@ -13,9 +14,9 @@ Codex가 연결된 Slack 플러그인으로 대화를 읽고 이 저장소에 �
 | 조회 계정 | `config.json`의 `slack_connection_link_id`를 모든 Slack 조회의 `link_id`로 지정 |
 | 채널 | 연결된 계정에 보이는 공개 채널 전체. 별도 지정 전까지 비공개 채널·DM 제외 |
 | 실행 시각 | 매일 새벽 01:00, 한국 시간 |
-| 실행 순서 | 원문 수집 → 원문 GitHub 업로드 → Codex 요약 → 요약 GitHub 업로드 |
+| 실행 순서 | 원문 수집 → yusang 업로드 → Codex 요약·분류 → PR 검사 → Merge pull request |
 | 원문 | 채널과 스레드의 모든 페이지를 읽은 뒤 저장 |
-| GitHub | 비공개 `serendipity-sec/docs`, `automation/slack-archive` 브랜치 |
+| GitHub | 비공개 `serendipity-sec/docs`, 사람별 `yusang` 브랜치 → PR → `main` |
 | 로컬 작업 폴더 | `C:\Users\andyw\Desktop\serendipity-sec\.publication-work\slack-archive` |
 
 로컬 파일을 사용하는 예약 실행에는 PC와 Codex 앱이 켜져 있어야 한다.
@@ -32,7 +33,7 @@ Codex가 연결된 Slack 플러그인으로 대화를 읽고 이 저장소에 �
 두 계정의 기존 연결과 권한은 모두 유지한다.
 
 2026-10-06에 현재 Codex 채팅으로 돌아오는 예약 작업을 매일 한국 시간 새벽 01:00으로 변경했다.
-`캡스톤2 Slack 원문·요약 저장`(`2-slack`) 하나에서 원문 수집과 요약을 순서대로 처리한다.
+`2-slack` 하나에서 원문 수집과 요약·분류를 순서대로 처리한다.
 기존 별도 23:00 요약 작업(`2-slack-2`)은 삭제했다.
 
 2026-10-06 14:32:22 KST에 첫 수동 실행을 시도했다. 당시 Slack 도구의 워크스페이스 목록 전체를
@@ -45,6 +46,11 @@ Codex가 연결된 Slack 플러그인으로 대화를 읽고 이 저장소에 �
 예약의 실제 시작은 09:14 KST, 수집 기준은 09:15:35 KST였다. 새벽 01:00 예약의 지연 원인은 미확인이다.
 첫 백업에는 9월 20일부터 10월 6일까지의 기록이 포함되며, 첨부 본문은 포함하지 않는다.
 
+2026-10-07 재조회에서는 원래 응답이 같아 중복 원문을 추가하지 않았다.
+기존 77개 메시지·답글을 운영 공지와 할 일, MCP 조사, 공유 자료 목록, 주제 후보,
+아키텍처 논의안의 5개 문서로 분류했다. 최신 `팀-온보딩.md`에 맞춰 이후 업로드는
+`yusang` → PR → 검사 → Merge pull request로 처리한다. `automation/slack-archive`는 초기 백업 이력이다.
+
 ## 저장 파일
 
 ```text
@@ -55,7 +61,12 @@ slack/
   summaries/YYYY-MM-DD/C채널ID.md
   state/channels/C채널ID.json
   state/summaries/YYYY-MM-DD/C채널ID.json
+  INDEX.md
+  state/organization.json
 scripts/slack_archive.py
+meetings/slack/메시지날짜-운영주제.md
+research/slack/메시지날짜-조사주제.md
+proposals/slack/메시지날짜-제안주제.md
 ```
 
 날짜는 **원문을 수집한 한국 날짜**다. 초기 백업에는 과거 메시지도 포함될 수 있으므로
@@ -72,11 +83,27 @@ scripts/slack_archive.py
 요약 실패는 원문 저장을 되돌리지 않는다. 원문 해시가 바뀌면 다음 요약 실행에서 다시 처리한다.
 예약을 등록했다는 사실과 실제 첫 수집·요약·GitHub 업로드 성공은 각각 확인한다.
 
+## 저장소 분류
+
+원문을 읽은 현재 Codex가 내용의 목적에 따라 분류한다. 채널명이나 키워드만으로 결정하지 않는다.
+공식 회의록·출석·제출 완료·최종 설계와 Slack의 공지·개인 제안을 구분한다.
+기존 자료를 먼저 찾아 연결하고, 근거 없이 사람·기한·진행률·상태를 바꾸지 않는다.
+첨부 본문이 없으면 자료 목록으로 남긴다. 내용 없는 채널도 INDEX에서 범위를 밝힌다.
+
+`organization-plan`은 원문과 분류 파일의 SHA-256을 확인해 재처리 필요 여부를 반환한다.
+`save-organization`은 원문 스냅샷·허용 경로·수집 범위·모든 raw의 링크를 검사해 등록한다.
+이 검사는 문장 내용의 정확성을 자동 보증하지 않으므로 Codex가 원문과 대조한다.
+처리 중 실패하면 원문을 보존하고 다음 실행에서 밀린 요약·분류를 다시 처리한다.
+
+raw에는 원래 응답의 Slack 작성자·연락처 메타데이터가 포함될 수 있다.
+현재 비공개 저장소에 보존하며, 저장소를 공개할 때는 Git 이력을 포함한 개인정보 검토가 필요하다.
+
 ## 확인
 
 ```powershell
 python scripts/slack_archive.py status
 python scripts/slack_archive.py summary-plan
+python scripts/slack_archive.py organization-plan
 python -m unittest discover -s tests -v
 ```
 

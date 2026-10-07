@@ -16,11 +16,16 @@
     "collect_raw",
     "publish_raw",
     "summarize",
-    "publish_summaries"
+    "organize_repository",
+    "publish_summaries_and_categories",
+    "merge_pull_request"
   ],
   "automation_id": "2-slack",
   "repository": "serendipity-sec/docs",
-  "publish_branch": "automation/slack-archive",
+  "publish_branch": "yusang",
+  "publish_base": "main",
+  "publish_method": "pull_request_merge_commit_after_checks",
+  "organization_paths": ["meetings/slack", "research/slack", "proposals/slack", "slack/INDEX.md"],
   "runtime": "Codex desktop scheduled tasks with the connected Slack plugin",
   "connection_status": "WORKSPACE_VERIFIED"
 }

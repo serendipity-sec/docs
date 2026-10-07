@@ -7,10 +7,12 @@
 
 1. 작업 폴더는 `C:\Users\andyw\Desktop\serendipity-sec\.publication-work\slack-archive`다.
    `git remote get-url origin`이 `https://github.com/serendipity-sec/docs.git`이고 브랜치가
-   `automation/slack-archive`인지 확인한다. 저장소는 비공개여야 한다.
+   `yusang`인지 확인한다. 저장소는 비공개여야 한다.
+   최신 원격 `README.md`와 `팀-온보딩.md`의 분류·사람별 브랜치 규칙도 읽는다.
 2. 관련 없는 로컬 수정이나 다른 브랜치가 발견되면 변경을 보존하고 원인을 알린다.
-   깨끗한 작업 폴더에서는 원격 브랜치를 fetch한 뒤 fast-forward로만 동기화한다.
-   강제 push, reset, stash, main 변경을 사용하지 않는다.
+   깨끗한 작업 폴더에서는 fetch 후 `origin/yusang`을 fast-forward로 동기화하고
+   `origin/main`을 yusang에 병합한다. 충돌이 있으면 원문과 다른 사람의 변경을 보존한다.
+   main에 직접 push하지 않는다. 강제 push, reset, stash와 다른 체크아웃 변경을 사용하지 않는다.
 3. 상태는 `python scripts/slack_archive.py status`로 확인한다.
    연결 실패·수집 실패·업로드 실패를 성공이나 빈 채널로 취급하지 않는다.
 4. 실행 실패와 사용자 조치가 필요할 때 알린다. 같은 연결 장애는 반복 알리지 않는다.
@@ -18,9 +20,9 @@
 
 ## 예약
 
-매일 한국 시간 새벽 01:00에 하나의 예약 작업에서 아래 원문 수집과 요약 절차를 순서대로
-실행한다. 원문 업로드가 확인된 뒤 요약한다. 요약이 실패하면 이미 저장한 원문을 보존하고
-다음 실행에서 미완료 요약을 다시 처리한다.
+매일 한국 시간 새벽 01:00에 하나의 예약 작업에서 원문 수집 → yusang 업로드 → 요약 →
+저장소 분류 → PR 검사·Merge pull request를 순서대로 수행한다.
+요약·분류가 실패해도 원문을 보존하고 다음 실행에서 다시 처리한다.
 
 ## 원문 수집
 
@@ -98,6 +100,10 @@
    기본 필드 외에 실제 사용한 `link_id`, `limit`, `latest`, `response_format`도 보존한다.
    응답의 `messages`가 텍스트이면 `Message TS`와 `Thread: N replies`를 확인해 부모 목록을
    만든다. `pagination_info`에 다음 cursor가 있으면 끝까지 따라가며 종료 문구를 확인한다.
+   종료 문구가 있어도 실제 답글 수가 채널의 `Thread: N replies`보다 적으면 실패로 취급한다.
+   2026-10-07에는 `latest`를 지정한 스레드 조회가 답글 4개를 비워 반환했다.
+   이때 빈 응답을 등록하지 않고 `latest` 없이 다시 읽어 실제 답글 4개를 확인했다.
+   재시도 결과도 수집 기준 시각과 대조하고 원래 요청 인수와 응답을 보존한다.
    배치를 저장할 때 shell 문자열에 Slack 메시지를 직접 보간하지 않는다.
 
 7. 채널별 배치를 저장 도구로 검증하고 등록한다.
@@ -110,7 +116,7 @@
    다른 채널 원문을 버리지 않는다. 실패 채널과 실제 성공 채널을 구별해 보고한다.
 8. 자격증명이 포함된 파일은 공개하거나 커밋하지 않는다. 임시 파일·로그는 커밋 대상이 아니다.
    변경된 `slack/config.json`, `slack/raw/`, `slack/state/channels/`만 선택해 커밋한다.
-   `git push origin HEAD:refs/heads/automation/slack-archive`로 업로드하고 원격 SHA를 확인한다.
+   `git push origin HEAD:refs/heads/yusang`으로 업로드하고 원격 SHA를 확인한다.
    원격이 변경되어 push가 거절되면 로컬 원문을 보존하고 알린다.
    동일 원문뿐이면 커밋을 만들지 않는다.
 9. 첫 실제 수집과 원격 업로드가 확인되면 채널 수·원문 페이지 수·커밋 링크로 한 번 알린다.
@@ -135,9 +141,45 @@
    python scripts/slack_archive.py save-summary --day YYYY-MM-DD --channel C채널ID --text-file .runtime/slack-batches/summary.md
    ```
 
-6. `slack/summaries/`와 `slack/state/summaries/`만 선택해 커밋하고 전용 브랜치에 업로드한다.
-   파일 존재·원문 링크·원격 SHA를 확인한다. 요약을 생성한 경우 날짜·채널과 GitHub 링크를
-   한 번 안내한다. 처리할 원문이 없으면 조용히 종료한다.
+6. `slack/summaries/`와 `slack/state/summaries/`를 선택해 커밋한다.
+   이어서 저장소 분류 단계도 확인한다. 요약 변경이 없어도 밀린 분류가 있으면 처리한다.
+
+## 저장소 분류와 공개
+
+1. `python scripts/slack_archive.py organization-plan`으로 원문 스냅샷과 재처리 필요 여부를 읽는다.
+   `needed`가 true이면 반환한 원문 전체와 기존 분류 문서를 읽고 변경·누락된 내용을 대조한다.
+2. 현재 Codex가 본문을 의미에 따라 분류한다. 같은 주제의 기존 문서를 찾아 갱신하거나 연결한다.
+   - `meetings/slack/`: 운영 공지·일정·결정·업무 요청. 실제 회의록과 구분한다.
+   - `research/slack/`: 조사 내용·출처·자료 목록. 첨부 미열람과 외부 주장 미검증을 밝힌다.
+   - `proposals/slack/`: 개인 후보·설계 방향·비교 계획. 최종 채택이나 구현 완료로 바꾸지 않는다.
+   - `slack/INDEX.md`: 주제별 탐색, 채널별 요약과 raw 링크, 실질 내용 없는 채널의 범위.
+   실제 과목 제출이나 강의 자료가 확인되면 별도 문서로 먼저 검토한다. 근거 없는 제출 상태 변경은 하지 않는다.
+3. 분류 문서의 이름에는 실제 메시지 날짜를 사용한다. 문서마다 `## 수집 범위`, 수집 날짜,
+   메시지 날짜, Slack 메시지 URL, raw 상대 링크와 출처 확인 날짜를 남긴다.
+   담당자·기한·완료 여부는 명시된 것만 쓴다. 기존 공식 문서와 충돌하면 양쪽 근거와 미확인을 기록한다.
+4. 분류 문서를 저장한 뒤 다음 manifest를 임시 경로에 작성한다.
+
+   ```json
+   {"sources": {"<organization-plan의 모든 원문 경로>": "<반환된 SHA-256>"},
+    "documents": ["slack/INDEX.md", "<모든 기존 및 갱신 분류 문서 경로>"]}
+   ```
+
+   `python scripts/slack_archive.py save-organization --manifest .runtime/organization-manifest.json`
+   으로 등록한다. 오래된 해시·잘못된 경로·raw 링크 누락은 등록하지 않는다.
+   모든 원문 경로는 INDEX에서 설명과 함께 연결한다. 기존 분류 문서는 manifest에서 누락시키지 않는다.
+5. 실제 문장과 원문, 내부 링크, `summary-plan`과 `organization-plan`을 확인한다.
+   `meetings/slack/`, `research/slack/`, `proposals/slack/`, `slack/INDEX.md`,
+   `slack/state/organization.json` 및 변경된 요약 상태만 선택해 문서 커밋을 만든다.
+   RUNBOOK·config·저장 도구 수정은 사용자가 요청한 운영 변경 때만 함께 검토·커밋한다.
+6. `yusang`에 push하고 원격 SHA를 확인한다. 동일 head의 열린 PR이 있으면 재사용한다.
+   없으면 base main, head yusang으로 PR을 만들고 Codex 채팅에 PR을 첨부한다.
+   변경 범위·검증·개인정보 포함 여부를 본문에 정확하게 적는다.
+7. 최신 팀 규칙에서 docs는 승인 없이 본인이 **Merge pull request**한다.
+   PR 검사에 빨간불이 있으면 병합하지 않는다. 체크가 모두 성공하고 충돌이 없을 때
+   검사한 head SHA를 지정해 merge commit으로 병합한다. yusang은 삭제하지 않는다.
+   API나 push로 main을 직접 갱신하지 않는다. 원격 merge SHA와 분류·raw 파일을 확인한다.
+8. 요약 또는 분류가 새로 생성되거나 실제 장애가 생기면 한 번 짧게 알린다.
+   새 원문·밀린 요약·밀린 분류·미완료 PR 모두 없으면 조용히 종료한다.
 
 ## 연결 장애
 
