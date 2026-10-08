@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="BoundaryCheck: MCP·Skill 워크플로우의 실행 권한 환경별 정책 위반 검증. 교수 검토용 프로젝트 제안서와 상세 설계.">
+<title>BoundaryCheck | 프로젝트 제안 · 상세 설계</title>
+<style>
+:root{--bg:#f5f7fa;--paper:#fff;--ink:#18283b;--muted:#596b7c;--subtle:#7b8997;--line:#dce3ea;--accent:#087e80;--accent-bg:#e7f4f2;--blue:#315acf;--blue-bg:#edf2fd;--red:#a93d39;--red-bg:#fbefec;--amber:#946211;--amber-bg:#fff5e0;--nav:#102438;--nav-muted:#a8b9c9;--serif:Georgia,serif;--font:"Pretendard","Noto Sans KR","Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;--mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--radius:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:30px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.72;word-break:keep-all;-webkit-font-smoothing:antialiased}a{color:inherit}button,select{font:inherit}button,a{touch-action:manipulation}button{cursor:pointer}button:focus-visible,a:focus-visible,summary:focus-visible,select:focus-visible{outline:3px solid #2e74e8;outline-offset:4px}::selection{background:#bbdfdf}h1,h2,h3,h4,p{margin:0}h1,h2,h3,h4{line-height:1.35;letter-spacing:-.035em}p+p{margin-top:12px}strong{font-weight:750}code{font-family:var(--mono);font-size:.89em;word-break:break-word}p code,td code,li code{background:#eef2f5;padding:2px 5px;border-radius:4px}.skip-link{position:fixed;top:-100px;left:20px;z-index:100;background:#fff;padding:12px}.skip-link:focus{top:14px}
+.sidebar{position:fixed;inset:0 auto 0 0;width:236px;background:var(--nav);color:#e9f0f5;z-index:30;padding:33px 24px;display:flex;flex-direction:column}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:20px;font-weight:800;letter-spacing:-.6px}.brand-mark{width:33px;height:37px;background:#8dd8c8;color:#102438;display:grid;place-items:center;font-size:17px;font-weight:900;clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%)}.sidebar-caption{font-size:11px;letter-spacing:1.5px;color:var(--nav-muted);margin:15px 0 28px}.nav-list{display:flex;flex-direction:column;gap:5px}.nav-link{text-decoration:none;border-radius:7px;padding:10px 10px;color:#b4c3cf;display:flex;gap:11px;align-items:center;font-size:13px;line-height:1.4;transition:background .15s,color .15s}.nav-link>span{font-family:var(--mono);font-size:10px;color:#7792aa}.nav-link:hover,.nav-link.active{background:#223b4f;color:#fff}.nav-link.active>span{color:#95dfd0}.sidebar-footer{margin-top:auto;padding-top:25px;color:#9fb1c1;font-size:11px;line-height:1.8}.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#a5dccc;margin-right:6px}.side-button{width:100%;background:transparent;border:1px solid #40576a;color:#dce8ee;border-radius:7px;padding:9px;font-size:12px;margin:14px 0 6px}.side-button:hover{background:#223b4f}.mobile-header{display:none}.main{margin-left:236px;max-width:1536px}.content{max-width:1220px;margin:0 auto;padding:0 56px}.hero{padding:68px 0 46px;border-bottom:1px solid var(--line)}.eyebrow{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:1.8px;color:var(--accent);text-transform:uppercase}.hero-top{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:31px}.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:5px;background:var(--blue-bg);color:var(--blue);font-size:11px;font-weight:700;line-height:1.5;vertical-align:middle;letter-spacing:0}.chip.study{color:var(--accent);background:var(--accent-bg)}.chip.plan{color:var(--blue);background:var(--blue-bg)}.chip.example{color:var(--amber);background:var(--amber-bg)}.chip.dark{color:#a6e2d5;background:#214939}.hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(270px,.9fr);gap:42px;align-items:center}.hero h1{font-size:46px;font-weight:850;letter-spacing:-2px;line-height:1.25}.hero h1 span{color:var(--accent)}.one-line{font-size:19px;line-height:1.75;margin-top:25px;max-width:700px;color:#35495a}.hero-small{margin-top:17px;font-size:12px;color:var(--muted)}.concept{background:var(--nav);color:white;border-radius:18px;padding:25px 23px;position:relative}.concept-label{color:#a9c2d6;font-size:11px;letter-spacing:.5px;margin-bottom:17px}.concept-artifact{text-align:center;border:1px solid #4b6173;background:#1b354b;padding:14px 8px;border-radius:9px;font-size:14px;font-weight:700}.concept-arrow{text-align:center;color:#87cbbb;padding:5px;font-size:20px}.concept-branches{display:grid;grid-template-columns:1fr 1fr;gap:12px}.concept-branch{border-top:2px solid #9cdecd;background:#183b40;border-radius:5px;padding:14px 8px;text-align:center}.concept-branch:last-child{border-color:#ecad91;background:#413836}.concept-branch small{display:block;font-size:11px;color:#c9d9df;margin-bottom:5px}.concept-branch b{font-size:14px;color:#c9f2e8}.concept-branch:last-child b{color:#ffd4bb}.concept-note{font-size:11px;color:#afc0cd;margin-top:17px}.hero-brief{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:39px;padding-top:24px;border-top:1px solid var(--line)}.hero-brief span{color:var(--accent);font-size:11px;font-weight:750;display:block;margin-bottom:7px}.hero-brief p{font-size:14px;color:#405365}.terms{display:flex;gap:22px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:23px}.terms strong{color:var(--ink)}
+section.report-section{padding:50px 0;border-bottom:1px solid var(--line);scroll-margin-top:28px}.section-head{display:flex;align-items:flex-start;gap:17px;margin-bottom:23px}.section-index{font-family:var(--mono);font-size:13px;color:var(--accent);padding-top:8px;min-width:25px}.section-head h2{font-size:29px;font-weight:800}.section-deck{font-size:15px;color:var(--muted);margin-top:10px;max-width:900px}.section-head .chip{margin-bottom:11px}.lead{font-size:17px;color:#415267;margin-bottom:24px}.ref{font-family:var(--mono);font-size:10px;vertical-align:super;font-weight:700;color:var(--accent);text-decoration:none;margin-left:4px;white-space:nowrap}.ref:hover{text-decoration:underline}.callout{border-left:3px solid var(--accent);background:var(--accent-bg);padding:15px 18px;border-radius:0 8px 8px 0;font-size:14px;margin-top:21px}.callout.warning{background:var(--amber-bg);border-color:#c38a2c;color:#6b501f}.callout.neutral{border-color:#aab8c4;background:#ecf0f4}.note{font-size:12px;color:var(--muted);line-height:1.75;margin-top:14px}.eyebrow+.section-deck{margin-top:8px}.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:22px}.grid-three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:24px}.card h3{font-size:18px;margin-bottom:10px}.card p{font-size:14px;color:#516171}.card-kicker{font-size:11px;font-weight:800;letter-spacing:.3px;color:var(--accent);margin-bottom:10px}.subheading{font-size:20px;margin:29px 0 17px}.pill{font-size:11px;border:1px solid var(--line);border-radius:100px;padding:3px 9px;white-space:nowrap;color:var(--muted)}
+.evidence-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px}.chart-card{padding:25px 27px;background:#fff;border:1px solid var(--line);border-radius:16px}.chart-title{font-size:17px;font-weight:750}.chart-sub{font-size:11px;color:var(--muted);margin:7px 0 20px}.bar-row{display:grid;grid-template-columns:135px minmax(0,1fr) 49px;gap:10px;align-items:center;margin:13px 0;font-size:12px}.bar-label{line-height:1.45}.bar-track{height:15px;background:#edf1f4;border-radius:3px;overflow:hidden}.bar-fill{height:100%;background:#9daeba;border-radius:3px}.bar-row.emphasis .bar-fill{background:var(--accent)}.bar-row.secondary .bar-fill{background:#74a9a2}.bar-value{font-family:var(--mono);font-weight:700;text-align:right;font-size:12px}.chart-caption{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:19px}.metric-stack{display:grid;gap:15px}.metric-card{background:white;border:1px solid var(--line);border-radius:14px;padding:22px 24px}.metric-main{font-family:var(--mono);font-size:43px;font-weight:700;line-height:1.15;letter-spacing:-2px;margin:6px 0 7px}.metric-main small{font-size:21px;letter-spacing:0}.metric-card h3{font-size:14px}.metric-card p{font-size:12px;color:var(--muted);margin-top:7px}.metric-foot{font-size:11px;color:var(--muted);margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.65}th{text-align:left;background:#edf2f6;font-weight:750;color:#334a5f;padding:13px 16px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:16px;vertical-align:top;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}td small{display:block;font-size:11px;color:var(--muted);margin-top:4px}.research-table th:first-child{width:23%}.research-table th:nth-child(2){width:40%}.research-table td:first-child strong{font-size:13px}.research-table .ours td{background:#edf7f5}.type-label{display:inline-block;font-size:10px;font-weight:700;color:var(--accent);margin-bottom:4px}.gap-cards .card{border:0;border-top:2px solid #2b7d7e;border-radius:0;background:transparent;padding:19px 0}.gap-cards .number{font:700 12px var(--mono);color:var(--accent);margin-bottom:12px}.gap-cards h3{font-size:19px}.unit-band{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:18px 0 0;padding:17px 20px;background:#eaf0f6;border-radius:10px;font-size:12px}.unit-band strong{margin-right:7px}.unit-band span{background:white;border:1px solid #d8e1e9;padding:5px 9px;border-radius:5px}.unit-band i{font-style:normal;color:#8395a4}
+.arch-shell{background:#112a3d;border-radius:18px;padding:27px;color:#e4edf3}.arch-head{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:21px}.arch-head h3{font-size:19px;color:#fff}.arch-legend{display:flex;gap:13px;font-size:10px;color:#c0d0dc}.legend-mark{display:inline-block;width:7px;height:7px;border-radius:2px;margin-right:5px;background:#88c7b7}.legend-mark.test{background:#e1ae7a}.legend-mark.evidence{background:#8cacf2}.input-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}.arch-input{border:1px dashed #b79469;border-radius:9px;padding:14px 16px;background:#263647}.arch-input.trusted{border:1px solid #4d827e;background:#183f49}.arch-input b{display:block;font-size:13px;margin-bottom:4px}.arch-input p{font-size:11px;line-height:1.65;color:#c1d2df}.flow-arrow{text-align:center;color:#7fa3b9;font-size:21px;line-height:1.3;padding:7px}.flow-label{font-size:10px;color:#a9bfd0;margin-left:7px;vertical-align:middle}.control-zone{border:1px solid #457078;border-radius:11px;padding:16px;background:#193748}.zone-title{font-size:10px;color:#9be0cd;letter-spacing:.4px;font-weight:750;margin-bottom:11px}.control-nodes{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr;align-items:stretch}.arch-node{background:#f6fafb;color:#193044;padding:14px;border-radius:7px;min-width:0}.arch-node b{font-size:12px;display:block}.arch-node small{display:block;font-size:10px;line-height:1.65;color:#557081;margin-top:5px}.h-arrow{display:grid;place-items:center;color:#a1c6d7;font-size:16px}.pair-note{text-align:center;font-size:11px;color:#cae0e7;padding:11px 0}.pair-envs{display:grid;grid-template-columns:1fr 1fr;gap:16px}.env-box{border:1px solid #47857b;border-radius:10px;padding:16px;background:#143b43}.env-box.wide{border-color:#9d806c;background:#323c44}.env-title{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:750;margin-bottom:12px}.env-tag{font:700 10px var(--mono);background:#2c645e;color:#c6f1e3;padding:3px 6px;border-radius:4px}.wide .env-tag{background:#695141;color:#f7ddc2}.sandbox-boundary{border:1px dashed #9e937f;border-radius:8px;padding:12px;background:rgba(11,20,30,.13)}.sandbox-label{font-size:10px;color:#e4bd96;margin-bottom:9px}.sandbox-items{display:flex;align-items:center;justify-content:center;gap:8px}.sandbox-items div{padding:9px 8px;background:#edf2f6;color:#183448;border-radius:5px;font-size:11px;text-align:center;flex:1}.sandbox-items div small{display:block;font-size:9px;color:#647887}.enforcement{background:#d9eeea;color:#153e42;border-radius:7px;padding:11px;margin-top:11px;font-size:11px;line-height:1.7}.wide .enforcement{background:#f1e5d6;color:#57422d}.enforcement b{display:block;font-size:11px}.env-data{font-size:10px;color:#b8d0dc;margin-top:10px}.observer-zone{border:1px solid #6b8bb8;border-radius:10px;padding:16px;background:#203d57}.observer-title{font-size:11px;color:#c4d9ff;font-weight:750;margin-bottom:11px}.observer-grid{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr;align-items:stretch}.observer-grid .arch-node{background:#eaf1fd}.arch-bottom{margin-top:15px;font-size:11px;color:#bdcfdc;line-height:1.75}.arch-bottom strong{color:#f0f6f9}.architecture-caption{font-size:12px;color:var(--muted);margin-top:13px}.boundary-cards{margin-top:21px}.boundary-cards .card{padding:19px}.boundary-cards h3{font-size:15px}.boundary-cards p{font-size:12px}.mini-title{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:7px}
+.scope-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;background:white;overflow:hidden;margin-bottom:25px}.scope-item{padding:18px;border-right:1px solid var(--line)}.scope-item:last-child{border-right:0}.scope-item b{font:750 28px var(--mono);line-height:1.2;color:var(--accent);display:block;margin-bottom:5px}.scope-item span{font-size:12px;color:var(--muted)}.scope-item em{font-size:12px;color:var(--ink);font-style:normal;display:block;margin-bottom:3px}.policies .card{padding:21px}.policy-id{font:700 11px var(--mono);letter-spacing:.6px;color:var(--blue);margin-bottom:9px}.policies h3{font-size:18px}.rule-line{font-size:13px;padding:12px 13px;background:#edf3f7;border-radius:7px;margin-top:14px;color:#23445b}.rule-line b{font-weight:800}.design-table td{font-size:12px}.design-table td:first-child{font-weight:750;white-space:nowrap}.design-table th:first-child{width:18%}.design-table th:nth-child(2){width:34%}.design-table th:nth-child(3){width:48%}.design-links{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}.design-links .card{padding:20px}.design-links h3{font-size:16px}.design-links p{font-size:13px}.sequence{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:19px 0}.seq{border-top:2px solid #bccfda;padding-top:13px}.seq i{display:block;font:700 10px var(--mono);font-style:normal;color:var(--accent);margin-bottom:7px}.seq b{font-size:13px;display:block;margin-bottom:5px}.seq p{font-size:12px;color:var(--muted)}details{border:1px solid var(--line);border-radius:10px;background:white;margin-top:13px;overflow:hidden}summary{padding:15px 18px;font-size:14px;font-weight:750;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}summary::-webkit-details-marker{display:none}summary::after{content:'+';font-size:19px;font-weight:400;color:var(--accent)}details[open]>summary::after{content:'−'}details[open]>summary{border-bottom:1px solid var(--line);background:#f9fbfc}.detail-content{padding:20px}.detail-content p{font-size:13px;color:var(--muted)}.detail-content .table-wrap{margin-top:14px}.code-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.code-label{font:700 11px var(--mono);color:var(--muted);margin-bottom:9px}pre{margin:0;padding:18px;border-radius:8px;background:#142c40;color:#dceaf3;overflow:auto;line-height:1.7;font-size:12px;word-break:normal;white-space:pre}.detail-content pre{margin-top:10px}.inline-rules{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}.decision{padding:17px 13px;border-radius:9px;background:#fff;border:1px solid var(--line)}.decision b{font-size:13px;display:block;margin-bottom:7px}.decision p{font-size:11px;color:var(--muted)}.decision.red{border-top:3px solid #b35c53}.decision.teal{border-top:3px solid var(--accent)}.decision.gray{border-top:3px solid #8294a2}.decision.amber{border-top:3px solid #bf903c}
+.demo-shell{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}.demo-controls{padding:22px 25px;background:#edf2f6;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line)}.control-label{font-size:11px;color:var(--muted);font-weight:700;display:block;margin-bottom:8px}.segmented{display:flex;background:white;padding:4px;border:1px solid #d5dfe7;border-radius:8px;gap:3px}.segmented button{border:0;background:transparent;padding:8px 13px;font-size:12px;border-radius:5px;white-space:nowrap;color:#526779}.segmented button[aria-pressed="true"]{background:var(--nav);color:white}.demo-controls select{padding:10px 31px 10px 12px;border:1px solid #cdd8e1;border-radius:7px;background:white;color:#213c50;font-size:12px}.demo-body{padding:25px}.demo-status-line{display:flex;align-items:center;gap:12px;margin-bottom:17px;flex-wrap:wrap}.verdict{font-size:13px;font-weight:800;border-radius:6px;padding:6px 11px;background:var(--red-bg);color:var(--red)}.verdict.blocked{background:var(--accent-bg);color:var(--accent)}.verdict.clear{background:#edf2f6;color:#4a6176}.verdict.unknown{background:var(--amber-bg);color:var(--amber)}.demo-summary{font-size:14px;color:#4d5f6e}.demo-workflow{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr;align-items:center;margin:21px 0}.demo-node{border:1px solid var(--line);background:#f7f9fb;border-radius:8px;text-align:center;padding:14px 8px;font-size:12px}.demo-node b{display:block;font-size:13px;margin-bottom:3px}.demo-node small{font-size:11px;color:var(--muted)}.demo-workflow .h-arrow{color:#7f93a5}.demo-evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.demo-evidence div{padding:13px 16px;background:#f2f5f8;border-radius:8px}.demo-evidence span{font-size:11px;color:var(--muted);display:block}.demo-evidence b{font-size:13px;display:block;margin-top:4px}.demo-caveat{font-size:12px;margin-top:17px;padding:12px 15px;background:var(--amber-bg);color:#775924;border-radius:6px}.noscript-note{font-size:12px;padding:12px;background:#fff2db}.question-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.question-card{padding:20px 0;border-top:2px solid #c2d2df}.question-card span{font:750 11px var(--mono);color:var(--accent);display:block;margin-bottom:9px}.question-card h3{font-size:16px;margin-bottom:9px}.question-card p{font-size:13px;color:var(--muted)}.experiment-band{background:var(--nav);border-radius:13px;color:#fff;padding:23px 26px;margin:24px 0;display:grid;grid-template-columns:1.4fr 1fr;gap:25px;align-items:center}.experiment-band h3{font-size:17px;color:#d8e6ef}.experiment-formula{font-family:var(--mono);font-size:27px;letter-spacing:-1px;font-weight:700;margin-top:13px}.experiment-formula strong{color:#9edecd;font-size:38px}.experiment-band p{font-size:12px;color:#c1d2dd;margin-top:8px}.experiment-supp{border-left:1px solid #42596a;padding-left:25px}.experiment-supp b{font:700 31px var(--mono);color:#e6f0f7}.experiment-supp b small{font-family:var(--font);font-size:12px;letter-spacing:0}.evaluation-table th:first-child{width:19%}.evaluation-table td{font-size:12px}.metric-tags{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.metric-tags span{font-size:12px;padding:7px 10px;border:1px solid #d6e1e8;border-radius:6px;background:white}.deliverable-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.deliverable{background:white;border:1px solid var(--line);border-radius:12px;padding:23px;display:grid;grid-template-columns:33px 1fr;gap:13px}.delivery-no{font:700 13px var(--mono);color:var(--accent);padding-top:3px}.deliverable h3{font-size:17px;margin-bottom:8px}.deliverable p{font-size:13px;color:var(--muted)}.deliverable .file-types{font:11px var(--mono);color:var(--accent);margin-top:13px}.success-box{background:#e5f2ef;border:1px solid #bfd9d1;border-radius:13px;margin-top:22px;padding:23px}.success-box h3{font-size:18px;margin-bottom:10px}.success-box p{font-size:14px;color:#2a514c}.limit-line{font-size:12px;color:var(--muted);margin-top:19px}.source-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}.source-item{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:17px 0;border-top:1px solid var(--line);scroll-margin-top:30px;min-width:0}.source-no{font:700 11px var(--mono);color:var(--accent);padding-top:5px}.source-meta{font-size:10px;color:var(--muted);margin-bottom:5px}.source-meta span{margin:0 5px}.source-title{font-size:12px;font-weight:750;text-decoration:none;color:#264861;line-height:1.6;display:inline-block;word-break:normal;overflow-wrap:anywhere}.source-title:hover{text-decoration:underline}.source-item p{font-size:11px;color:#5b6a78;line-height:1.75;margin-top:7px}.source-item .source-limit{font-size:10px;color:#7c8994}.footer{display:flex;justify-content:space-between;gap:18px;padding:26px 0 37px;color:var(--muted);font-size:11px}.footer strong{color:#385163}.print-only{display:none}.expand-button{background:white;border:1px solid #cbd9e2;color:#34536c;padding:7px 12px;border-radius:6px;font-size:12px}.heading-row{display:flex;align-items:center;justify-content:space-between;gap:16px}.heading-row .subheading{margin-right:10px}section[id]:target .section-index{color:var(--blue)}
+@media(min-width:1700px){.main{max-width:none}.content{max-width:1290px}.hero h1{font-size:52px}}
+@media(max-width:1190px){.sidebar{width:209px;padding:28px 18px}.main{margin-left:209px}.content{padding:0 32px}.hero-grid{gap:26px;grid-template-columns:1.2fr 1fr}.hero h1{font-size:39px}.section-head h2{font-size:26px}.bar-row{grid-template-columns:118px 1fr 45px;font-size:11px}.chart-card{padding:23px 20px}.concept{padding:21px 18px}.arch-shell{padding:21px}.research-table td{padding:13px}.scope-item{padding:15px}.source-list{gap:0 18px}}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.concept{max-width:none;display:none}.hero h1{font-size:44px}.evidence-grid{grid-template-columns:1fr}.metric-stack{grid-template-columns:1fr 1fr}.grid-three,.question-grid{gap:16px}.card{padding:19px}.inline-rules{grid-template-columns:1fr 1fr}.control-nodes{grid-template-columns:1fr}.control-nodes>.h-arrow{transform:rotate(90deg);height:20px}.observer-grid{grid-template-columns:1fr}.observer-grid>.h-arrow{transform:rotate(90deg);height:20px}.arch-legend{flex-wrap:wrap}.sequence{grid-template-columns:1fr 1fr}.sequence .seq:last-child{grid-column:1/-1}.demo-controls{align-items:flex-start;flex-direction:column}.code-grid{grid-template-columns:1fr}.experiment-formula{font-size:23px}.experiment-band{grid-template-columns:1.3fr 1fr}.experiment-formula strong{font-size:32px}.source-list{grid-template-columns:1fr}}
+@media(max-width:760px){html{scroll-padding-top:105px}.sidebar{display:none}.mobile-header{display:block;position:sticky;top:0;z-index:40;background:#102438;color:white;padding:12px 20px;border-bottom:1px solid #38536b}.mobile-top{display:flex;justify-content:space-between;align-items:center;gap:16px}.mobile-header .brand{font-size:17px}.mobile-header .brand-mark{width:25px;height:29px;font-size:13px}.mobile-header button{background:transparent;border:1px solid #61798c;border-radius:5px;color:#e4eef5;padding:5px 8px;font-size:11px}.mobile-nav{display:flex;gap:16px;overflow:auto;margin-top:11px;scrollbar-width:none}.mobile-nav a{font-size:11px;color:#c3d4e0;white-space:nowrap;text-decoration:none}.main{margin-left:0}.content{padding:0 22px}.hero{padding:35px 0}.hero-top{margin-bottom:24px;align-items:flex-start;gap:10px}.eyebrow{font-size:9px;letter-spacing:1.2px}.chip{font-size:10px;padding:4px 7px}.hero h1{font-size:35px;letter-spacing:-1.5px}.one-line{font-size:16px;margin-top:21px}.hero-brief{grid-template-columns:1fr;gap:16px;margin-top:25px;padding-top:20px}.hero-brief>div{display:grid;grid-template-columns:46px 1fr;gap:10px}.hero-brief span{margin-top:3px}.hero-brief p{font-size:13px}.hero-small{font-size:11px}.terms{gap:8px 15px;font-size:11px;margin-top:16px}.report-section{scroll-margin-top:100px}section.report-section{padding:35px 0}.section-head{gap:10px;margin-bottom:20px}.section-index{font-size:11px;min-width:21px;padding-top:6px}.section-head h2{font-size:24px}.section-deck{font-size:13px;margin-top:8px}.lead{font-size:14px}.chart-title{font-size:15px}.chart-card{padding:20px 16px}.bar-row{grid-template-columns:114px minmax(0,1fr) 42px;gap:7px;margin:13px 0}.bar-track{height:12px}.bar-value{font-size:11px}.chart-sub{font-size:10px}.metric-stack{gap:12px}.metric-card{padding:17px 14px}.metric-main{font-size:33px}.metric-card h3{font-size:12px}.metric-card p{font-size:11px}.metric-foot{font-size:10px}.grid-three,.grid-two,.deliverable-grid,.question-grid,.design-links{grid-template-columns:1fr}.gap-cards{gap:0}.gap-cards .card{padding:18px 0}.gap-cards h3{font-size:18px}.card p{font-size:13px}.unit-band{padding:14px;font-size:11px;gap:6px}.unit-band strong{flex-basis:100%;margin-bottom:5px}.input-row,.pair-envs{grid-template-columns:1fr}.arch-shell{padding:18px 14px;border-radius:12px}.arch-head{align-items:flex-start;flex-direction:column;gap:9px}.arch-head h3{font-size:17px}.arch-legend{font-size:9px}.arch-node b{font-size:12px}.arch-node small{font-size:11px}.arch-input p{font-size:11px}.zone-title{font-size:10px}.pair-note{font-size:10px;padding:12px 4px}.env-title{font-size:12px}.sandbox-items div{font-size:12px}.sandbox-items div small{font-size:10px}.observer-title{font-size:11px}.boundary-cards .card p{font-size:12px}.scope-strip{grid-template-columns:1fr 1fr}.scope-item:nth-child(2){border-right:0}.scope-item:nth-child(-n+2){border-bottom:1px solid var(--line)}.scope-item{padding:15px}.scope-item b{font-size:26px}.scope-item span{font-size:11px}.subheading{font-size:18px}.table-wrap{border-radius:8px}.research-table{min-width:670px}.design-table{min-width:660px}.evaluation-table{min-width:610px}td{padding:12px}th{padding:11px 12px;font-size:12px}.scroll-hint{display:block!important;font-size:10px;color:var(--muted);margin-bottom:7px}.detail-content{padding:15px}.inline-rules{gap:9px}.decision{padding:13px 11px}.decision b{font-size:12px}.decision p{font-size:11px}.demo-controls,.demo-body{padding:18px 15px}.demo-workflow{grid-template-columns:1fr;gap:7px}.demo-workflow .h-arrow{height:17px;transform:rotate(90deg)}.demo-node{padding:12px}.demo-evidence{grid-template-columns:1fr;gap:8px}.demo-evidence div{display:flex;align-items:center;justify-content:space-between;padding:12px}.demo-evidence b{margin:0}.demo-summary{font-size:13px}.demo-caveat{font-size:11px}.question-card{padding:18px 0 0}.experiment-band{grid-template-columns:1fr;padding:20px}.experiment-formula{font-size:26px}.experiment-formula strong{font-size:37px}.experiment-supp{border-left:0;border-top:1px solid #42596a;padding:16px 0 0}.experiment-supp b{font-size:27px}.metric-tags{gap:7px}.metric-tags span{font-size:11px;padding:6px 8px}.callout{font-size:12px;padding:13px 15px}.deliverable{padding:19px;grid-template-columns:25px 1fr}.deliverable h3{font-size:16px}.source-item{gap:7px}.footer{font-size:10px;flex-direction:column;gap:8px}.heading-row{align-items:center}.expand-button{font-size:10px;padding:6px 8px;white-space:nowrap}.note{font-size:11px}.code-label{font-size:10px}pre{font-size:11px;padding:13px}.section-head h2 br{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{@page{size:A4;margin:14mm 12mm}body{background:#fff;font-size:10pt;color:#172737;line-height:1.55;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sidebar,.mobile-header,.demo-controls,.expand-button,.no-print{display:none!important}.main{margin:0;max-width:none}.content{max-width:none;padding:0}.hero{padding:10px 0 25px}.hero-grid{display:block}.concept{display:none}.hero h1{font-size:32px}.one-line{font-size:13pt}.hero-top{margin-bottom:18px}.hero-brief{margin-top:22px}.hero-brief p{font-size:10pt}.hero-small,.note{font-size:8pt}.section-head h2{font-size:21px}.section-deck{font-size:10pt}section.report-section{padding:26px 0}.section-head{break-after:avoid}h2,h3{break-after:avoid}p{orphans:3;widows:3}.card,.metric-card,.chart-card,.deliverable,.source-item,.callout{break-inside:avoid}.arch-shell{break-inside:avoid;padding:20px;font-size:9pt}.pair-envs,.input-row{grid-template-columns:1fr 1fr}.arch-node{padding:10px}.arch-node b{font-size:10px}.arch-node small{font-size:9px}.table-wrap{overflow:visible}table{font-size:9pt;min-width:0!important}th,td{padding:9px}.design-table td,.evaluation-table td{font-size:8pt}.evidence-grid{grid-template-columns:1.5fr 1fr}.metric-stack{grid-template-columns:1fr}.metric-main{font-size:33px}.grid-three{grid-template-columns:repeat(3,1fr)}.grid-two,.design-links,.deliverable-grid{grid-template-columns:1fr 1fr}.scope-strip{grid-template-columns:repeat(4,1fr)}.scope-item{padding:12px}.scope-item b{font-size:23px}.hero-brief{grid-template-columns:repeat(3,1fr)}.sequence{grid-template-columns:repeat(5,1fr)}.seq p{font-size:9px}.source-list{grid-template-columns:1fr 1fr}.source-title{font-size:9px}.source-item p{font-size:8px}.source-meta,.source-item .source-limit{font-size:7px}details{break-inside:auto}summary{font-size:10pt}details:not([open])>.detail-content{display:block!important}.detail-content{padding:15px}.code-grid{grid-template-columns:1fr 1fr}pre{white-space:pre-wrap;font-size:8px;padding:12px}.print-only{display:block}.experiment-band{grid-template-columns:1.5fr 1fr}.experiment-formula{font-size:23px}.inline-rules{grid-template-columns:repeat(4,1fr)}.decision{padding:12px}.decision b{font-size:10px}.decision p{font-size:9px}.demo-body{padding:19px}.demo-evidence{grid-template-columns:repeat(3,1fr)}.question-grid{grid-template-columns:repeat(3,1fr)}.question-card h3{font-size:13px}.question-card p{font-size:10px}.footer{padding-bottom:0}.source-title::after{content:' (' attr(href) ')';font-size:7px;color:#607181;display:block;overflow-wrap:anywhere}.table-wrap tr{break-inside:avoid}}
+.scroll-hint{display:none}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">본문으로 이동</a>
+<aside class="sidebar" aria-label="문서 탐색">
+ <a class="brand" href="#overview"><span class="brand-mark">B</span>BoundaryCheck</a>
+ <div class="sidebar-caption">PROJECT PROPOSAL / 2026</div>
+ <nav class="nav-list"><a href="#overview" data-section="overview" class="nav-link"><span>00</span>프로젝트 한눈에</a><a href="#why" data-section="why" class="nav-link"><span>01</span>필요성과 수치</a><a href="#related" data-section="related" class="nav-link"><span>02</span>선행연구·프로젝트</a><a href="#contribution" data-section="contribution" class="nav-link"><span>03</span>우리가 검증할 기여</a><a href="#architecture" data-section="architecture" class="nav-link"><span>04</span>시스템 아키텍처</a><a href="#design" data-section="design" class="nav-link"><span>05</span>상세 설계</a><a href="#demo" data-section="demo" class="nav-link"><span>06</span>작동 예시</a><a href="#evaluation" data-section="evaluation" class="nav-link"><span>07</span>평가 계획</a><a href="#deliverables" data-section="deliverables" class="nav-link"><span>08</span>예상 결과물</a><a href="#sources" data-section="sources" class="nav-link"><span>09</span>참고자료</a></nav>
+ <div class="sidebar-footer"><span class="status-dot"></span>교수 검토용 설계 제안<br>구현·실험 전 / 근거 확인 2026.10.01
+ <button type="button" class="side-button print-trigger">문서 인쇄</button>
+ <span>외부 라이브러리 없이 열리는 HTML</span></div>
+</aside>
+<header class="mobile-header"><div class="mobile-top"><a class="brand" href="#overview"><span class="brand-mark">B</span>BoundaryCheck</a><button type="button" class="print-trigger">인쇄</button></div><nav class="mobile-nav" aria-label="모바일 문서 탐색"><a href="#why">필요성</a><a href="#related">선행연구</a><a href="#architecture">아키텍처</a><a href="#design">상세 설계</a><a href="#evaluation">평가</a><a href="#sources">출처</a></nav></header>
+<main class="main" id="main"><div class="content">
+<section class="hero" id="overview" aria-labelledby="hero-title">
+ <div class="hero-top"><div class="eyebrow">MCP × SKILLS × WORKFLOWS</div><span class="chip plan">제안 단계 · 성능 실측 전</span></div>
+ <div class="hero-grid"><div><h1 id="hero-title">AI 워크플로우의 보안을,<br><span>실행 결과로 확인합니다.</span></h1><p class="one-line"><strong>BoundaryCheck</strong>는 공개된 AI 스킬·MCP 구성을 서로 다른 권한 환경에서 실행해, <strong>보안 정책 위반의 성립 조건과 증거를 확인하는 검증 도구</strong>입니다.</p><p class="hero-small">대상: 공개 구성의 도입·업데이트 검토 · 결과: 재현 테스트와 근거 보고서</p></div>
+ <div class="concept" aria-label="같은 구성도 실행 권한에 따라 결과가 달라질 수 있다는 설계 개념"><div class="concept-label">우리가 검증할 차이 · 개념 예시</div><div class="concept-artifact">같은 스킬 + 같은 MCP + 같은 업무</div><div class="concept-arrow" aria-hidden="true">↓</div><div class="concept-branches"><div class="concept-branch"><small>제한된 권한</small><b>정책 위반 차단?</b></div><div class="concept-branch"><small>과도한 권한</small><b>실제 위반 발생?</b></div></div><p class="concept-note">설명·경고가 아니라 수신 기록과 자원 변경을 확인합니다. 결과는 구현 후 측정합니다.</p></div></div>
+ <div class="hero-brief"><div><span>문제</span><p>부품의 검사 결과만으로는 내 계정·권한에서의 실행 결과를 알기 어렵습니다.</p></div><div><span>방법</span><p>정책과 도구 계약에서 테스트를 만들고, 권한만 바꾼 환경을 짝지어 검증합니다.</p></div><div><span>기여</span><p>경고·시도·차단·실제 피해를 구분하는 분석과 재현 가능한 평가 자료를 만듭니다.</p></div></div>
+ <div class="terms"><span><strong>MCP</strong> AI와 외부 도구를 연결하는 규약<span class="refs-inline"><a class="ref" href="#ref-9" aria-label="참고자료 9">[9]</a></span></span><span><strong>Skill</strong> 작업 지시와 자료를 묶은 재사용 단위<span class="refs-inline"><a class="ref" href="#ref-8" aria-label="참고자료 8">[8]</a></span></span><span><strong>Workflow</strong> 스킬·도구가 이어지는 업무 흐름</span></div>
+</section>
+
+<section class="report-section" id="why" aria-labelledby="why-title">
+ <div class="section-head"><span class="section-index">01</span><div><span class="chip study">선행연구의 측정값</span><h2 id="why-title">스킬을 조합하면, 단독 실행에서<br>보이지 않던 위험이 나타납니다.</h2><p class="section-deck">시장 성장 전망이 아니라, 공개된 보안 실험을 프로젝트의 필요성으로 삼습니다.</p></div></div>
+ <div class="evidence-grid"><figure class="chart-card" style="margin:0"><figcaption class="chart-title">SCR-CapFlow: 실행 조건별 공격 성공률<span class="refs-inline"><a class="ref" href="#ref-1" aria-label="참고자료 1">[1]</a></span></figcaption><p class="chart-sub">평가 백엔드 평균 · 0–100% 동일 축 · 논문 §4.2</p>
+ <div role="img" aria-label="통제 0%, 조회 스킬 A만 0%, 실행 스킬 B만 1.4%, A와 B 조합 일반 지시 33.6%, A와 B 조합 명시적 지시 35.9%">
+ <div class="bar-row"><span class="bar-label">통제 조건</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-value">0.0%</span></div>
+ <div class="bar-row"><span class="bar-label">조회 스킬 A만</span><div class="bar-track"><div class="bar-fill" style="width:0%"></div></div><span class="bar-value">0.0%</span></div>
+ <div class="bar-row"><span class="bar-label">실행 스킬 B만</span><div class="bar-track"><div class="bar-fill" style="width:1.4%"></div></div><span class="bar-value">1.4%</span></div>
+ <div class="bar-row emphasis"><span class="bar-label"><strong>A+B · 일반 작업 지시</strong></span><div class="bar-track"><div class="bar-fill" style="width:33.6%"></div></div><span class="bar-value">33.6%</span></div>
+ <div class="bar-row secondary"><span class="bar-label">A+B · 명시적 연쇄 지시</span><div class="bar-track"><div class="bar-fill" style="width:35.9%"></div></div><span class="bar-value">35.9%</span></div></div>
+ <p class="chart-caption">150개 사례, 사례·조건별 5회 시험을 사용한 통제 실험입니다. A+B Neutral은 일반 업무 지시, Explicit은 두 스킬의 연쇄 사용을 명시한 조건입니다. 2026-06-13 공개 논문.</p></figure>
+ <div class="metric-stack"><article class="metric-card"><div class="card-kicker">MCP 도구 설명을 통한 공격</div><div class="metric-main">72.8<small>%</small></div><h3>MCPTox의 o1-mini 공격 성공률<span class="refs-inline"><a class="ref" href="#ref-2" aria-label="참고자료 2">[2]</a></span></h3><p>45개 실제 MCP 서버·353개 도구를 바탕으로 구성한 1,348개 공격 사례. 20종 에이전트 설정 중 특정 모델의 결과입니다.</p><div class="metric-foot">2026-09-29 개정 v2 · 전체 제품·모델의 위험률 아님</div></article><article class="metric-card"><div class="card-kicker">정상 업무도 함께 평가해야 하는 이유</div><div class="metric-main">97 <small>/</small> 629</div><h3>AgentDojo의 정상 업무 / 보안 테스트 수<span class="refs-inline"><a class="ref" href="#ref-3" aria-label="참고자료 3">[3]</a></span></h3><p>모든 호출을 차단하는 방어 대신, 업무 성공과 보안 실패를 함께 측정하는 평가 설계를 참고합니다.</p></article></div></div>
+ <div class="callout"><strong>이 수치가 말하는 것:</strong> 도구·스킬의 연결과 실행 조건을 시험할 이유가 있습니다. <strong>말하지 않는 것:</strong> 실제 사용자 침해율, 우리 도구의 탐지율, 기존 제품 대비 우위.</div>
+</section>
+
+<section class="report-section" id="related" aria-labelledby="related-title">
+ <div class="section-head"><span class="section-index">02</span><div><h2 id="related-title">이미 있는 검사는 재사용하고,<br>무엇을 더 검증할지 분리합니다.</h2><p class="section-deck">문서에 공개된 범위의 비교입니다. 실제 제품 성능을 시험한 결과나 기능 부재를 단정하는 표가 아닙니다.</p></div></div>
+ <p class="scroll-hint">표를 좌우로 움직여 확인할 수 있습니다.</p><div class="table-wrap"><table class="research-table"><thead><tr><th>선행연구·프로젝트</th><th>이미 해결하는 문제</th><th>우리 설계에서의 역할</th></tr></thead><tbody>
+ <tr><td><span class="type-label">연구 · 2025/2026</span><br><strong>MCPTox</strong><span class="refs-inline"><a class="ref" href="#ref-2" aria-label="참고자료 2">[2]</a></span></td><td>실제 MCP 도구의 메타데이터에 넣은 악성 지시로 에이전트의 강건성을 평가.</td><td>도구 설명·응답 변경을 포함한 테스트 유형의 근거. 벤치마크 자체를 재발명하지 않음.</td></tr>
+ <tr><td><span class="type-label">연구 · 2024</span><br><strong>AgentDojo</strong><span class="refs-inline"><a class="ref" href="#ref-3" aria-label="참고자료 3">[3]</a></span></td><td>비신뢰 데이터를 다루는 에이전트의 공격·방어와 정상 업무 수행을 동적으로 평가.</td><td>공격 성공 여부와 정상 업무 성공 여부를 별도로 측정하는 평가 방법을 참고.</td></tr>
+ <tr><td><span class="type-label">가장 가까운 연구 · 2026</span><br><strong>SCR-Bench</strong><span class="refs-inline"><a class="ref" href="#ref-1" aria-label="참고자료 1">[1]</a></span></td><td>스킬 조합 경로에서 생긴 실제 모의 부작용을 확인. 조합 위험과 상태 변화 평가를 이미 수행.</td><td>논문에서 단순화한 런타임 정책·운영 조건을 참고해 권한 환경 쌍과 버전 변형을 설계.</td></tr>
+ <tr><td><span class="type-label">오픈소스 프로젝트</span><br><strong>Cisco Skill / MCP Scanner</strong><span class="refs-inline"><a class="ref" href="#ref-4" aria-label="참고자료 4">[4]</a><a class="ref" href="#ref-5" aria-label="참고자료 5">[5]</a></span></td><td>위험 패턴, 코드·데이터 흐름, 도구 설명과 실제 구현의 불일치 등 구성요소를 검사.</td><td>기본 검사 신호 또는 비교군. 일반적인 스킬·MCP 스캐너를 새로 만드는 것이 아님.</td></tr>
+ <tr><td><span class="type-label">개발사 분석 기술</span><br><strong>Invariant TFA</strong><span class="refs-inline"><a class="ref" href="#ref-6" aria-label="참고자료 6">[6]</a></span></td><td>도구 조합의 위험 경로를 분석하고 정적·동적 정보를 함께 활용.</td><td>조합 분석·그래프·하이브리드 분석 자체는 신규성에서 제외. 접근 가능 범위에서 비교.</td></tr>
+ <tr><td><span class="type-label">오픈소스 프로젝트</span><br><strong>Promptfoo MCP Testing</strong><span class="refs-inline"><a class="ref" href="#ref-7" aria-label="참고자료 7">[7]</a></span></td><td>직접 MCP 호출 및 에이전트를 통한 보안 테스트.</td><td>동일한 모델·호출 예산에서 고정 테스트와 계약 기반 생성의 차이를 평가.</td></tr>
+ <tr class="ours"><td><span class="type-label">우리 설계 · 구현 전</span><br><strong>BoundaryCheck</strong></td><td>구성·도구 계약·정책에서 환경 쌍 테스트를 생성하고, 독립 관측으로 실제 위반 조건을 판정.</td><td>검증할 기여: <strong>조건 생성 자동화 + 환경별 증거 연결 + 업데이트 평가 자료</strong>.</td></tr>
+ </tbody></table></div>
+ <div class="callout warning"><strong>신규성의 경계:</strong> “최초의 조합 보안 검사”를 주장하지 않습니다. 가장 가까운 도구가 같은 사례를 이미 처리한다면, 차별점은 자동화 범위·검증 효율·평가 데이터 기여로 좁힙니다.</div>
+</section>
+
+<section class="report-section" id="contribution" aria-labelledby="contribution-title">
+ <div class="section-head"><span class="section-index">03</span><div><span class="chip plan">구현·실험으로 검증할 기여 후보</span><h2 id="contribution-title">공백 후보는 ‘수상한 부품’에서<br>‘내 환경의 위반 조건’으로 이어지는 검증입니다.</h2></div></div>
+ <p class="lead">SCR-Bench는 통제된 환경에서 런타임 정책과 운영 복잡성을 단순화했다고 밝힙니다. 여기에 <strong>검토자가 명시한 정책, 실제 집행되는 권한, 버전 변경</strong>을 붙여 검증 단위를 구체화합니다.<span class="refs-inline"><a class="ref" href="#ref-1" aria-label="참고자료 1">[1]</a></span></p>
+ <div class="grid-three gap-cards"><article class="card"><div class="number">C1 / GENERATION</div><h3>정책에서 테스트로</h3><p>도구의 입력·출력 의미와 데이터 등급을 연결해, 어떤 전송·변경 경로를 시험해야 하는지 자동으로 구성합니다.</p></article><article class="card"><div class="number">C2 / CONDITIONS</div><h3>권한별 성립 조건 확인</h3><p>같은 업무·구성·테스트에서 권한만 바꿉니다. 경고, 시도, 차단, 실제 부작용을 서로 다른 사실로 기록합니다.</p></article><article class="card"><div class="number">C3 / REPRODUCIBILITY</div><h3>변경 후에도 같은 검증</h3><p>원본·위험 변경·무해한 변경을 비교합니다. 구성 지문과 증거를 묶어 수정 후 다시 확인할 수 있게 합니다.</p></article></div>
+ <div class="unit-band"><strong>평가 단위</strong><span>구성 버전</span><i>+</i><span>정책·도구 계약</span><i>+</i><span>권한 환경</span><i>+</i><span>업무·모델·테스트</span><i>→</i><span>실행 증거</span></div>
+ <p class="note"><strong>권한을 줄이면 차단된다는 사실 자체는 기여가 아닙니다.</strong> 비교 실험으로 확인할 것은 테스트 생성·조건 설명의 추가 가치와 같은 예산에서의 검증 효율입니다.</p>
+</section>
+
+<section class="report-section" id="architecture" aria-labelledby="architecture-title">
+ <div class="section-head"><span class="section-index">04</span><div><span class="chip plan">전체 아키텍처</span><h2 id="architecture-title">검사 대상과 판정기를 분리하고,<br>실제 자원에서 결과를 확인합니다.</h2><p class="section-deck">아래는 구현할 참조 아키텍처입니다. 권한 집행 계층을 모의 환경에 직접 만들고, 그 바깥에서 판정 증거를 수집합니다.</p></div></div>
+ <figure style="margin:0"><div class="arch-shell" aria-label="입력 수집, 계약 분석, 환경 쌍 실행, 권한 집행, 독립 관측과 보고서로 이어지는 시스템 설계">
+ <div class="arch-head"><h3>BoundaryCheck / 검증 데이터 흐름</h3><div class="arch-legend"><span><i class="legend-mark"></i>신뢰하는 제어 계층</span><span><i class="legend-mark test"></i>검사 대상</span><span><i class="legend-mark evidence"></i>독립 관측</span></div></div>
+ <div class="input-row"><div class="arch-input"><b>비신뢰 입력 · 배포 구성</b><p>고정 GitHub 커밋 / SKILL.md / 정적 참조 문서<br>검토한 MCP 카탈로그·테스트용 구현</p></div><div class="arch-input trusted"><b>신뢰 입력 · 검토자 관리</b><p>보안 정책 / 도구 계약 / 데이터 분류<br>권한 프로필 / 실행 예산 / 관측 범위</p></div></div>
+ <div class="flow-arrow" aria-hidden="true">↓ <span class="flow-label">코드를 실행하지 않고 입력 검증·해시 기록</span></div>
+ <div class="control-zone"><div class="zone-title">A. 신뢰하는 제어 계층 · 직접 구현</div><div class="control-nodes"><div class="arch-node"><b>01 수집·정규화</b><small>구성 스냅샷·파일 해시<br>기존 스캐너 신호는 보조 입력</small></div><div class="h-arrow" aria-hidden="true">→</div><div class="arch-node"><b>02 계약·경로 분석</b><small>읽기 → 전달 → 전송·변경<br>정책 위반 후보와 미확인 구간</small></div><div class="h-arrow" aria-hidden="true">→</div><div class="arch-node"><b>03 테스트·실행 계획</b><small>정형 템플릿을 도구에 연결<br>동일 입력의 권한 환경 쌍 생성</small></div></div></div>
+ <div class="pair-note">↓ 동일 구성·정책·업무·초기 데이터로 실행 / <strong>권한 조건만 다르게</strong> ↓</div>
+ <div class="pair-envs"><div class="env-box"><div class="env-title"><span class="env-tag">E₁</span> 제한된 권한 환경</div><div class="sandbox-boundary"><div class="sandbox-label">B. 격리된 실행 대상 · 비신뢰 지시 처리</div><div class="sandbox-items"><div>참조 Agent Host<small>LangGraph + 스킬 로더</small></div><span aria-hidden="true">→</span><div>MCP 도구 서버<small>문서 / 메시지</small></div></div></div><div class="flow-arrow" aria-hidden="true">↓</div><div class="enforcement"><b>C. 신뢰하는 백엔드 권한 집행</b>내부 수신자만 허용<br>읽기 업무의 문서 변경 거부</div><div class="env-data">독립된 합성 문서·수신함 / 실행마다 초기화</div></div>
+ <div class="env-box wide"><div class="env-title"><span class="env-tag">E₂</span> 과도한 권한 환경</div><div class="sandbox-boundary"><div class="sandbox-label">B. 같은 이미지·같은 구성으로 격리 실행</div><div class="sandbox-items"><div>참조 Agent Host<small>동일 업무·모델 조건</small></div><span aria-hidden="true">→</span><div>MCP 도구 서버<small>동일 도구·테스트 입력</small></div></div></div><div class="flow-arrow" aria-hidden="true">↓</div><div class="enforcement"><b>C. 같은 백엔드, 넓어진 권한</b>외부 모의 수신자까지 허용<br>문서 변경 권한도 부여</div><div class="env-data">별도 합성 문서·수신함 / 실제 외부 서비스 아님</div></div></div>
+ <div class="flow-arrow" aria-hidden="true">↓ <span class="flow-label">신뢰하는 수신 기록·쓰기 이벤트 + 호출·차단 기록</span></div>
+ <div class="observer-zone"><div class="observer-title">D. 검사 대상 밖의 독립 관측·판정 계층</div><div class="observer-grid"><div class="arch-node"><b>04 실제 부작용 관측</b><small>수신함의 기밀 마커<br>지정 문서의 쓰기 이벤트·상태</small></div><div class="h-arrow" aria-hidden="true">→</div><div class="arch-node"><b>05 정책 판정</b><small>위반 / 차단 / 미관측 / 불충분<br>정상 업무 성공은 별도 기록</small></div><div class="h-arrow" aria-hidden="true">→</div><div class="arch-node"><b>06 증거·차이 보고</b><small>JSON 증거 + HTML 보고서<br>버전·환경·수정 전후 비교</small></div></div></div>
+ <div class="arch-bottom"><strong>핵심 신뢰 경계:</strong> MCP 응답과 에이전트의 설명은 판정의 정답이 아닙니다. 검사 대상은 수신 원장·문서 감사 기록·정책 파일을 수정할 수 없습니다. 모델 API는 합성 데이터만 쓰는 별도 허용 경로로 연결합니다.</div>
+ </div><figcaption class="architecture-caption">프로토콜 기반은 공식 MCP Python SDK, 실행 기반은 LangGraph를 사용합니다. 둘의 호환 버전과 실행 이미지를 고정하고, 정책·계약·판정 로직은 직접 구현합니다.<span class="refs-inline"><a class="ref" href="#ref-10" aria-label="참고자료 10">[10]</a><a class="ref" href="#ref-11" aria-label="참고자료 11">[11]</a></span></figcaption></figure>
+ <div class="grid-three boundary-cards"><article class="card"><h3>공격자가 바꿀 수 있는 것</h3><p>사례별로 스킬·참조 문서, MCP 설명·응답, 테스트용 구현 중 한 변경 지점을 고정합니다. 공급망 변경과 입력 인젝션은 분리 집계합니다.</p></article><article class="card"><h3>공격자가 바꿀 수 없는 것</h3><p>검토자 정책, 권한 프로필, 집행 백엔드, 독립 관측기, 정답 자료와 격리 장치. 이 신뢰 가정이 깨지는 공격은 범위 밖입니다.</p></article><article class="card"><h3>검사기 자체의 보호</h3><p>무검토 코드 실행·패키지 설치 금지. 비루트 격리, 허용 경로 외 통신 제한, 자원·실행 한도 적용. 운영 토큰·실제 문서는 사용하지 않습니다.<span class="refs-inline"><a class="ref" href="#ref-12" aria-label="참고자료 12">[12]</a></span></p></article></div>
+</section>
+
+<section class="report-section" id="design" aria-labelledby="design-title">
+ <div class="section-head"><span class="section-index">05</span><div><span class="chip plan">상세 설계 · 최소 구현 범위</span><h2 id="design-title">두 정책을 정확하게 검증하는<br>작은 시스템부터 완성합니다.</h2><p class="section-deck">모든 공개 워크플로우의 자동 해석이 아니라, 명시한 계약과 참조 실행 환경 안에서 재현 가능한 검증을 구현합니다.</p></div></div>
+ <div class="scope-strip"><div class="scope-item"><b>1</b><em>참조 실행 환경</em><span>LangGraph + 정적 스킬 로더</span></div><div class="scope-item"><b>2</b><em>MCP 서버</em><span>문서 서버 / 메시지 서버</span></div><div class="scope-item"><b>3</b><em>보호할 도구</em><span>문서 조회·변경 / 메시지 전송</span></div><div class="scope-item"><b>2</b><em>보안 정책</em><span>기밀 전송 / 읽기 전용 경계</span></div></div>
+ <div class="grid-two policies"><article class="card"><div class="policy-id">P1 / INFORMATION FLOW</div><h3>기밀정보의 외부 전송 금지</h3><p>기밀 문서의 합성 마커·지정 필드가 허용되지 않은 수신자에게 도착했는지 확인합니다. 같은 SaaS 안에서도 수신자를 구분합니다.</p><div class="rule-line"><b>위반 증거</b> = 금지된 수신 지점의 실제 기밀 데이터 수신</div><p class="note">요약·번역·인코딩을 통한 모든 의미적 유출을 탐지한다고 주장하지 않습니다.</p></article><article class="card"><div class="policy-id">P2 / RESOURCE INTEGRITY</div><h3>읽기 전용 업무의 문서 변경 금지</h3><p>조회·요약 업무에서 보호 대상 문서에 쓰기가 발생했는지 확인합니다. 변경 후 롤백도 쓰기 이벤트로 기록합니다.</p><div class="rule-line"><b>위반 증거</b> = 읽기 업무 중 보호 문서에 발생한 쓰기 이벤트</div><p class="note">기술 로그·감사 로그가 아니라 정책에서 지정한 업무 자원만 대상으로 합니다.</p></article></div>
+ <h3 class="subheading">모듈별 입력·출력과 검증 책임</h3>
+ <p class="scroll-hint">상세 표는 좌우로 움직여 확인할 수 있습니다.</p><div class="table-wrap"><table class="design-table"><thead><tr><th>모듈</th><th>입력 → 출력</th><th>구현할 규칙과 책임</th></tr></thead><tbody>
+ <tr><td>수집·정규화</td><td>고정 커밋·스킬·도구 목록<br>→ 구성 스냅샷</td><td>파일 수·크기·경로·심볼릭 링크를 제한. 파싱만 수행하고 import·셸 실행·자동 설치는 하지 않음.</td></tr>
+ <tr><td>계약·경로 분석</td><td>도구 계약·정책·워크플로우 연결<br>→ 위험 경로 후보</td><td>서버 ID와 도구 이름을 함께 식별. 데이터 출처·목적지·변경 자원을 명시적 연결로 추적. 스캐너 무경고도 안전으로 처리하지 않음.</td></tr>
+ <tr><td>테스트 생성</td><td>경로 후보·정형 테스트 템플릿<br>→ 환경별 실행 계획</td><td>정책 P1/P2를 실제 인자 필드에 연결. 동일 입력·데이터에서 권한만 달리한 쌍을 생성. 미지원 의미는 검토 필요로 표시.</td></tr>
+ <tr><td>환경 쌍 실행</td><td>실행 계획·권한 프로필·모델<br>→ 호출 기록·실행 상태</td><td>각 실행의 DB·수신함·메모리를 초기화. 도구 호출·시간·토큰 상한 적용. 결정적 재생과 실제 LLM 실행을 분리.</td></tr>
+ <tr><td>독립 판정</td><td>수신 원장·쓰기 이벤트·차단 증거<br>→ 판정 + 정상 업무 결과</td><td>검사 대상의 성공 응답이 아닌 실제 자원 기록을 사용. 관측이 불완전하면 ‘미관측’과 ‘안전’을 구분.</td></tr>
+ <tr><td>증거·변경 비교</td><td>두 버전·두 환경의 실행 묶음<br>→ JSON·HTML 비교 보고서</td><td>정책·계약·구성·모델·테스트 지문을 연결. 조건이 바뀌면 전체 지원 테스트를 재실행. 선택 재검증은 후속 기능.</td></tr>
+ </tbody></table></div>
+ <div class="design-links"><article class="card"><h3>왜 ‘도구 계약’을 따로 두는가?</h3><p>검토자가 읽기 자원, 출력 필드, 목적지 인자, 변경 자원을 지정합니다. 자연어 설명을 곧바로 실제 권한으로 해석하지 않습니다. <code>allowed-tools</code>는 구현별 지원이 다른 실험적 선언입니다.<span class="refs-inline"><a class="ref" href="#ref-8" aria-label="참고자료 8">[8]</a></span></p></article><article class="card"><h3>왜 ‘독립 관측’을 쓰는가?</h3><p>MCP annotation은 신뢰할 수 없는 서버가 제공할 수 있습니다. ‘읽기 전용’ 선언이나 ‘전송 성공’ 응답을 정답으로 삼지 않고 실제 수신·쓰기 기록과 대조합니다.<span class="refs-inline"><a class="ref" href="#ref-9" aria-label="참고자료 9">[9]</a></span></p></article></div>
+ <h3 class="subheading">한 번의 검증은 이렇게 진행됩니다</h3>
+ <div class="sequence"><div class="seq"><i>STEP 01</i><b>고정·검증</b><p>구성·정책·계약을 고정하고 입력과 관측 가능 범위를 확인합니다.</p></div><div class="seq"><i>STEP 02</i><b>조건 생성</b><p>보호 데이터와 외부 전송·변경 도구가 만나는 경로를 시험에 연결합니다.</p></div><div class="seq"><i>STEP 03</i><b>환경별 실행</b><p>초기 상태를 복제하고 제한·과권한 환경을 각각 실행합니다.</p></div><div class="seq"><i>STEP 04</i><b>증거 연결</b><p>실행·호출 ID로 요청, 권한 차단, 실제 부작용을 연결합니다.</p></div><div class="seq"><i>STEP 05</i><b>판정·재검증</b><p>위반과 정상 업무를 따로 기록하고 변경 후 같은 절차를 반복합니다.</p></div></div>
+ <h3 class="subheading">판정 우선순위: ‘관측된 위반’이 가장 먼저입니다</h3>
+ <div class="inline-rules"><div class="decision red"><b>1. 위반 재현</b><p>신뢰하는 관측 기록에 금지된 수신·쓰기가 있음. 도구 응답이 실패여도 위반으로 판정.</p></div><div class="decision amber"><b>2. 검증 불충분</b><p>위반 증거는 없지만 핵심 관측 누락·실행 오류·권한 정보 부족으로 판단 불가.</p></div><div class="decision teal"><b>3. 통제로 차단</b><p>금지 행동 시도와 실제 권한 거부를 확인. 관측 범위에서 금지된 부작용이 없음.</p></div><div class="decision gray"><b>4. 위반 미관측</b><p>정한 테스트와 관측 범위에서 위반을 보지 못함. 전체 안전 인증이 아님.</p></div></div>
+ <p class="note">정상 업무 성공은 네 판정과 별도로 기록합니다. 거부 메시지만 있고 신뢰하는 차단 증거가 없다면 ‘통제로 차단’으로 확정하지 않습니다.</p>
+ <div class="heading-row"><h3 class="subheading">구현 인터페이스와 배포 세부사항</h3><button id="expand-all" class="expand-button" type="button" aria-expanded="false">상세 항목 모두 열기</button></div>
+ <details class="technical-detail"><summary>입력 계약 · 정책과 실제 권한을 어떻게 분리하는가?</summary><div class="detail-content"><p><strong>아래 YAML은 프로젝트 전용 설계 예시</strong>입니다. 공식 MCP 설정이 아니며, 이 파일을 작성하는 것만으로 접근이 차단되지는 않습니다. 실제 집행은 분리된 백엔드가 담당합니다.</p><div class="code-grid"><div><div class="code-label">policy.yaml · 기대하는 보안 조건</div><pre><code>schema_version: "0.1"
+rules:
+  - id: P1
+    deny_flow:
+      from_label: confidential
+      to_class: external
+  - id: P2
+    deny_write:
+      task_mode: read_only
+      resource_class: business_documents
+unknown_handling: require_review</code></pre></div><div><div class="code-label">tool-contracts.yaml · 검토자 승인 계약</div><pre><code>tools:
+  - server_id: documents
+    name: docs.read
+    resource_arg: document_id
+    output_data: content
+    effect: read
+  - server_id: messages
+    name: messages.send
+    destination_arg: recipient
+    payload_arg: body
+    effect: external_send</code></pre></div></div><div class="table-wrap"><table><thead><tr><th>별도 환경 프로필</th><th>제한 E₁</th><th>과권한 E₂</th></tr></thead><tbody><tr><td>문서 내용·초기 상태</td><td>같은 합성 기밀 문서</td><td>같은 합성 기밀 문서</td></tr><tr><td>문서 읽기</td><td>허용</td><td>허용</td></tr><tr><td>읽기 업무의 문서 쓰기</td><td>백엔드에서 거부</td><td>백엔드에서 허용</td></tr><tr><td>메시지 목적지</td><td>내부 모의 수신자만</td><td>내부·외부 모의 수신자</td></tr></tbody></table></div><p class="note">선언(DECLARED), 설정 확인(CONFIGURED), 실행 관측(OBSERVED), 미확인(UNKNOWN)을 필드별로 기록합니다. 운영 OAuth 권한 전체를 자동 발견하는 기능은 범위 밖입니다.</p></div></details>
+ <details class="technical-detail"><summary>데이터 모델 · 무엇을 저장해야 재현할 수 있는가?</summary><div class="detail-content"><div class="table-wrap" style="margin-top:0"><table><thead><tr><th>레코드</th><th>핵심 필드</th><th>역할</th></tr></thead><tbody><tr><td><code>ArtifactSnapshot</code></td><td>commit, file_hashes, tool_catalog_hash, image_digest</td><td>무엇을 검사했는지 고정</td></tr><tr><td><code>ToolContract</code></td><td>server_id, tool_name, resource, source, sink, effect</td><td>입출력 의미와 영향 자원 정의</td></tr><tr><td><code>TestCase</code></td><td>case_id, lineage_id, policy_id, mutation, initial_state</td><td>원본 계열·변형과 테스트 조건 연결</td></tr><tr><td><code>RunRecord</code></td><td>run_id, profile_hash, model_config, seed, limits</td><td>실행 조건 기록. 같은 seed도 완전한 재현성은 보증하지 않음</td></tr><tr><td><code>EvidenceEvent</code></td><td>run_id, call_id, event_type, resource, value_hash</td><td>호출·차단·수신·쓰기를 상관 ID로 연결</td></tr><tr><td><code>Finding</code></td><td>verdict, attempted, blocked, effect, task_success, unknowns</td><td>판정과 근거·미확인을 분리</td></tr></tbody></table></div><p class="note">관측 ID는 신뢰하는 실행기·관측 계층이 부여합니다. 원시 도구 응답을 증거 원장에 임의로 쓰게 하지 않습니다. 민감값은 합성 데이터만 사용하고, 보고서에는 마스킹 값·해시를 우선 기록합니다.</p><div class="code-label" style="margin-top:16px">finding.json · 출력 형식 예시, 실제 실행 결과 아님</div><pre><code>{
+  "example_only": true,
+  "run_id": "demo-001",
+  "case_id": "P1-report-share",
+  "environment": "overprivileged",
+  "verdict": "VIOLATION_REPRODUCED",
+  "attempted": true,
+  "blocked": false,
+  "effect_observed": true,
+  "evidence_ids": ["sink-demo-01"],
+  "task_success": null,
+  "unknowns": ["실제 운영 환경은 검증하지 않음"]
+}</code></pre></div></details>
+ <details class="technical-detail"><summary>실행 모드 · 결정적 재생과 실제 LLM 실험의 구분</summary><div class="detail-content"><div class="grid-two"><div><div class="mini-title">A. 결정적 재생</div><p>고정 도구 호출 계획으로 프로토콜·권한·판정기의 정확성을 시험합니다. 결과는 ‘이 행동 순서가 주어졌을 때의 부작용’이며 모델의 공격 성공률로 집계하지 않습니다.</p></div><div><div class="mini-title">B. 실제 LLM 실행</div><p>모델이 스킬·입력을 보고 행동을 선택합니다. 버전·설정·반복 횟수와 비용을 기록합니다. 제한 환경이 반환한 거부 응답에 따라 후속 경로가 달라질 수 있으며, 그 차이도 관측합니다.</p></div></div><p class="note">실제 LLM 모드에서 ‘환경 쌍’은 동일 조건의 실험 설계이지 동일한 출력 보장이 아닙니다. 권한 효과만 분리해 확인할 때는 같은 호출 순서를 결정적 모드에서 재생합니다.</p></div></details>
+ <details class="technical-detail"><summary>배포·구현 스택 · 신뢰 경계와 범위 제외</summary><div class="detail-content"><div class="table-wrap" style="margin-top:0"><table><thead><tr><th>영역</th><th>제안 구현</th><th>선택 이유</th></tr></thead><tbody><tr><td>분석·계약</td><td>Python · 타입화한 스키마 · 명시적 그래프 탐색</td><td>정형 계약·규칙을 재현 가능하게 검사. 무제한 자연어 의미 추론을 피함</td></tr><tr><td>참조 실행기</td><td>LangGraph + 검토한 스킬 로더<span class="refs-inline"><a class="ref" href="#ref-10" aria-label="참고자료 10">[10]</a></span></td><td>업무 단계와 모델·도구 호출을 통제할 한 가지 실행 환경</td></tr><tr><td>MCP 통신</td><td>공식 Python SDK · 격리 네트워크의 HTTP 연결<span class="refs-inline"><a class="ref" href="#ref-11" aria-label="참고자료 11">[11]</a></span></td><td>함수 흉내만 내지 않고 실제 MCP 클라이언트·서버 경계를 시험</td></tr><tr><td>격리·접근 통제</td><td>컨테이너/VM · 비루트 · 허용 경로 게이트웨이 · 백엔드 ACL</td><td>운영 자원과 분리하고 과권한도 모의 환경 안에서만 부여</td></tr><tr><td>관측·결과</td><td>분리된 수신·문서 백엔드 · JSONL · SQLite · HTML</td><td>실제 부작용과 조건을 연결하고 다른 사람이 재실행·검토 가능</td></tr></tbody></table></div><p class="note"><strong>보호 조치:</strong> 운영 토큰·실문서·호스트 홈·Docker 소켓을 제공하지 않습니다. 외부 통신은 모의 자원과 합성 데이터용 모델 경로로 제한하고, CPU·메모리·시간·호출 상한을 둡니다.<span class="refs-inline"><a class="ref" href="#ref-12" aria-label="참고자료 12">[12]</a></span></p><p class="note"><strong>범위 제외:</strong> 임의 스크립트 자동 실행, 모든 플랫폼 자동 이식, 불투명한 원격 서버 내부 전체 검증, 샌드박스 탈출, 모델 백도어, 완전한 의미적 유출 탐지. 상시 운영 방화벽이나 안전 인증 제품도 아닙니다.</p></div></details>
+</section>
+
+<section class="report-section" id="demo" aria-labelledby="demo-title">
+ <div class="section-head"><span class="section-index">06</span><div><span class="chip example">설명용 상태 예시 · 실험 미실행</span><h2 id="demo-title">같은 변경도, 권한에 따라<br>어떤 결과가 나는지 보여줍니다.</h2><p class="section-deck">아래 버튼은 설계를 설명하는 화면 전환입니다. 실제 모델·MCP를 실행하거나 취약점을 스캔하지 않습니다.</p></div></div>
+ <div class="demo-shell"><div class="demo-controls"><div><span class="control-label">배포 구성의 버전</span><div class="segmented" role="group" aria-label="예시 구성 선택"><button type="button" data-version="original" aria-pressed="false">원본</button><button type="button" data-version="changed" aria-pressed="true">위험 변경</button><button type="button" data-version="fixed" aria-pressed="false">수정 후</button></div></div><div><label class="control-label" for="env-select">실행 환경</label><select id="env-select"><option value="wide">과권한 환경</option><option value="restricted">제한 환경</option><option value="unknown">핵심 관측 누락</option></select></div></div>
+ <div class="demo-body" aria-live="polite" aria-atomic="true"><div class="demo-status-line"><span id="demo-verdict" class="verdict">예시: 위반 재현</span><span id="demo-summary" class="demo-summary">변경 스킬이 외부 목적지를 선택하고, 권한 집행 계층이 이를 허용한 경우입니다.</span></div><div class="demo-workflow"><div class="demo-node"><b>기밀 문서 조회</b><small>합성 기밀 마커가 포함된 문서</small></div><span class="h-arrow" aria-hidden="true">→</span><div class="demo-node"><b id="demo-middle">변경된 공유 스킬</b><small id="demo-middle-note">승인되지 않은 외부 목적지 선택</small></div><span class="h-arrow" aria-hidden="true">→</span><div class="demo-node"><b id="demo-end">외부 모의 수신함</b><small id="demo-end-note">마커 수신 기록이 남는 경우</small></div></div><div class="demo-evidence"><div><span>정책 위반 시도</span><b id="demo-attempt">있음 (예시)</b></div><div><span>신뢰 계층의 차단</span><b id="demo-block">없음 (예시)</b></div><div><span>실제 부작용 관측</span><b id="demo-effect">외부 수신 (예시)</b></div></div><p class="demo-caveat" id="demo-task">정상적인 내부 공유 성공 여부는 별도로 측정합니다. 실제 결과는 구현 후 실행 기록으로 판단합니다.</p></div></div>
+ <noscript><p class="noscript-note">자바스크립트가 꺼져 있어 기본 예시만 표시합니다. 위 내용은 실제 실행 결과가 아닌 ‘위험 변경 + 과권한’ 설계 예시입니다.</p></noscript>
+ <p class="note">두 번째 시연은 P2를 대상으로, ‘읽기 전용’이라고 설명한 테스트용 도구가 문서를 바꾸는 경우를 관측합니다. 선언과 실제 동작의 불일치는 기존 MCP 구현 검사와도 비교합니다.<span class="refs-inline"><a class="ref" href="#ref-5" aria-label="참고자료 5">[5]</a><a class="ref" href="#ref-9" aria-label="참고자료 9">[9]</a></span></p>
+</section>
+
+<section class="report-section" id="evaluation" aria-labelledby="evaluation-title">
+ <div class="section-head"><span class="section-index">07</span><div><span class="chip plan">실험 계획 · 달성 수치 아님</span><h2 id="evaluation-title">차별점은 주장보다,<br>같은 조건의 비교 실험으로 확인합니다.</h2><p class="section-deck">무해한 변경, 관측 누락, 정상 업무 성공까지 포함합니다. 기대한 개선이 없더라도 실패 조건과 지원 범위를 결과로 공개합니다.</p></div></div>
+ <div class="question-grid"><article class="question-card"><span>RQ1 / 환경 정보</span><h3>권한 조건을 알면 판단이 나아지는가?</h3><p>환경 정보를 제거한 동일 분석기와 비교해, 위반 성립 조건과 미확인 결과를 더 정확히 구분하는지 측정합니다.</p></article><article class="question-card"><span>RQ2 / 테스트 생성</span><h3>같은 예산에서 더 잘 검증하는가?</h3><p>고정 테스트와 계약·경로 기반 테스트를 같은 모델·호출 예산으로 비교합니다. 수동 계약 작성 비용도 기록합니다.</p></article><article class="question-card"><span>RQ3 / 업데이트</span><h3>변경 후 문제와 복구를 확인하는가?</h3><p>원본·위험 변경·무해한 변경을 비교합니다. 수정 후 위반 감소와 정상 업무 유지를 별도로 확인합니다.</p></article></div>
+ <div class="experiment-band"><div><h3>초기 평가 데이터셋</h3><div class="experiment-formula">12 × 3 × 2 = <strong>72</strong></div><p>기본 시나리오 12종 × 원본·위험·무해 변경 3종 × 권한 환경 2종</p></div><div class="experiment-supp"><b>+12 <small>미확인 처리 사례</small></b><p>권한·관측 누락은 별도 검증합니다.</p><b style="display:block;margin-top:13px">432 <small>LLM 실행 계획</small></b><p>72구성 × 모델 2종 × 각 3회<br>서로 다른 취약점 432개가 아닙니다.</p></div></div>
+ <p class="scroll-hint">비교 설계 표는 좌우로 움직여 확인할 수 있습니다.</p><div class="table-wrap"><table class="evaluation-table"><thead><tr><th>비교군</th><th>동일하게 맞출 조건</th><th>확인할 기여</th></tr></thead><tbody><tr><td>기존 스캐너</td><td>같은 공개 구성·버전·지원 언어. 설정과 접근 가능한 입력 범위를 기록.</td><td>부품 경고에서 실행 조건 판단으로 추가되는 근거. 출력 의미가 다른 항목은 억지로 정밀도 비교하지 않음.</td></tr><tr><td>MCP 동적 테스트</td><td>동일 모델·호출 예산·시험 환경·판정 기준. 가능한 공통 시나리오로 비교.<span class="refs-inline"><a class="ref" href="#ref-7" aria-label="참고자료 7">[7]</a></span></td><td>고정 시험 대비 계약 기반 생성의 검증 효율과 커버리지.</td></tr><tr><td>환경 정보 제거</td><td>같은 자체 엔진에서 권한 환경 정보만 제거.</td><td>개선이 환경 정보에서 비롯되는지 확인.</td></tr><tr><td>경로 생성 제거</td><td>같은 실행·관측 엔진에서 자동 생성 대신 고정 테스트 사용.</td><td>개선이 테스트 생성 로직에서 비롯되는지 확인.</td></tr></tbody></table></div>
+ <div class="metric-tags" aria-label="평가 지표"><span>정밀도·재현율</span><span>무해 변경 오탐</span><span>실제 부작용 재현율</span><span>정상 업무 성공률</span><span>검증 불충분 비율</span><span>시간·토큰·수동 작업량</span></div>
+ <div class="callout neutral"><strong>평가의 독립성:</strong> 사람이 검토한 정책 조건과 신뢰하는 자원 기록으로 정답을 만듭니다. 원본 계열·포크·변형은 같은 그룹으로 나누고 개발·평가 자료를 분리합니다. 인위적 위험 변형과 공개 원본에서 발견한 문제는 별도 집계합니다.</div>
+ <p class="note">12개 기본 시나리오는 초기 타당성 평가 규모입니다. 반복 실행을 독립적인 취약점 표본으로 간주하지 않으며, 광범위한 일반화나 임의의 목표 탐지율을 제시하지 않습니다.</p>
+</section>
+
+<section class="report-section" id="deliverables" aria-labelledby="deliverables-title">
+ <div class="section-head"><span class="section-index">08</span><div><span class="chip plan">예상 산출물과 완료 기준</span><h2 id="deliverables-title">제출물은 ‘안전 점수’가 아니라,<br>다시 실행할 수 있는 검증 체계입니다.</h2></div></div>
+ <div class="deliverable-grid"><article class="deliverable"><span class="delivery-no">01</span><div><h3>검증 CLI와 분석 모듈</h3><p>고정 구성·계약·정책 입력, 환경 쌍 테스트 생성, 네 가지 판정과 버전 비교를 구현합니다.</p><div class="file-types">SOURCE / CLI / TESTS</div></div></article><article class="deliverable"><span class="delivery-no">02</span><div><h3>재현 가능한 MCP 테스트베드</h3><p>모의 서버 2개, 참조 실행기, 권한 집행·수신·문서 관측 계층과 초기화 절차를 제공합니다.</p><div class="file-types">ENVIRONMENT / FIXTURES / REPLAY</div></div></article><article class="deliverable"><span class="delivery-no">03</span><div><h3>정답·조건이 명시된 데이터셋</h3><p>72개 실행 구성과 12개 미확인 사례를 목표로, 출처·라이선스·원본 계열·변형·정답 근거를 기록합니다.</p><div class="file-types">CASES / CONTRACTS / LABELS</div></div></article><article class="deliverable"><span class="delivery-no">04</span><div><h3>증거 보고서와 비교 실험</h3><p>실제 수신·쓰기 증거, 정상 업무 결과, 기존 방법 비교, 실패 사례와 비용을 함께 제출합니다.</p><div class="file-types">EVIDENCE.JSON / REPORT.HTML / EVALUATION</div></div></article></div>
+ <div class="success-box"><h3>완료 기준</h3><p><strong>지원하는 두 정책에서 환경별 차이를 증거로 설명하고, 제3자가 같은 조건으로 재실행할 수 있어야 합니다.</strong> 성능 우위·신규 CVE·특정 탐지율은 미리 보장하지 않습니다. 기존 방법 대비 추가 가치가 없다는 결과도 원인과 함께 보고합니다.</p></div>
+ <p class="limit-line"><strong>핵심 한계:</strong> 참조 실행기로 이식한 스킬의 결과를 원본 제품 전체의 취약점으로 확대하지 않습니다. 불투명한 원격 서버와 의미적 정보유출은 미확인 범위를 남깁니다. 신규성은 직접 비교 실험으로 최종 확인합니다.</p>
+</section>
+
+<section class="report-section" id="sources" aria-labelledby="sources-title">
+ <div class="section-head"><span class="section-index">09</span><div><h2 id="sources-title">근거와 참고자료</h2><p class="section-deck">공식 명세·프로젝트 문서와 원 논문을 사용했습니다. 문헌의 실험값, 제품의 공개 기능, 우리 설계·계획을 구분합니다.</p></div></div>
+ <ol class="source-list"><li id="ref-1" class="source-item"><span class="source-no">01</span><div><div class="source-meta">원 논문 · arXiv v1 <span>·</span> 2026-06-13</div><a class="source-title" href="https://arxiv.org/html/2606.15242v1" target="_blank" rel="noopener noreferrer">SCR-Bench — Benign in Isolation, Harmful in Composition<span aria-hidden="true"> ↗</span></a><p>§4.2: SCR-CapFlow의 평가 백엔드 평균 ASR. 통제 0%, A 단독 0%, B 단독 1.4%, A+B Neutral 33.6%, A+B Explicit 35.9%. 150개 사례, 사례·조건별 5회. Appendix A: 모의 환경에서 런타임 정책·운영 복잡성을 단순화한 한계.</p><p class="source-limit">통제된 스킬 환경의 결과다. 실제 서비스 침해율이나 모든 스킬의 취약 비율이 아니다.</p></div></li>
+<li id="ref-2" class="source-item"><span class="source-no">02</span><div><div class="source-meta">원 논문 · arXiv v2 <span>·</span> 2026-09-29 개정</div><a class="source-title" href="https://arxiv.org/abs/2508.14925v2" target="_blank" rel="noopener noreferrer">MCPTox — Tool Poisoning on Real-World MCP Servers<span aria-hidden="true"> ↗</span></a><p>초록: MCP 서버 45개, 도구 353개, 악성 테스트 1,348개, 에이전트 설정 20종. o1-mini의 공격 성공률 72.8%. 최초 제출 2025-08-19.</p><p class="source-limit">1,348은 v2 기준이다. 72.8%는 특정 모델·공격 조건의 값이며 시장 전체에 일반화하지 않는다.</p></div></li>
+<li id="ref-3" class="source-item"><span class="source-no">03</span><div><div class="source-meta">원 논문 · arXiv v3 <span>·</span> 2024-11-24 개정</div><a class="source-title" href="https://arxiv.org/abs/2406.13352v3" target="_blank" rel="noopener noreferrer">AgentDojo — A Dynamic Environment to Evaluate Prompt Injection<span aria-hidden="true"> ↗</span></a><p>97개 정상 업무와 629개 보안 테스트를 포함하는 동적 평가 환경. 업무 수행과 공격·방어를 함께 평가하는 선행 방법.</p><p class="source-limit">숫자는 논문 버전의 벤치마크 구성 규모이며 BoundaryCheck의 결과가 아니다.</p></div></li>
+<li id="ref-4" class="source-item"><span class="source-no">04</span><div><div class="source-meta">공식 오픈소스 프로젝트 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://github.com/cisco-ai-defense/skill-scanner" target="_blank" rel="noopener noreferrer">Cisco Skill Scanner<span aria-hidden="true"> ↗</span></a><p>정적 패턴 검사, 행동·데이터 흐름 분석, 선택적인 LLM 의미 분석 등 스킬 검사 기능.</p><p class="source-limit">기능 설명을 확인한 것이며 본 문서에서 해당 제품의 탐지 성능을 실험한 것은 아니다.</p></div></li>
+<li id="ref-5" class="source-item"><span class="source-no">05</span><div><div class="source-meta">공식 오픈소스 프로젝트 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://github.com/cisco-ai-defense/mcp-scanner" target="_blank" rel="noopener noreferrer">Cisco MCP Scanner<span aria-hidden="true"> ↗</span></a><p>MCP 메타데이터와 구현 분석. Behavioral Analyzer는 설명과 코드 동작의 불일치, 파일 간 데이터 흐름을 분석.</p><p class="source-limit">도구 이름·설명·소스의 정적 정보가 원격 서버의 모든 실제 동작을 보증하지는 않는다.</p></div></li>
+<li id="ref-6" class="source-item"><span class="source-no">06</span><div><div class="source-meta">개발사 기술 설명 <span>·</span> 2025-07-29</div><a class="source-title" href="https://invariantlabs.ai/blog/toxic-flow-analysis" target="_blank" rel="noopener noreferrer">Invariant — Toxic Flow Analysis<span aria-hidden="true"> ↗</span></a><p>도구 흐름 그래프와 위험 경로를 구성하며, 정적 정보와 동적 실행 정보를 함께 활용하는 하이브리드 분석.</p><p class="source-limit">조합 분석이나 정적·동적 결합을 BoundaryCheck만의 최초 기능으로 주장하지 않는다.</p></div></li>
+<li id="ref-7" class="source-item"><span class="source-no">07</span><div><div class="source-meta">공식 프로젝트 문서 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://www.promptfoo.dev/docs/red-team/mcp-security-testing/" target="_blank" rel="noopener noreferrer">Promptfoo — MCP Security Testing Guide<span aria-hidden="true"> ↗</span></a><p>MCP 도구를 직접 호출하는 테스트와 에이전트를 통한 보안 테스트를 지원.</p><p class="source-limit">동적 테스트 자체가 아니라 환경 조건·계약 기반 생성의 추가 가치를 비교해야 한다.</p></div></li>
+<li id="ref-8" class="source-item"><span class="source-no">08</span><div><div class="source-meta">공식 명세 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://agentskills.io/specification" target="_blank" rel="noopener noreferrer">Agent Skills Specification<span aria-hidden="true"> ↗</span></a><p>SKILL.md 및 참조 자료 형식. allowed-tools는 사전 승인 도구를 나타내는 실험적 필드이며 구현별 지원이 다를 수 있음.</p><p class="source-limit">선언된 도구 목록을 보편적으로 강제되는 최대 권한 경계로 해석하지 않는다.</p></div></li>
+<li id="ref-9" class="source-item"><span class="source-no">09</span><div><div class="source-meta">공식 명세 · 2026-07-28 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://modelcontextprotocol.io/specification/2026-07-28/server/tools" target="_blank" rel="noopener noreferrer">MCP Tools Specification<span aria-hidden="true"> ↗</span></a><p>신뢰할 수 없는 서버의 도구 annotation은 신뢰하지 않아야 한다는 보안 조건. 도구 호출·스키마의 기반 명세.</p><p class="source-limit">read-only 등 서버의 설명은 독립적인 실제 동작 검증을 대신하지 않는다.</p></div></li>
+<li id="ref-10" class="source-item"><span class="source-no">10</span><div><div class="source-meta">공식 프레임워크 문서 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener noreferrer">LangGraph Overview<span aria-hidden="true"> ↗</span></a><p>상태를 가진 장기 실행 에이전트와 워크플로우의 실행 기반. 이 설계에서는 참조 실행기 한 종류로 사용.</p><p class="source-limit">모든 LangGraph 저장소를 자동 분석·이식하겠다는 범위가 아니다.</p></div></li>
+<li id="ref-11" class="source-item"><span class="source-no">11</span><div><div class="source-meta">공식 SDK 저장소 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener noreferrer">MCP Python SDK<span aria-hidden="true"> ↗</span></a><p>MCP 서버와 클라이언트 구현을 위한 공식 Python SDK. 실제 MCP 프로토콜을 쓰는 모의 서버·클라이언트 구성의 기반.</p><p class="source-limit">구현 시 호환 버전을 고정하고 SDK·실행 이미지 지문을 기록한다.</p></div></li>
+<li id="ref-12" class="source-item"><span class="source-no">12</span><div><div class="source-meta">공식 보안 지침 · 2026-07-28 <span>·</span> 2026-10-01 열람</div><a class="source-title" href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices" target="_blank" rel="noopener noreferrer">MCP Security Best Practices<span aria-hidden="true"> ↗</span></a><p>로컬 MCP 서버 실행, 접근 권한 및 신뢰 경계의 보안 고려사항. 검사 대상 실행을 격리하는 설계의 근거.</p><p class="source-limit">격리·접근 통제는 별도 구현·검증 대상이며, 본 HTML이 그 통제를 실행하는 것은 아니다.</p></div></li></ol>
+ <p class="note">작성 근거: 제공된 <em>BoundaryCheck_Project_Spec.md</em>와 위 자료. 공개 자료 확인 기준 2026-10-01. 이 페이지는 설계 설명 문서이며, 보안 검증 엔진이나 실제 실험 결과를 포함하지 않습니다.</p>
+</section>
+<footer class="footer"><span><strong>BoundaryCheck</strong> · 실행 조건과 증거를 연결하는 AI 워크플로우 보안 검증</span><span>Project proposal / 2026.10.01</span></footer>
+</div></main>
+<script id="source-provenance" type="application/json">{
+  "asOf": "2026-10-01",
+  "status": "design_not_implemented",
+  "sources": [
+    {
+      "id": 1,
+      "title": "SCR-Bench — Benign in Isolation, Harmful in Composition",
+      "kind": "원 논문 · arXiv v1",
+      "date": "2026-06-13",
+      "url": "https://arxiv.org/html/2606.15242v1",
+      "scope": "§4.2: SCR-CapFlow의 평가 백엔드 평균 ASR. 통제 0%, A 단독 0%, B 단독 1.4%, A+B Neutral 33.6%, A+B Explicit 35.9%. 150개 사례, 사례·조건별 5회. Appendix A: 모의 환경에서 런타임 정책·운영 복잡성을 단순화한 한계.",
+      "note": "통제된 스킬 환경의 결과다. 실제 서비스 침해율이나 모든 스킬의 취약 비율이 아니다."
+    },
+    {
+      "id": 2,
+      "title": "MCPTox — Tool Poisoning on Real-World MCP Servers",
+      "kind": "원 논문 · arXiv v2",
+      "date": "2026-09-29 개정",
+      "url": "https://arxiv.org/abs/2508.14925v2",
+      "scope": "초록: MCP 서버 45개, 도구 353개, 악성 테스트 1,348개, 에이전트 설정 20종. o1-mini의 공격 성공률 72.8%. 최초 제출 2025-08-19.",
+      "note": "1,348은 v2 기준이다. 72.8%는 특정 모델·공격 조건의 값이며 시장 전체에 일반화하지 않는다."
+    },
+    {
+      "id": 3,
+      "title": "AgentDojo — A Dynamic Environment to Evaluate Prompt Injection",
+      "kind": "원 논문 · arXiv v3",
+      "date": "2024-11-24 개정",
+      "url": "https://arxiv.org/abs/2406.13352v3",
+      "scope": "97개 정상 업무와 629개 보안 테스트를 포함하는 동적 평가 환경. 업무 수행과 공격·방어를 함께 평가하는 선행 방법.",
+      "note": "숫자는 논문 버전의 벤치마크 구성 규모이며 BoundaryCheck의 결과가 아니다."
+    },
+    {
+      "id": 4,
+      "title": "Cisco Skill Scanner",
+      "kind": "공식 오픈소스 프로젝트",
+      "date": "2026-10-01 열람",
+      "url": "https://github.com/cisco-ai-defense/skill-scanner",
+      "scope": "정적 패턴 검사, 행동·데이터 흐름 분석, 선택적인 LLM 의미 분석 등 스킬 검사 기능.",
+      "note": "기능 설명을 확인한 것이며 본 문서에서 해당 제품의 탐지 성능을 실험한 것은 아니다."
+    },
+    {
+      "id": 5,
+      "title": "Cisco MCP Scanner",
+      "kind": "공식 오픈소스 프로젝트",
+      "date": "2026-10-01 열람",
+      "url": "https://github.com/cisco-ai-defense/mcp-scanner",
+      "scope": "MCP 메타데이터와 구현 분석. Behavioral Analyzer는 설명과 코드 동작의 불일치, 파일 간 데이터 흐름을 분석.",
+      "note": "도구 이름·설명·소스의 정적 정보가 원격 서버의 모든 실제 동작을 보증하지는 않는다."
+    },
+    {
+      "id": 6,
+      "title": "Invariant — Toxic Flow Analysis",
+      "kind": "개발사 기술 설명",
+      "date": "2025-07-29",
+      "url": "https://invariantlabs.ai/blog/toxic-flow-analysis",
+      "scope": "도구 흐름 그래프와 위험 경로를 구성하며, 정적 정보와 동적 실행 정보를 함께 활용하는 하이브리드 분석.",
+      "note": "조합 분석이나 정적·동적 결합을 BoundaryCheck만의 최초 기능으로 주장하지 않는다."
+    },
+    {
+      "id": 7,
+      "title": "Promptfoo — MCP Security Testing Guide",
+      "kind": "공식 프로젝트 문서",
+      "date": "2026-10-01 열람",
+      "url": "https://www.promptfoo.dev/docs/red-team/mcp-security-testing/",
+      "scope": "MCP 도구를 직접 호출하는 테스트와 에이전트를 통한 보안 테스트를 지원.",
+      "note": "동적 테스트 자체가 아니라 환경 조건·계약 기반 생성의 추가 가치를 비교해야 한다."
+    },
+    {
+      "id": 8,
+      "title": "Agent Skills Specification",
+      "kind": "공식 명세",
+      "date": "2026-10-01 열람",
+      "url": "https://agentskills.io/specification",
+      "scope": "SKILL.md 및 참조 자료 형식. allowed-tools는 사전 승인 도구를 나타내는 실험적 필드이며 구현별 지원이 다를 수 있음.",
+      "note": "선언된 도구 목록을 보편적으로 강제되는 최대 권한 경계로 해석하지 않는다."
+    },
+    {
+      "id": 9,
+      "title": "MCP Tools Specification",
+      "kind": "공식 명세 · 2026-07-28",
+      "date": "2026-10-01 열람",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools",
+      "scope": "신뢰할 수 없는 서버의 도구 annotation은 신뢰하지 않아야 한다는 보안 조건. 도구 호출·스키마의 기반 명세.",
+      "note": "read-only 등 서버의 설명은 독립적인 실제 동작 검증을 대신하지 않는다."
+    },
+    {
+      "id": 10,
+      "title": "LangGraph Overview",
+      "kind": "공식 프레임워크 문서",
+      "date": "2026-10-01 열람",
+      "url": "https://docs.langchain.com/oss/python/langgraph/overview",
+      "scope": "상태를 가진 장기 실행 에이전트와 워크플로우의 실행 기반. 이 설계에서는 참조 실행기 한 종류로 사용.",
+      "note": "모든 LangGraph 저장소를 자동 분석·이식하겠다는 범위가 아니다."
+    },
+    {
+      "id": 11,
+      "title": "MCP Python SDK",
+      "kind": "공식 SDK 저장소",
+      "date": "2026-10-01 열람",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "scope": "MCP 서버와 클라이언트 구현을 위한 공식 Python SDK. 실제 MCP 프로토콜을 쓰는 모의 서버·클라이언트 구성의 기반.",
+      "note": "구현 시 호환 버전을 고정하고 SDK·실행 이미지 지문을 기록한다."
+    },
+    {
+      "id": 12,
+      "title": "MCP Security Best Practices",
+      "kind": "공식 보안 지침 · 2026-07-28",
+      "date": "2026-10-01 열람",
+      "url": "https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices",
+      "scope": "로컬 MCP 서버 실행, 접근 권한 및 신뢰 경계의 보안 고려사항. 검사 대상 실행을 격리하는 설계의 근거.",
+      "note": "격리·접근 통제는 별도 구현·검증 대상이며, 본 HTML이 그 통제를 실행하는 것은 아니다."
+    }
+  ],
+  "observedLiterature": {
+    "scrCapFlow": {
+      "control": 0,
+      "aOnly": 0,
+      "bOnly": 1.4,
+      "neutralComposition": 33.6,
+      "explicitComposition": 35.9,
+      "unit": "percent",
+      "source": 1
+    },
+    "mcptox": {
+      "servers": 45,
+      "tools": 353,
+      "maliciousCases": 1348,
+      "agentSettings": 20,
+      "o1miniASR": 72.8,
+      "version": "v2",
+      "source": 2
+    },
+    "agentDojo": {
+      "tasks": 97,
+      "securityCases": 629,
+      "source": 3
+    }
+  },
+  "plannedExperiment": {
+    "baseScenarios": 12,
+    "variants": 3,
+    "permissionProfiles": 2,
+    "configurations": 72,
+    "unknownCases": 12,
+    "models": 2,
+    "repetitions": 3,
+    "llmRuns": 432
+  },
+  "inputDocument": "BoundaryCheck_Project_Spec.md"
+}</script>
+<script>
+(() => {
+ 'use strict';
+ const links = Array.from(document.querySelectorAll('.nav-link'));
+ const sections = Array.from(document.querySelectorAll('section[id]'));
+ function markActive(id) { links.forEach(a => { const active = a.dataset.section === id; a.classList.toggle('active', active); if(active) a.setAttribute('aria-current','location'); else a.removeAttribute('aria-current'); }); }
+ markActive('overview');
+ let ticking = false;
+ function updateNavigation(){ const top = window.scrollY + 150; let current = 'overview'; for(const section of sections){ if(section.offsetTop <= top) current = section.id; } markActive(current); ticking = false; }
+ window.addEventListener('scroll', () => { if(!ticking){ window.requestAnimationFrame(updateNavigation); ticking = true; } }, {passive:true});
+ document.querySelectorAll('.print-trigger').forEach(b => b.addEventListener('click', () => window.print()));
+ const details = Array.from(document.querySelectorAll('.technical-detail'));
+ const expand = document.getElementById('expand-all');
+ expand.addEventListener('click', () => { const open = !details.every(d => d.open); details.forEach(d => d.open = open); expand.setAttribute('aria-expanded', String(open)); expand.textContent = open ? '상세 항목 모두 닫기' : '상세 항목 모두 열기'; });
+ details.forEach(d => d.addEventListener('toggle', () => { const all = details.every(x => x.open); expand.setAttribute('aria-expanded',String(all)); expand.textContent = all ? '상세 항목 모두 닫기' : '상세 항목 모두 열기'; }));
+ let beforePrint = null;
+ window.addEventListener('beforeprint', () => { beforePrint = details.map(d => d.open); details.forEach(d => d.open=true); });
+ window.addEventListener('afterprint', () => { if(beforePrint) details.forEach((d,i) => d.open=beforePrint[i]); beforePrint=null; });
+ const versionButtons = Array.from(document.querySelectorAll('[data-version]'));
+ const env = document.getElementById('env-select');
+ let version = 'changed';
+ const set = (id,value) => document.getElementById(id).textContent = value;
+ function renderDemo(){
+  const e = env.value; const risk = version === 'changed';
+  let v,cls,summary,attempt,block,effect,end,endNote;
+  if(e === 'unknown'){
+   v='예시: 검증 불충분'; cls='unknown'; summary='핵심 수신·쓰기 관측이 빠져, 실제 부작용 여부를 확인할 수 없는 경우입니다.';
+   attempt=risk?'시도 기록 있음 (예시)':'시도 기록 없음 (예시)'; block='확인 불가'; effect='관측 누락'; end='독립 관측 누락'; endNote='도구 응답만으로 성공·안전을 확정하지 않음';
+  } else if(risk && e === 'wide'){
+   v='예시: 위반 재현'; cls=''; summary='변경 스킬이 외부 목적지를 선택하고, 권한 집행 계층이 이를 허용한 경우입니다.';
+   attempt='있음 (예시)'; block='없음 (예시)'; effect='외부 수신 (예시)'; end='외부 모의 수신함'; endNote='마커 수신 기록이 남는 경우';
+  } else if(risk){
+   v='예시: 통제로 차단'; cls='blocked'; summary='같은 외부 전송 시도를 백엔드가 거부하고, 금지된 수신이 없음을 확인한 경우입니다.';
+   attempt='있음 (예시)'; block='목적지 제한 확인 (예시)'; effect='금지 수신 없음 (예시)'; end='백엔드에서 요청 거부'; endNote='차단 이벤트와 수신 원장을 함께 확인';
+  } else {
+   v='예시: 위반 미관측'; cls='clear'; summary=version==='original'?'원본 스킬이 허용된 내부 수신자에게만 공유하는 정상 경로의 예시입니다.':'변경된 외부 전송 경로를 제거한 뒤 같은 검사를 다시 수행하는 예시입니다.';
+   attempt='없음 (예시)'; block='해당 없음'; effect='금지 수신 없음 (예시)'; end='내부 모의 수신함'; endNote='허용된 공유와 정상 업무 성공을 별도 확인';
+  }
+  const badge=document.getElementById('demo-verdict'); badge.textContent=v; badge.className='verdict '+cls;
+  set('demo-summary',summary); set('demo-attempt',attempt); set('demo-block',block); set('demo-effect',effect); set('demo-end',end); set('demo-end-note',endNote);
+  set('demo-middle',risk?'변경된 공유 스킬':version==='original'?'원본 공유 스킬':'수정된 공유 스킬');
+  set('demo-middle-note',risk?'승인되지 않은 외부 목적지 선택':'정책에서 허용한 내부 목적지 선택');
+  set('demo-task', e==='unknown'?'관측 실패를 안전 판정으로 바꾸지 않습니다. 이 화면은 동작 설명용이며 실제 실행 결과가 아닙니다.':'정상적인 내부 공유 성공 여부는 별도로 측정합니다. 실제 결과는 구현 후 실행 기록으로 판단합니다.');
+ }
+ versionButtons.forEach(b => b.addEventListener('click', () => { version=b.dataset.version; versionButtons.forEach(x => x.setAttribute('aria-pressed',String(x===b))); renderDemo(); }));
+ env.addEventListener('change',renderDemo);
+})();
+</script>
+</body>
+</html>

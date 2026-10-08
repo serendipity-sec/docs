@@ -1,0 +1,22 @@
+{
+  "root_id": "096c2d6e1537828d8e3a810d9a8976ac",
+  "root_url": "https://app.notion.com/p/096c2d6e1537828d8e3a810d9a8976ac",
+  "workspace_name": "대학교 개발 프로젝트",
+  "teamspace_name": "2026-2학기 캡스톤",
+  "page_title": "캡스톤 팀",
+  "repository": "serendipity-sec/docs",
+  "requires_private_repository": true,
+  "head_branch": "yusang",
+  "base_branch": "main",
+  "timezone": "Asia/Seoul",
+  "schedule": "daily 01:00; Slack then Notion in one scheduled run",
+  "collection_method": "notion_browser_markdown_csv_export",
+  "mcp_status_at_setup": "object_not_found_404",
+  "export_options": {
+    "format": "Markdown & CSV",
+    "database_view": "기본 보기",
+    "content": "모든 콘텐츠",
+    "include_subpages": true,
+    "create_subpage_folders": true
+  }
+}
