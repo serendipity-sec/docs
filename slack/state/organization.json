@@ -8,15 +8,18 @@
     "slack/raw/2026-10-07/C0C3556JRU1.jsonl": "d823d14c1b3a75e768dcacfbd75490750d0666576dc454305c44c955c48faa8b",
     "slack/raw/2026-10-07/C0C3MPJ5T9B.jsonl": "6b299327bceb41e5d20fe8c42b5df53a1c1214a22110aeb04b10a23db1db2880",
     "slack/raw/2026-10-07/C0C3QSK812A.jsonl": "41abe15ea23d1c17b866eb8d84cda9641aaed334fb434730ed04e7b88eabf91b",
-    "slack/raw/2026-10-07/C0C7B570Y72.jsonl": "c454105025f8e0ccf9fa6396670a2e7a9bac910646316a8436b291a563e6e140"
+    "slack/raw/2026-10-07/C0C7B570Y72.jsonl": "c454105025f8e0ccf9fa6396670a2e7a9bac910646316a8436b291a563e6e140",
+    "slack/raw/2026-10-09/C0C2Y9JLKD3.jsonl": "029531312c18625121cc02437f2c3ab7728ae64b86f9a48b1cd6ff7194fae050"
   },
   "documents": {
-    "slack/INDEX.md": "3d75b95c0ecf1ea788181d261daf0b482e3019100780a82e56aa10fb7739fe8c",
     "meetings/slack/2026-09-23_2026-10-06-운영공지와-할일.md": "cb5ebab27f3d6e8de2abffd2bcf150dd292cf1173148a3b27e617dba1ff3c65f",
-    "research/slack/2026-09-25-MCP-조사와-연구공백.md": "c4ca857cde2fa41599e7bd57982d440c225151b082ee39afe015bb2f291badde",
-    "research/slack/2026-09-21_2026-10-06-공유자료-목록.md": "04097e6efcc36df10267d5c7cc2a2058613c4cb630bf8f2a03dc8d1717e1fec2",
+    "meetings/slack/2026-10-08-회의변경과-역할분배-계획.md": "5250d6ae190a2d46b59e3fe94dc86ab05937f0b2d799be21e9c04ffabe4d8396",
     "proposals/slack/2026-09-20-추가주제-후속의견.md": "7d5cfd0e744eeb17984473f6b83ee0a4c4a389d39b6bdf2879360a918e0024ba",
-    "proposals/slack/2026-10-01_2026-10-03-아키텍처-논의안.md": "42358fe413aa9bd6fbd914498245a9fae5b6b8f9c0ae1dc13ee909deb83e502d"
+    "proposals/slack/2026-10-01_2026-10-03-아키텍처-논의안.md": "42358fe413aa9bd6fbd914498245a9fae5b6b8f9c0ae1dc13ee909deb83e502d",
+    "proposals/slack/2026-10-08-프로젝트-구현범위-질문.md": "40d6de35a568f9545f5b5ce75480730ab5a0bf538710428dd2fca14bd765a582",
+    "research/slack/2026-09-21_2026-10-06-공유자료-목록.md": "04097e6efcc36df10267d5c7cc2a2058613c4cb630bf8f2a03dc8d1717e1fec2",
+    "research/slack/2026-09-25-MCP-조사와-연구공백.md": "c4ca857cde2fa41599e7bd57982d440c225151b082ee39afe015bb2f291badde",
+    "slack/INDEX.md": "09bf593ee3df1b8d379f6289275d728de9a776b930a517fa0ad62150a280670a"
   },
   "generator": "Codex in the scheduled chat; no separate API key"
 }
