@@ -9,10 +9,10 @@
     "include_subpages": true,
     "create_subpage_folders": true
   },
-  "content_fingerprint": "7194643931b85d9b593a177f212af16cd467463a92a8902b670f10ecee672957",
+  "content_fingerprint": "f677c24ae24ac1ac381e4998778824f2db95a7287ae23ebb1f8adf61db7d7287",
   "counts": {
-    "files": 55,
-    "notion_pages": 28,
+    "files": 56,
+    "notion_pages": 29,
     "databases": 6,
     "csv_files": 12,
     "attachments": 15
@@ -75,8 +75,8 @@
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서 3ebc2d6e153780aebc98e71e8af59f37.csv",
-      "sha256": "4c3bae086f86207b07cd4dc7d917e5569473d05fcf6c0441930a9f4ab7ecce46",
-      "bytes": 1554,
+      "sha256": "7164f65478d3e3506c9644dedce74d9d7bf85b0da54fa25d5f7db69c06e2c894",
+      "bytes": 1699,
       "notion_id": "3ebc2d6e153780aebc98e71e8af59f37",
       "notion_url": "https://app.notion.com/p/3ebc2d6e153780aebc98e71e8af59f37",
       "columns": [
@@ -87,12 +87,12 @@
         "최종 편집자:",
         "최종 업데이트 시간"
       ],
-      "row_count": 9
+      "row_count": 10
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서 3ebc2d6e153780aebc98e71e8af59f37_all.csv",
-      "sha256": "32515530e8611da23d5bbacca088685df8f59bf38df4b3aabf63440d6bbb10ad",
-      "bytes": 1554,
+      "sha256": "6477d633e1ad5aee4ebd4960f2a94c0dc11ffe975e0a44fbcede064e3bfa3a63",
+      "bytes": 1699,
       "notion_id": "3ebc2d6e153780aebc98e71e8af59f37",
       "notion_url": "https://app.notion.com/p/3ebc2d6e153780aebc98e71e8af59f37",
       "columns": [
@@ -103,7 +103,7 @@
         "최종 편집자:",
         "카테고리"
       ],
-      "row_count": 9
+      "row_count": 10
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/AI 워크플로우의 배포 환경 및 의존성 변경에 따른 보안 회귀 분석 3ecc2d6e153780c7a6d5c3338dd4abc3.md",
@@ -117,6 +117,14 @@
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/AI 워크플로우의 배포 환경 및 의존성 변경에 따른 보안 회귀 분석/FlowDelta_Project_Brief.html",
       "sha256": "da3636fb99655890248934d04302b0028149085dc9c194f9a6e016aa503db128",
       "bytes": 78114
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/FlowDelta 4인 역할·착수 태스크·상세 실행계획 3f4c2d6e153780748df8f4d69467142c.md",
+      "sha256": "3577d5de7c9af2461c86eb804d77b3f79629022b3e188b96757facadae2a182d",
+      "bytes": 49149,
+      "notion_id": "3f4c2d6e153780748df8f4d69467142c",
+      "notion_url": "https://app.notion.com/p/3f4c2d6e153780748df8f4d69467142c",
+      "title": "FlowDelta 4인 역할·착수 태스크·상세 실행계획"
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/MCP·Skill 워크플로우의 배포 구성과 사용자 정책을 연결하여, 동일 구성을 서로 다른 3ecc2d6e153780f3bdfaf48c89ab064f.md",
@@ -225,8 +233,8 @@
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계 3eec2d6e1537801bb949de84023a2f23.md",
-      "sha256": "b37a775793020f986143c9c6507a4862c5a0d6999b77e9da7fd3aa0d6d6b9fd5",
-      "bytes": 39706,
+      "sha256": "40a7adb7969d14e8cc130c37c03a6a6403cd7d3293f1e6094fe25ca655d30599",
+      "bytes": 55334,
       "notion_id": "3eec2d6e1537801bb949de84023a2f23",
       "notion_url": "https://app.notion.com/p/3eec2d6e1537801bb949de84023a2f23",
       "title": "최종 설계"
