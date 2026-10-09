@@ -13,7 +13,7 @@
 
 - **[상세 아키텍처와 핵심 결정](final/README.md)**: 먼저 읽을 문서. 입력 고정 범위, 전체 흐름, 판정과 한계.
 - **[입력·현실적인 데이터셋 기준](final/input-and-data.md)**: 공개 n8n 원본·실제 변경·τ 업무/정책 자료의 활용과 사례 작성 기준.
-- **[4인 구현 역할과 모듈 상세](final/team-roles.md)**: 입력·n8n 어댑터, 그래프·변경 분석, 지식·계획, 실행 엔진의 구현 범위·입출력·첫 작업. 팀장도 핵심 모듈을 구현.
+- **[별도 4인 역할·착수 태스크·상세 실행계획](plans/team-implementation.md)**: 팀장이 오늘 배정할 네 개의 첫 태스크, 역할별 구현 명세, 모듈 입출력과 첫 연결 일정. 설계 기준과 별도로 관리.
 - [실행·평가 계획](final/execution-plan.md): 완료 기준, 역할, 비교군, 데이터 분할과 비용·통계.
 - [조사 근거](final/research-evidence.md) · [데이터 계약 예시](final/contracts.example.json) · [대화형 아키텍처 HTML](final/architecture.html)
 - [팀 Notion의 기존 최종 설계 페이지](https://app.notion.com/p/3eec2d6e1537801bb949de84023a2f23)
