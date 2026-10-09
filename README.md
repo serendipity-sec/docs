@@ -13,6 +13,7 @@
 
 - **[상세 아키텍처와 핵심 결정](final/README.md)**: 먼저 읽을 문서. 입력 고정 범위, 전체 흐름, 판정과 한계.
 - **[입력·현실적인 데이터셋 기준](final/input-and-data.md)**: 공개 n8n 원본·실제 변경·τ 업무/정책 자료의 활용과 사례 작성 기준.
+- **[4인 역할·산출물·검토 기준](final/team-roles.md)**: 팀장·A·B·C의 책임, 첫 제출물, 데이터·평가 분담과 통합 관문. 이름 없이 기술 역할로 관리.
 - [실행·평가 계획](final/execution-plan.md): 완료 기준, 역할, 비교군, 데이터 분할과 비용·통계.
 - [조사 근거](final/research-evidence.md) · [데이터 계약 예시](final/contracts.example.json) · [대화형 아키텍처 HTML](final/architecture.html)
 - [팀 Notion의 기존 최종 설계 페이지](https://app.notion.com/p/3eec2d6e1537801bb949de84023a2f23)
