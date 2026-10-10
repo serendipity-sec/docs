@@ -11,3 +11,11 @@
 *.png   binary
 *.jpg   binary
 *.gif   binary
+
+# Slack 아카이브의 SHA-256은 저장한 바이트를 기준으로 하므로 줄바꿈을 그대로 보존합니다.
+slack/raw/**       -text
+slack/summaries/** -text
+slack/INDEX.md     -text
+meetings/slack/**  -text
+research/slack/**  -text
+proposals/slack/** -text
