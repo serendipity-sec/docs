@@ -1,0 +1,19 @@
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: default) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: mcp_least_privilege) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: mcp_rug_pull) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: mcp_tool_poisoning) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: semantic_developer_intent) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: semantic_quality_policy) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: semantic_security_discovery) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.constants] Model 'qwen3:1.7b-q4_K_M' (slot: meta_analyzer) not found in model_registry.yaml. Using fallback context length (128000). Token budgeting may be inaccurate — add the model to the registry or verify the model ID.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.model_info] No token-limit info for model 'qwen3:1.7b-q4_K_M' — using 128000-token default. Add the model to model_registry.yaml.
+WARNING [skillspector.nodes.report] LLM stage degraded: 4/4 LLM call(s) failed; report reflects static analysis only

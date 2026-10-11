@@ -1,0 +1,122 @@
+{
+  "scope": "8 deterministic Docker runtime-isolation runs",
+  "row_count": 8,
+  "all_expected": true,
+  "issue_count": 0,
+  "issues": [],
+  "checks": [
+    {
+      "run_id": "sb-stable-container-broad",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-stable-network-none",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-stable-filesystem-withheld",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-stable-hardened",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-sleeper-container-broad",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-sleeper-network-none",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-sleeper-filesystem-withheld",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    },
+    {
+      "run_id": "sb-sleeper-hardened",
+      "checks": {
+        "summary_matches_result": true,
+        "status_completed": true,
+        "raw_effects_recomputed": true,
+        "predeclared_expected": true,
+        "receipt_count": true,
+        "receipt_path": true,
+        "project_unchanged": true,
+        "container_policy": true,
+        "code_snapshot": true
+      }
+    }
+  ],
+  "verifier_sha256": "3d6339c70c0ff6a2e53cb561d0c829106b3b10147907ea65dc4b149dea0c72d7"
+}

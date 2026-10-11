@@ -1,0 +1,32 @@
+{
+  "endpoint": "http://127.0.0.1:11439",
+  "ollama_version": {
+    "version": "0.32.1"
+  },
+  "selected_model_records": [
+    {
+      "name": "llama3.2:3b",
+      "model": "llama3.2:3b",
+      "modified_at": "2026-09-22T14:00:30.7828482+09:00",
+      "size": 2019393189,
+      "digest": "a80c4f17acd55265feec403c7aef86be0c25983ab279d83f3bcd3abbcb5b8b72",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "llama",
+        "families": [
+          "llama"
+        ],
+        "parameter_size": "3.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 131072,
+        "embedding_length": 3072
+      },
+      "capabilities": [
+        "completion",
+        "tools"
+      ]
+    }
+  ],
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]"
+}

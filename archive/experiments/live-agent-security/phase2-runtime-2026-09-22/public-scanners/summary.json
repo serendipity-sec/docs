@@ -1,0 +1,369 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-22T04:58:09.293280+00:00",
+  "scope": "fixed public text, static scanners, one bounded semantic comparison",
+  "cisco_skill_static": [
+    {
+      "case": "TS-CLAWHUB",
+      "exit_code": 0,
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "threat_findings_count": 0,
+      "rule_ids": [
+        "MANIFEST_MISSING_LICENSE"
+      ],
+      "analyzers_used": [
+        "static_analyzer",
+        "bytecode",
+        "pipeline",
+        "correlation",
+        "behavioral_analyzer"
+      ]
+    },
+    {
+      "case": "TS-SNYK-SKILL",
+      "exit_code": 0,
+      "is_safe": false,
+      "max_severity": "CRITICAL",
+      "findings_count": 4,
+      "threat_findings_count": 2,
+      "rule_ids": [
+        "MANIFEST_INVALID_NAME",
+        "MANIFEST_MISSING_LICENSE",
+        "PIPELINE_TAINT_FLOW",
+        "PIPELINE_TAINT_FLOW"
+      ],
+      "analyzers_used": [
+        "static_analyzer",
+        "bytecode",
+        "pipeline",
+        "correlation",
+        "behavioral_analyzer"
+      ]
+    },
+    {
+      "case": "TS-TESTING-GUIDELINES",
+      "exit_code": 0,
+      "is_safe": false,
+      "max_severity": "CRITICAL",
+      "findings_count": 3,
+      "threat_findings_count": 2,
+      "rule_ids": [
+        "MANIFEST_MISSING_LICENSE",
+        "YARA_prompt_injection_unicode_steganography",
+        "ASCII_SMUGGLING_TAG_BLOCK"
+      ],
+      "analyzers_used": [
+        "static_analyzer",
+        "bytecode",
+        "pipeline",
+        "correlation",
+        "behavioral_analyzer"
+      ]
+    },
+    {
+      "case": "TS-VERCEL-AGENTS",
+      "exit_code": 0,
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "threat_findings_count": 0,
+      "rule_ids": [
+        "MANIFEST_MISSING_LICENSE"
+      ],
+      "analyzers_used": [
+        "static_analyzer",
+        "bytecode",
+        "pipeline",
+        "correlation",
+        "behavioral_analyzer"
+      ]
+    },
+    {
+      "case": "TS-VERCEL-GEMINI",
+      "exit_code": 0,
+      "is_safe": true,
+      "max_severity": "INFO",
+      "findings_count": 1,
+      "threat_findings_count": 0,
+      "rule_ids": [
+        "MANIFEST_MISSING_LICENSE"
+      ],
+      "analyzers_used": [
+        "static_analyzer",
+        "bytecode",
+        "pipeline",
+        "correlation",
+        "behavioral_analyzer"
+      ]
+    }
+  ],
+  "skillspector_static": [
+    {
+      "case": "TS-CLAWHUB",
+      "exit_code": 1,
+      "score": 61,
+      "severity": "HIGH",
+      "recommendation": "DO_NOT_INSTALL",
+      "max_issue_severity": "HIGH",
+      "issue_count": 5,
+      "issue_ids": [
+        "RA1",
+        "TM1",
+        "EA2",
+        "EA2",
+        "RA2"
+      ],
+      "coverage_percent": 100.0,
+      "is_complete": false,
+      "completeness_status": "partial",
+      "ledger_reason_codes": [
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved",
+        "reference_unresolved"
+      ],
+      "llm_requested": false,
+      "llm_available": false
+    },
+    {
+      "case": "TS-SNYK-SKILL",
+      "exit_code": 0,
+      "score": 33,
+      "severity": "MEDIUM",
+      "recommendation": "CAUTION",
+      "max_issue_severity": "HIGH",
+      "issue_count": 2,
+      "issue_ids": [
+        "SC2",
+        "SC2"
+      ],
+      "coverage_percent": 100.0,
+      "is_complete": true,
+      "completeness_status": "complete",
+      "ledger_reason_codes": [],
+      "llm_requested": false,
+      "llm_available": false
+    },
+    {
+      "case": "TS-TESTING-GUIDELINES",
+      "exit_code": 0,
+      "score": 30,
+      "severity": "MEDIUM",
+      "recommendation": "CAUTION",
+      "max_issue_severity": "HIGH",
+      "issue_count": 2,
+      "issue_ids": [
+        "P2",
+        "AE4"
+      ],
+      "coverage_percent": 100.0,
+      "is_complete": true,
+      "completeness_status": "complete",
+      "ledger_reason_codes": [],
+      "llm_requested": false,
+      "llm_available": false
+    },
+    {
+      "case": "TS-VERCEL-AGENTS",
+      "exit_code": 0,
+      "score": 6,
+      "severity": "LOW",
+      "recommendation": "SAFE",
+      "max_issue_severity": "MEDIUM",
+      "issue_count": 1,
+      "issue_ids": [
+        "E1"
+      ],
+      "coverage_percent": 100.0,
+      "is_complete": true,
+      "completeness_status": "complete",
+      "ledger_reason_codes": [],
+      "llm_requested": false,
+      "llm_available": false
+    },
+    {
+      "case": "TS-VERCEL-GEMINI",
+      "exit_code": 0,
+      "score": 13,
+      "severity": "LOW",
+      "recommendation": "CAUTION",
+      "max_issue_severity": "MEDIUM",
+      "issue_count": 2,
+      "issue_ids": [
+        "E1",
+        "RP1"
+      ],
+      "coverage_percent": 100.0,
+      "is_complete": false,
+      "completeness_status": "partial",
+      "ledger_reason_codes": [
+        "reference_unresolved"
+      ],
+      "llm_requested": false,
+      "llm_available": false
+    }
+  ],
+  "cisco_mcp_yara_static": [
+    {
+      "case": "MCP-INDIRECT-INJECTION",
+      "exit_code": 0,
+      "items": 4,
+      "safe_items": 4,
+      "unsafe_items": 0,
+      "threat_names": [],
+      "requested_analyzers": [
+        "yara"
+      ]
+    },
+    {
+      "case": "MCP-MALICIOUS-TOOLS",
+      "exit_code": 0,
+      "items": 1,
+      "safe_items": 1,
+      "unsafe_items": 0,
+      "threat_names": [],
+      "requested_analyzers": [
+        "yara"
+      ]
+    },
+    {
+      "case": "MCP-RCE-METADATA",
+      "exit_code": 0,
+      "items": 1,
+      "safe_items": 1,
+      "unsafe_items": 0,
+      "threat_names": [],
+      "requested_analyzers": [
+        "yara"
+      ]
+    },
+    {
+      "case": "MCP-TYPOSQUAT-METADATA",
+      "exit_code": 0,
+      "items": 2,
+      "safe_items": 2,
+      "unsafe_items": 0,
+      "threat_names": [],
+      "requested_analyzers": [
+        "yara"
+      ]
+    }
+  ],
+  "semantic_modes": {
+    "codex_cli": {
+      "tool_exit_code": 1,
+      "score": 100,
+      "severity": "CRITICAL",
+      "recommendation": "DO_NOT_INSTALL",
+      "issue_count": 7,
+      "issue_ids": [
+        "SSD-4",
+        "SDI-1",
+        "SDI-4",
+        "SQP-2",
+        "SSD-1",
+        "E1",
+        "RP1"
+      ],
+      "llm_calls_attempted": 4,
+      "llm_calls_succeeded": 4,
+      "llm_available": true,
+      "meta_analysis_applied": true,
+      "coverage_percent": 100.0,
+      "fully_inspected_files": 1,
+      "completeness_status": "partial",
+      "ledger_reason_codes": [
+        "reference_unresolved"
+      ],
+      "interpretation": "DETECTED; exit 1 is the scanner's critical-risk gate, not an execution failure"
+    },
+    "ollama_qwen3_1_7b": {
+      "tool_exit_code": 0,
+      "duration_seconds": 813.125,
+      "llm_calls_attempted": 4,
+      "llm_calls_succeeded": 0,
+      "llm_degraded": true,
+      "llm_error": "LLM analysis was requested but 4 of 4 LLM call(s) failed; results reflect static analysis only for the affected batch(es). Reasons: shared runtime limit reached",
+      "coverage_percent": 0.0,
+      "completeness_status": "partial",
+      "interpretation": "INCOMPLETE_EXCLUDED; the report contains static findings only"
+    },
+    "ollama_qwen3_4b": {
+      "status": "INTERRUPTED_SHARED_RUNTIME",
+      "duration_seconds": 176.065,
+      "interpretation": "NOT_ASSESSED; interrupted to release the shared runtime"
+    },
+    "observed_local_models": [
+      {
+        "model": "qwen3:1.7b-q4_K_M",
+        "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+        "endpoint": "http://127.0.0.1:11437/v1"
+      },
+      {
+        "model": "qwen3:4b-q4_K_M",
+        "digest": "2bfd38a7daaf4b1037efe517ccb73d1a3bbd4822cf89f1a82be1569050a114e0",
+        "endpoint": "http://127.0.0.1:11437/v1"
+      }
+    ]
+  },
+  "snyk_agent_scan": {
+    "classification": "BLOCKED_CREDENTIAL",
+    "exit_code": 1,
+    "version": "0.6.4",
+    "input_kind": "direct SKILL.md path; no MCP configuration",
+    "snyk_token_forwarded": false,
+    "http_request_started": false,
+    "source_contract": {
+      "path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\public-scanners-snyk-0.6.4\\Lib\\site-packages\\agent_scan\\verify_api.py",
+      "sha256": "e6a32e09a2009d56ccd7c2b9d21bc17e74fd5579766d577714066858e4ff5963",
+      "relevant_lines": "494-525; missing token raises before the request loop beginning at line 527",
+      "markers_present": true
+    },
+    "verbose_stderr_disposition": {
+      "status": "DISCARDED_UNLICENSED_SOURCE_PAYLOAD",
+      "sha256": "c6645b13f7c50a1eea44cc47608b6764062ff60fbdf0305e222c36df691a917d",
+      "size_bytes": 7047,
+      "reason": "Verbose Snyk debug output embedded the complete unlicensed public Skill text; only hash and size retained."
+    },
+    "note": "The CLI emitted no ordinary error text; classification combines exit 1, the intentionally scrubbed environment, and the pinned 0.6.4 source contract."
+  },
+  "tool_versions": {
+    "cisco_skill": {
+      "version_output": "2.1.0",
+      "exit_code": 0
+    },
+    "cisco_mcp": {
+      "version_output": "4.8.4",
+      "exit_code": 0
+    },
+    "skillspector": {
+      "version_output": "2.11.2",
+      "exit_code": 0
+    },
+    "codex_cli": {
+      "version_output": "codex-cli 0.155.0-alpha.9.2",
+      "exit_code": 0
+    },
+    "snyk_agent_scan": {
+      "version_output": "0.6.4",
+      "exit_code": 0
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "command": [
+    "platform\\experiments\\tool-comparison\\runtime\\semgrep-venv\\Scripts\\semgrep.exe",
+    "scan",
+    "--config",
+    "platform\\experiments\\tool-comparison\\vendor\\semgrep-rules\\javascript",
+    "--config",
+    "platform\\experiments\\tool-comparison\\vendor\\semgrep-rules\\typescript",
+    "--metrics",
+    "off",
+    "--disable-version-check",
+    "--no-git-ignore",
+    "--exclude",
+    "test",
+    "--exclude",
+    "frontend/src/app/challenges",
+    "--json",
+    "--output",
+    "docs\\research\\후보1-바이브코딩보안\\evidence\\semgrep-juice.json",
+    "platform\\experiments\\tool-comparison\\vendor\\juice-shop"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:23:45.638481+00:00",
+  "elapsed_seconds": 4.844,
+  "exit_code": 2
+}

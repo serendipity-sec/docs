@@ -1,0 +1,2 @@
+{"condition": "DETERMINISTIC_SAFE_INTERPRETER", "external_network_success_claimed": false, "input_sha256": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e", "shim_call_count": 7, "status": "RECORDED"}
+EVIDENCE_RELEASED

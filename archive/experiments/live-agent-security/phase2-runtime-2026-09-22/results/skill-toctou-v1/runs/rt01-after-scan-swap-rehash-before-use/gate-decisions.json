@@ -1,0 +1,20 @@
+[
+  {
+    "label": "initial-full-tree",
+    "target": "package-original",
+    "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "matches": true
+  },
+  {
+    "label": "before-use-1",
+    "target": "package-original",
+    "digest": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "matches": false
+  },
+  {
+    "label": "execution-1",
+    "decision": "HOLD_DIGEST_MISMATCH"
+  }
+]

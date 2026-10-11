@@ -1,0 +1,11 @@
+[
+  "docker",
+  "build",
+  "--pull=false",
+  "--network=none",
+  "--provenance=false",
+  "--progress=plain",
+  "--tag",
+  "serendipity-public-skill-safe-interpreter:20260922",
+  "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\dynamic-original-skill"
+]

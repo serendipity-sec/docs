@@ -1,0 +1,32 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--name",
+    "capstone-zap-baseline",
+    "--network",
+    "capstone-vibe-lab",
+    "-v",
+    "C:\\capstone2\\docs\\research\\후보1-바이브코딩보안\\evidence:/zap/wrk:rw",
+    "ghcr.io/zaproxy/zaproxy:2.17.0",
+    "zap-baseline.py",
+    "-t",
+    "http://capstone-juice:3000",
+    "-m",
+    "1",
+    "-T",
+    "3",
+    "-J",
+    "zap-baseline.json",
+    "-r",
+    "zap-baseline.html",
+    "-w",
+    "zap-baseline.md",
+    "-I"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:22:31.573198+00:00",
+  "elapsed_seconds": 59.11,
+  "exit_code": 0
+}

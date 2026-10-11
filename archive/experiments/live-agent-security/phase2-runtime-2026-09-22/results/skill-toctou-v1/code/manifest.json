@@ -1,0 +1,10 @@
+[
+  {
+    "file": "run_skill_toctou.py",
+    "sha256": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  },
+  {
+    "file": "verify_deterministic.py",
+    "sha256": "3d6339c70c0ff6a2e53cb561d0c829106b3b10147907ea65dc4b149dea0c72d7"
+  }
+]

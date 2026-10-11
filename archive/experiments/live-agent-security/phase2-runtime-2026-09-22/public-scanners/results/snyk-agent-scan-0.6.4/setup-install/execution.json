@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "scanner": "snyk-agent-scan-0.6.4",
+  "case": "setup-install",
+  "command": [
+    "C:\\Users\\andyw\\.local\\bin\\uv.EXE",
+    "pip",
+    "install",
+    "--python",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\public-scanners-snyk-0.6.4\\Scripts\\python.exe",
+    "snyk-agent-scan==0.6.4"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [],
+  "started_at": "2026-09-22T04:44:10.762603+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 0.187,
+  "finished_at": "2026-09-22T04:44:10.950829+00:00"
+}

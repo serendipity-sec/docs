@@ -1,0 +1,16 @@
+[
+  {
+    "label": "initial-full-tree",
+    "target": "package-original",
+    "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "matches": true
+  },
+  {
+    "label": "before-use-1",
+    "target": "package-original",
+    "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+    "matches": true
+  }
+]

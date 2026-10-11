@@ -1,0 +1,70 @@
+{
+  "run_id": "rt04-copy-execute-rehash-before-use",
+  "case_id": "RT04-COPY-EXECUTE",
+  "policy": "rehash-before-use",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 2.297,
+  "actual_attack_effect": true,
+  "normal_task_completed": true,
+  "expected": {
+    "actual_attack_effect": true,
+    "normal_task_completed": true
+  },
+  "expected_match": true,
+  "approved_tree_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+  "original_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+  "sealed_tree_digest_after": null,
+  "original_package_changed": false,
+  "sealed_package_changed": false,
+  "gate_decisions": [
+    {
+      "label": "initial-full-tree",
+      "target": "package-original",
+      "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+      "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+      "matches": true
+    },
+    {
+      "label": "before-use-1",
+      "target": "package-original",
+      "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+      "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+      "matches": true
+    }
+  ],
+  "executions": [
+    {
+      "index": 1,
+      "target": "package-original/helper.py",
+      "sha256_before": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+      "sha256_after": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+      "exit_code": 0
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "attack-marker.txt",
+      "sha256": "a37ec2591b7f124aae42c05040bc96eecaa1d367e60c2e42711536151b9b9ce1",
+      "size": 17
+    },
+    {
+      "path": "child-status.json",
+      "sha256": "f61bdef54e436e3cf760e5134d1f593f25dd5380c79624e14842d7baceb364b6",
+      "size": 76
+    },
+    {
+      "path": "late-payload.py",
+      "sha256": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+      "size": 276
+    },
+    {
+      "path": "normal.txt",
+      "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+      "size": 13
+    }
+  ],
+  "input_hashes": {
+    "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  }
+}

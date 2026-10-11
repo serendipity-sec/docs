@@ -1,0 +1,57 @@
+{
+  "_id": "69da492161f7dc0587b105a3",
+  "id": "iCSawyer/SecureVibeBench",
+  "author": "iCSawyer",
+  "sha": "d6a5edd34e594afdd19ec610e65deddd9dbc625f",
+  "lastModified": "2026-04-28T01:09:05.000Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "task_categories:text-generation",
+    "language:en",
+    "license:mit",
+    "size_categories:n<1K",
+    "format:parquet",
+    "modality:text",
+    "library:datasets",
+    "library:pandas",
+    "library:polars",
+    "library:mlcroissant",
+    "arxiv:2509.22097",
+    "region:us",
+    "code",
+    "security",
+    "benchmark"
+  ],
+  "description": "\n\t\n\t\t\n\t\n\t\n\t\tSecureVibeBench: First Secure Vibe Coding Benchmark\n\t\n\nSecureVibeBench is a benchmark consisting of 105 C/C++ secure coding tasks sourced from 41 projects in OSS-Fuzz for code agents. It is designed to evaluate secure vibe coding by reconstructing real-world scenarios where human developers introduced vulnerabilities.\n\nPaper: SecureVibeBench: Benchmarking Secure Vibe Coding of AI Agents via Reconstructing Vulnerability-Introducing Scenarios\nRepository: iCSawyer/SecureVibeBench\u2026 See the full description on the dataset page: https://huggingface.co/datasets/iCSawyer/SecureVibeBench.",
+  "downloads": 1005,
+  "likes": 3,
+  "cardData": {
+    "language": [
+      "en"
+    ],
+    "license": "mit",
+    "task_categories": [
+      "text-generation"
+    ],
+    "tags": [
+      "code",
+      "security",
+      "benchmark"
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "data/train-00000-of-00001.parquet"
+    }
+  ],
+  "createdAt": "2026-04-11T13:14:09.000Z",
+  "usedStorage": 229875
+}

@@ -1,0 +1,2 @@
+Using Python 3.13.7 environment at: C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4
+Audited 1 package in 51ms

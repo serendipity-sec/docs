@@ -1,0 +1,27 @@
+[
+  {
+    "label": "initial-full-tree",
+    "target": "package-original",
+    "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "matches": true
+  },
+  {
+    "label": "before-use-1",
+    "target": "package-original",
+    "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "matches": true
+  },
+  {
+    "label": "before-use-2",
+    "target": "package-original",
+    "digest": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+    "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+    "matches": false
+  },
+  {
+    "label": "execution-2",
+    "decision": "HOLD_DIGEST_MISMATCH"
+  }
+]

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scanner": "snyk-agent-scan-0.6.4",
+  "case": "TS-VERCEL-GEMINI-BLOCKED-CREDENTIAL",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\public-scanners-snyk-0.6.4\\Scripts\\snyk-agent-scan.exe",
+    "scan",
+    "--print-errors",
+    "--verbose",
+    "--json",
+    "--storage-file",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\snyk-agent-scan-0.6.4\\TS-VERCEL-GEMINI-BLOCKED-CREDENTIAL\\storage.json",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\vercel\\SKILL.md"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/vercel/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 2277,
+      "sha256": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e"
+    }
+  ],
+  "started_at": "2026-09-22T13:44:28.381774+09:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 1,
+  "duration_seconds": 17.86,
+  "finished_at": "2026-09-22T13:44:46.24453+09:00",
+  "raw_stderr_disposition": {
+    "status": "DISCARDED_UNLICENSED_SOURCE_PAYLOAD",
+    "sha256": "c6645b13f7c50a1eea44cc47608b6764062ff60fbdf0305e222c36df691a917d",
+    "size_bytes": 7047,
+    "reason": "Verbose Snyk debug output embedded the complete unlicensed public Skill text; only hash and size retained."
+  }
+}

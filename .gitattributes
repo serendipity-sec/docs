@@ -19,3 +19,6 @@ slack/INDEX.md     -text
 meetings/slack/**  -text
 research/slack/**  -text
 proposals/slack/** -text
+
+# 과거 조사·실험 기록의 원본 바이트와 해시를 보존합니다.
+archive/** -text

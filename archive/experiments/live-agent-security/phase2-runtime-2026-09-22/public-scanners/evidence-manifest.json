@@ -1,0 +1,581 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-22T04:58:09.575982+00:00",
+  "files": [
+    {
+      "path": "DYNAMIC-REPRODUCTION.md",
+      "size_bytes": 4028,
+      "sha256": "db054fcc216516761ed8401f43a86bc6448f1b653c18ae16514ace448ed80e63"
+    },
+    {
+      "path": "inputs/mcp/appsecco-indirect-injection-resources.json",
+      "size_bytes": 1438,
+      "sha256": "a6bb97ff19537b6658d1ebe3920c06be68bb5097a896ede5338fbd3b09f7aa7f"
+    },
+    {
+      "path": "inputs/mcp/appsecco-malicious-tools-resources.json",
+      "size_bytes": 535,
+      "sha256": "70e4f8bf4f07a48aea8179c9510a3db4dd2f751bf8e134adf2513d7c4f592739"
+    },
+    {
+      "path": "inputs/mcp/appsecco-rce-tools.json",
+      "size_bytes": 472,
+      "sha256": "b7c36650368485bd211718f08f1b469fcc118ed7caefc5f1cefb9026a26fbb33"
+    },
+    {
+      "path": "inputs/mcp/appsecco-typosquat-tools.json",
+      "size_bytes": 1134,
+      "sha256": "1bef3bb34f536d542739e7f97eb5dd45747daea7243a455fd4c61c179edd6f2c"
+    },
+    {
+      "path": "inputs/mcp/LICENSE-appsecco.txt",
+      "size_bytes": 1065,
+      "sha256": "3084be453b8cb23c148bfec04172431ff22811515e2cdbb292f428b333b51cab"
+    },
+    {
+      "path": "provenance.json",
+      "size_bytes": 7356,
+      "sha256": "df9b099b2295552a8aed6763d3f2eed2d7ab10a664f7b7bc2a32f8db06c304ff"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 3512,
+      "sha256": "922223094916d8edc87dd6bde69f04d572812c8b330e115f28390c591331c266"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-INDIRECT-INJECTION/execution.json",
+      "size_bytes": 1500,
+      "sha256": "86411d686cece92553d1782dfacaa278920e03103c2146b171b77900b821a236"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-INDIRECT-INJECTION/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-INDIRECT-INJECTION/stdout.txt",
+      "size_bytes": 2000,
+      "sha256": "467036f25a86618c3c5e6bf9633693ef2b8550da86205fe96b4500fcb630e2f7"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-MALICIOUS-TOOLS/execution.json",
+      "size_bytes": 1480,
+      "sha256": "8db87de4356cc37c359b8ce210939341e0790684e06b28214a4178ae7412b582"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-MALICIOUS-TOOLS/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-MALICIOUS-TOOLS/stdout.txt",
+      "size_bytes": 633,
+      "sha256": "6ce485f762fcfdc0f32120056fa4a75e849cb77b2e32e57e10faf0f1c304f8a9"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-RCE-METADATA/execution.json",
+      "size_bytes": 1445,
+      "sha256": "63b94a973935b3b141ba4f7c3bd4aa152ee6c09f9ab57818a36204caa43fef5a"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-RCE-METADATA/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-RCE-METADATA/stdout.txt",
+      "size_bytes": 574,
+      "sha256": "4da7f29df642606f3cc874d02f9256972c01147734a6b201ceeed8083e5693b8"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-TYPOSQUAT-METADATA/execution.json",
+      "size_bytes": 1468,
+      "sha256": "f2f31a7aecec66e4fc557f1c28a6f007278d7cf5da1f7bed4510ef493356fa56"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-TYPOSQUAT-METADATA/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-mcp-yara-static/MCP-TYPOSQUAT-METADATA/stdout.txt",
+      "size_bytes": 1123,
+      "sha256": "2857dede846a5bf6d3feb2ae70ccfcd361cf536e00dfc44824cc416db64923de"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-CLAWHUB/execution.json",
+      "size_bytes": 1262,
+      "sha256": "6603c9cc6ec0637eb6fda1c19305c453fc493203b1d80c0a4203e7eaa5edb5b4"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-CLAWHUB/report.json",
+      "size_bytes": 2064,
+      "sha256": "42e109fed6aef00ee408eb8de98849fa1553f1e4ae1934a1df9f8fa1c4455cb6"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-CLAWHUB/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-CLAWHUB/stdout.txt",
+      "size_bytes": 186,
+      "sha256": "178dddd882c8399fc327e04982554e913c068d412a9fc9c7555171a400be6703"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-SNYK-SKILL/execution.json",
+      "size_bytes": 1272,
+      "sha256": "a8209b4ffced17d32e779c3aba39f246c856068268698c3e159fcf443d926b99"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-SNYK-SKILL/report.json",
+      "size_bytes": 10097,
+      "sha256": "5099117beb4fb4bc0756a5a2c2044f468137bb601687b56a3b14d5e9a7379fa9"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-SNYK-SKILL/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-SNYK-SKILL/stdout.txt",
+      "size_bytes": 189,
+      "sha256": "cf79db1473d2f0884b76354467daf8a2e8ea6a3451406d65a2de630685b13856"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-TESTING-GUIDELINES/execution.json",
+      "size_bytes": 1305,
+      "sha256": "19e4e0884b5b2ab36c9d0739cecd73c66cbc4ad03f16a17dca268da776a6b08b"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-TESTING-GUIDELINES/report.json",
+      "size_bytes": 6238,
+      "sha256": "d5819858650a611be4468ea15b73b7801477e32ef5ad9245db2d865f64052a49"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-TESTING-GUIDELINES/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-TESTING-GUIDELINES/stdout.txt",
+      "size_bytes": 197,
+      "sha256": "97e31fee4a8876bf19bc5415aefe68c27242190853e19cd45b5dbdbd806bb110"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-AGENTS/execution.json",
+      "size_bytes": 1271,
+      "sha256": "ede5d39bf71ef9260ceb466d041b627d0e07482360cfbb3e2ac022a9f6a90ad7"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-AGENTS/report.json",
+      "size_bytes": 2062,
+      "sha256": "a08ed201e2afb99efe2c5ed79c72b1f388150cd7756d87aecd7de47c21ec6b0a"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-AGENTS/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-AGENTS/stdout.txt",
+      "size_bytes": 192,
+      "sha256": "31022781c93a915906c31e799cb3de585cf07103e55c5148228e665359287e30"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-GEMINI/execution.json",
+      "size_bytes": 1271,
+      "sha256": "90dcd2d9ca5dd273dcd74da6576e72eae69a105d9065ed518ca7cd1c7018b899"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-GEMINI/report.json",
+      "size_bytes": 2064,
+      "sha256": "6740b43cae74eefc5fc02d07be042c3894051397201eef7369cd09d34621244a"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-GEMINI/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/cisco-skill-static/TS-VERCEL-GEMINI/stdout.txt",
+      "size_bytes": 192,
+      "sha256": "acc6816e6de8127dc185e4e5eadb00c08526da40b570055f5e36a0eaaadcbe3d"
+    },
+    {
+      "path": "results/skillspector-codex-cli/TS-VERCEL-GEMINI/execution.json",
+      "size_bytes": 1300,
+      "sha256": "b370d36062bcb535c27cfdb8bee62ac2dad9f5689effce2e1f2e7909fafc5672"
+    },
+    {
+      "path": "results/skillspector-codex-cli/TS-VERCEL-GEMINI/report.json",
+      "size_bytes": 18923,
+      "sha256": "584d75f77dacdaf162a410b810bba9ed786dc4c417e6e063c43035b6f186e988"
+    },
+    {
+      "path": "results/skillspector-codex-cli/TS-VERCEL-GEMINI/stderr.txt",
+      "size_bytes": 3682,
+      "sha256": "43a4966864fd856286d6f9885b2776048e786600d4c0193b11c0e4896a92571b"
+    },
+    {
+      "path": "results/skillspector-codex-cli/TS-VERCEL-GEMINI/stdout.txt",
+      "size_bytes": 202,
+      "sha256": "d065008f8887b8627b28718d5ac978df6f580bc70e3a018a99d0e11d8543e549"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-1.7b-q4-k-m/TS-VERCEL-GEMINI/execution.json",
+      "size_bytes": 1505,
+      "sha256": "355b1247b94eafbce0a6c87a12fd78aeb19922924bbf1eda124b29ebf06420c9"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-1.7b-q4-k-m/TS-VERCEL-GEMINI/report.json",
+      "size_bytes": 14114,
+      "sha256": "56a733df5241fabf85b74d72b1b46bf5cdd6e374826b64b6694ee9bb88840176"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-1.7b-q4-k-m/TS-VERCEL-GEMINI/stderr.txt",
+      "size_bytes": 3692,
+      "sha256": "81f6adf5aca929264deb73a60e636f87f3ad227ab4a62cbe7b8381e6eb189c40"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-1.7b-q4-k-m/TS-VERCEL-GEMINI/stdout.txt",
+      "size_bytes": 217,
+      "sha256": "ca27c35ef4605cb7b64c5d347b15428952d03dffa72fd94932c8b9756b22c6a7"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-4b-q4-k-m/TS-VERCEL-GEMINI/execution.json",
+      "size_bytes": 1668,
+      "sha256": "1adb209ba9e241b872a0c77cdddcc239b76a80f505212c5761f8fc00ba63bcc7"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-4b-q4-k-m/TS-VERCEL-GEMINI/stderr.txt",
+      "size_bytes": 86,
+      "sha256": "9f92e9b0f0c2172fe3d6b5e9a1e4e1a1c971cfdd3d3c24e7a27121e86b4b82fb"
+    },
+    {
+      "path": "results/skillspector-ollama-qwen3-4b-q4-k-m/TS-VERCEL-GEMINI/stdout.txt",
+      "size_bytes": 2,
+      "sha256": "7eb70257593da06f682a3ddda54a9d260d4fc514f645237f5ca74b08f8da61a6"
+    },
+    {
+      "path": "results/skillspector-static/TS-CLAWHUB/execution.json",
+      "size_bytes": 1256,
+      "sha256": "ba7521e2c50811fb1925ad1cbc5b3083072c86ef5fab38b523f91ec9494ae41b"
+    },
+    {
+      "path": "results/skillspector-static/TS-CLAWHUB/report.json",
+      "size_bytes": 28238,
+      "sha256": "2b37323fbae143a0728c2f68dc5dbd8ec492c7940ca6d885c4208f1f70f0520f"
+    },
+    {
+      "path": "results/skillspector-static/TS-CLAWHUB/stderr.txt",
+      "size_bytes": 309,
+      "sha256": "0eef96c6d07c5381e0691122609f1dc160267af4ab3578cc8889cd6a4273c37e"
+    },
+    {
+      "path": "results/skillspector-static/TS-CLAWHUB/stdout.txt",
+      "size_bytes": 193,
+      "sha256": "aa8de829fa070dbe1892988c200f33da48d4f318c583d73b05a15a8bbd3bf55f"
+    },
+    {
+      "path": "results/skillspector-static/TS-SNYK-SKILL/execution.json",
+      "size_bytes": 1266,
+      "sha256": "19a45fdcbf1a3c624a2426cfa2361d5ab1cb2250e181b5f464f32276de234727"
+    },
+    {
+      "path": "results/skillspector-static/TS-SNYK-SKILL/report.json",
+      "size_bytes": 10800,
+      "sha256": "8209dc9ab5eb5ad871b606d55872d190405bc4f14170af46dd1a87360dcdabbf"
+    },
+    {
+      "path": "results/skillspector-static/TS-SNYK-SKILL/stderr.txt",
+      "size_bytes": 309,
+      "sha256": "0eef96c6d07c5381e0691122609f1dc160267af4ab3578cc8889cd6a4273c37e"
+    },
+    {
+      "path": "results/skillspector-static/TS-SNYK-SKILL/stdout.txt",
+      "size_bytes": 196,
+      "sha256": "a3638fff2b5b678b81f5f3127ca4455b952a0f4314b21975f57216831d4d2500"
+    },
+    {
+      "path": "results/skillspector-static/TS-TESTING-GUIDELINES/execution.json",
+      "size_bytes": 1299,
+      "sha256": "468d71b3d5b40af84d1f5deabaf973398cd3f4951846c42a4300e3fc49e3c805"
+    },
+    {
+      "path": "results/skillspector-static/TS-TESTING-GUIDELINES/report.json",
+      "size_bytes": 12562,
+      "sha256": "e1291da24aaa459d86fcfc877590af1778c5e43045401927d892c64649882d0f"
+    },
+    {
+      "path": "results/skillspector-static/TS-TESTING-GUIDELINES/stderr.txt",
+      "size_bytes": 309,
+      "sha256": "0eef96c6d07c5381e0691122609f1dc160267af4ab3578cc8889cd6a4273c37e"
+    },
+    {
+      "path": "results/skillspector-static/TS-TESTING-GUIDELINES/stdout.txt",
+      "size_bytes": 204,
+      "sha256": "a380cf5532bbbac217a1db04fd59f6388ca69d2f477a77c93d1a6f0cefd1e469"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-AGENTS/execution.json",
+      "size_bytes": 1265,
+      "sha256": "8109c94c42b00cc32975b05bc125c70e546aaed862df4504ea12f619645f86f9"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-AGENTS/report.json",
+      "size_bytes": 10353,
+      "sha256": "ee670daa87be71b8088815b89f9f4537ba953f657a5e2e95bc891530094bf094"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-AGENTS/stderr.txt",
+      "size_bytes": 309,
+      "sha256": "0eef96c6d07c5381e0691122609f1dc160267af4ab3578cc8889cd6a4273c37e"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-AGENTS/stdout.txt",
+      "size_bytes": 199,
+      "sha256": "be901347a0195c0af73d5a8c88195b601971fb86d2b6c9c43fb98494ed40ff8c"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-GEMINI/execution.json",
+      "size_bytes": 1266,
+      "sha256": "6c1b794ba6db82a66595d6299999dc7aad03bf704a480f51b21218b6f7ea73ac"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-GEMINI/report.json",
+      "size_bytes": 12115,
+      "sha256": "b88a235d32b763f8cafa116e4faa56ac2d114ab2711f6b72b8a55128ab74f0e8"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-GEMINI/stderr.txt",
+      "size_bytes": 309,
+      "sha256": "0eef96c6d07c5381e0691122609f1dc160267af4ab3578cc8889cd6a4273c37e"
+    },
+    {
+      "path": "results/skillspector-static/TS-VERCEL-GEMINI/stdout.txt",
+      "size_bytes": 199,
+      "sha256": "61a47e9dc9fd1560d956718e9641884b6dbf3edc54119697c7b52da96b7d9683"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/package-version/execution.json",
+      "size_bytes": 699,
+      "sha256": "aca30d99af02e7da77758634748b833c75d532741d7d84a83d5193f8146c3254"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/package-version/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/package-version/stdout.txt",
+      "size_bytes": 7,
+      "sha256": "69cd9e9cc50779a1909493d935de81c9aa7528acb796c569505cfd3a3f2ab474"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/scan-help/execution.json",
+      "size_bytes": 632,
+      "sha256": "83a8f217fecbefc2a15165ab8ad63d6e11f923e6899fa2475687cdff14f2fb79"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/scan-help/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/scan-help/stdout.txt",
+      "size_bytes": 5429,
+      "sha256": "d9a34da561bda3b4f9c18d64d8076c932ab87e19cfc46e45f0313a54dd0b27ca"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/setup-install/execution.json",
+      "size_bytes": 720,
+      "sha256": "e70179895d15e82b178248be9020360e8d533c5e997827b42fff4086d69630e0"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/setup-install/stderr.txt",
+      "size_bytes": 142,
+      "sha256": "10004509cb4d0e13505e422c973bd4586ce2421ba25ff6fa7664eb7c1c044408"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/setup-install/stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/setup-venv/execution.json",
+      "size_bytes": 663,
+      "sha256": "25e0522f70d0adff73ee1089b954ca0135507954db21b219536ae02c84fe5ebf"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/setup-venv/stderr.txt",
+      "size_bytes": 328,
+      "sha256": "b4f1b023cad036b841433919d9164879ed8de00bab3a72edcdf2d0d5cc155025"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/setup-venv/stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/TS-VERCEL-GEMINI-BLOCKED-CREDENTIAL/execution.json",
+      "size_bytes": 1639,
+      "sha256": "60fe4312f8e6d0477c464b3074bfe319aac26ec66f7ca2c336b5b0a998fc4ae6"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/TS-VERCEL-GEMINI-BLOCKED-CREDENTIAL/stderr.txt",
+      "size_bytes": 230,
+      "sha256": "0137da2ccd8d05c2290d56a5dd517f963abd5bace4e6f51c300209ea9cf9cd0b"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/TS-VERCEL-GEMINI-BLOCKED-CREDENTIAL/stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/version/execution.json",
+      "size_bytes": 620,
+      "sha256": "4131d1cb779ed433e0f7e410c75e1b06d89ff13ad8022bf1d24fbd5f8369ba93"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/version/stderr.txt",
+      "size_bytes": 490,
+      "sha256": "bcc3af0cc129098eb8ce9e42b40eb89e0a973c8966273c741974fb3f1f303ec4"
+    },
+    {
+      "path": "results/snyk-agent-scan-0.6.4/version/stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/cisco-mcp/execution.json",
+      "size_bytes": 627,
+      "sha256": "966205bc0308691598d361d1f2190fc6996a619ad2cc0c52479dd6df3e6276f7"
+    },
+    {
+      "path": "results/tool-versions/cisco-mcp/stderr.txt",
+      "size_bytes": 1552,
+      "sha256": "395dd9012ef0cfb408c632866e55e31572c21f67c3efb193805613ce9957198a"
+    },
+    {
+      "path": "results/tool-versions/cisco-mcp/stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/cisco-mcp-package/execution.json",
+      "size_bytes": 715,
+      "sha256": "333521ab1b31c3c27afdb03c6f694a604bf79c2b8a2cc23308634004fa67e329"
+    },
+    {
+      "path": "results/tool-versions/cisco-mcp-package/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/cisco-mcp-package/stdout.txt",
+      "size_bytes": 7,
+      "sha256": "5bbca21cc6917c509038c0e0a7e51cff13a2cabd5eb35d738f712a618aa4219e"
+    },
+    {
+      "path": "results/tool-versions/cisco-skill/execution.json",
+      "size_bytes": 632,
+      "sha256": "26bbccb350ae66ede45d935ddc29137ac60cb4702bb45c7e25f5bf9a1b39d29d"
+    },
+    {
+      "path": "results/tool-versions/cisco-skill/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/cisco-skill/stdout.txt",
+      "size_bytes": 21,
+      "sha256": "b2f323dc642ea22bd3a2e869821e0554368defc0c73b1fd0565a37d7163ac93c"
+    },
+    {
+      "path": "results/tool-versions/cisco-skill-package/execution.json",
+      "size_bytes": 721,
+      "sha256": "755d905709663e48145b49ed8455a2ea35956565f1c735d74324b389192cad36"
+    },
+    {
+      "path": "results/tool-versions/cisco-skill-package/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/cisco-skill-package/stdout.txt",
+      "size_bytes": 7,
+      "sha256": "e99cb4f50aeb36865f25a2859350bfcad129424a39303d8e0b76dda6eedbfb61"
+    },
+    {
+      "path": "results/tool-versions/codex-cli/execution.json",
+      "size_bytes": 578,
+      "sha256": "6ee4a960ab4d5d1fff84ee1e7d6567b1b81c06ba167811bc889c87c36bfd6de9"
+    },
+    {
+      "path": "results/tool-versions/codex-cli/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/codex-cli/stdout.txt",
+      "size_bytes": 28,
+      "sha256": "2908caf60f89ba2f76600164b004ea755860cc1096e66f4c79c1ba9b07746533"
+    },
+    {
+      "path": "results/tool-versions/skillspector/execution.json",
+      "size_bytes": 634,
+      "sha256": "adfd64d86584c56456822097b3e0ecc0f342b4f313be70baa4032731a6bf64b6"
+    },
+    {
+      "path": "results/tool-versions/skillspector/stderr.txt",
+      "size_bytes": 309,
+      "sha256": "0eef96c6d07c5381e0691122609f1dc160267af4ab3578cc8889cd6a4273c37e"
+    },
+    {
+      "path": "results/tool-versions/skillspector/stdout.txt",
+      "size_bytes": 22,
+      "sha256": "c026e0b184a497b2c70b576a2d7b201224783a4ffdf94439e0908f340e7640b2"
+    },
+    {
+      "path": "results/tool-versions/skillspector-package/execution.json",
+      "size_bytes": 713,
+      "sha256": "afab31a1d7b108c02b1f0706243b6bb52ebff39af14fb15366650ab324af3d89"
+    },
+    {
+      "path": "results/tool-versions/skillspector-package/stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/tool-versions/skillspector-package/stdout.txt",
+      "size_bytes": 8,
+      "sha256": "84dc9527978e11a9c995918d929ec520eba0324761d78c042c8f8c764d76af50"
+    },
+    {
+      "path": "RESULTS.md",
+      "size_bytes": 4140,
+      "sha256": "f3bab59775d0e4dc0900136f72e6375bdbee05b962cc554bde3c449a28f7630d"
+    },
+    {
+      "path": "run_public_scanners.py",
+      "size_bytes": 18871,
+      "sha256": "97e1422a75fb35f8537beab938b4375040c81093a8a39fdfa56fc2a42444c5ff"
+    },
+    {
+      "path": "summarize_results.py",
+      "size_bytes": 20930,
+      "sha256": "4f88d16eb475c24f037865adf15e7cbf46be1f1af370b4f748ed352be7ecfc61"
+    },
+    {
+      "path": "summary.json",
+      "size_bytes": 10180,
+      "sha256": "ea9b7f9f4bc897a0c2488a86b5b020605efcdd9ab651eeeafe94b45466b2fb19"
+    },
+    {
+      "path": "verification.json",
+      "size_bytes": 1647,
+      "sha256": "9b18d2cf68fa88c189383a08a862482e2e430add19d570c0744d6dca1ef2e359"
+    }
+  ]
+}

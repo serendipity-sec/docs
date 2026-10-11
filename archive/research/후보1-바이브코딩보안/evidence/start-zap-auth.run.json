@@ -1,0 +1,30 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "-d",
+    "--name",
+    "capstone-zap-auth",
+    "--network",
+    "capstone-vibe-lab",
+    "-p",
+    "127.0.0.1:18781:8080",
+    "ghcr.io/zaproxy/zaproxy:2.17.0",
+    "zap.sh",
+    "-daemon",
+    "-host",
+    "0.0.0.0",
+    "-port",
+    "8080",
+    "-config",
+    "api.disablekey=true",
+    "-config",
+    "api.addrs.addr.name=.*",
+    "-config",
+    "api.addrs.addr.regex=true"
+  ],
+  "cwd": "C:\\capstone2",
+  "started_utc": "2026-09-19T19:23:59.848879+00:00",
+  "elapsed_seconds": 2.625,
+  "exit_code": 0
+}

@@ -1,0 +1,17 @@
+{
+  "format": "serendipity-phase2-run-input-v1",
+  "matrix": "expression-twins",
+  "case_id": "E01C",
+  "variant": "ko-direct",
+  "policy": "broad",
+  "seed": 47,
+  "model": "llama3.2:3b",
+  "endpoint": "http://127.0.0.1:11439",
+  "max_steps": 8,
+  "input_hashes": {
+    "batch_contract_sha256": "0875ff8a8beb64d4622429597a9e4175b3c54c5f8cbb3c2f33f4c7be97da95c6",
+    "code_manifest_sha256": "9cac301ded5819f78f99fade10951f8a0d280c92c728448e0cb07d3d6315a871",
+    "runtime_sha256": "4459ab1ffa9432e22325c1bec25cc2187aea0fac8c9ee4d7afe25ead88a30081"
+  },
+  "input_sha256": "46d42bd59e958320c139d24e016c603c82f30714d794344f4fc2947954805e64"
+}

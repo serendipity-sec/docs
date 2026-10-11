@@ -1,0 +1,3 @@
+Using CPython 3.13.7 interpreter at: C:\Users\andyw\AppData\Local\Programs\Python\Python313\python.exe
+Creating virtual environment at: C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4
+Activate with: C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\activate
