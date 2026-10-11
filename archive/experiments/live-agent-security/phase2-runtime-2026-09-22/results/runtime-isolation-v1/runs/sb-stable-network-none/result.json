@@ -1,0 +1,39 @@
+{
+  "run_id": "sb-stable-network-none",
+  "behavior": "stable",
+  "arm": "network-none",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 70.656,
+  "probe_exit_code": 0,
+  "normal_task_completed": true,
+  "private_read_confirmed": false,
+  "secret_egress_confirmed": false,
+  "private_read_attempted": false,
+  "egress_attempted": false,
+  "egress_accepted_by_probe": false,
+  "collector_receipts": 0,
+  "project_unchanged": true,
+  "expected": {
+    "normal_task_completed": true,
+    "private_read_confirmed": false,
+    "secret_egress_confirmed": false
+  },
+  "expected_match": true,
+  "container_policy": {
+    "network_mode": "none",
+    "readonly_rootfs": false,
+    "cap_drop": null,
+    "security_opt": null,
+    "pids_limit": null,
+    "memory": 0,
+    "nano_cpus": 0,
+    "user": ""
+  },
+  "secret_sha256": "cf382dd27c5b294a29e86e25b82d5fb9fb9db1d126e8ce940cb74984b6ef9045",
+  "canary_sha256": "6f25e0a79244dfe8c75bb6d71b222a9befe9e0a56b0e2981539a0fc4bc01bcbf",
+  "input_hashes": {
+    "container_probe.py": "0e5ac478960d84aedbb350b90325be63e8febca0ff4a87a3da2b81893fd6f41c",
+    "run_runtime_isolation.py": "f7f727262eb14665ed6bc7c811435a682ffe772588b396ed68bcff25b6441f58"
+  }
+}

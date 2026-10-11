@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scanner": "skillspector-static",
+  "case": "TS-VERCEL-AGENTS",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\skillspector\\Scripts\\skillspector.exe",
+    "scan",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.agents\\skills\\vercel",
+    "--no-llm",
+    "--format",
+    "json",
+    "--output",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\skillspector-static\\TS-VERCEL-AGENTS\\report.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.agents/skills/vercel/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 1527,
+      "sha256": "44d3ade63b30524bf58c38446b2c708344fafc124ab1c0b2d4ed4f82fac74c68"
+    }
+  ],
+  "started_at": "2026-09-22T04:07:49.055850+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 14.187,
+  "finished_at": "2026-09-22T04:08:03.245698+00:00"
+}

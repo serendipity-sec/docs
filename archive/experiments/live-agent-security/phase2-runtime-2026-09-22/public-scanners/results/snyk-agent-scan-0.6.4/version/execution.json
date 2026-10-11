@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scanner": "snyk-agent-scan-0.6.4",
+  "case": "version",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\public-scanners-snyk-0.6.4\\Scripts\\snyk-agent-scan.exe",
+    "--version"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [],
+  "started_at": "2026-09-22T04:40:44.598635+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 2,
+  "duration_seconds": 38.141,
+  "finished_at": "2026-09-22T04:41:22.742028+00:00"
+}

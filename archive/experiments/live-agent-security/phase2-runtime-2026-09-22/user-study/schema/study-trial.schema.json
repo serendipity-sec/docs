@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://serendipity-sec.local/schemas/synthetic-study-trial-v1.json",
+  "title": "Synthetic approval-study instrumentation trial",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "run_id", "actor_type", "actor_id", "profile_id",
+    "sequence_id", "trial_id", "trial_index", "source_case_id", "case_family",
+    "condition", "reference_status", "reference_decision", "source_evidence_sha256",
+    "presented_snapshot_sha256", "decision", "reason_codes", "requested_evidence",
+    "confidence_0_100", "evidence_events", "timing_origin", "started_at",
+    "first_evidence_at", "submitted_at", "duration_ms", "timeout",
+    "exclude_from_human_analysis"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "run_id": {"const": "synthetic-instrumentation-v1"},
+    "actor_type": {"const": "synthetic_dry_run"},
+    "actor_id": {"type": "string", "minLength": 1},
+    "profile_id": {"type": "string", "enum": ["oracle", "badge-follower", "hold-all", "periodic-timeout"]},
+    "sequence_id": {"type": "string", "enum": ["sequence-1", "sequence-2"]},
+    "trial_id": {"type": "string", "minLength": 1},
+    "trial_index": {"type": "integer", "minimum": 1, "maximum": 12},
+    "source_case_id": {"type": "string", "pattern": "^[ABC][0-9]{2}$"},
+    "case_family": {"type": "string", "minLength": 1},
+    "condition": {"type": "string", "enum": ["B0", "B1"]},
+    "reference_status": {"const": "design_expectation"},
+    "reference_decision": {"type": "string", "enum": ["ALLOW", "DENY", "HOLD"]},
+    "source_evidence_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "presented_snapshot_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "decision": {"type": ["string", "null"], "enum": ["ALLOW", "DENY", "HOLD", null]},
+    "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "requested_evidence": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "confidence_0_100": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+    "evidence_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["event", "evidence_type"],
+        "properties": {
+          "event": {"const": "open_evidence"},
+          "evidence_type": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "timing_origin": {"const": "synthetic_fixture"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "first_evidence_at": {"type": ["string", "null"], "format": "date-time"},
+    "submitted_at": {"type": ["string", "null"], "format": "date-time"},
+    "duration_ms": {"type": "integer", "minimum": 0},
+    "timeout": {"type": "boolean"},
+    "exclude_from_human_analysis": {"const": true}
+  }
+}

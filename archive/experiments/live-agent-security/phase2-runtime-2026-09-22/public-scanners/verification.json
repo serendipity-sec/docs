@@ -1,0 +1,51 @@
+{
+  "generated_at": "2026-09-22T04:58:09.337677+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "fixed_source_commits",
+      "status": "PASS",
+      "detail": "Both quarantine repositories remain at the recorded commits."
+    },
+    {
+      "name": "quarantine_worktree_state",
+      "status": "PASS",
+      "detail": "ToxicSkills differs only by the two AV-blocked files; the MIT MCP checkout is clean."
+    },
+    {
+      "name": "no_public_code_execution",
+      "status": "PASS",
+      "detail": "Checked 30 execution records."
+    },
+    {
+      "name": "static_skill_cases",
+      "status": "PASS",
+      "detail": "Five readable public Skill inputs were processed by both static scanners."
+    },
+    {
+      "name": "static_mcp_cases",
+      "status": "PASS",
+      "detail": "Four frozen MCP metadata/resource inputs were processed without a server connection."
+    },
+    {
+      "name": "codex_semantic_complete_calls",
+      "status": "PASS",
+      "detail": "All four semantic calls succeeded and the single file has 100% coverage."
+    },
+    {
+      "name": "ollama_not_overclaimed",
+      "status": "PASS",
+      "detail": "Degraded and interrupted local-model runs are excluded from detection claims."
+    },
+    {
+      "name": "snyk_blocked_before_http",
+      "status": "PASS",
+      "detail": "Pinned source requires SNYK_TOKEN before entering its HTTP request loop."
+    },
+    {
+      "name": "unlicensed_verbose_payload_discarded",
+      "status": "PASS",
+      "detail": "Only the discarded verbose stream's SHA-256 and byte count are retained."
+    }
+  ]
+}

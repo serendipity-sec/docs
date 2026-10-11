@@ -1,0 +1,1 @@
+Report saved to: C:\Users\andyw\Desktop\serendipity-sec\docs\experiments\live-agent-security\phase2-runtime-2026-09-22\public-scanners\results\cisco-skill-static\TS-VERCEL-GEMINI\report.json

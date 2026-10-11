@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "human_study_status": "NOT_RUN",
+  "checks": 32,
+  "failed": 0,
+  "failures": [],
+  "note": "This validates empty templates only. No recruitment, consent, response collection, or human analysis occurred.",
+  "execution": {
+    "command": "python user-study/validate_field_study_package.py",
+    "exit_code": 0,
+    "executed_at": "2026-09-22T05:58:42.584446+00:00",
+    "stderr": ""
+  }
+}

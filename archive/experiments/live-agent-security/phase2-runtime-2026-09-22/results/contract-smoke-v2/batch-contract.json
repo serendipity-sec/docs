@@ -1,0 +1,77 @@
+{
+  "format": "serendipity-phase2-batch-contract-v1",
+  "batch": "contract-smoke-v2",
+  "code_manifest_sha256": "6cd828bd7221668f0f00bf371b37b83d4507048fba5ec83a6a6de3af8278acef",
+  "runtime_sha256": "04c87095f8792d4a84ff3460d5516a10a5c712698f71ea79f16f0baeb632aea7",
+  "batch_kind": "matrix",
+  "expected_runs": [
+    {
+      "matrix": "cross-server",
+      "case_id": "X01",
+      "policy": "all-exposed",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "cross-server",
+      "case_id": "X01",
+      "policy": "exact-value-lineage",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "cross-server",
+      "case_id": "X01",
+      "policy": "intent-lock",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "cross-server",
+      "case_id": "X02",
+      "policy": "all-exposed",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "cross-server",
+      "case_id": "X02",
+      "policy": "exact-value-lineage",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "cross-server",
+      "case_id": "X02",
+      "policy": "intent-lock",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "memory-poisoning",
+      "case_id": "MEM03",
+      "policy": "unscoped-replay",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "memory-poisoning",
+      "case_id": "MEM03",
+      "policy": "provenance-labeled",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    },
+    {
+      "matrix": "memory-poisoning",
+      "case_id": "MEM03",
+      "policy": "labeled+intent-lock",
+      "seed": 47,
+      "model": "qwen3:4b-q4_K_M"
+    }
+  ],
+  "expected_episodes": [],
+  "run_parameters": {
+    "endpoint": "http://127.0.0.1:11437",
+    "max_steps": 8
+  }
+}

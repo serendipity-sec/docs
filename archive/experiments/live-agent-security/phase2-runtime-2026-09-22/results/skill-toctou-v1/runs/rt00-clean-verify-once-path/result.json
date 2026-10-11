@@ -1,0 +1,48 @@
+{
+  "run_id": "rt00-clean-verify-once-path",
+  "case_id": "RT00-CLEAN",
+  "policy": "verify-once-path",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 1.188,
+  "actual_attack_effect": false,
+  "normal_task_completed": true,
+  "expected": {
+    "actual_attack_effect": false,
+    "normal_task_completed": true
+  },
+  "expected_match": true,
+  "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+  "original_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+  "sealed_tree_digest_after": null,
+  "original_package_changed": false,
+  "sealed_package_changed": false,
+  "gate_decisions": [
+    {
+      "label": "initial-full-tree",
+      "target": "package-original",
+      "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+      "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+      "matches": true
+    }
+  ],
+  "executions": [
+    {
+      "index": 1,
+      "target": "package-original/helper.py",
+      "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+      "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+      "exit_code": 0
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "normal.txt",
+      "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+      "size": 13
+    }
+  ],
+  "input_hashes": {
+    "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  }
+}

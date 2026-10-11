@@ -1,0 +1,74 @@
+[
+    {
+        "Id": "sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b",
+        "RepoTags": [
+            "serendipity-public-skill-safe-interpreter:20260922"
+        ],
+        "RepoDigests": [
+            "serendipity-public-skill-safe-interpreter@sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b"
+        ],
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-22T05:09:03.926785303Z",
+        "Config": {
+            "User": "65532:65532",
+            "Env": [
+                "PATH=/harness/shims",
+                "LANG=C.UTF-8",
+                "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+                "PYTHON_VERSION=3.12.14",
+                "PYTHON_SHA256=5c8462af5790baf43a321a1559dbe0db06d1be4300fb85fb53c40060668e548a",
+                "PYTHONDONTWRITEBYTECODE=1",
+                "PYTHONUNBUFFERED=1",
+                "EVIDENCE_DIR=/evidence"
+            ],
+            "Entrypoint": [
+                "/usr/local/bin/python3",
+                "/harness/safe_interpreter.py"
+            ],
+            "WorkingDir": "/workspace",
+            "Labels": {
+                "org.opencontainers.image.description": "Offline, record-only harness for an inert public Skill document",
+                "org.opencontainers.image.title": "serendipity fake Vercel safe interpreter"
+            }
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 18057026,
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711",
+                "sha256:d1475f57bfeb95f8d89bad4de04d7af788036223b8505b2b5791158c8d885ff0",
+                "sha256:90630b4239d75c9daa2f10f7bb6bfe9b45cfc1419783384dd9873dbf2b732fc3",
+                "sha256:23d9641aa36e31a0b3699cec59ff9f51478b65b47f5f2c7de83d48293d4d4852",
+                "sha256:3820fc777c445bddb79fc2cf4638c964007aaa0b25a6b41ba045c7f9640591e0",
+                "sha256:226333edb2b58004ad6a94dd9e767f42d14e3aaf52cfd2e10466ade9c3a9d30f",
+                "sha256:981a83ba1eb97a2a01218084007428655ccee56fff18511b85418dcdbd0f6175",
+                "sha256:5abff157bae7664832a42818a756d0762a9752ac1a111ff9d3ab19ae226c096f",
+                "sha256:378de918d12cf092c986ae42827e118829ef2c81988959defaed5b90826234b4",
+                "sha256:c7ad80f2faae4b94edf6b5b4c6a82e44beb57765976fc4a0e4f3296a9584b076",
+                "sha256:1f665b6ee330755062713d1d4832576f96441ea3746b532b23a4f8bd2bd7a1b1",
+                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-22T05:09:04.922348759Z"
+        },
+        "Descriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b",
+            "size": 2561,
+            "annotations": {
+                "config.digest": "sha256:d7d92d38654a0312fee1fb628113f2831f4016fff93d2f99b909df2c71aa9be6"
+            }
+        },
+        "Identity": {
+            "Build": [
+                {
+                    "Ref": "t3i48lp3nr1ew4uglbdmzjhlb",
+                    "CreatedAt": "2026-09-22T05:09:05.194860401Z"
+                }
+            ]
+        }
+    }
+]

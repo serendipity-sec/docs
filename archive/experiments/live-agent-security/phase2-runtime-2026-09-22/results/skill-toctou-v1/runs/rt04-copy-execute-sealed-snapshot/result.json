@@ -1,0 +1,63 @@
+{
+  "run_id": "rt04-copy-execute-sealed-snapshot",
+  "case_id": "RT04-COPY-EXECUTE",
+  "policy": "sealed-snapshot",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 24.359,
+  "actual_attack_effect": true,
+  "normal_task_completed": true,
+  "expected": {
+    "actual_attack_effect": true,
+    "normal_task_completed": true
+  },
+  "expected_match": true,
+  "approved_tree_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+  "original_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+  "sealed_tree_digest_after": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+  "original_package_changed": false,
+  "sealed_package_changed": false,
+  "gate_decisions": [
+    {
+      "label": "initial-full-tree",
+      "target": "package-original",
+      "digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+      "approved_digest": "edf92fdf31e78033ad6775c66fee2cdf8a3f1d22e4a2bb9e0728233eb19f269c",
+      "matches": true
+    }
+  ],
+  "executions": [
+    {
+      "index": 1,
+      "target": "package-sealed/helper.py",
+      "sha256_before": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+      "sha256_after": "b5b70d87410887fa329a597980d408611323f5c2517eb4cc7ec75977fb08212e",
+      "exit_code": 0
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "attack-marker.txt",
+      "sha256": "833576426d1b5aac62b3f30384fc53e6ada07f13915cd5e27889b691f61ae0b6",
+      "size": 16
+    },
+    {
+      "path": "child-status.json",
+      "sha256": "a63e42ddcadd27ec826f8d9cc19f5f943520df120552247da000296cac84d634",
+      "size": 71
+    },
+    {
+      "path": "late-payload.py",
+      "sha256": "6f6976f92d05fe51aa54456dacbe11af53d355aa844f9957a8fd94bdcd3000ae",
+      "size": 269
+    },
+    {
+      "path": "normal.txt",
+      "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+      "size": 12
+    }
+  ],
+  "input_hashes": {
+    "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  }
+}

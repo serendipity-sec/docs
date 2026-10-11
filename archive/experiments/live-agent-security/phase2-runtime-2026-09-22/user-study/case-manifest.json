@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Synthetic instrumentation dry run for the planned approval-decision study",
+  "human_study_status": "NOT_RUN",
+  "reference_status": "design_expectation",
+  "source": {
+    "path_from_docs_root": "research/2026-09-21-검토공백과-기존도구-데모설계/cases.json",
+    "sha256": "07eeec4466f9934d6da854b669ef77ed22e1d4cc0719a544b2c48ecf570c051b",
+    "required_execution_status": "NOT_RUN",
+    "required_fixture_files_created": false,
+    "required_reference_decisions_reviewed": false
+  },
+  "case_sets": {
+    "A": ["A01", "A03", "B01", "B04", "C02", "C03"],
+    "B": ["A02", "A04", "B02", "B03", "C01", "C04"]
+  },
+  "expected_reference_counts": {
+    "ALLOW": 5,
+    "DENY": 2,
+    "HOLD": 5
+  },
+  "warning": "These are unreviewed design expectations used only to exercise the study instrumentation. They are not human-study gold labels."
+}

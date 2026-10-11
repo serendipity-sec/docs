@@ -1,0 +1,21 @@
+usage: mcp-scanner [-h] [--api-key API_KEY] [--endpoint-url ENDPOINT_URL]
+                   [--llm-api-key LLM_API_KEY] [--llm-timeout LLM_TIMEOUT]
+                   [--stdio-timeout STDIO_TIMEOUT] [--analyzers ANALYZERS]
+                   [--enable-meta] [--output OUTPUT] [--verbose]
+                   [--log-level {debug,info,warning,error,critical}]
+                   [--detailed] [--raw]
+                   [--expand-vars {auto,linux,mac,windows,off}]
+                   [--server-url SERVER_URL] [--scan-known-configs]
+                   [--config-path CONFIG_PATH] [--stdio-command STDIO_COMMAND]
+                   [--stdio-args STDIO_ARGS] [--stdio-arg STDIO_ARG]
+                   [--stderr-file STDERR_FILE] [--stdio-env STDIO_ENV]
+                   [--stdio-tool STDIO_TOOL] [--bearer-token BEARER_TOKEN]
+                   [--format {raw,summary,detailed,by_tool,by_analyzer,by_severity,table}]
+                   [--tool-filter TOOL_FILTER]
+                   [--analyzer-filter {api_analyzer,yara_analyzer,llm_analyzer,behavioral_analyzer,virustotal_analyzer,vulnerable_package_analyzer}]
+                   [--severity-filter {all,high,unknown,medium,low,safe}]
+                   [--hide-safe] [--stats] [--rules-path RULES_PATH]
+                   [--source-path SOURCE_PATH]
+                   {static,remote,prompts,resources,instructions,virustotal,behavioral,pypi-scan,npm-scan,vulnerable-package,stdio,config,known-configs}
+                   ...
+mcp-scanner: error: unrecognized arguments: --version

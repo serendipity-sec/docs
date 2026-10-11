@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "run_id": "synthetic-instrumentation-v1",
+  "purpose": "instrumentation_validation_only",
+  "human_study_status": "NOT_RUN",
+  "actor_type": "synthetic_dry_run",
+  "exclude_from_human_analysis": true,
+  "reference_status": "design_expectation",
+  "source_cases_path": "research/2026-09-21-검토공백과-기존도구-데모설계/cases.json",
+  "source_cases_sha256": "07eeec4466f9934d6da854b669ef77ed22e1d4cc0719a544b2c48ecf570c051b",
+  "fixture_clock_origin": "2026-09-22T00:00:00Z",
+  "actors": 8,
+  "profiles": 4,
+  "trial_records": 96,
+  "trials_sha256": "2f706e29ecc221daa397a45d0c99586e022deba48239fd8b1515b90d36e16755",
+  "warning": "No real participant took part. These records cannot support claims about user accuracy, time, trust, or overconfidence."
+}

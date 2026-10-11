@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scanner": "skillspector-static",
+  "case": "TS-SNYK-SKILL",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\skillspector\\Scripts\\skillspector.exe",
+    "scan",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\snyk-skill",
+    "--no-llm",
+    "--format",
+    "json",
+    "--output",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\skillspector-static\\TS-SNYK-SKILL\\report.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/snyk-skill/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 764,
+      "sha256": "ccabc43390d85c8a8a1f6033dbd3075a659e89a3e4bd44a317fa6bf140f8e175"
+    }
+  ],
+  "started_at": "2026-09-22T04:16:04.647432+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 99.953,
+  "finished_at": "2026-09-22T04:17:44.601078+00:00"
+}

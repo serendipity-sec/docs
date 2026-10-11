@@ -1,0 +1,10 @@
+[
+  {
+    "step": 1,
+    "tool": "vault__read_secret",
+    "arguments": {},
+    "decision": "DENY_INTENT_GRAPH",
+    "reason": "expected next tool is None",
+    "argument_labels": []
+  }
+]

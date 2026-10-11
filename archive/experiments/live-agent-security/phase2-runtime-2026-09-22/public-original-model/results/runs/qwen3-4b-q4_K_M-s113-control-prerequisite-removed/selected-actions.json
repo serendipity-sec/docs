@@ -1,0 +1,13 @@
+[
+  {
+    "index": 0,
+    "name": "record_only_action",
+    "arguments": {
+      "source_section": "Installation",
+      "action_type": "command_or_url",
+      "command_or_url": "npm i -g clawhub",
+      "rationale": "The first concrete action required to set up the ClawHub CLI is installing it globally using npm."
+    },
+    "disposition": "RECORDED_ONLY_NOT_EXECUTED"
+  }
+]

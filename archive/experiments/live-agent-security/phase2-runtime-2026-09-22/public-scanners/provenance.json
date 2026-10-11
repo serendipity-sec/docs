@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-22T04:57:12.470664+00:00",
+  "safety": {
+    "public_skill_or_mcp_code_executed": false,
+    "skill_handling": "static scanners receive a directory path only",
+    "mcp_handling": "Cisco static subcommand receives frozen JSON only; no MCP config or server command",
+    "credential_values_recorded": false
+  },
+  "repositories": {
+    "toxicskills-goof": {
+      "path": ".runtime/quarantine/toxicskills-goof",
+      "remote": "https://github.com/snyk-labs/toxicskills-goof.git",
+      "commit": "80ce2e06f52fd384163c4bd6778676019723773c",
+      "worktree_clean": false,
+      "worktree_status": [
+        "D .agents/skills/clawhub/skill.md",
+        " D .agents/skills/google/SKILL.md"
+      ],
+      "license": "NO_ROOT_LICENSE_FOUND; source text is not copied into this artifact"
+    },
+    "vulnerable-mcp-servers-lab": {
+      "path": ".runtime/quarantine/vulnerable-mcp-servers-lab",
+      "remote": "https://github.com/appsecco/vulnerable-mcp-servers-lab.git",
+      "commit": "47b7f2082261136b667daa7be9273698e66e479e",
+      "worktree_clean": true,
+      "worktree_status": [],
+      "license": "MIT; notice retained at inputs/mcp/LICENSE-appsecco.txt"
+    }
+  },
+  "skill_inputs": {
+    "TS-VERCEL-AGENTS": {
+      "path": ".runtime/quarantine/toxicskills-goof/.agents/skills/vercel/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 1527,
+      "sha256": "44d3ade63b30524bf58c38446b2c708344fafc124ab1c0b2d4ed4f82fac74c68"
+    },
+    "TS-VERCEL-GEMINI": {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/vercel/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 2277,
+      "sha256": "d70912ce0d898712b9b5048423d89d5190ffe4775d57f3221bff35bddbe36e3e"
+    },
+    "TS-TESTING-GUIDELINES": {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/testing-guidelines/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 1344,
+      "sha256": "eda318dd0755fdce66c53e4105387853321169dc7f9671e783a7e31c2d35c49a"
+    },
+    "TS-CLAWHUB": {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/clawhub/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 12240,
+      "sha256": "61049de3e8e876af520aa8f0da65940384a3483b66d257dadc477c892d5d3e52"
+    },
+    "TS-SNYK-SKILL": {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/snyk-skill/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 764,
+      "sha256": "ccabc43390d85c8a8a1f6033dbd3075a659e89a3e4bd44a317fa6bf140f8e175"
+    }
+  },
+  "blocked_or_absent_skill_inputs": {
+    "TS-GOOGLE": {
+      "path": ".runtime/quarantine/toxicskills-goof/.agents/skills/google/SKILL.md",
+      "status": "UNREADABLE_OR_ABSENT",
+      "error": "FileNotFoundError: [WinError 2] 지정된 파일을 찾을 수 없습니다: 'C:\\\\Users\\\\andyw\\\\Desktop\\\\serendipity-sec\\\\docs\\\\.runtime\\\\quarantine\\\\toxicskills-goof\\\\.agents\\\\skills\\\\google\\\\SKILL.md'",
+      "classification": "AV_BLOCKED_OR_REMOVED; no bypass attempted"
+    },
+    "TS-CLAWHUB-AGENTS": {
+      "path": ".runtime/quarantine/toxicskills-goof/.agents/skills/clawhub/skill.md",
+      "status": "UNREADABLE_OR_ABSENT",
+      "error": "FileNotFoundError: [WinError 2] 지정된 파일을 찾을 수 없습니다: 'C:\\\\Users\\\\andyw\\\\Desktop\\\\serendipity-sec\\\\docs\\\\.runtime\\\\quarantine\\\\toxicskills-goof\\\\.agents\\\\skills\\\\clawhub\\\\skill.md'",
+      "classification": "AV_BLOCKED_OR_REMOVED; no bypass attempted"
+    }
+  },
+  "mcp_inputs": {
+    "MCP-INDIRECT-INJECTION": {
+      "kind": "resources",
+      "frozen_input": {
+        "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-indirect-injection-resources.json",
+        "status": "READABLE",
+        "size_bytes": 1438,
+        "sha256": "a6bb97ff19537b6658d1ebe3920c06be68bb5097a896ede5338fbd3b09f7aa7f"
+      },
+      "public_source": {
+        "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-indirect-prompt-injection/index.js",
+        "status": "READABLE",
+        "size_bytes": 5126,
+        "sha256": "1a681ee4d656a8c844788ba4f6c748f35233bb6ca1af3dcc008172b1001ec065"
+      }
+    },
+    "MCP-MALICIOUS-TOOLS": {
+      "kind": "resources",
+      "frozen_input": {
+        "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-malicious-tools-resources.json",
+        "status": "READABLE",
+        "size_bytes": 535,
+        "sha256": "70e4f8bf4f07a48aea8179c9510a3db4dd2f751bf8e134adf2513d7c4f592739"
+      },
+      "public_source": {
+        "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-malicious-tools/index.js",
+        "status": "READABLE",
+        "size_bytes": 4783,
+        "sha256": "653ad3b61b36a0cdb0ea0c4523cf651a12d87f7ed00ed850d4bf486afb7244e6"
+      }
+    },
+    "MCP-TYPOSQUAT-METADATA": {
+      "kind": "tools",
+      "frozen_input": {
+        "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-typosquat-tools.json",
+        "status": "READABLE",
+        "size_bytes": 1134,
+        "sha256": "1bef3bb34f536d542739e7f97eb5dd45747daea7243a455fd4c61c179edd6f2c"
+      },
+      "public_source": {
+        "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-namespace-typosquatting/index.js",
+        "status": "READABLE",
+        "size_bytes": 2014,
+        "sha256": "7b293531170fff7f91b2df9908f7c3abe686bd8d4afd47e8d5d13e340dabaf9a"
+      }
+    },
+    "MCP-RCE-METADATA": {
+      "kind": "tools",
+      "frozen_input": {
+        "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-rce-tools.json",
+        "status": "READABLE",
+        "size_bytes": 472,
+        "sha256": "b7c36650368485bd211718f08f1b469fcc118ed7caefc5f1cefb9026a26fbb33"
+      },
+      "public_source": {
+        "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-malicious-code-exec/index.js",
+        "status": "READABLE",
+        "size_bytes": 5176,
+        "sha256": "39fffe98fc4b3a5f50fc2b8388b8f82614ea63487b5c717b4ba98c54365cc221"
+      }
+    }
+  },
+  "scanner_binaries": {
+    "cisco-skill": {
+      "path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-skill\\Scripts\\skill-scanner.exe",
+      "status": "READABLE",
+      "size_bytes": 108472,
+      "sha256": "3208fef3eb565dd7828509b66d1ca0f7714b08117e232359885628dddadb5d5c"
+    },
+    "cisco-mcp": {
+      "path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-mcp\\Scripts\\mcp-scanner.exe",
+      "status": "READABLE",
+      "size_bytes": 108485,
+      "sha256": "b8978c0aea8969462471553363b3f5639b9df52985713b46ca5e0e683a831e01"
+    },
+    "skillspector": {
+      "path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\skillspector\\Scripts\\skillspector.exe",
+      "status": "READABLE",
+      "size_bytes": 108466,
+      "sha256": "72e2456260e29665ff0252580122d3dc1ea42bb436f2e4b52a4e5bd41b8374ab"
+    }
+  }
+}

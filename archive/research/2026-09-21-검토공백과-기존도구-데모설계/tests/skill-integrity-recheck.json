@@ -1,0 +1,121 @@
+{
+  "date": "2026-09-22",
+  "platform_commit": "4bd3ca337dd000fa60791207f94025807dff8a0c",
+  "method": "Read-only inspect_package on stored fixtures, trusted public key and code hash checked first; compare all returned fields with historical result.",
+  "cases_checked": 8,
+  "issue_count": 0,
+  "checks": [
+    {
+      "case_id": "I00-valid-clean",
+      "decision": "ALLOW",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I00-valid-clean/approval.json": "2d28a375cae4e1cce058ad1333d4d21cdb0baa3688dc3b14d064121723635cdb",
+        "skill-integrity-fixtures/I00-valid-clean/manifest.json": "27a78c819479b73fe2f359f96aa8c4ac2073df5283f4e8a94f04b56668aff43a",
+        "skill-integrity-fixtures/I00-valid-clean/manifest.sig": "ec3e1092a3560396f708a17618ae6eecf601983b4b0e81f63e331cae4c2ddfea",
+        "skill-integrity-fixtures/I00-valid-clean/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I00-valid-clean/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I00-valid-clean/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I00-valid-clean/SKILL.md": "f885cff7f9e059f89d7691e941d70da7c80314d423cdbaebf573206fc94f2d4d"
+      }
+    },
+    {
+      "case_id": "I01-skill-edited",
+      "decision": "HOLD_INTEGRITY",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I01-skill-edited/approval.json": "2d28a375cae4e1cce058ad1333d4d21cdb0baa3688dc3b14d064121723635cdb",
+        "skill-integrity-fixtures/I01-skill-edited/manifest.json": "27a78c819479b73fe2f359f96aa8c4ac2073df5283f4e8a94f04b56668aff43a",
+        "skill-integrity-fixtures/I01-skill-edited/manifest.sig": "ec3e1092a3560396f708a17618ae6eecf601983b4b0e81f63e331cae4c2ddfea",
+        "skill-integrity-fixtures/I01-skill-edited/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I01-skill-edited/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I01-skill-edited/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I01-skill-edited/SKILL.md": "22040cd5ee224508501bd21c74e1e0acca71834f194e80b9130cb69c589b3bc3"
+      }
+    },
+    {
+      "case_id": "I02-helper-edited",
+      "decision": "HOLD_INTEGRITY",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I02-helper-edited/approval.json": "2d28a375cae4e1cce058ad1333d4d21cdb0baa3688dc3b14d064121723635cdb",
+        "skill-integrity-fixtures/I02-helper-edited/manifest.json": "27a78c819479b73fe2f359f96aa8c4ac2073df5283f4e8a94f04b56668aff43a",
+        "skill-integrity-fixtures/I02-helper-edited/manifest.sig": "ec3e1092a3560396f708a17618ae6eecf601983b4b0e81f63e331cae4c2ddfea",
+        "skill-integrity-fixtures/I02-helper-edited/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I02-helper-edited/scripts/render.py": "bd62fa228202bf6066c3f65b22e3e8cb027da992c2146414e68601b4dd1cdcce",
+        "skill-integrity-fixtures/I02-helper-edited/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I02-helper-edited/SKILL.md": "f885cff7f9e059f89d7691e941d70da7c80314d423cdbaebf573206fc94f2d4d"
+      }
+    },
+    {
+      "case_id": "I03-unsigned-file-added",
+      "decision": "HOLD_INTEGRITY",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I03-unsigned-file-added/approval.json": "2d28a375cae4e1cce058ad1333d4d21cdb0baa3688dc3b14d064121723635cdb",
+        "skill-integrity-fixtures/I03-unsigned-file-added/manifest.json": "27a78c819479b73fe2f359f96aa8c4ac2073df5283f4e8a94f04b56668aff43a",
+        "skill-integrity-fixtures/I03-unsigned-file-added/manifest.sig": "ec3e1092a3560396f708a17618ae6eecf601983b4b0e81f63e331cae4c2ddfea",
+        "skill-integrity-fixtures/I03-unsigned-file-added/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I03-unsigned-file-added/scripts/late.py": "beb317103687ccd74d53ec22c1a50447a8300b558a503c2e0874c44f6d213595",
+        "skill-integrity-fixtures/I03-unsigned-file-added/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I03-unsigned-file-added/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I03-unsigned-file-added/SKILL.md": "f885cff7f9e059f89d7691e941d70da7c80314d423cdbaebf573206fc94f2d4d"
+      }
+    },
+    {
+      "case_id": "I04-signed-file-removed",
+      "decision": "HOLD_INTEGRITY",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I04-signed-file-removed/approval.json": "2d28a375cae4e1cce058ad1333d4d21cdb0baa3688dc3b14d064121723635cdb",
+        "skill-integrity-fixtures/I04-signed-file-removed/manifest.json": "27a78c819479b73fe2f359f96aa8c4ac2073df5283f4e8a94f04b56668aff43a",
+        "skill-integrity-fixtures/I04-signed-file-removed/manifest.sig": "ec3e1092a3560396f708a17618ae6eecf601983b4b0e81f63e331cae4c2ddfea",
+        "skill-integrity-fixtures/I04-signed-file-removed/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I04-signed-file-removed/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I04-signed-file-removed/SKILL.md": "f885cff7f9e059f89d7691e941d70da7c80314d423cdbaebf573206fc94f2d4d"
+      }
+    },
+    {
+      "case_id": "I05-untrusted-signer",
+      "decision": "HOLD_UNTRUSTED_SIGNER",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I05-untrusted-signer/approval.json": "2d28a375cae4e1cce058ad1333d4d21cdb0baa3688dc3b14d064121723635cdb",
+        "skill-integrity-fixtures/I05-untrusted-signer/manifest.json": "27a78c819479b73fe2f359f96aa8c4ac2073df5283f4e8a94f04b56668aff43a",
+        "skill-integrity-fixtures/I05-untrusted-signer/manifest.sig": "aad7b8e8767a53cee0618d275aa34e993d5f42762fd4139334d3b71cea6e9d5d",
+        "skill-integrity-fixtures/I05-untrusted-signer/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I05-untrusted-signer/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I05-untrusted-signer/signer-public-key.hex": "00c1b7f3b39ca0495ce71421dfa764ca2a96594d86c2502d5449bc9a0666d375",
+        "skill-integrity-fixtures/I05-untrusted-signer/SKILL.md": "f885cff7f9e059f89d7691e941d70da7c80314d423cdbaebf573206fc94f2d4d"
+      }
+    },
+    {
+      "case_id": "I06-old-version-replay",
+      "decision": "HOLD_REPLAY",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I06-old-version-replay/approval.json": "aa966f5abb30c341a0903a0f6632ddab7a6c2f80e019f11544130b5fc9aa3efa",
+        "skill-integrity-fixtures/I06-old-version-replay/manifest.json": "c5fe0f7f13e76bf6771ada67502ded4da323314f84b449386790c5895ca26eb1",
+        "skill-integrity-fixtures/I06-old-version-replay/manifest.sig": "55075323bf2a97324570da3326de2d70f253cb1fd55d0bce071ea4c37dd344a3",
+        "skill-integrity-fixtures/I06-old-version-replay/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I06-old-version-replay/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I06-old-version-replay/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I06-old-version-replay/SKILL.md": "f885cff7f9e059f89d7691e941d70da7c80314d423cdbaebf573206fc94f2d4d"
+      }
+    },
+    {
+      "case_id": "I07-validly-signed-malicious",
+      "decision": "DENY_SECURITY",
+      "stored_fields_match": true,
+      "evidence_sha256": {
+        "skill-integrity-fixtures/I07-validly-signed-malicious/approval.json": "955eeabadb34f71e1ac3b21de1ff3939ea5ce683533dc8f940d72ebbef4187b9",
+        "skill-integrity-fixtures/I07-validly-signed-malicious/manifest.json": "8aa060c677f9263a711dbf5c0f15e6a9f23316f981423c95d243cb9f9539db03",
+        "skill-integrity-fixtures/I07-validly-signed-malicious/manifest.sig": "cc07734039abc7758adeb2ab4115828c36a862b6b49df71a833e4190d7940cb2",
+        "skill-integrity-fixtures/I07-validly-signed-malicious/references/schema.md": "15e60b0cd335d8981d9aefa26d85296c41075377e032f606fc3b049c23fa6fa1",
+        "skill-integrity-fixtures/I07-validly-signed-malicious/scripts/render.py": "89d650cf07b68526059914bbcc2a8dce435e449d7f1c5de81252bc3a3d6dde8c",
+        "skill-integrity-fixtures/I07-validly-signed-malicious/signer-public-key.hex": "f64086d25f0b29c6d6af33d38a4289de8ccbc62976c6dcbf764abde3d0f84985",
+        "skill-integrity-fixtures/I07-validly-signed-malicious/SKILL.md": "2b889c7384f24a50fe3800f4445f23f525bcad5a6f760fcfbceab1c8c7538569"
+      }
+    }
+  ]
+}

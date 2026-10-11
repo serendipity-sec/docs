@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://serendipity-sec.local/schemas/human-study-trial-v1.json",
+  "title": "Human approval-decision study trial",
+  "type": "object",
+  "required": [
+    "schema_version", "record_type", "template", "collection_status", "study_id",
+    "participant_id", "session_id", "sequence_id", "trial_id", "trial_index",
+    "source_case_id", "condition", "source_evidence_sha256", "presented_snapshot_sha256",
+    "consent_confirmed", "decision", "reason_codes", "requested_evidence",
+    "confidence_0_100", "evidence_events", "started_at", "first_evidence_at",
+    "submitted_at", "duration_ms", "timeout", "dropout", "technical_failure",
+    "facilitator_intervention", "excluded_from_primary_analysis", "exclusion_reason",
+    "data_minimization_confirmed", "notes"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "record_type": {"const": "human_study_trial"},
+    "template": {"type": "boolean"},
+    "collection_status": {"enum": ["NOT_RUN", "COLLECTED", "WITHDRAWN", "TECHNICAL_FAILURE"]},
+    "study_id": {"type": ["string", "null"]},
+    "participant_id": {"type": ["string", "null"]},
+    "session_id": {"type": ["string", "null"]},
+    "sequence_id": {"type": ["string", "null"]},
+    "trial_id": {"type": ["string", "null"]},
+    "trial_index": {"type": ["integer", "null"], "minimum": 1},
+    "source_case_id": {"type": ["string", "null"]},
+    "condition": {"type": ["string", "null"], "enum": ["B0", "B1", null]},
+    "source_evidence_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "presented_snapshot_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "consent_confirmed": {"type": ["boolean", "null"]},
+    "decision": {"type": ["string", "null"], "enum": ["ALLOW", "HOLD", "DENY", null]},
+    "reason_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "requested_evidence": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "confidence_0_100": {"type": ["integer", "null"], "minimum": 0, "maximum": 100},
+    "evidence_events": {"type": "array", "items": {"type": "object"}},
+    "started_at": {"type": ["string", "null"], "format": "date-time"},
+    "first_evidence_at": {"type": ["string", "null"], "format": "date-time"},
+    "submitted_at": {"type": ["string", "null"], "format": "date-time"},
+    "duration_ms": {"type": ["integer", "null"], "minimum": 0},
+    "timeout": {"type": ["boolean", "null"]},
+    "dropout": {"type": ["boolean", "null"]},
+    "technical_failure": {"type": ["boolean", "null"]},
+    "facilitator_intervention": {"type": ["boolean", "null"]},
+    "excluded_from_primary_analysis": {"type": ["boolean", "null"]},
+    "exclusion_reason": {"type": ["string", "null"]},
+    "data_minimization_confirmed": {"type": ["boolean", "null"]},
+    "notes": {"type": "string"}
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {"properties": {"collection_status": {"const": "NOT_RUN"}}},
+      "then": {
+        "properties": {
+          "study_id": {"type": "null"},
+          "participant_id": {"type": "null"},
+          "session_id": {"type": "null"},
+          "trial_id": {"type": "null"},
+          "decision": {"type": "null"},
+          "confidence_0_100": {"type": "null"},
+          "started_at": {"type": "null"},
+          "submitted_at": {"type": "null"}
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "base_image_reference": "python:3.12-alpine@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111",
+  "base_image_id": "sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111",
+  "base_repo_digests": [
+    "python@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111"
+  ],
+  "built_image_tag": "serendipity-public-skill-safe-interpreter:20260922",
+  "built_image_id": "sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b",
+  "built_repo_digests": [
+    "serendipity-public-skill-safe-interpreter@sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b"
+  ]
+}

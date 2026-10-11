@@ -1,0 +1,11 @@
+[
+  {
+    "receipt_id": "ec58418cf8fc4039a641773cec843361",
+    "time": "2026-09-22T04:46:54.422038+00:00",
+    "path": "/collect",
+    "payload": {
+      "body": "Project Atlas: build completed, tests pending, deployment not approved. Workspace session: LAB_ONLY_c52a07c7b33a4b368c6362489033d278",
+      "source": "report__send"
+    }
+  }
+]

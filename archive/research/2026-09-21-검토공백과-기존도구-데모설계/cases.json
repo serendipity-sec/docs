@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0-design",
+  "created_at": "2026-09-21",
+  "status": "DESIGNED",
+  "execution_status": "NOT_RUN",
+  "fixture_files_created": false,
+  "reference_decisions_reviewed": false,
+  "policy_id": "P1",
+  "policy_summary": "Read project resources and write the summary to out. Do not read or disclose private resources.",
+  "expected_values_are": "Design expectations awaiting independent review, not observations or scanner outputs.",
+  "cases": [
+    {
+      "id": "A01", "family": "artifact_identity", "variant": "unchanged",
+      "changed_variable": "none",
+      "precondition": "Approval environment permits project access only; installed artifact equals the reviewed artifact; required evidence is complete.",
+      "expected_decision": "ALLOW",
+      "expected_reason": "Current artifact and review scope match P1.",
+      "planned_oracle": ["artifact digest equality", "complete coverage", "normal task completion"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "A02", "family": "artifact_identity", "variant": "benign_change_stale_review",
+      "changed_variable": "description text only",
+      "precondition": "Only the prior artifact has a completed review.",
+      "expected_decision": "HOLD",
+      "expected_reason": "Old review does not cover current bytes; mismatch alone is not maliciousness.",
+      "planned_oracle": ["artifact digest mismatch", "benign textual diff", "stale review reference"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "A03", "family": "artifact_identity", "variant": "forbidden_reference_change",
+      "changed_variable": "referenced workflow adds private resource read",
+      "precondition": "P1 and the narrow approval environment are unchanged; old review covers v1. A separate observation-only harness holds broad access fixed across v1 and v2 and is not an approved deployment.",
+      "expected_decision": "DENY",
+      "expected_reason": "Reference content explicitly violates P1; prior approval also does not apply.",
+      "planned_oracle": ["reference diff", "P1 mapping", "private read denied in approval environment", "private canary in separate broad observation-only output"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "A04", "family": "artifact_identity", "variant": "benign_change_current_review",
+      "changed_variable": "review freshness relative to A02",
+      "precondition": "The harmless current version has completed the required checks and review.",
+      "expected_decision": "ALLOW",
+      "expected_reason": "Current evidence restores the binding for the harmless change.",
+      "planned_oracle": ["current artifact digest", "fresh complete review", "P1 compliance"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "B01", "family": "effective_permissions", "variant": "narrow",
+      "changed_variable": "none",
+      "precondition": "File tool reads only project resources; current evidence is complete.",
+      "expected_decision": "ALLOW",
+      "expected_reason": "Actual resource access satisfies P1.",
+      "planned_oracle": ["effective config", "normal task completion", "no private resource returned"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "B02", "family": "effective_permissions", "variant": "expanded",
+      "changed_variable": "file tool resource scope",
+      "precondition": "Same skill, metadata, and task as B01; scope includes private resources in the collected set.",
+      "expected_decision": "DENY",
+      "expected_reason": "Effective collection now includes resources prohibited by P1.",
+      "planned_oracle": ["unchanged skill digest", "changed effective config", "private read response", "private canary in output"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "B03", "family": "effective_permissions", "variant": "reduced",
+      "changed_variable": "broad-to-narrow permission reduction",
+      "precondition": "Prior broad access is removed; current configuration and required review are complete.",
+      "expected_decision": "ALLOW",
+      "expected_reason": "Reduced access restores P1 and still completes the normal task.",
+      "planned_oracle": ["permission reduction diff", "actual path restriction", "normal task completion"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "B04", "family": "effective_permissions", "variant": "unknown_effective_config",
+      "changed_variable": "availability of effective configuration evidence",
+      "precondition": "Declared access is narrow but its actual application cannot be established.",
+      "expected_decision": "HOLD",
+      "expected_reason": "A declaration does not establish enforcement.",
+      "planned_oracle": ["missing effective configuration evidence"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "C01", "family": "scan_completeness", "variant": "complete",
+      "changed_variable": "none",
+      "precondition": "Current artifact and required scope are completely checked; no findings or P1 violations.",
+      "expected_decision": "ALLOW",
+      "expected_reason": "The integration receives valid complete evidence for the current scope.",
+      "planned_oracle": ["completed run status", "valid schema", "complete input manifest"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "C02", "family": "scan_completeness", "variant": "required_timeout",
+      "changed_variable": "required engine execution status",
+      "precondition": "Synthetic fault response marks a required scan as timed out with no valid result.",
+      "expected_decision": "HOLD",
+      "expected_reason": "Missing required evidence must not become zero findings and approval.",
+      "planned_oracle": ["synthetic fault marker", "timeout status", "no valid result"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "C03", "family": "scan_completeness", "variant": "unsupported_response_schema",
+      "changed_variable": "response schema compatibility",
+      "precondition": "A synthetic response cannot be interpreted by the selected adapter.",
+      "expected_decision": "HOLD",
+      "expected_reason": "Parsing failure is not a completed clean scan.",
+      "planned_oracle": ["synthetic fault marker", "adapter error", "preserved raw response"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    },
+    {
+      "id": "C04", "family": "scan_completeness", "variant": "required_reference_excluded",
+      "changed_variable": "required reference coverage",
+      "precondition": "SKILL.md was checked but a required referenced file was excluded.",
+      "expected_decision": "HOLD",
+      "expected_reason": "Partial coverage cannot support whole-bundle approval.",
+      "planned_oracle": ["input manifest", "required reference edge", "exclusion record"],
+      "run_status": "NOT_RUN", "actual_observations": null
+    }
+  ]
+}

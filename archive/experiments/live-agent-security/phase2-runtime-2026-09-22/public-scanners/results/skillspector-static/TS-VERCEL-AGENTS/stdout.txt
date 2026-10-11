@@ -1,0 +1,4 @@
+Report saved to: 
+C:\Users\andyw\Desktop\serendipity-sec\docs\experiments\live-agent-security\pha
+se2-runtime-2026-09-22\public-scanners\results\skillspector-static\TS-VERCEL-AG
+ENTS\report.json
