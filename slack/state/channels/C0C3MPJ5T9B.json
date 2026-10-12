@@ -2,10 +2,11 @@
   "workspace_id": "T0C2Y9MNME1",
   "channel_id": "C0C3MPJ5T9B",
   "channel_name": "공지방",
-  "last_changed_capture_at": "2026-10-11T16:00:05Z",
+  "last_changed_capture_at": "2026-10-12T16:11:08Z",
   "thread_parents": [
     "1790840019.259999",
-    "1791710246.898249"
+    "1791710246.898249",
+    "1791769055.345439"
   ],
   "complete": true
 }
