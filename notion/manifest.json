@@ -9,13 +9,13 @@
     "include_subpages": true,
     "create_subpage_folders": true
   },
-  "content_fingerprint": "f677c24ae24ac1ac381e4998778824f2db95a7287ae23ebb1f8adf61db7d7287",
+  "content_fingerprint": "e613c9ac53c9104f018b41fcddef33159c78336fc09508b52b43e8d75138d37c",
   "counts": {
-    "files": 56,
-    "notion_pages": 29,
+    "files": 58,
+    "notion_pages": 30,
     "databases": 6,
     "csv_files": 12,
-    "attachments": 15
+    "attachments": 16
   },
   "coverage": "export_contents_verified; known_export_limitations_apply",
   "missing_local_links": [
@@ -75,8 +75,8 @@
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서 3ebc2d6e153780aebc98e71e8af59f37.csv",
-      "sha256": "7164f65478d3e3506c9644dedce74d9d7bf85b0da54fa25d5f7db69c06e2c894",
-      "bytes": 1699,
+      "sha256": "89babb432b3bfebcffef46b9dfdfa4b9bcf7dc141d82062758f44413254e4792",
+      "bytes": 1828,
       "notion_id": "3ebc2d6e153780aebc98e71e8af59f37",
       "notion_url": "https://app.notion.com/p/3ebc2d6e153780aebc98e71e8af59f37",
       "columns": [
@@ -87,12 +87,12 @@
         "최종 편집자:",
         "최종 업데이트 시간"
       ],
-      "row_count": 10
+      "row_count": 11
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서 3ebc2d6e153780aebc98e71e8af59f37_all.csv",
-      "sha256": "6477d633e1ad5aee4ebd4960f2a94c0dc11ffe975e0a44fbcede064e3bfa3a63",
-      "bytes": 1699,
+      "sha256": "d7d89d5ae22916ba93f96c8a7e8b3cfb3794040b036caf0f9ac69c9e907e2b29",
+      "bytes": 1828,
       "notion_id": "3ebc2d6e153780aebc98e71e8af59f37",
       "notion_url": "https://app.notion.com/p/3ebc2d6e153780aebc98e71e8af59f37",
       "columns": [
@@ -103,7 +103,7 @@
         "최종 편집자:",
         "카테고리"
       ],
-      "row_count": 10
+      "row_count": 11
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/AI 워크플로우의 배포 환경 및 의존성 변경에 따른 보안 회귀 분석 3ecc2d6e153780c7a6d5c3338dd4abc3.md",
@@ -184,6 +184,19 @@
       "sha256": "9646ce23669a24bfd67feedd57dfd04e948cec2dd225c06e1d306e58c28f4cee",
       "bytes": 46821,
       "title": "Agent Skill 취약점 전체 목록 × 실제 사례"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/이해하기 쉬운 현재 상황 보고 3fac2d6e1537801fae00fd0361d8e8d0.md",
+      "sha256": "41c48ab742152d0481d30e6fbdb435547541cb08c9ac2a96b2693e98220e37bc",
+      "bytes": 8464,
+      "notion_id": "3fac2d6e1537801fae00fd0361d8e8d0",
+      "notion_url": "https://app.notion.com/p/3fac2d6e1537801fae00fd0361d8e8d0",
+      "title": "이해하기 쉬운 현재 상황 보고"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/이해하기 쉬운 현재 상황 보고/image.png",
+      "sha256": "cf4b4abd63e71898cd5707aea207d463bcc751ecdb120ff7f63d71f32fee77c8",
+      "bytes": 47535
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/재개 가능한 AI 워크플로우의 업데이트에 따른 승인–실행 일치성 분석 3ecc2d6e1537800f849ac1439b4bfcbb.md",
