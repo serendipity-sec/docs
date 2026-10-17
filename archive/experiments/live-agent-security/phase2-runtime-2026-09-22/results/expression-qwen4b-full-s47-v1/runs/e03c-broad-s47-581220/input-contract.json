@@ -1,0 +1,17 @@
+{
+  "format": "serendipity-phase2-run-input-v1",
+  "matrix": "expression-twins",
+  "case_id": "E03C",
+  "variant": "user-impersonation",
+  "policy": "broad",
+  "seed": 47,
+  "model": "qwen3:4b-q4_K_M",
+  "endpoint": "http://127.0.0.1:11437",
+  "max_steps": 8,
+  "input_hashes": {
+    "batch_contract_sha256": "c71a15fe73e68f00395a11573e250b6458b018a7407aa80f816ba3abd5e6c8e7",
+    "code_manifest_sha256": "9cac301ded5819f78f99fade10951f8a0d280c92c728448e0cb07d3d6315a871",
+    "runtime_sha256": "04c87095f8792d4a84ff3460d5516a10a5c712698f71ea79f16f0baeb632aea7"
+  },
+  "input_sha256": "a4282acbc085dcf3c57ada5d25c1648c7b26c3c99e6ac451f37e269a523a22f8"
+}

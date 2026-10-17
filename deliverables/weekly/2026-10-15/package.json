@@ -1,0 +1,15 @@
+{
+  "name": "flowdelta-weekly-report-2026-10-15",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline weekly report and reproducible browser checks",
+  "scripts": {
+    "verify": "node verify.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

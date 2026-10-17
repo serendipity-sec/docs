@@ -1,0 +1,111 @@
+{
+  "observed_date": "2026-09-20",
+  "timezone": "Asia/Seoul",
+  "method": "Read-only GitHub REST API via gh: repositories, default-branch latest commit, releases/latest; selected source files read through contents API.",
+  "scope": "Repository metadata and documentation inspection only. No scanner installation, execution, benchmark, or runtime enforcement test.",
+  "release_note": "Latest release metadata and inspected default-branch commit are separate observations. Feature parity between them was not tested.",
+  "repositories": [
+    {
+      "repository": "cisco-ai-defense/skill-scanner",
+      "default_branch": "main",
+      "commit_sha": "431cb58a5ac333bc0bb9aaa23f7c30ac628f59f8",
+      "commit_date_utc": "2026-09-05T21:04:39Z",
+      "latest_release": "2.1.0",
+      "release_published_at_utc": "2026-09-05T19:49:59Z",
+      "release_url": "https://github.com/cisco-ai-defense/skill-scanner/releases/tag/2.1.0",
+      "api_license_spdx_id": "NOASSERTION",
+      "license_file_observation": "LICENSE at the inspected commit states Apache License Version 2.0.",
+      "inspected_paths": ["README.md", "LICENSE"],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "cisco-ai-defense/mcp-scanner",
+      "default_branch": "main",
+      "commit_sha": "9e47aabdf2017b82e78f3419f39a75f20b6f98fa",
+      "commit_date_utc": "2026-09-19T00:02:03Z",
+      "latest_release": "4.8.4",
+      "release_published_at_utc": "2026-08-28T17:43:44Z",
+      "release_url": "https://github.com/cisco-ai-defense/mcp-scanner/releases/tag/4.8.4",
+      "api_license_spdx_id": "Apache-2.0",
+      "inspected_paths": ["README.md"],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "snyk/agent-scan",
+      "default_branch": "main",
+      "commit_sha": "57fdd46e53ee833c63007c486477f17df4f65625",
+      "commit_date_utc": "2026-09-18T16:06:53Z",
+      "latest_release": "v0.6.3",
+      "release_published_at_utc": "2026-09-10T08:23:04Z",
+      "release_url": "https://github.com/snyk/agent-scan/releases/tag/v0.6.3",
+      "api_license_spdx_id": "Apache-2.0",
+      "inspected_paths": ["README.md"],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "NVIDIA/SkillSpector",
+      "default_branch": "main",
+      "commit_sha": "d162d9b343e559be13df8ebba093df3bc9d58c90",
+      "commit_date_utc": "2026-09-18T10:27:36Z",
+      "latest_release": "v2.11.2",
+      "release_published_at_utc": "2026-09-09T20:27:37Z",
+      "release_url": "https://github.com/NVIDIA/SkillSpector/releases/tag/v2.11.2",
+      "api_license_spdx_id": "Apache-2.0",
+      "inspected_paths": ["README.md"],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "affaan-m/agentshield",
+      "default_branch": "main",
+      "commit_sha": "b0891303bdcd6037376a94263d45cfd2ff3dfb98",
+      "commit_date_utc": "2026-09-10T12:51:01Z",
+      "latest_release": "v1.6.0",
+      "release_published_at_utc": "2026-09-10T12:51:46Z",
+      "release_url": "https://github.com/affaan-m/agentshield/releases/tag/v1.6.0",
+      "api_license_spdx_id": "MIT",
+      "inspected_paths": ["README.md"],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "cisco-ai-defense/defenseclaw",
+      "default_branch": "main",
+      "commit_sha": "85029e57e9094debd9366a7d5a9f7e6d5c3ef6fc",
+      "commit_date_utc": "2026-09-17T17:55:43Z",
+      "latest_release": "0.8.10",
+      "release_published_at_utc": "2026-07-30T00:01:48Z",
+      "release_url": "https://github.com/cisco-ai-defense/defenseclaw/releases/tag/0.8.10",
+      "api_license_spdx_id": "Apache-2.0",
+      "inspected_paths": [
+        "README.md",
+        "docs-site/content/docs/capability-matrix.mdx",
+        "docs-site/content/docs/stories/hitl-approvals.mdx",
+        "docs-site/content/docs/observability/index.mdx"
+      ],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "stacklok/toolhive",
+      "default_branch": "main",
+      "commit_sha": "ea99439439ed8f6505cfbfd4f23a71f2a6459fb8",
+      "commit_date_utc": "2026-09-19T20:21:48Z",
+      "latest_release": "v0.50.0",
+      "release_published_at_utc": "2026-09-18T15:27:59Z",
+      "release_url": "https://github.com/stacklok/toolhive/releases/tag/v0.50.0",
+      "api_license_spdx_id": "Apache-2.0",
+      "inspected_paths": ["docs/arch/02-core-concepts.md"],
+      "execution_status": "NOT_RUN"
+    },
+    {
+      "repository": "vercel-labs/skills",
+      "default_branch": "main",
+      "commit_sha": "7407f3893ad4dceab546ac002c3ef806e4000c73",
+      "commit_date_utc": "2026-09-17T15:00:17Z",
+      "latest_release": "v1.7.0",
+      "release_published_at_utc": "2026-09-17T15:00:30Z",
+      "release_url": "https://github.com/vercel-labs/skills/releases/tag/v1.7.0",
+      "api_license_spdx_id": "MIT",
+      "inspected_paths": ["README.md", "src/skill-lock.ts", "src/local-lock.ts"],
+      "execution_status": "NOT_RUN"
+    }
+  ]
+}

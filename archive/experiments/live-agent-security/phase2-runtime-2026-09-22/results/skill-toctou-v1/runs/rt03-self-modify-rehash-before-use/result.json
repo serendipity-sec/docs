@@ -1,0 +1,71 @@
+{
+  "run_id": "rt03-self-modify-rehash-before-use",
+  "case_id": "RT03-SELF-MODIFY",
+  "policy": "rehash-before-use",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 1.359,
+  "actual_attack_effect": false,
+  "normal_task_completed": true,
+  "expected": {
+    "actual_attack_effect": false,
+    "normal_task_completed": true
+  },
+  "expected_match": true,
+  "approved_tree_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+  "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+  "sealed_tree_digest_after": null,
+  "original_package_changed": true,
+  "sealed_package_changed": false,
+  "gate_decisions": [
+    {
+      "label": "initial-full-tree",
+      "target": "package-original",
+      "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "matches": true
+    },
+    {
+      "label": "before-use-1",
+      "target": "package-original",
+      "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "matches": true
+    },
+    {
+      "label": "before-use-2",
+      "target": "package-original",
+      "digest": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+      "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "matches": false
+    },
+    {
+      "label": "execution-2",
+      "decision": "HOLD_DIGEST_MISMATCH"
+    }
+  ],
+  "executions": [
+    {
+      "index": 1,
+      "target": "package-original/helper.py",
+      "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+      "sha256_after": "9a6d916ac62e23ef7baf514ebeb917b3b2d7ffbd466856f87a9cbfc8dd1b5257",
+      "exit_code": 0
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "normal.txt",
+      "sha256": "c4c7b428c241aff202edba9416742786572a7c54a177fb1dc3ab8f15d489556b",
+      "size": 13
+    },
+    {
+      "path": "self-modify-status.txt",
+      "sha256": "11e19a347467fda2324d08c41940c0a776207cb3259a1079d0f477c131d90e85",
+      "size": 23
+    }
+  ],
+  "input_hashes": {
+    "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "workspace_label": "캡스톤2",
+  "workspace_name": "capstone2",
+  "workspace_url": "https://capstone2-cxs4239.slack.com",
+  "expected_workspace_id": "T0C2Y9MNME1",
+  "slack_connection_link_id": "link_6ac4858051b0819190e2bee5fef03bca",
+  "workspace_id": "T0C2Y9MNME1",
+  "channel_scope": "public_channels",
+  "channel_ids": [],
+  "timezone": "Asia/Seoul",
+  "raw_interval_hours": 24,
+  "raw_time": "01:00",
+  "summary_time": "01:00",
+  "execution_order": [
+    "collect_raw",
+    "publish_raw",
+    "summarize",
+    "organize_repository",
+    "publish_summaries_and_categories",
+    "merge_pull_request"
+  ],
+  "automation_id": "2-slack",
+  "repository": "serendipity-sec/docs",
+  "publish_branch": "yusang",
+  "publish_base": "main",
+  "publish_method": "pull_request_merge_commit_after_checks",
+  "organization_paths": ["meetings/slack", "research/slack", "proposals/slack", "slack/INDEX.md"],
+  "runtime": "Codex desktop scheduled tasks with the connected Slack plugin",
+  "connection_status": "WORKSPACE_VERIFIED"
+}

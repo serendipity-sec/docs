@@ -1,0 +1,18 @@
+[
+  {
+    "file": "harness_common.py",
+    "sha256": "3c45d32ddb9efbfe68997a016858e19d16e6c1c593414e2ab2a3a3881525a6eb"
+  },
+  {
+    "file": "phase2_server.py",
+    "sha256": "8d9e85a8d3853f26da53e265075f08a2aa4674cb1803d6d5bb94a015e9999d2d"
+  },
+  {
+    "file": "plan.md",
+    "sha256": "7c64aed283afbf39a30e673f4336a9cefc8007a804d2f91266182b5d052fd892"
+  },
+  {
+    "file": "run_cross_memory.py",
+    "sha256": "021f21187a65077e338351f7363fb7e8a7ee163bbae27e3d4663a123e7d46810"
+  }
+]

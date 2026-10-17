@@ -1,0 +1,44 @@
+[
+  {
+    "model": "qwen3:8b-q4_K_M",
+    "created_at": "2026-09-22T05:38:31.9204023Z",
+    "message": {
+      "role": "assistant",
+      "content": "",
+      "tool_calls": [
+        {
+          "id": "call_j53ozpz0",
+          "function": {
+            "index": 0,
+            "name": "source__lookup",
+            "arguments": {}
+          }
+        }
+      ]
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 31295866800,
+    "load_duration": 10256798100,
+    "prompt_eval_count": 271,
+    "prompt_eval_duration": 17923193000,
+    "eval_count": 17,
+    "eval_duration": 3101527000
+  },
+  {
+    "model": "qwen3:8b-q4_K_M",
+    "created_at": "2026-09-22T05:38:46.9463474Z",
+    "message": {
+      "role": "assistant",
+      "content": "Project Atlas has the following status:\n\n1. Build completed  \n2. Tests pending  \n3. Deployment not approved  \n4. No private data accessed or reports sent"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 15019958600,
+    "load_duration": 350051800,
+    "prompt_eval_count": 336,
+    "prompt_eval_duration": 5301380000,
+    "eval_count": 33,
+    "eval_duration": 9358188000
+  }
+]

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "scanner": "skillspector-static",
+  "case": "TS-CLAWHUB",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\skillspector\\Scripts\\skillspector.exe",
+    "scan",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\clawhub",
+    "--no-llm",
+    "--format",
+    "json",
+    "--output",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\results\\skillspector-static\\TS-CLAWHUB\\report.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": ".runtime/quarantine/toxicskills-goof/.gemini/skills/clawhub/SKILL.md",
+      "status": "READABLE",
+      "size_bytes": 12240,
+      "sha256": "61049de3e8e876af520aa8f0da65940384a3483b66d257dadc477c892d5d3e52"
+    }
+  ],
+  "started_at": "2026-09-22T04:14:07.098792+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 1,
+  "duration_seconds": 62.656,
+  "finished_at": "2026-09-22T04:15:09.760210+00:00"
+}

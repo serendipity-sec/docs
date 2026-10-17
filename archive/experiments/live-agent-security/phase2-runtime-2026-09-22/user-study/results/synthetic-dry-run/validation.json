@@ -1,0 +1,2258 @@
+{
+  "schema_version": "1.0",
+  "run_id": "synthetic-instrumentation-v1",
+  "status": "PASS",
+  "human_study_status": "NOT_RUN",
+  "actor_type": "synthetic_dry_run",
+  "exclude_from_human_analysis": true,
+  "records_checked": 96,
+  "checks_passed": 561,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "check": "JSON Schema requires the validator field set",
+      "passed": true
+    },
+    {
+      "check": "JSON Schema defines only the validator field set",
+      "passed": true
+    },
+    {
+      "check": "JSON Schema fixes the synthetic actor type",
+      "passed": true
+    },
+    {
+      "check": "JSON Schema excludes every row from human analysis",
+      "passed": true
+    },
+    {
+      "check": "exactly 96 synthetic trial records",
+      "passed": true
+    },
+    {
+      "check": "trial file hash matches run manifest",
+      "passed": true
+    },
+    {
+      "check": "every row has the exact required field set",
+      "passed": true
+    },
+    {
+      "check": "all actors are synthetic",
+      "passed": true
+    },
+    {
+      "check": "all rows are excluded from human analysis",
+      "passed": true
+    },
+    {
+      "check": "all references are unreviewed design expectations",
+      "passed": true
+    },
+    {
+      "check": "conditions are B0 or B1",
+      "passed": true
+    },
+    {
+      "check": "reference decisions use three states",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-oracle-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-oracle-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-oracle-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-oracle-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-oracle-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-badge-follower-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-badge-follower-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-badge-follower-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-badge-follower-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-badge-follower-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-hold-all-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-hold-all-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-hold-all-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-hold-all-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-hold-all-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no decision: synthetic-timeout-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no confidence: synthetic-timeout-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no submission time: synthetic-timeout-s1-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "timeout has no decision: synthetic-timeout-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "timeout has no confidence: synthetic-timeout-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "timeout has no submission time: synthetic-timeout-s1-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s1-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no decision: synthetic-timeout-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no confidence: synthetic-timeout-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no submission time: synthetic-timeout-s1-12-C04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-01-A01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-02-A02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-03-A03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no decision: synthetic-timeout-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no confidence: synthetic-timeout-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no submission time: synthetic-timeout-s2-04-A04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-05-B01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-06-B02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-07-B04",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "timeout has no decision: synthetic-timeout-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "timeout has no confidence: synthetic-timeout-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "timeout has no submission time: synthetic-timeout-s2-08-B03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-09-C02",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-10-C01",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered decision is valid: synthetic-timeout-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered confidence is valid: synthetic-timeout-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "answered trial has submission time: synthetic-timeout-s2-11-C03",
+      "passed": true
+    },
+    {
+      "check": "source hash length: synthetic-timeout-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "presentation hash length: synthetic-timeout-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no decision: synthetic-timeout-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no confidence: synthetic-timeout-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "timeout has no submission time: synthetic-timeout-s2-12-C04",
+      "passed": true
+    },
+    {
+      "check": "all and only assigned actors are present",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-oracle-s1",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-oracle-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-oracle-s1",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-oracle-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-oracle-s2",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-oracle-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-oracle-s2",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-oracle-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-badge-follower-s1",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-badge-follower-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-badge-follower-s1",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-badge-follower-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-badge-follower-s2",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-badge-follower-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-badge-follower-s2",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-badge-follower-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-hold-all-s1",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-hold-all-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-hold-all-s1",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-hold-all-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-hold-all-s2",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-hold-all-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-hold-all-s2",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-hold-all-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-timeout-s1",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-timeout-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-timeout-s1",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-timeout-s1",
+      "passed": true
+    },
+    {
+      "check": "actor has 12 trials: synthetic-timeout-s2",
+      "passed": true
+    },
+    {
+      "check": "actor sees each case once: synthetic-timeout-s2",
+      "passed": true
+    },
+    {
+      "check": "actor has balanced conditions: synthetic-timeout-s2",
+      "passed": true
+    },
+    {
+      "check": "actor follows assignment sequence: synthetic-timeout-s2",
+      "passed": true
+    },
+    {
+      "check": "each case-condition cell has four profile records",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: A01",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: A01",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: A02",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: A02",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: A03",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: A03",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: A04",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: A04",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: B01",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: B01",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: B02",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: B02",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: B03",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: B03",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: B04",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: B04",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: C01",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: C01",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: C02",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: C02",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: C03",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: C03",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 share source evidence: C04",
+      "passed": true
+    },
+    {
+      "check": "B0 and B1 presentations differ: C04",
+      "passed": true
+    },
+    {
+      "check": "periodic timeout profile produces six timeouts",
+      "passed": true
+    },
+    {
+      "check": "aggregate keeps human study NOT_RUN",
+      "passed": true
+    },
+    {
+      "check": "aggregate forbids effect inference",
+      "passed": true
+    },
+    {
+      "check": "aggregate assigned count is 96",
+      "passed": true
+    },
+    {
+      "check": "aggregate answered count is 90",
+      "passed": true
+    },
+    {
+      "check": "aggregate timeout count is 6",
+      "passed": true
+    },
+    {
+      "check": "oracle exercises perfect-accuracy path",
+      "passed": true
+    },
+    {
+      "check": "badge follower exercises dangerous-approval path",
+      "passed": true
+    },
+    {
+      "check": "hold-all exercises normal-nonapproval path",
+      "passed": true
+    },
+    {
+      "check": "hold-all exercises uncertainty-HOLD path",
+      "passed": true
+    },
+    {
+      "check": "conditions have equal assigned counts",
+      "passed": true
+    }
+  ],
+  "warning": "Validation success means the synthetic logging and metric paths behaved as specified. It is not a user-study result."
+}

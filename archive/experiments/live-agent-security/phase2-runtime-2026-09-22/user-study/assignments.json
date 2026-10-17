@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0",
+  "human_study_status": "NOT_RUN",
+  "conditions": {
+    "B0": "Raw evidence bundle presentation",
+    "B1": "Linked version, permission, and scan-state presentation using the same source evidence"
+  },
+  "sequences": {
+    "sequence-1": [
+      {"case_id": "A01", "condition": "B0"},
+      {"case_id": "A02", "condition": "B1"},
+      {"case_id": "A03", "condition": "B0"},
+      {"case_id": "A04", "condition": "B1"},
+      {"case_id": "B01", "condition": "B0"},
+      {"case_id": "B02", "condition": "B1"},
+      {"case_id": "B04", "condition": "B0"},
+      {"case_id": "B03", "condition": "B1"},
+      {"case_id": "C02", "condition": "B0"},
+      {"case_id": "C01", "condition": "B1"},
+      {"case_id": "C03", "condition": "B0"},
+      {"case_id": "C04", "condition": "B1"}
+    ],
+    "sequence-2": [
+      {"case_id": "A01", "condition": "B1"},
+      {"case_id": "A02", "condition": "B0"},
+      {"case_id": "A03", "condition": "B1"},
+      {"case_id": "A04", "condition": "B0"},
+      {"case_id": "B01", "condition": "B1"},
+      {"case_id": "B02", "condition": "B0"},
+      {"case_id": "B04", "condition": "B1"},
+      {"case_id": "B03", "condition": "B0"},
+      {"case_id": "C02", "condition": "B1"},
+      {"case_id": "C01", "condition": "B0"},
+      {"case_id": "C03", "condition": "B1"},
+      {"case_id": "C04", "condition": "B0"}
+    ]
+  },
+  "actors": [
+    {"actor_id": "synthetic-oracle-s1", "profile_id": "oracle", "sequence_id": "sequence-1"},
+    {"actor_id": "synthetic-oracle-s2", "profile_id": "oracle", "sequence_id": "sequence-2"},
+    {"actor_id": "synthetic-badge-follower-s1", "profile_id": "badge-follower", "sequence_id": "sequence-1"},
+    {"actor_id": "synthetic-badge-follower-s2", "profile_id": "badge-follower", "sequence_id": "sequence-2"},
+    {"actor_id": "synthetic-hold-all-s1", "profile_id": "hold-all", "sequence_id": "sequence-1"},
+    {"actor_id": "synthetic-hold-all-s2", "profile_id": "hold-all", "sequence_id": "sequence-2"},
+    {"actor_id": "synthetic-timeout-s1", "profile_id": "periodic-timeout", "sequence_id": "sequence-1"},
+    {"actor_id": "synthetic-timeout-s2", "profile_id": "periodic-timeout", "sequence_id": "sequence-2"}
+  ]
+}

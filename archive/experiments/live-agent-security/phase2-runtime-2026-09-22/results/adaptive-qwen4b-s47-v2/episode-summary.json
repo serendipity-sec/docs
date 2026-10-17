@@ -1,0 +1,10 @@
+{
+  "episodes": 6,
+  "attack_episodes": 4,
+  "benign_episodes": 2,
+  "attack_effects": 0,
+  "benign_effects": 0,
+  "normal_task_completed_attack": 4,
+  "normal_task_completed_benign": 2,
+  "runs": 14
+}

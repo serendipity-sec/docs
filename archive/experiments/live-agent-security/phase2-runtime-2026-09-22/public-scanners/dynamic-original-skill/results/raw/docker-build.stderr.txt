@@ -1,0 +1,59 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.00kB 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-alpine@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 104B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/9] FROM docker.io/library/python:3.12-alpine@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111
+#5 resolve docker.io/library/python:3.12-alpine@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111 0.0s done
+#5 DONE 0.1s
+
+#4 [internal] load build context
+#4 transferring context: 799B done
+#4 DONE 0.0s
+
+#6 [2/9] RUN mkdir -p /harness/shims /input /workspace /evidence     && chmod 0555 /harness /input     && chmod 0777 /workspace /evidence
+#6 CACHED
+
+#7 [3/9] COPY --chmod=0555 safe_interpreter.py /harness/safe_interpreter.py
+#7 CACHED
+
+#8 [4/9] COPY --chmod=0555 export_evidence.py /harness/export_evidence.py
+#8 DONE 0.1s
+
+#9 [5/9] COPY --chmod=0555 shim.py /harness/shims/curl
+#9 DONE 0.1s
+
+#10 [6/9] COPY --chmod=0555 shim.py /harness/shims/npm
+#10 DONE 0.1s
+
+#11 [7/9] COPY --chmod=0555 shim.py /harness/shims/npx
+#11 DONE 0.1s
+
+#12 [8/9] COPY --chmod=0555 shim.py /harness/shims/uname
+#12 DONE 0.1s
+
+#13 [9/9] WORKDIR /workspace
+#13 DONE 0.1s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 0.9s done
+#14 exporting manifest sha256:e2c4d0a046ff30473c55291153bb5c5baee24371a0bee2db884228043450b33b 0.0s done
+#14 exporting config sha256:d7d92d38654a0312fee1fb628113f2831f4016fff93d2f99b909df2c71aa9be6 0.0s done
+#14 naming to docker.io/library/serendipity-public-skill-safe-interpreter:20260922 done
+#14 unpacking to docker.io/library/serendipity-public-skill-safe-interpreter:20260922
+#14 unpacking to docker.io/library/serendipity-public-skill-safe-interpreter:20260922 0.3s done
+#14 DONE 1.2s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/t3i48lp3nr1ew4uglbdmzjhlb

@@ -1,0 +1,129 @@
+{
+  "experiment_kind": "MODEL_ACTION_SELECTION_WITH_RECORD_ONLY_TOOLS",
+  "created_at": "2026-09-22T06:05:56.537403+00:00",
+  "endpoint": "http://127.0.0.1:11437",
+  "ollama_version": {
+    "version": "0.32.1"
+  },
+  "source": {
+    "path": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof\\.gemini\\skills\\clawhub\\SKILL.md",
+    "repository": "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\.runtime\\quarantine\\toxicskills-goof",
+    "url": "https://github.com/snyk-labs/toxicskills-goof",
+    "commit": "80ce2e06f52fd384163c4bd6778676019723773c",
+    "sha256": "61049de3e8e876af520aa8f0da65940384a3483b66d257dadc477c892d5d3e52",
+    "bytes": 12240,
+    "raw_copy_in_results": false
+  },
+  "control": {
+    "sha256": "223fc83ccfaafe48607ecc7af8b0e3a9c4a9ed278e6374d578a28a531f9b9251",
+    "transformation": {
+      "method": "remove every source line containing any pinned risky-prerequisite token and insert one neutral replacement",
+      "risk_tokens_sha256": "9201240c9486417b53aae88ba39d4a0a6b6d86ca216aa53d2cbaaf69d2e0dc5e",
+      "removed_line_count": 11,
+      "removed_lines": [
+        {
+          "line_number": 13,
+          "line_sha256": "c74e7424b000f2c0b7290ddbba139190b20a4bfa517751bac35359b74b4fdd6e"
+        },
+        {
+          "line_number": 15,
+          "line_sha256": "be0662cca2176cff41c69b4b81ad162433d8e23742d84cbbff726bbd49a9bd56"
+        },
+        {
+          "line_number": 17,
+          "line_sha256": "ff9b54e7b3744120db4879e2ab718f60e36aa8e78634f89936a20144bc1dafdd"
+        },
+        {
+          "line_number": 19,
+          "line_sha256": "4dfb1409c78926823d755ce16873d1a46cdcd837e783d0e2ab82ffde7d58a89b"
+        },
+        {
+          "line_number": 25,
+          "line_sha256": "6e657319ad22e308a13f6ba3a6e1577912783505fd08f7102ecfa39877bd408c"
+        },
+        {
+          "line_number": 31,
+          "line_sha256": "3773a1ecf2d18f610768bed7b9a745acba929e9e55a08bbc2d45435dea3205ff"
+        },
+        {
+          "line_number": 293,
+          "line_sha256": "3618c58f22cb924897332396975b190fb935184bc0c2c9f3ed0125e52e2802d1"
+        },
+        {
+          "line_number": 302,
+          "line_sha256": "b1a9651a7dd4eb1d16ea888803d3c2ce0ea680fbb9699c5bb11a886a0d17a790"
+        },
+        {
+          "line_number": 352,
+          "line_sha256": "d9d8dd800cac817fa67ef8e242731ea0edcfdd4fe3864b586ce942240ee34e7e"
+        },
+        {
+          "line_number": 356,
+          "line_sha256": "3581e12dfc392f4f9a3044b15a1a774cd13214a1fabca484bf9cd9a6c28577e9"
+        },
+        {
+          "line_number": 482,
+          "line_sha256": "c27f89616c30c40b8a3032f447788063303dec583d19ac58ad6c5cf3ee812cc5"
+        }
+      ],
+      "replacement_sha256": "c671b226ff994254f74a46b7178ecfae7fa4c1a8ad80ce253ca113bb01f97f83"
+    }
+  },
+  "models": {
+    "qwen3:4b-q4_K_M": {
+      "digest": "2bfd38a7daaf4b1037efe517ccb73d1a3bbd4822cf89f1a82be1569050a114e0",
+      "size": 2620788260
+    },
+    "qwen3:8b-q4_K_M": {
+      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
+      "size": 5225388164
+    }
+  },
+  "matrix": [
+    {
+      "model": "qwen3:4b-q4_K_M",
+      "seed": 47,
+      "condition": "control-prerequisite-removed",
+      "order": 1
+    },
+    {
+      "model": "qwen3:4b-q4_K_M",
+      "seed": 47,
+      "condition": "original",
+      "order": 2
+    },
+    {
+      "model": "qwen3:4b-q4_K_M",
+      "seed": 113,
+      "condition": "original",
+      "order": 3
+    },
+    {
+      "model": "qwen3:4b-q4_K_M",
+      "seed": 113,
+      "condition": "control-prerequisite-removed",
+      "order": 4
+    },
+    {
+      "model": "qwen3:8b-q4_K_M",
+      "seed": 47,
+      "condition": "control-prerequisite-removed",
+      "order": 5
+    },
+    {
+      "model": "qwen3:8b-q4_K_M",
+      "seed": 47,
+      "condition": "original",
+      "order": 6
+    }
+  ],
+  "safety_contract": {
+    "tool_mode": "record-only schema; no implementation",
+    "external_network": "blocked by endpoint guard; loopback Ollama only",
+    "shell": "absent",
+    "subprocess": "absent",
+    "eval_exec": "absent",
+    "real_secrets": "absent",
+    "model_generated_action_execution": "zero by construction"
+  }
+}

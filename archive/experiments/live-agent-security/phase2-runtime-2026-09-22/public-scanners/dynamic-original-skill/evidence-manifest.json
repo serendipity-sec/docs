@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-09-22T05:11:48.483488+00:00",
+  "algorithm": "sha256",
+  "self_excluded": true,
+  "file_count": 51,
+  "files": [
+    {
+      "path": ".dockerignore",
+      "size_bytes": 64,
+      "sha256": "b6ea402d0038270e452010291e24951210fd590e298a6218fb363af7ac44ff03"
+    },
+    {
+      "path": "build_manifest.py",
+      "size_bytes": 1447,
+      "sha256": "84350ec128ed9709c26ed38f1135378e2545342b332c78cd506ee9d82fb2ce8f"
+    },
+    {
+      "path": "Dockerfile",
+      "size_bytes": 962,
+      "sha256": "c5a8ac7fd1f69666014e80d4d878dd7d63dfb46b0cd0e101c847b68d93e4afe5"
+    },
+    {
+      "path": "export_evidence.py",
+      "size_bytes": 686,
+      "sha256": "cb67d56c94aca67d3e5cbae7d1d6ac9f434663222b7a4c0ca8ceab04b7747314"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 2853,
+      "sha256": "af89384e41447c543b97bcf4fc3a43c1ab5e4c05eefc18b2fa3d3c260f25eba9"
+    },
+    {
+      "path": "results/container-config.json",
+      "size_bytes": 2406,
+      "sha256": "ff96e687b8be4f859f043c6cdadd6dacd5fde38831b6968f98241409f1f1f439"
+    },
+    {
+      "path": "results/container-evidence/events.jsonl",
+      "size_bytes": 2120,
+      "sha256": "6cc2b42c2aea5c0e8f46c15543292516ebc3f775652a203eeb171977bcf02182"
+    },
+    {
+      "path": "results/container-evidence/interpreter-result.json",
+      "size_bytes": 3646,
+      "sha256": "02ab8889f43efc6a7bd60cae5e0f8e0700153f6ddf81c48e03d303fb3b8e6476"
+    },
+    {
+      "path": "results/container-evidence/ready",
+      "size_bytes": 6,
+      "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+    },
+    {
+      "path": "results/image-digest.json",
+      "size_bytes": 653,
+      "sha256": "ee86db775a721c78702b49c48ddabdfabc0766419eea391482ca8216de17d9a3"
+    },
+    {
+      "path": "results/provenance.json",
+      "size_bytes": 1923,
+      "sha256": "c831758593d288fde1918575eb59957466a977b786f8838b6a014bb13dead5f5"
+    },
+    {
+      "path": "results/raw/base-image-inspect.json",
+      "size_bytes": 1924,
+      "sha256": "bff774250442efbd4abc73e6fa0558059dea49de924086ad1ea4e2c2b46c572f"
+    },
+    {
+      "path": "results/raw/base-image-inspect.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/container-inspect-after.json",
+      "size_bytes": 8683,
+      "sha256": "f65ee1994ed2c694cee455d298d5c0da1f0b4a0268fb92c8dadb8145513c6248"
+    },
+    {
+      "path": "results/raw/container-inspect-after.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/container-inspect-before.json",
+      "size_bytes": 8136,
+      "sha256": "5b2dd5b7cf4bbaa9bbfd091427ab58465e7180a511ecda5229cadc2ac01eac8b"
+    },
+    {
+      "path": "results/raw/container-inspect-before.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/container-inspect-finally.json",
+      "size_bytes": 8683,
+      "sha256": "f65ee1994ed2c694cee455d298d5c0da1f0b4a0268fb92c8dadb8145513c6248"
+    },
+    {
+      "path": "results/raw/container-inspect-finally.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/container-process-result.json",
+      "size_bytes": 157,
+      "sha256": "e59d68a69808a9247d3110214245fff942b92d5666e144480eaba3296dffbb7d"
+    },
+    {
+      "path": "results/raw/container.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/container.stdout.txt",
+      "size_bytes": 237,
+      "sha256": "64c9cbebfdad0dcd93e5dd85c37a501203064e99fa714f5eacf020512220b7a5"
+    },
+    {
+      "path": "results/raw/docker-build-command.json",
+      "size_bytes": 333,
+      "sha256": "7c4b94f14235dcfdcf022ec50d9e5af47639c39c60abae6ce3b90dafec96a2df"
+    },
+    {
+      "path": "results/raw/docker-build.stderr.txt",
+      "size_bytes": 2131,
+      "sha256": "1dd93ae47791f6b5ea33fb8071d141afe251eaf0303e75e6b711c223bd98312d"
+    },
+    {
+      "path": "results/raw/docker-build.stdout.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-create-command.json",
+      "size_bytes": 1017,
+      "sha256": "ef5687e2dcbb9cc8eee3df2520ed3313b18f4f81c24bcc10f59a47592f0cd139"
+    },
+    {
+      "path": "results/raw/docker-create.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-create.stdout.txt",
+      "size_bytes": 65,
+      "sha256": "fba4b692094618d8a106ac282d7cc25c9a4b93224f464c837165898719dc542b"
+    },
+    {
+      "path": "results/raw/docker-exec-events.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-exec-export-attempts.json",
+      "size_bytes": 440,
+      "sha256": "cb51336329b841c3ed52a3f8dd4bbed1cdddf805b66b47cf96202a47a956071e"
+    },
+    {
+      "path": "results/raw/docker-exec-interpreter.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-exec-ready.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-exec-ready.stdout.txt",
+      "size_bytes": 6,
+      "sha256": "ed1a545bb85e55816bbf9566b028b2a0bc456b88f49f6f266c0401048824194b"
+    },
+    {
+      "path": "results/raw/docker-rm.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-rm.stdout.txt",
+      "size_bytes": 65,
+      "sha256": "fba4b692094618d8a106ac282d7cc25c9a4b93224f464c837165898719dc542b"
+    },
+    {
+      "path": "results/raw/docker-start.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-start.stdout.txt",
+      "size_bytes": 65,
+      "sha256": "fba4b692094618d8a106ac282d7cc25c9a4b93224f464c837165898719dc542b"
+    },
+    {
+      "path": "results/raw/docker-stop.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-stop.stdout.txt",
+      "size_bytes": 120,
+      "sha256": "fd6520f4c702e0835b1357cc66d246dcfd4243fe6ec25170ed4debef1f5e1018"
+    },
+    {
+      "path": "results/raw/docker-version.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/docker-version.stdout.txt",
+      "size_bytes": 1143,
+      "sha256": "d08976ca669edf6698ec8c279f412625f047127f13ed5e200e0f156f376808d7"
+    },
+    {
+      "path": "results/raw/image-inspect.json",
+      "size_bytes": 3367,
+      "sha256": "224fe7795572543637784286697bc11d12a799c8f934f7b342909856a94e3c8c"
+    },
+    {
+      "path": "results/raw/image-inspect.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/validator.stderr.txt",
+      "size_bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "results/raw/validator.stdout.txt",
+      "size_bytes": 81,
+      "sha256": "ab75d85f581e0492dd222a46c9605ac5f58ee718cfce261b55845092e0151744"
+    },
+    {
+      "path": "results/validation.json",
+      "size_bytes": 10040,
+      "sha256": "319763734daeb9aec09e6d641af5c9d98d0b8cdb2c576e9f70b48f00dbc3959f"
+    },
+    {
+      "path": "RESULTS.md",
+      "size_bytes": 8662,
+      "sha256": "b704908276129ad1c32b4c82b4d720e06b12f248c5a093d83f10dd7235590c42"
+    },
+    {
+      "path": "run_experiment.py",
+      "size_bytes": 14708,
+      "sha256": "1eb44f195660837cacc190e28aee781f6a8b0e43c00fbb219309427b5235b64d"
+    },
+    {
+      "path": "safe_interpreter.py",
+      "size_bytes": 7134,
+      "sha256": "5c938a19c468192d723e949f078ab393c992e991a5553ea5a8bb84fb36975194"
+    },
+    {
+      "path": "shim.py",
+      "size_bytes": 2016,
+      "sha256": "570f36813b980520c87b80d640e05b3dad0aa5410a40c717ddd457e9ebe05599"
+    },
+    {
+      "path": "validate.py",
+      "size_bytes": 7306,
+      "sha256": "bbe69cbdf0a9fa3c868031915a0b9a9f0578d147e3ec64196849e3ef5e0e421e"
+    }
+  ]
+}

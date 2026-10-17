@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0-design",
+  "template_only": true,
+  "run_id": null,
+  "case_id": null,
+  "comparison_condition": null,
+  "track": null,
+  "result_origin": null,
+  "run_status": "NOT_RUN",
+  "task_resolution": "NOT_ASSESSED",
+  "started_at": null,
+  "finished_at": null,
+  "environment": {
+    "purpose": null,
+    "os": null, "host": null, "host_version": null,
+    "container_image_digest": null, "network_policy": null,
+    "model": null, "model_parameters": null
+  },
+  "tool": {
+    "name": null, "version": null, "source_commit": null,
+    "package_digest": null, "dependency_lock_digest": null,
+    "analyzers": null, "rules_digest": null, "api_version": null,
+    "argv": null, "config_digest": null
+  },
+  "inputs": {
+    "manifest_path": null, "manifest_sha256": null,
+    "artifact_digest": null, "effective_config_digest": null,
+    "policy_digest": null, "baseline_digest": null,
+    "required_scope": null, "excluded_scope": null,
+    "unresolved_references": null
+  },
+  "raw_evidence": {
+    "stdout_path": null, "stderr_path": null, "report_path": null,
+    "report_sha256": null, "exit_code": null
+  },
+  "assessment": {
+    "reference_decision": null, "reference_review_status": "NOT_REVIEWED",
+    "observed_decision": null, "findings": null,
+    "evidence_links": null, "resolved_by_layer": null,
+    "manual_steps": null, "limitations": null
+  },
+  "actual_observations": null,
+  "timing": {
+    "setup_seconds": null, "scan_seconds": null, "review_seconds": null
+  },
+  "human_trial": {
+    "participant_id": null, "consent_record_id": null,
+    "decision": null, "confidence": null, "requested_evidence": null
+  }
+}

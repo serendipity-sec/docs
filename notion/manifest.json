@@ -1,0 +1,616 @@
+{
+  "schema_version": 1,
+  "root_id": "096c2d6e1537828d8e3a810d9a8976ac",
+  "root_url": "https://app.notion.com/p/096c2d6e1537828d8e3a810d9a8976ac",
+  "collection_method": "notion_browser_markdown_csv_export",
+  "export_options": {
+    "database_view": "default",
+    "content": "all",
+    "include_subpages": true,
+    "create_subpage_folders": true
+  },
+  "content_fingerprint": "e613c9ac53c9104f018b41fcddef33159c78336fc09508b52b43e8d75138d37c",
+  "counts": {
+    "files": 58,
+    "notion_pages": 30,
+    "databases": 6,
+    "csv_files": 12,
+    "attachments": 16
+  },
+  "coverage": "export_contents_verified; known_export_limitations_apply",
+  "missing_local_links": [
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
+      "target": "%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/5%EB%B6%84%20%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%93%9C%20412c2d6e153783b4bc4701090a19eacd.csv",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/5분 기록보드 412c2d6e153783b4bc4701090a19eacd.csv"
+    },
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
+      "target": "%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%207f2c2d6e153783c68483810f70767483_%ED%95%A0%20%EC%9D%BC%20f1ec2d6e15378268b87e07b06ee79024.csv",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 7f2c2d6e153783c68483810f70767483_할 일 f1ec2d6e15378268b87e07b06ee79024.csv"
+    },
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
+      "target": "%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20da2c2d6e153782f29ead81c44a32f70f_%ED%95%A0%20%EC%9D%BC%20f1ec2d6e15378268b87e07b06ee79024.csv",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 da2c2d6e153782f29ead81c44a32f70f_할 일 f1ec2d6e15378268b87e07b06ee79024.csv"
+    },
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/README.md",
+      "target": "research-evidence.md",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/research-evidence.md"
+    },
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/README.md",
+      "target": "execution-plan.md",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/execution-plan.md"
+    },
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/README.md",
+      "target": "contracts.example.json",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/contracts.example.json"
+    },
+    {
+      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/README.md",
+      "target": "research-evidence.md",
+      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/research-evidence.md"
+    }
+  ],
+  "retained_not_in_latest_export": [],
+  "files": [
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
+      "sha256": "a54e8659fa5d71b00b3dcd9534d891a0fef7b749a47526e65feae8c67f9e5ac6",
+      "bytes": 3805,
+      "notion_id": "096c2d6e1537828d8e3a810d9a8976ac",
+      "notion_url": "https://app.notion.com/p/096c2d6e1537828d8e3a810d9a8976ac",
+      "title": "캡스톤 팀"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/PR & Issue 템플릿 629c2d6e153782f6b6f681a627362779.md",
+      "sha256": "e628fcdb9d2e5d2e42ea471d1fdaa8b29e1fa7055a8548e8d2ad6090834b4cd7",
+      "bytes": 3537,
+      "notion_id": "629c2d6e153782f6b6f681a627362779",
+      "notion_url": "https://app.notion.com/p/629c2d6e153782f6b6f681a627362779",
+      "title": "PR & Issue 템플릿"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서 3ebc2d6e153780aebc98e71e8af59f37.csv",
+      "sha256": "89babb432b3bfebcffef46b9dfdfa4b9bcf7dc141d82062758f44413254e4792",
+      "bytes": 1828,
+      "notion_id": "3ebc2d6e153780aebc98e71e8af59f37",
+      "notion_url": "https://app.notion.com/p/3ebc2d6e153780aebc98e71e8af59f37",
+      "columns": [
+        "문서 이름",
+        "카테고리",
+        "생성자",
+        "생성 일시",
+        "최종 편집자:",
+        "최종 업데이트 시간"
+      ],
+      "row_count": 11
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서 3ebc2d6e153780aebc98e71e8af59f37_all.csv",
+      "sha256": "d7d89d5ae22916ba93f96c8a7e8b3cfb3794040b036caf0f9ac69c9e907e2b29",
+      "bytes": 1828,
+      "notion_id": "3ebc2d6e153780aebc98e71e8af59f37",
+      "notion_url": "https://app.notion.com/p/3ebc2d6e153780aebc98e71e8af59f37",
+      "columns": [
+        "문서 이름",
+        "생성 일시",
+        "생성자",
+        "최종 업데이트 시간",
+        "최종 편집자:",
+        "카테고리"
+      ],
+      "row_count": 11
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/AI 워크플로우의 배포 환경 및 의존성 변경에 따른 보안 회귀 분석 3ecc2d6e153780c7a6d5c3338dd4abc3.md",
+      "sha256": "5582ed4163af83c59ad842ea04638ea2e84ee0b4f634119a1d1a0e2c99a57d42",
+      "bytes": 35561,
+      "notion_id": "3ecc2d6e153780c7a6d5c3338dd4abc3",
+      "notion_url": "https://app.notion.com/p/3ecc2d6e153780c7a6d5c3338dd4abc3",
+      "title": "AI 워크플로우의 배포 환경 및 의존성 변경에 따른 보안 회귀 분석"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/AI 워크플로우의 배포 환경 및 의존성 변경에 따른 보안 회귀 분석/FlowDelta_Project_Brief.html",
+      "sha256": "da3636fb99655890248934d04302b0028149085dc9c194f9a6e016aa503db128",
+      "bytes": 78114
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/FlowDelta 4인 역할·착수 태스크·상세 실행계획 3f4c2d6e153780748df8f4d69467142c.md",
+      "sha256": "3577d5de7c9af2461c86eb804d77b3f79629022b3e188b96757facadae2a182d",
+      "bytes": 49149,
+      "notion_id": "3f4c2d6e153780748df8f4d69467142c",
+      "notion_url": "https://app.notion.com/p/3f4c2d6e153780748df8f4d69467142c",
+      "title": "FlowDelta 4인 역할·착수 태스크·상세 실행계획"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/MCP·Skill 워크플로우의 배포 구성과 사용자 정책을 연결하여, 동일 구성을 서로 다른 3ecc2d6e153780f3bdfaf48c89ab064f.md",
+      "sha256": "b4397111a3adad334ce7075d05bd780c2178833895152c261395264a48e7431d",
+      "bytes": 23346,
+      "notion_id": "3ecc2d6e153780f3bdfaf48c89ab064f",
+      "notion_url": "https://app.notion.com/p/3ecc2d6e153780f3bdfaf48c89ab064f",
+      "title": "MCP·Skill 워크플로우의 배포 구성과 사용자 정책을 연결하여, 동일 구성을 서로 다른 권한 환경에서 검증하는 보안 테스트 도구"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/MCP·Skill 워크플로우의 배포 구성과 사용자 정책을 연결하여, 동일 구성을 서로 다른/BoundaryCheck_Proposal.html",
+      "sha256": "8c88a192637d590c5c154dc4138801038c08fd9d6568a35d43199c64c5c37dbe",
+      "bytes": 96250
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/MCP·Skills 공급망의 보안 경계 위반 검증 및 취약점 발굴 프레임워크 3ecc2d6e15378067ad2ac3720aca897a.md",
+      "sha256": "d0a3640a3896fd18f433f08c0f7c1854586e496f6a06eda835560b1cf4c822f9",
+      "bytes": 38713,
+      "notion_id": "3ecc2d6e15378067ad2ac3720aca897a",
+      "notion_url": "https://app.notion.com/p/3ecc2d6e15378067ad2ac3720aca897a",
+      "title": "MCP·Skills 공급망의 보안 경계 위반 검증 및 취약점 발굴 프레임워크"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/MCP·Skills 공급망의 보안 경계 위반 검증 및 취약점 발굴 프레임워크/mcp-skills-research.html",
+      "sha256": "09ea0b5dd8f81236da8987eb893709979f12c522c31af558217b2384cd686474",
+      "bytes": 129084
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/아키텍처 3ebc2d6e153780259a71f306bd878141.md",
+      "sha256": "175907ea2b6ad19c2bdbc35fda9a36646f360803a8a25552551317692b4ff83a",
+      "bytes": 416,
+      "notion_id": "3ebc2d6e153780259a71f306bd878141",
+      "notion_url": "https://app.notion.com/p/3ebc2d6e153780259a71f306bd878141",
+      "title": "아키텍처"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/에이전트 스킬 3ecc2d6e1537806c9a3ffc48b50a0cc5.md",
+      "sha256": "4ac4d0ff5a3697da6d5ce076ab0132c1494aeb13b2ba40f5e1c2bc1b0fca8273",
+      "bytes": 915,
+      "notion_id": "3ecc2d6e1537806c9a3ffc48b50a0cc5",
+      "notion_url": "https://app.notion.com/p/3ecc2d6e1537806c9a3ffc48b50a0cc5",
+      "title": "에이전트 스킬"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/에이전트 스킬/skill-security-briefing.html",
+      "sha256": "d7ac2c3240d3a4ee869698209689bcfd471425a72e0e2cb91565a3be7df06d5e",
+      "bytes": 42553
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/에이전트 스킬/에이전트_스킬_검사도구.md",
+      "sha256": "1addf310a722d283c9faf3e9819f289f255497338c79ee823b864b8d1b5292f8",
+      "bytes": 64387,
+      "title": "Agent Skill 검사 도구·검사 방식 총정리"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/에이전트 스킬/에이전트_스킬_취약점.md",
+      "sha256": "9646ce23669a24bfd67feedd57dfd04e948cec2dd225c06e1d306e58c28f4cee",
+      "bytes": 46821,
+      "title": "Agent Skill 취약점 전체 목록 × 실제 사례"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/이해하기 쉬운 현재 상황 보고 3fac2d6e1537801fae00fd0361d8e8d0.md",
+      "sha256": "41c48ab742152d0481d30e6fbdb435547541cb08c9ac2a96b2693e98220e37bc",
+      "bytes": 8464,
+      "notion_id": "3fac2d6e1537801fae00fd0361d8e8d0",
+      "notion_url": "https://app.notion.com/p/3fac2d6e1537801fae00fd0361d8e8d0",
+      "title": "이해하기 쉬운 현재 상황 보고"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/이해하기 쉬운 현재 상황 보고/image.png",
+      "sha256": "cf4b4abd63e71898cd5707aea207d463bcc751ecdb120ff7f63d71f32fee77c8",
+      "bytes": 47535
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/재개 가능한 AI 워크플로우의 업데이트에 따른 승인–실행 일치성 분석 3ecc2d6e1537800f849ac1439b4bfcbb.md",
+      "sha256": "c64cc758f8f6a92571538d4293253553096ea2a30f3ab15ee80b611fdf40cac6",
+      "bytes": 33929,
+      "notion_id": "3ecc2d6e1537800f849ac1439b4bfcbb",
+      "notion_url": "https://app.notion.com/p/3ecc2d6e1537800f849ac1439b4bfcbb",
+      "title": "재개 가능한 AI 워크플로우의 업데이트에 따른 승인–실행 일치성 분석"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/재개 가능한 AI 워크플로우의 업데이트에 따른 승인–실행 일치성 분석/approvaldiff_proposal_(2).html",
+      "sha256": "6eb9467c0dc9224ec48514b100394b26217f711a599d0d1695577640ffde6d0e",
+      "bytes": 67605
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/제목 없음 3ebc2d6e153780519f04ddda1c46faf8.md",
+      "sha256": "a261472a75432b5342e41ffa2d63057575bfae2a7493fd8c105cee8ee8f35ed9",
+      "bytes": 867,
+      "notion_id": "3ebc2d6e153780519f04ddda1c46faf8",
+      "notion_url": "https://app.notion.com/p/3ebc2d6e153780519f04ddda1c46faf8",
+      "title": "제목 없음"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/제목 없음/MCP_보안_학습_웹페이지.html",
+      "sha256": "816ffe5ee6e32a11baddbb338b2d6ddd7b67e459e56d831752c580f76778460a",
+      "bytes": 20261
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/제목 없음/MCP_보안.pdf",
+      "sha256": "8f88967ed572b7452c8ab5086e4df0f2087e741515cf594c559333c7229f9d2e",
+      "bytes": 288636
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/제목 없음/MCP_보안_학습_정리.docx",
+      "sha256": "1edd5b36fcbacf9e553fc372036fc94b1b6cc0d9305fc575a27bff3c5e6b2868",
+      "bytes": 69748
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/제목 없음/evidence-ladder.html",
+      "sha256": "40ae63b6dad1ee187f846dd526e804939227fcd3d40764ce0cd6b9120d1e7900",
+      "bytes": 749435
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/제목 없음/tool-flow.html",
+      "sha256": "26f0ac1a31140d2965004233bd5c9d0b076b861ac280a688976c406dba00954a",
+      "bytes": 753236
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계 3eec2d6e1537801bb949de84023a2f23.md",
+      "sha256": "40a7adb7969d14e8cc130c37c03a6a6403cd7d3293f1e6094fe25ca655d30599",
+      "bytes": 55334,
+      "notion_id": "3eec2d6e1537801bb949de84023a2f23",
+      "notion_url": "https://app.notion.com/p/3eec2d6e1537801bb949de84023a2f23",
+      "title": "최종 설계"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/README.md",
+      "sha256": "b08fbf58149796be01e9311fa7ea58e5fcd3db34dfac8c45c5c025d5a62a6850",
+      "bytes": 37722,
+      "title": "AI 워크플로우 변경에 따른 결합 취약점 탐지와 실행 검증 설계"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/architecture.html",
+      "sha256": "2b634f478a752c56cc035adc25a3c46afee11d50dad3aa73579a06d34368c9d3",
+      "bytes": 45513
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/환경·의존성 변경을 고려한 AI 워크플로우 보안 회귀 분석 3ecc2d6e1537807db675ca541ec4d8c8.md",
+      "sha256": "ddd080d4446863470a03443a66cb539f569cfdd481cf69366bfa4770a7d11fce",
+      "bytes": 27186,
+      "notion_id": "3ecc2d6e1537807db675ca541ec4d8c8",
+      "notion_url": "https://app.notion.com/p/3ecc2d6e1537807db675ca541ec4d8c8",
+      "title": "환경·의존성 변경을 고려한 AI 워크플로우 보안 회귀 분석"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/환경·의존성 변경을 고려한 AI 워크플로우 보안 회귀 분석/WorkflowDelta_Project.html",
+      "sha256": "f16467eb5a35002fc454fc3c4ebd3a643c917bee6e143f07ca176cab16b0a234",
+      "bytes": 133940
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/브랜치 전략 b82c2d6e1537827889e281fe1a046d7f.md",
+      "sha256": "fc36ffdfcce73d670ecd16fe389385836972c8604410eb7f215b8911009b599b",
+      "bytes": 3483,
+      "notion_id": "b82c2d6e1537827889e281fe1a046d7f",
+      "notion_url": "https://app.notion.com/p/b82c2d6e1537827889e281fe1a046d7f",
+      "title": "브랜치 전략"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/선행연구·조사 현황 be7c2d6e153783e98cd201fc63705402.csv",
+      "sha256": "78965bf5ca6216751e993da6c4eb48980eb304cfb212e08c2df92a9bd246150d",
+      "bytes": 334,
+      "notion_id": "be7c2d6e153783e98cd201fc63705402",
+      "notion_url": "https://app.notion.com/p/be7c2d6e153783e98cd201fc63705402",
+      "columns": [
+        "자료명",
+        "프로젝트",
+        "유형",
+        "조사 단계",
+        "담당자",
+        "출처 링크",
+        "검색 도구",
+        "원문 검증",
+        "발표일",
+        "마지막 확인일",
+        "관련도",
+        "핵심 내용",
+        "한계점",
+        "우리 프로젝트 시사점",
+        "최신성",
+        "재확인 필요",
+        "최근 업데이트일",
+        "검색 키워드",
+        "관련 주제",
+        "ID"
+      ],
+      "row_count": 1
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/선행연구·조사 현황 be7c2d6e153783e98cd201fc63705402_all.csv",
+      "sha256": "bf48ede1d2860b13637f2004770c7ddcc9ca4d6c4938d4381d848a95defb7dbf",
+      "bytes": 334,
+      "notion_id": "be7c2d6e153783e98cd201fc63705402",
+      "notion_url": "https://app.notion.com/p/be7c2d6e153783e98cd201fc63705402",
+      "columns": [
+        "자료명",
+        "ID",
+        "검색 도구",
+        "검색 키워드",
+        "관련 주제",
+        "관련도",
+        "담당자",
+        "마지막 확인일",
+        "발표일",
+        "우리 프로젝트 시사점",
+        "원문 검증",
+        "유형",
+        "재확인 필요",
+        "조사 단계",
+        "최근 업데이트일",
+        "최신성",
+        "출처 링크",
+        "프로젝트",
+        "한계점",
+        "핵심 내용"
+      ],
+      "row_count": 1
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/선행연구·조사 현황/제목 없음 767c2d6e1537833c8f140163d334b2dc.md",
+      "sha256": "c8dd48dabab05069d81f5959a4f47c7b5f0187a10e5e6c8839e265c37d6cb61e",
+      "bytes": 105,
+      "notion_id": "767c2d6e1537833c8f140163d334b2dc",
+      "notion_url": "https://app.notion.com/p/767c2d6e1537833c8f140163d334b2dc",
+      "title": "제목 없음"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제출처 (공모전·학회) ec2c2d6e153783b0bde5015c50e30744.csv",
+      "sha256": "2e35678dcb3f31b6f8f3f3aad38be1e1304657e89188b08e0191949155c81642",
+      "bytes": 212,
+      "notion_id": "ec2c2d6e153783b0bde5015c50e30744",
+      "notion_url": "https://app.notion.com/p/ec2c2d6e153783b0bde5015c50e30744",
+      "columns": [
+        "이름",
+        "구분",
+        "상태",
+        "적합도",
+        "접수 마감",
+        "공식 링크",
+        "마지막 확인일",
+        "D-day",
+        "제출 형식",
+        "행사·발표일",
+        "주최",
+        "참가 자격",
+        "혜택",
+        "담당자",
+        "메모"
+      ],
+      "row_count": 1
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제출처 (공모전·학회) ec2c2d6e153783b0bde5015c50e30744_all.csv",
+      "sha256": "aeb471347107a6a6194076a198ddd13c744a55b32780ddbd7bc9ea863eb7118b",
+      "bytes": 212,
+      "notion_id": "ec2c2d6e153783b0bde5015c50e30744",
+      "notion_url": "https://app.notion.com/p/ec2c2d6e153783b0bde5015c50e30744",
+      "columns": [
+        "이름",
+        "D-day",
+        "공식 링크",
+        "구분",
+        "담당자",
+        "마지막 확인일",
+        "메모",
+        "상태",
+        "적합도",
+        "접수 마감",
+        "제출 형식",
+        "주최",
+        "참가 자격",
+        "행사·발표일",
+        "혜택"
+      ],
+      "row_count": 1
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제출처 (공모전·학회)/[템플릿] 대회명 YYYY df2c2d6e1537829b811301c41adc6242.md",
+      "sha256": "cc6448298fc2fe9836e9a4f5dc71b13651c0dbd921c52092c88851d97d2f393a",
+      "bytes": 735,
+      "notion_id": "df2c2d6e1537829b811301c41adc6242",
+      "notion_url": "https://app.notion.com/p/df2c2d6e1537829b811301c41adc6242",
+      "title": "[템플릿] 대회명 YYYY"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/커밋 컨벤션 48fc2d6e15378244bc17813bcb5a8490.md",
+      "sha256": "eb925c999a4315f4f6a4b9123c8d52704c90422529687c86fd908b34fb32d5a1",
+      "bytes": 3385,
+      "notion_id": "48fc2d6e15378244bc17813bcb5a8490",
+      "notion_url": "https://app.notion.com/p/48fc2d6e15378244bc17813bcb5a8490",
+      "title": "커밋 컨벤션"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/코드 컨벤션 d15c2d6e15378201913201bf237afd96.md",
+      "sha256": "e999077360096f996256b7309fdf9aac72a3167a505a997e84dd5a0427046819",
+      "bytes": 3647,
+      "notion_id": "d15c2d6e15378201913201bf237afd96",
+      "notion_url": "https://app.notion.com/p/d15c2d6e15378201913201bf237afd96",
+      "title": "코드 컨벤션"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명 33cc2d6e1537839d966d81caf9d61527.csv",
+      "sha256": "a718ef01b1515f07267136d427c1d909a8b35a52dd2e4a33c516f7d146679e52",
+      "bytes": 173,
+      "notion_id": "33cc2d6e1537839d966d81caf9d61527",
+      "notion_url": "https://app.notion.com/p/33cc2d6e1537839d966d81caf9d61527",
+      "columns": [
+        "이름",
+        "역할",
+        "전화번호"
+      ],
+      "row_count": 4
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명 33cc2d6e1537839d966d81caf9d61527_all.csv",
+      "sha256": "e2e131c84a7e0276d9c5f9ceb168f6171821fbbc33a2cacc097a6c5f3c52f130",
+      "bytes": 173,
+      "notion_id": "33cc2d6e1537839d966d81caf9d61527",
+      "notion_url": "https://app.notion.com/p/33cc2d6e1537839d966d81caf9d61527",
+      "columns": [
+        "이름",
+        "역할",
+        "전화번호"
+      ],
+      "row_count": 4
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/김민우 3e9c2d6e1537800c8782c73cd2cb18f6.md",
+      "sha256": "fd94a52d33c238f8de7376aa395d00c23c1699a1e9b52a14ce2af13ae9a2b7d1",
+      "bytes": 59,
+      "notion_id": "3e9c2d6e1537800c8782c73cd2cb18f6",
+      "notion_url": "https://app.notion.com/p/3e9c2d6e1537800c8782c73cd2cb18f6",
+      "title": "김민우"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/박용준 716c2d6e15378346a3fd817cb5ef3904.md",
+      "sha256": "b950e7b5ac2a0eb16ac0faebd9d1d812b32a0eb5fd00172a6915ed35ead4b97b",
+      "bytes": 183,
+      "notion_id": "716c2d6e15378346a3fd817cb5ef3904",
+      "notion_url": "https://app.notion.com/p/716c2d6e15378346a3fd817cb5ef3904",
+      "title": "박용준"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/박용준/논문 정리 3f1c2d6e153780e0ab98dba2fe98f625.md",
+      "sha256": "8cca9c49bf8e4ebae234c4f39553f1ae17c17ab31afdd1d84184ccc78a3907a7",
+      "bytes": 423,
+      "notion_id": "3f1c2d6e153780e0ab98dba2fe98f625",
+      "notion_url": "https://app.notion.com/p/3f1c2d6e153780e0ab98dba2fe98f625",
+      "title": "논문 정리"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/박용준/논문 정리/구조적 커버리지 기준을 이용한 에이전트 워크플로우 테스트 3f1c2d6e153780d2ba91c7f6ad880bf2.md",
+      "sha256": "0ce31736057b02f46ea72362953329d855a29ca01e57a6b99ab430fdf669adcf",
+      "bytes": 8736,
+      "notion_id": "3f1c2d6e153780d2ba91c7f6ad880bf2",
+      "notion_url": "https://app.notion.com/p/3f1c2d6e153780d2ba91c7f6ad880bf2",
+      "title": "구조적 커버리지 기준을 이용한 에이전트 워크플로우 테스트"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/박용준/논문 정리/구조적 커버리지 기준을 이용한 에이전트 워크플로우 테스트/세부 설명 3f1c2d6e15378015b13bf9cf0c77b48b.md",
+      "sha256": "356bdb666a15bf64226d5fe8377e73dbe9e57533ab9ea562325de6f91a88fbc0",
+      "bytes": 7200,
+      "notion_id": "3f1c2d6e15378015b13bf9cf0c77b48b",
+      "notion_url": "https://app.notion.com/p/3f1c2d6e15378015b13bf9cf0c77b48b",
+      "title": "세부 설명"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/양유상 3e7c2d6e1537808a8cccf1241848e6e1.md",
+      "sha256": "561679228c1c47d117fafba50a904b9efb27d5b30a6a9a1e3e5314b63f7e2056",
+      "bytes": 59,
+      "notion_id": "3e7c2d6e1537808a8cccf1241848e6e1",
+      "notion_url": "https://app.notion.com/p/3e7c2d6e1537808a8cccf1241848e6e1",
+      "title": "양유상"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/팀원명/장준서 3e8c2d6e15378088870cfe67432d56eb.md",
+      "sha256": "8b277e27ab8e808cb6857f011459928b59ed532490c4166245bb0fe3ae9aafdc",
+      "bytes": 59,
+      "notion_id": "3e8c2d6e15378088870cfe67432d56eb",
+      "notion_url": "https://app.notion.com/p/3e8c2d6e15378088870cfe67432d56eb",
+      "title": "장준서"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회계록 2f0c2d6e1537830db695819d86af8087.csv",
+      "sha256": "0149f9071a6b50b089e366d71f2fa80eadde2a6339027ff382a6a05bcba98ef1",
+      "bytes": 159,
+      "notion_id": "2f0c2d6e1537830db695819d86af8087",
+      "notion_url": "https://app.notion.com/p/2f0c2d6e1537830db695819d86af8087",
+      "columns": [
+        "사유",
+        "성격",
+        "최종 편집자",
+        "생성 일시",
+        "최종 편집 일시",
+        "제출여부"
+      ],
+      "row_count": 1
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회계록 2f0c2d6e1537830db695819d86af8087_all.csv",
+      "sha256": "2dbaa949899da02da8b4e0f463b1443ed2bed64cf19f9f9ea6341392bf7d6624",
+      "bytes": 159,
+      "notion_id": "2f0c2d6e1537830db695819d86af8087",
+      "notion_url": "https://app.notion.com/p/2f0c2d6e1537830db695819d86af8087",
+      "columns": [
+        "사유",
+        "생성 일시",
+        "성격",
+        "제출여부",
+        "최종 편집 일시",
+        "최종 편집자"
+      ],
+      "row_count": 1
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회계록/제목 없음 bd0c2d6e1537825dacfa8160cfda86d4.md",
+      "sha256": "de09512dc7ce0a3fdc45925185bedae8119040261c958e13af3e8b930ebd8998",
+      "bytes": 160,
+      "notion_id": "bd0c2d6e1537825dacfa8160cfda86d4",
+      "notion_url": "https://app.notion.com/p/bd0c2d6e1537825dacfa8160cfda86d4",
+      "title": "제목 없음"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회의록 588c2d6e153783529c49814e776ef1f0.csv",
+      "sha256": "78365274e3ddd3a8306fc65db40935c5d5e454debd9f1f6ca05e26dcab163fb6",
+      "bytes": 373,
+      "notion_id": "588c2d6e153783529c49814e776ef1f0",
+      "notion_url": "https://app.notion.com/p/588c2d6e153783529c49814e776ef1f0",
+      "columns": [
+        "주차",
+        "작성자",
+        "참석자",
+        "방식",
+        "생성 일시",
+        "최종 편집 일시"
+      ],
+      "row_count": 2
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회의록 588c2d6e153783529c49814e776ef1f0_all.csv",
+      "sha256": "385f89ec051131741706aabd04f732734a1db6ad6425cbf1245885ad1b6bdc50",
+      "bytes": 373,
+      "notion_id": "588c2d6e153783529c49814e776ef1f0",
+      "notion_url": "https://app.notion.com/p/588c2d6e153783529c49814e776ef1f0",
+      "columns": [
+        "주차",
+        "방식",
+        "생성 일시",
+        "작성자",
+        "참석자",
+        "최종 편집 일시"
+      ],
+      "row_count": 2
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회의록/10 01 회의록 a98c2d6e15378283bc68815713d7b9f2.md",
+      "sha256": "0c91d708a3b72220fae8045b6c3d2de208a4db9bfb5b8ddfbef554011288146d",
+      "bytes": 8616,
+      "notion_id": "a98c2d6e15378283bc68815713d7b9f2",
+      "notion_url": "https://app.notion.com/p/a98c2d6e15378283bc68815713d7b9f2",
+      "title": "10/01 회의록"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회의록/10 01 회의록/녹음본 3ebc2d6e1537804890faf2163d908a0d.md",
+      "sha256": "b142e8bdb30a112f705a0d72b774f3cde6776d3fa87e6e2ba35fbf51a49d4e80",
+      "bytes": 58911,
+      "notion_id": "3ebc2d6e1537804890faf2163d908a0d",
+      "notion_url": "https://app.notion.com/p/3ebc2d6e1537804890faf2163d908a0d",
+      "title": "녹음본"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회의록/10 03 회의록 3eec2d6e1537800caf44ea12e5aea35d.md",
+      "sha256": "6438f21148603dc7c461165a30445ff023fbf3db3f72acb3611eefb2f2e0f535",
+      "bytes": 8969,
+      "notion_id": "3eec2d6e1537800caf44ea12e5aea35d",
+      "notion_url": "https://app.notion.com/p/3eec2d6e1537800caf44ea12e5aea35d",
+      "title": "10/03 회의록"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/회의록/10 03 회의록/전체 회의 녹음본 3eec2d6e153780388b5eedac4e071c08.md",
+      "sha256": "c765947d9f87e1099ea1e514cb19204d3ebbb677ab6a2df4fe8ed487fcaf7ed4",
+      "bytes": 44629,
+      "notion_id": "3eec2d6e153780388b5eedac4e071c08",
+      "notion_url": "https://app.notion.com/p/3eec2d6e153780388b5eedac4e071c08",
+      "title": "전체 회의 녹음본"
+    }
+  ]
+}

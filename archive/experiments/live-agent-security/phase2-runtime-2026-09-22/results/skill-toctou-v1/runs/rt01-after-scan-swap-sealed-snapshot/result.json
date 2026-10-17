@@ -1,0 +1,48 @@
+{
+  "run_id": "rt01-after-scan-swap-sealed-snapshot",
+  "case_id": "RT01-AFTER-SCAN-SWAP",
+  "policy": "sealed-snapshot",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 24.61,
+  "actual_attack_effect": false,
+  "normal_task_completed": true,
+  "expected": {
+    "actual_attack_effect": false,
+    "normal_task_completed": true
+  },
+  "expected_match": true,
+  "approved_tree_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+  "original_tree_digest_after": "08f79bb79e2b9d5683d3c9cfec66f24236a355341b74ebd9698157ac3269d15b",
+  "sealed_tree_digest_after": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+  "original_package_changed": true,
+  "sealed_package_changed": false,
+  "gate_decisions": [
+    {
+      "label": "initial-full-tree",
+      "target": "package-original",
+      "digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+      "approved_digest": "51703b46b431abc48f8404a99e2a979513c3749fbc295491515b9c5f484f2cbb",
+      "matches": true
+    }
+  ],
+  "executions": [
+    {
+      "index": 1,
+      "target": "package-sealed/helper.py",
+      "sha256_before": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+      "sha256_after": "799266308c65ca250697201e7a2b89ac41ec54a0521c20db3be91e92cfc23c44",
+      "exit_code": 0
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "normal.txt",
+      "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+      "size": 12
+    }
+  ],
+  "input_hashes": {
+    "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  }
+}

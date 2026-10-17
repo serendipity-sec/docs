@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "scanner": "cisco-mcp-yara-static",
+  "case": "MCP-TYPOSQUAT-METADATA",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-mcp\\Scripts\\mcp-scanner.exe",
+    "--analyzers",
+    "yara",
+    "--format",
+    "raw",
+    "static",
+    "--tools",
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\public-scanners\\inputs\\mcp\\appsecco-typosquat-tools.json"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [
+    {
+      "path": "experiments/live-agent-security/phase2-runtime-2026-09-22/public-scanners/inputs/mcp/appsecco-typosquat-tools.json",
+      "status": "READABLE",
+      "size_bytes": 1134,
+      "sha256": "1bef3bb34f536d542739e7f97eb5dd45747daea7243a455fd4c61c179edd6f2c"
+    },
+    {
+      "path": ".runtime/quarantine/vulnerable-mcp-servers-lab/vulnerable-mcp-server-namespace-typosquatting/index.js",
+      "status": "READABLE",
+      "size_bytes": 2014,
+      "sha256": "7b293531170fff7f91b2df9908f7c3abe686bd8d4afd47e8d5d13e340dabaf9a"
+    }
+  ],
+  "started_at": "2026-09-22T04:20:06.170930+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 0,
+  "duration_seconds": 73.297,
+  "finished_at": "2026-09-22T04:21:19.476449+00:00"
+}

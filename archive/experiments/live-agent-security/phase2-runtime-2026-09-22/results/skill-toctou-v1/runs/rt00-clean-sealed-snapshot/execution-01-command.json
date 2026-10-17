@@ -1,0 +1,21 @@
+[
+  "docker",
+  "create",
+  "--name",
+  "serendipity-st-61b8bc227d49",
+  "--network",
+  "none",
+  "--read-only",
+  "--mount",
+  "type=bind,source=C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\results\\skill-toctou-v1\\runs\\rt00-clean-sealed-snapshot\\package-sealed,target=/package,readonly",
+  "--mount",
+  "type=bind,source=C:\\Users\\andyw\\Desktop\\serendipity-sec\\docs\\experiments\\live-agent-security\\phase2-runtime-2026-09-22\\results\\skill-toctou-v1\\runs\\rt00-clean-sealed-snapshot\\output,target=/out",
+  "--tmpfs",
+  "/tmp:rw,noexec,nosuid,nodev,size=16m",
+  "python@sha256:4c47124a8391cb7a9f571164147d154777cf012a4ece5f86097130d7a4478111",
+  "python",
+  "-B",
+  "-u",
+  "/package/helper.py",
+  "/out"
+]

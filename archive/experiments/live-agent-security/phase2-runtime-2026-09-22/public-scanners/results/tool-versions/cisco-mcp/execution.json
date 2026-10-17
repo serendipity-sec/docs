@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scanner": "tool-versions",
+  "case": "cisco-mcp",
+  "command": [
+    "C:\\Users\\andyw\\Desktop\\serendipity-sec\\platform\\.runtime\\live-agent-security-scanners\\cisco-mcp\\Scripts\\mcp-scanner.exe",
+    "--version"
+  ],
+  "cwd": ".runtime/public-scanners-isolated-home",
+  "inputs": [],
+  "started_at": "2026-09-22T04:52:02.693567+00:00",
+  "status": "EXITED",
+  "public_skill_or_mcp_code_executed": false,
+  "environment_condition": {},
+  "credential_values_recorded": false,
+  "exit_code": 2,
+  "duration_seconds": 18.297,
+  "finished_at": "2026-09-22T04:52:20.984127+00:00"
+}

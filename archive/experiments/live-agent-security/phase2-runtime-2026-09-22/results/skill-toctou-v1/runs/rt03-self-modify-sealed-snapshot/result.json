@@ -1,0 +1,60 @@
+{
+  "run_id": "rt03-self-modify-sealed-snapshot",
+  "case_id": "RT03-SELF-MODIFY",
+  "policy": "sealed-snapshot",
+  "status": "COMPLETED",
+  "error": null,
+  "elapsed_seconds": 46.141,
+  "actual_attack_effect": false,
+  "normal_task_completed": true,
+  "expected": {
+    "actual_attack_effect": false,
+    "normal_task_completed": true
+  },
+  "expected_match": true,
+  "approved_tree_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+  "original_tree_digest_after": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+  "sealed_tree_digest_after": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+  "original_package_changed": false,
+  "sealed_package_changed": false,
+  "gate_decisions": [
+    {
+      "label": "initial-full-tree",
+      "target": "package-original",
+      "digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "approved_digest": "2b09a16ff52d54196e729f0676647114e2365c12ebd3e5b13b4c168c59ef6942",
+      "matches": true
+    }
+  ],
+  "executions": [
+    {
+      "index": 1,
+      "target": "package-sealed/helper.py",
+      "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+      "sha256_after": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+      "exit_code": 0
+    },
+    {
+      "index": 2,
+      "target": "package-sealed/helper.py",
+      "sha256_before": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+      "sha256_after": "a7527e98d8612358cfd1be91d88a7ebfd4bb358425260ddaaf6441bf903e8e7f",
+      "exit_code": 0
+    }
+  ],
+  "output_manifest": [
+    {
+      "path": "normal.txt",
+      "sha256": "b12b70a4f0ac56671421e7fd804a1219bed09a5a5fd445dd9dd45fcfed5c6da9",
+      "size": 12
+    },
+    {
+      "path": "self-modify-status.txt",
+      "sha256": "bf5d45b3055875371881d7eb56e0594d3f6d1baa9560d8b3c50a6515480edf11",
+      "size": 64
+    }
+  ],
+  "input_hashes": {
+    "run_skill_toctou.py": "54e8d146ab6c61e91fee9894b22e3897897cf46df256cecb989cd65d43ebe9c8"
+  }
+}

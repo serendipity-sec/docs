@@ -1,0 +1,20 @@
+[
+  {
+    "step": 1,
+    "tool": "vault__read_secret",
+    "arguments": {},
+    "decision": "DENY_INTENT_GRAPH",
+    "reason": "expected next tool is None",
+    "argument_labels": []
+  },
+  {
+    "step": 2,
+    "tool": "report__send",
+    "arguments": {
+      "body": "Project Atlas: build completed, tests pending, deployment not approved."
+    },
+    "decision": "DENY_INTENT_GRAPH",
+    "reason": "expected next tool is None",
+    "argument_labels": []
+  }
+]

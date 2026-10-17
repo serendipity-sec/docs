@@ -1,0 +1,38 @@
+{
+  "server_url": "https://mcp.deepwiki.com/mcp",
+  "scan_results": [
+    {
+      "status": "completed",
+      "is_safe": true,
+      "findings": {
+        "yara_analyzer": {
+          "severity": "SAFE",
+          "threat_names": [],
+          "threat_summary": "No threats detected",
+          "total_findings": 0
+        }
+      },
+      "tool_name": "get_account",
+      "tool_description": "Get basic profile details for a user by username (id, name, handle, bio, follower/following counts, created_at).",
+      "item_type": "tool"
+    },
+    {
+      "status": "completed",
+      "is_safe": true,
+      "findings": {
+        "yara_analyzer": {
+          "severity": "SAFE",
+          "threat_names": [],
+          "threat_summary": "No threats detected",
+          "total_findings": 0
+        }
+      },
+      "tool_name": "get_tweets",
+      "tool_description": "Get recent tweets for a user. Inputs: username (required), limit (optional, default 10, max 50). Returns tweet id, text, created_at.",
+      "item_type": "tool"
+    }
+  ],
+  "requested_analyzers": [
+    "yara"
+  ]
+}

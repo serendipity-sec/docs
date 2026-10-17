@@ -1,0 +1,3 @@
+usage: C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\python.exe C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\snyk-agent-scan.exe
+       [-h] COMMAND ...
+C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\python.exe C:\Users\andyw\Desktop\serendipity-sec\docs\.runtime\public-scanners-snyk-0.6.4\Scripts\snyk-agent-scan.exe: error: unrecognized arguments: --version
