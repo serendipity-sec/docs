@@ -60,7 +60,10 @@
     "slack/raw/2026-10-23/C0C3MPJ5T9B.jsonl": "ee1aec421d100e4531bdd63faf29c24b6821586d56389c18afa1ff02e6b14f6b",
     "slack/raw/2026-10-23/C0C879U084V.jsonl": "c588fe555a39039f94f6b3e858d763b54c6d4071122bae2158869b7cfeef5587",
     "slack/raw/2026-10-23/C0C8EGWPF33.jsonl": "b40d7ce515b96e1077977fe7694bbf22d09ab9d8a47e553b4cad3d44cb9a436c",
-    "slack/raw/2026-10-23/C0C8G9BDFAQ.jsonl": "a5de12c24ff3b0f2fc9a885dd888b6a0084f4049dde9e43b51cff4e777dbe143"
+    "slack/raw/2026-10-23/C0C8G9BDFAQ.jsonl": "a5de12c24ff3b0f2fc9a885dd888b6a0084f4049dde9e43b51cff4e777dbe143",
+    "slack/raw/2026-10-24/C0C3MPJ5T9B.jsonl": "59bd5bab41a63e264849081e39f89a6d2f8386938c595ed314f67813388b6c69",
+    "slack/raw/2026-10-24/C0C8EGWPF33.jsonl": "94595c87c7348740259d619459a74bb2dde0eed918212e405b61676be2c36f4d",
+    "slack/raw/2026-10-24/C0C8G9BDFAQ.jsonl": "1372455a6cac0c19d8d99e20b108761a57640a603626db646be5d6bae3d7eafa"
   },
   "documents": {
     "meetings/slack/2026-09-23_2026-10-06-운영공지와-할일.md": "cb5ebab27f3d6e8de2abffd2bcf150dd292cf1173148a3b27e617dba1ff3c65f",
@@ -72,9 +75,9 @@
     "meetings/slack/2026-10-14-A-C-기능브랜치-push-보고.md": "5b04209b2dd980758fc267cf91fb17716eec81d2922be514356226556cfe4d07",
     "meetings/slack/2026-10-15-모임-연락과-반응-기록.md": "205a9483a7fb45be3e06623e2423998e18aa4882368b5c5139fdc36c9a8ca653",
     "meetings/slack/2026-10-15-정상주문-통합과-진행알림.md": "6e97ebae58bfb67b00b1ac21e06ab2b2adcd63e06c72405a3d85fc1e1edfe059",
-    "meetings/slack/2026-10-17-피드백-공유요청과-문서알림.md": "3c6fd21d73d757585bd8cc650673da1ce946c16bbee09ccc8c567fcc5b91f2e2",
+    "meetings/slack/2026-10-17-피드백-공유요청과-문서알림.md": "db0cc7f7847b22256114125ee9a2a80cd4bc74f1c8ded8fff83aa36f9f06710a",
     "meetings/slack/2026-10-18-이슈배정과-검토일정-공지.md": "0595a15ff32ab9e194626f465e7942b6a681ac29f0f69532444841135d59237c",
-    "meetings/slack/2026-10-20-Actions와-병합기준-질문.md": "d8418b760fbcc182d67ee2b2d9edc6a159123318221241204d8317cf9bd02021",
+    "meetings/slack/2026-10-20-Actions와-병합기준-질문.md": "d43ef0aa2dc2ce135bf15de7ec07709b297d3316a4eda5478e589b726529358c",
     "meetings/slack/2026-10-21-개인보고서-작성요청과-발표준비.md": "9a546e04ed073c50d36ee6e67d3ce72f58ca0b58c428dbc76eea3baacf9cabc4",
     "proposals/slack/2026-09-20-추가주제-후속의견.md": "7d5cfd0e744eeb17984473f6b83ee0a4c4a389d39b6bdf2879360a918e0024ba",
     "proposals/slack/2026-10-01_2026-10-03-아키텍처-논의안.md": "42358fe413aa9bd6fbd914498245a9fae5b6b8f9c0ae1dc13ee909deb83e502d",
@@ -86,8 +89,8 @@
     "proposals/slack/2026-10-19-고정profile과-입력저장-파이프라인-구현보고.md": "a91af6b5397d01460e4905ae666d73b6d08850afe99c7e17a575fd26e42b47f3",
     "research/slack/2026-09-21_2026-10-06-공유자료-목록.md": "be2c398fc9a21d4c550780d0aa78f5165b01456ea8a3cb0e1faf12ee3f2d324b",
     "research/slack/2026-09-25-MCP-조사와-연구공백.md": "7f87a20b0926a99283776c4a9c7487fd61e891427be3715903b6db5abb5829ca",
-    "research/slack/2026-10-19_2026-10-20-기억삭제사례와-A발표자료-공유목록.md": "59370162a357fec15766733bb1871148af3509ef64d897917e991247a715aae4",
-    "slack/INDEX.md": "6e62e02beba8ddf6c61ad72cbf0779671d6ffbf44aea79d5cc854686ccecdf3d"
+    "research/slack/2026-10-19_2026-10-20-기억삭제사례와-A발표자료-공유목록.md": "95b0b99bf966aecf82af4462b4f3b708267e1c68b9e599a6224a630afc4aa948",
+    "slack/INDEX.md": "d8e12981fce56941eeb15727f7ab4e0aa8ce1f93ba7f037fc68473ac422688f6"
   },
   "generator": "Codex in the scheduled chat; no separate API key"
 }
