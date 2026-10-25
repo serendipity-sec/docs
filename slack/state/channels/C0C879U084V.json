@@ -2,7 +2,7 @@
   "workspace_id": "T0C2Y9MNME1",
   "channel_id": "C0C879U084V",
   "channel_name": "github-issue-alerts",
-  "last_changed_capture_at": "2026-10-23T06:37:25Z",
+  "last_changed_capture_at": "2026-10-25T16:38:22Z",
   "thread_parents": [
     "1791710551.051669",
     "1791871223.594749",
@@ -20,7 +20,8 @@
     "1792246657.374989",
     "1792247393.836509",
     "1792247948.255669",
-    "1792308788.013359"
+    "1792308788.013359",
+    "1792425437.887539"
   ],
   "complete": true
 }
