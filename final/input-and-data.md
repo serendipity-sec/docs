@@ -212,7 +212,7 @@ P1에는 데이터의 출처·민감도뿐 아니라 허용된 주체·테넌트
 
 - 출처 manifest에서 URL, path, revision, 원본 bytes 기준 SHA-256, 크기와 재배포 상태를 결정적으로 가져온다. advisory record에서는 ecosystem/package/version, CVE·GHSA·OSV ID, affected/patched range 및 출처에 명시된 조건만 채운다. replay/static artifact는 경로·SHA-256·selector·도구와 규칙 버전을 보존한다.
 - 각 `claims[]` 항목은 `basis`와 하나 이상의 `evidence_refs`를 가진다. 참조에는 commit/file/hash와 JSON Pointer 또는 report hash·selector를 기록한다. 요약·적용성·영향·권한·제한 문장은 근거를 직접 가리킨다. 출처에 없는 값은 `UNKNOWN`으로 두고 CVE, 영향, 권한을 추측하지 않는다.
-- #82 첫 버전은 **외부 LLM 없이** 파일 기반 manifest와 관측을 읽어 사실 필드를 채우고, 템플릿으로 제목·요약의 빈 초안을 만든다. 적용성·보안 의미·제한은 사람이 근거를 확인해 작성·수정한다. 이후 model-assisted wording을 제안한다면 모든 문장에 입력 근거 reference를 붙이고, 생성 결과는 계속 draft로 유지하며 사람 검토를 요구한다.
+- #82 첫 버전은 **외부 LLM 없이** 파일 기반 manifest와 관측을 읽어 사실 필드를 채우고, 출처가 뒷받침하는 claim에서 제목·요약·영향·제한의 결정적 템플릿 초안을 만든다. 각 claim에는 입력 근거 reference를 붙인다. 입력에 없는 값은 `UNKNOWN`으로 남긴다. 사람은 CVE 적용성·보안 의미를 검토·수정한 뒤에만 승인한다. 이후 model-assisted wording을 제안한다면 모든 문장에 입력 근거 reference를 붙이고, 생성 결과는 계속 draft로 유지하며 사람 검토를 요구한다.
 
 ### 검토와 활성 카드 승격
 
