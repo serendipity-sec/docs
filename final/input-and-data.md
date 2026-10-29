@@ -192,41 +192,88 @@ P1에는 데이터의 출처·민감도뿐 아니라 허용된 주체·테넌트
 
 ## 10. CVE 자료원 선택과 ScenarioCard 초안 기준
 
-2026-10-29에 현재 n8n-claw 카드와 기록된 다음 workflow 후보를 다시 확인했다. 아래 후보 표는 자료원 기준을 정하기 위한 것이며 두 번째 보안 취약 사례가 확정됐다는 뜻은 아니다.
+이 기준은 워크플로우 엔진, 실행 환경, advisory 자료원에 종속되지 않는다. ScenarioCard는 한 사례의 주장, 적용 범위, 출처와 근거를 연결하는 구조화 문서다. 기술별 사례는 아래의 적용 예시처럼 이 공통 기준에 맞춰 기록한다.
 
-| 사례 | CVE 적용성 | 우선 자료원과 확인한 사실 | 한계·다음 확인 |
+### CVE ID 발견과 적용성 판정은 분리한다
+
+먼저 CVE·GHSA·OSV 등 식별자를 찾는다. 발견된 ID와 이를 확인한 자료원·확인일을 기록한다. 확인 범위 안에서 ID를 찾지 못했다면 `NOT_IDENTIFIED`와 함께 조회한 자료원·범위·기준일을 남긴다. `NOT_IDENTIFIED`는 적용성 결과가 아니며, CVE가 존재하지 않는다는 증명도 아니다.
+
+각 advisory와 평가 대상 runtime 환경의 조합에 대해 적용성을 별도로 판정한다.
+
+| 적용성 상태 | 의미 |
+|---|---|
+| `APPLICABLE` | advisory의 package/product identity, 영향 버전 범위, 설정·환경 조건이 모두 평가 대상과 일치한다. |
+| `NOT_APPLICABLE` | 평가 대상의 정확한 버전 또는 조건이 advisory의 영향 범위 밖임을 근거로 확인했다. |
+| `UNKNOWN` | package/product identity, 실제 포함 버전, 빌드·배포 연결 또는 advisory 조건 중 하나 이상을 확인하지 못했다. |
+
+적용성은 advisory와 환경별로 기록한다. ID를 발견했어도 `UNKNOWN`일 수 있고, 조회 범위에 ID가 없더라도 환경이 안전하다는 결론을 내리지 않는다. 전역 NVD/OSV/GHSA feed 수집은 사례별 조사나 초안 작성의 선행 조건이 아니다.
+
+### Runtime identity와 자료원
+
+평가 대상 runtime에 실제 포함된 정확한 ecosystem/package 이름과 버전, 또는 정확한 product 이름과 버전을 기록한다. package나 product의 identity를 모르면 적용성을 확정하지 않는다. OSV에서 source commit으로 조회하는 경우에도 해당 commit이 advisory의 package/repository에 속한다는 사실과 그 commit의 소스가 평가 중인 built/deployed runtime에 포함됐다는 연결 근거가 모두 필요하다. Workflow commit, 변경 가능한 image tag, node `typeVersion` 하나만으로는 runtime identity나 적용성을 입증할 수 없다.
+
+자료원은 주장 종류와 identity에 맞춰 선택한다.
+
+1. **Workflow·구성 동작과 수정 이력:** 정확한 upstream 저장소, commit, 파일 hash를 기록한다. 작성자 설명, 발견·수정 이력, 정적 분석, 제한 replay는 각기 다른 근거로 구분하며 workflow 권한 결함을 package CVE로 바꾸지 않는다.
+2. **Dependency 취약점:** 실제 runtime에서 확인한 ecosystem, package 이름, 버전 또는 commit과 OSV의 affected range를 대조한다. advisory의 package가 해당 runtime에 포함됐는지 확인한다.
+3. **제품·플랫폼 취약점:** vendor/product/version과 영향을 받는 설정·조건을 확인한 뒤 NVD CVE/CPE와 upstream advisory/release를 대조한다. CPE 일치만으로 환경 적용성을 확정하지 않는다.
+4. **Repository advisory:** 대상 저장소 또는 package identity가 일치하는지 확인하고 GitHub Advisory의 affected/patched range와 사례의 조건을 대조한다. 필요하면 OSV/NVD와 연결하되 같은 advisory를 별도 취약점으로 세지 않는다.
+
+### Claim 근거 참조
+
+각 `claims[]` 주장은 근거를 직접 가리키는 `evidence_refs`를 가져야 한다. 참조는 (a) immutable artifact의 경로·SHA-256·selector를 직접 포함하거나, (b) `evidence_key`가 그 카드 자신의 evidence map 안에서만 하나의 immutable artifact 경로와 SHA-256으로 해석되고 selector가 그 artifact의 내용을 가리켜야 한다. 다른 카드나 전역 map의 키로 해석하면 안 된다. Selector는 결과 내부의 중첩 record를 가리킬 수 있으며, 그 record를 포함하는 상위 실행 record의 version·source hash·status와 coverage도 함께 검증할 수 있다. 파일 전체의 경로·hash만으로는 어느 내용이 주장을 지지하는지 알 수 없다.
+
+소스 코드에 관한 주장은 정확한 code location(JSON Pointer 또는 줄 위치)을 포함하고, 가능한 경우 그 위치의 code hash도 포함한다. 고정된 source bytes를 확인할 수 없다면 selector를 추정하지 말고 그 제한을 기록한다. 예를 들어, zero-finding 주장은 존재하지 않는 finding 항목을 가리킬 수 없다. 해당 주장은 대상이 분석 coverage에 포함됐는지 확인하고, 분석이 성공했으며 해당 run의 findings가 빈 배열인 상위 summary record를 가리켜야 한다. 미래 #82 초안 검증은 알 수 없는 `evidence_key`, artifact hash 불일치, 근거가 되지 않는 selector를 거부해야 한다.
+
+ScenarioCard 0.4.0의 generic `extensions`는 이런 참조 해석·의미 검증을 강제하지 않는다. claim-evidence의 semantic validation은 #82 범위이며 이 문서 기준만으로 구현됐다고 간주하지 않는다.
+
+### 기술 중립적인 evidence layer
+
+사례에 관련된 layer만 선택한다. 각 layer에는 status, 범위와 설정, 도구·버전, artifact reference, coverage와 제한을 기록한다. 실행하지 않은 layer는 `NOT_RUN`으로 남긴다. 한 layer의 결과를 상위 layer나 실제 환경의 결과로 일반화하지 않는다.
+
+| Layer | 기록할 관측 범위 |
+|---|---|
+| Source inspection | 고정된 source/configuration, 파일 hash, 주장에 필요한 code location |
+| Static analysis | 입력 범위, 분석기·규칙·설정 버전, 처리한 항목, 누락·미지원 항목과 결과 |
+| Bounded/component replay | 실행한 component, fixture·환경 설정, case별 결과, timeout·coverage 등 제한 |
+| Integrated workflow/system execution | 고정된 workflow/system 구성과 의존성, 실행 조건, 실제 통합 경로의 결과와 누락된 경로 |
+| Backing-service effects | 실제 DB·queue·file store 등 서비스 identity와 권한, 시작 상태, 독립 관측한 효과와 초기화 방법 |
+
+Layer는 사례에 따라 선택 사항이다. 합성 수신부에서 관찰한 변경은 bounded/component replay의 증거이며 실제 backing-service effect로 기록하지 않는다. 분석 결과, finding 부재, 테스트 통과는 각각의 관측 범위 안에서만 설명한다.
+
+### 결정적 추출과 템플릿 초안
+
+초안 생성은 고정된 입력에서 다음 사실 필드를 결정적으로 추출한다.
+
+| 입력 | 추출 필드 |
+|---|---|
+| Source manifest | URL, path, revision, 원본 bytes 기준 SHA-256, size, license·consent·references-only 등 reuse terms |
+| Advisory record | 확인된 ID, ecosystem, package/product 이름과 version, advisory의 affected range·patched range, 출처에 명시된 조건 |
+| Evidence artifact | artifact path와 SHA-256, 해당 주장을 뒷받침하는 selector, 도구·버전과 rule·버전 |
+
+제목·요약·적용성·영향·제한은 이렇게 확인된 필드와 근거가 뒷받침하는 `claims[]`에서 결정적 템플릿으로 만든다. 제목은 확인된 대상과 claim을 요약하고, 요약은 지원되는 claim만 모으며, 적용성은 별도 적용성 판정값을 사용한다. 영향은 관측된 효과만 설명하고, 제한은 `NOT_RUN`, 미지원 coverage와 미확인 사실에서 채운다. 근거가 없는 값은 `UNKNOWN`으로 남긴다. CVE, 영향, 권한을 새로 추론하거나 지어내지 않는다. 초안 생성 v1은 외부 LLM을 사용하지 않는다.
+
+### 초안 검토와 활성 카드 승격
+
+초안은 source revision/hash와 이용 조건, runtime identity와 advisory 조건, claim별 근거, 필요한 권한, 관측 layer, coverage, 미확인 사항을 보존한다. 사람 검토자는 CVE 발견 범위, 적용성, 보안 의미와 각 주장이 evidence boundary를 넘지 않는지 확인한다. 활성 `cards/`로 승격하기 전에 ScenarioCard 0.4.0 구조 검증과 별도의 semantic evidence-reference 검증을 모두 통과하고, 검토자가 명시적으로 승인을 기록해야 한다. `TEAM_AUTHORED`는 작성 주체를 설명할 뿐 검토 승인이나 활성 상태를 뜻하지 않는다.
+
+### 구현 상태 메모: #80, #82, #78
+
+- **#82:** 위 기준을 draft 생성·검증에 적용하는 구현 범위다. 현재 `load_cards(directory)`는 0.4.0 구조, 중복 `(card_id, version)`, 제공된 `source_ref`를 검증하지만 `extensions.flowdelta.case_evidence` 안의 claim reference를 해석하거나 검토 상태를 검사하지 않는다. #82는 같은 카드의 evidence map 안에서 키를 해석하고 hash·selector의 실제 지원 내용을 확인해 실패 시 draft 승격을 막아야 한다. Draft는 활성 카드 디렉터리 바깥에 두며, 첫 버전은 외부 LLM 없이 manifest와 관측에서 사실 필드를 채우고 출처가 뒷받침하는 결정적 초안을 만든다.
+- **#80:** 사례별 수집 경로가 필요해질 때 제한된 자료원 adapter와 원본 hash·재개 처리를 다룬다. 전체 feed mirror, 무관 CVE, embedding/index는 이 기준이나 사례별 수집의 선행 조건이 아니다.
+- **#78:** B plan과 C 정적 검사 연결은 별도 통합 범위다. 아래 사례 카드의 template ID·상태를 임의 변경하거나 독립 실험 결과를 B 생성 C-plan 실행 결과로 표현하지 않는다.
+
+### 적용 예시: n8n-claw Memory Delete와 n8n starter kit
+
+2026-10-29에 확인한 후보로 공통 규칙을 적용한 예다. starter-kit 후보를 두 번째 확정 취약 사례로 간주하지 않는다.
+
+| 사례 | CVE ID 발견 | Advisory·runtime 적용성 | 확인 근거와 경계 |
 |---|---|---|---|
-| n8n-claw Memory Delete — feature-add `63a7f2e`, first-fix `4d1b1b7 → eb6d7bc` | 현재 카드의 `NOT_IDENTIFIED`를 유지한다. workflow 권한 검사 누락을 CVE로 주장하지 않는다. 이 값은 CVE가 존재하지 않는다는 증명이 아니다. | [고정 upstream revisions](https://github.com/serendipity-sec/platform/blob/main/experiments/n8n-claw-memory/sources.json), 저자의 발견·수정 이력, 제한된 JavaScript replay [`observations.json`](https://github.com/serendipity-sec/platform/blob/main/experiments/n8n-claw-memory/evidence/observations.json) (SHA-256 `88039348d8963431af9a229a17c46812ddb920534c70d1d7dcc80b0bb73d6ae7`). | workflow revision과 합성 수신부 관측에 한정한다. 실제 배포판·DB 권한·caller 인증·전체 n8n+LLM agent 행동은 확인되지 않았다. package/product의 정확한 버전이 없으므로 이 주장에는 NVD/OSV CVE를 연결하지 않는다. |
-| 다음 출처 후보: n8n self-hosted AI starter kit의 Demo workflow, commit [`9ccbaf42`](https://github.com/n8n-io/self-hosted-ai-starter-kit/commit/9ccbaf42e007369453acaec60b9808cf8e6cdb44), 파일 SHA-256 `e4e3112000b61db5fed114b026b000912b90ff832f163c3e7cc0d839bb1b7bad` | **UNKNOWN / 적용 미확립.** 관련 [GHSA-v2x8-97xq-8xrr / CVE-2025-56265](https://github.com/advisories/GHSA-v2x8-97xq-8xrr)는 `@n8n/n8n-nodes-langchain <1.107.0`에 대해 게시됐고 `1.107.0`에서 수정됐다. 이 candidate의 `Chat Trigger` 노드가 같은 package 소속이라는 사실만으로 적용을 확정하지 않는다. | [고정 workflow 파일](https://github.com/n8n-io/self-hosted-ai-starter-kit/blob/9ccbaf42e007369453acaec60b9808cf8e6cdb44/n8n/demo-data/workflows/srOnR8PAY3u4RSwb.json)은 Basic LLM Chain `typeVersion`이 `1.3 → 1.7`로 바뀐 commit이다. [OSV record](https://osv.dev/vulnerability/GHSA-v2x8-97xq-8xrr), [NVD CVE record](https://nvd.nist.gov/vuln/detail/CVE-2025-56265), [upstream fix PR](https://github.com/n8n-io/n8n/pull/18148), [n8n 1.107.0 release](https://github.com/n8n-io/n8n/releases/tag/n8n%401.107.0)를 함께 대조한다. | 같은 commit의 [`docker-compose.yml`](https://github.com/n8n-io/self-hosted-ai-starter-kit/blob/9ccbaf42e007369453acaec60b9808cf8e6cdb44/docker-compose.yml)는 mutable `n8nio/n8n:latest`를 가리킨다. 설치된 package version·image digest·Chat Trigger의 적용 조건은 고정되지 않았다. `typeVersion`은 npm package version이 아니다. 이 commit을 CVE 취약/수정 사례로 분류하지 않는다. |
+| n8n-claw Memory Delete — feature-add `63a7f2e`, first-fix `4d1b1b7 → eb6d7bc` | 고정 workflow revisions와 제한 replay 자료에서 `NOT_IDENTIFIED` (2026-10-29). 검토한 [upstream revisions](https://github.com/serendipity-sec/platform/blob/main/experiments/n8n-claw-memory/sources.json)와 [`observations.json`](https://github.com/serendipity-sec/platform/blob/main/experiments/n8n-claw-memory/evidence/observations.json) (SHA-256 `88039348d8963431af9a229a17c46812ddb920534c70d1d7dcc80b0bb73d6ae7`)을 가리킨다. 이는 전체 advisory feed 검색 결과가 아니다. | `UNKNOWN`. workflow commit과 파일 hash는 있지만 평가 runtime에 실제 포함된 package/product와 버전, source commit에서 built/deployed runtime으로의 연결이 없다. Workflow 권한 검사 누락을 CVE로 바꾸지 않는다. | 카드의 주장은 특정 workflow와 제한된 JavaScript replay에 한정한다. caller 인증, 실제 배포, DB 권한, 전체 n8n+LLM 동작은 확인하지 않았다. |
+| n8n self-hosted AI starter kit Demo workflow, commit [`9ccbaf42`](https://github.com/n8n-io/self-hosted-ai-starter-kit/commit/9ccbaf42e007369453acaec60b9808cf8e6cdb44), workflow file SHA-256 `e4e3112000b61db5fed114b026b000912b90ff832f163c3e7cc0d839bb1b7bad` | `CVE-2025-56265` / `GHSA-v2x8-97xq-8xrr` ID가 [OSV](https://osv.dev/vulnerability/GHSA-v2x8-97xq-8xrr)와 [NVD](https://nvd.nist.gov/vuln/detail/CVE-2025-56265)에 있다. ID 발견은 이 후보의 적용성을 증명하지 않는다. | `UNKNOWN`. Advisory는 `@n8n/n8n-nodes-langchain <1.107.0`에 대해 게시되고 `1.107.0`에서 수정됐다. 이 후보의 `Chat Trigger` node가 같은 package 계열이라는 것만으로는 runtime version을 확인할 수 없다. | [고정 workflow](https://github.com/n8n-io/self-hosted-ai-starter-kit/blob/9ccbaf42e007369453acaec60b9808cf8e6cdb44/n8n/demo-data/workflows/srOnR8PAY3u4RSwb.json)는 Basic LLM Chain `typeVersion`이 `1.3 → 1.7`로 바뀐 이력이다. 같은 commit의 [`docker-compose.yml`](https://github.com/n8n-io/self-hosted-ai-starter-kit/blob/9ccbaf42e007369453acaec60b9808cf8e6cdb44/docker-compose.yml)는 mutable `n8nio/n8n:latest`를 사용한다. 이 commit, tag, `typeVersion`은 package version이나 배포 image digest를 증명하지 않는다. [upstream fix PR](https://github.com/n8n-io/n8n/pull/18148)와 [1.107.0 release](https://github.com/n8n-io/n8n/releases/tag/n8n%401.107.0)도 대조했다. |
 
-### 자료원 선택과 적용성 판정
+두 n8n-claw 카드 `memory-delete-owner-check-gap.json`과 `memory-delete-owner-check-first-fix.json`은 기존 `cve: NOT_IDENTIFIED`를 유지하고 별도 `cve_applicability.status=UNKNOWN`을 기록한다. [PR #76](https://github.com/serendipity-sec/platform/pull/76)에서 검토·승인된 활성 카드다. 카드의 source evidence는 commit/path/file hash를 고정하지만 upstream source bytes가 이 checkout에 없어 코드 pointer를 독립 확인할 수 없다. 확인할 수 없는 pointer는 추가하지 않았고 이 한계를 남긴다.
 
-1. **Workflow 동작·수정 이력:** 원본 저장소와 정확한 commit/file hash를 먼저 사용한다. 작성자 설명, 발견·수정 이력, 정적 분석, 제한 replay는 각각 출처를 분리해 적는다. workflow 권한 결함을 package CVE로 바꾸지 않는다.
-2. **Dependency 취약점:** 후보의 실제 입력에서 ecosystem, package 이름, version 또는 commit을 확인한 뒤 OSV의 affected range를 대조한다. advisory의 package가 사례에 실제 포함됐는지 먼저 확인한다.
-3. **제품·플랫폼 취약점:** vendor/product/version과 영향을 받는 설정·조건을 확인한 뒤 NVD CVE/CPE와 upstream advisory/release를 함께 대조한다. CPE 일치만으로 환경 적용성을 확정하지 않는다.
-4. **Repository advisory:** 해당 저장소 또는 package identity가 정확히 일치할 때 GitHub Advisory를 사용하고, affected/patched range와 사례의 조건을 함께 기록한다. 필요할 때 OSV/NVD record와 연결하되 동일 advisory를 별도 취약점처럼 세지 않는다.
+두 카드는 [Semgrep tool-fit report](https://github.com/serendipity-sec/platform/blob/main/experiments/n8n-claw-c/evidence/semgrep-summary.json) (SHA-256 `afa1ea124fc82d6742f33c0408fd4728e6be49aa01765cd3f21605c42c89fd60`)를 별도 static-analysis evidence로 둔다. Semgrep `1.181.0`, rule `flowdelta.n8n.agent-tool-write-without-ownership-check@0.4.0`의 `feature` 결과는 Memory Delete와 Memory Update finding을 기록했고, `first-fix` 결과는 해당 rule의 finding이 없다. `toolWorkflow`와 Telegram 등 일부 node type은 `TARGET_TYPE_NOT_SUPPORTED`이며 report의 `security_outcome`은 null이다. Finding 부재는 안전성 증명이 아니고, 이 실행은 B가 생성한 C plan의 결과가 아니다.
 
-`APPLICABLE`은 package/product version과 advisory의 조건이 모두 맞을 때만 쓴다. 정확한 버전이 영향 범위 밖이면 근거와 함께 `NOT_APPLICABLE`로 기록한다. 버전·설정·조건이 빠졌으면 `UNKNOWN`으로 둔다. CVE ID가 확인되지 않았다는 `NOT_IDENTIFIED`는 조회 범위와 기준일을 밝히며, “CVE가 없음”을 뜻하지 않는다. 전체 NVD/OSV/GHSA feed 수집은 사례별 조사나 MVP 카드 작성의 선행 조건이 아니다.
-
-### 자동 추출·초안 생성
-
-- 출처 manifest에서 URL, path, revision, 원본 bytes 기준 SHA-256, 크기와 재배포 상태를 결정적으로 가져온다. advisory record에서는 ecosystem/package/version, CVE·GHSA·OSV ID, affected/patched range 및 출처에 명시된 조건만 채운다. replay/static artifact는 경로·SHA-256·selector·도구와 규칙 버전을 보존한다.
-- 각 `claims[]` 항목은 `basis`와 하나 이상의 `evidence_refs`를 가진다. 참조에는 commit/file/hash와 JSON Pointer 또는 report hash·selector를 기록한다. 요약·적용성·영향·권한·제한 문장은 근거를 직접 가리킨다. 출처에 없는 값은 `UNKNOWN`으로 두고 CVE, 영향, 권한을 추측하지 않는다.
-- #82 첫 버전은 **외부 LLM 없이** 파일 기반 manifest와 관측을 읽어 사실 필드를 채우고, 출처가 뒷받침하는 claim에서 제목·요약·영향·제한의 결정적 템플릿 초안을 만든다. 각 claim에는 입력 근거 reference를 붙인다. 입력에 없는 값은 `UNKNOWN`으로 남긴다. 사람은 CVE 적용성·보안 의미를 검토·수정한 뒤에만 승인한다. 이후 model-assisted wording을 제안한다면 모든 문장에 입력 근거 reference를 붙이고, 생성 결과는 계속 draft로 유지하며 사람 검토를 요구한다.
-
-### 검토와 활성 카드 승격
-
-검토자는 원본 revision/hash·이용 조건, package/product/version과 advisory 조건, 주장별 근거, 필요한 권한, 관측 수준, 제한·미확인 사항을 확인한다. 정적 분석 조건, 제한 replay, 전체 n8n+LLM 실행을 각각 구분하고, 실행하지 않은 수준은 `NOT_RUN`으로 남긴다. `ScenarioCard` 0.4.0 검증을 통과하고 검토자가 명시적으로 승인한 경우에만 활성 `cards/`로 승격한다.
-
-초안은 활성 카드 디렉터리 바깥에 둔다. 현재 `load_cards(directory)`는 전달된 디렉터리의 `*.json`을 읽고 review 상태를 검사하지 않는다. 따라서 일반 KB 로더에는 활성 `cards/`만 넘기고, draft 디렉터리나 그 상위 폴더를 넘기지 않는 것이 #82의 격리 조건이다. `TEAM_AUTHORED`는 작성 주체를 설명하며 자동 검토 승인을 의미하지 않는다.
-
-### 현재 카드 감사와 후속 범위
-
-- `memory-delete-owner-check-gap.json`과 `memory-delete-owner-check-first-fix.json`은 pinned source URL/revision/hash, 적용 조건, 자원·권한, replay artifact hash, unknowns/limits를 기록한다. 둘 다 `cve: NOT_IDENTIFIED`를 유지하며 [PR #76](https://github.com/serendipity-sec/platform/pull/76)에서 검토·승인 후 활성 `cards/`에 들어왔다.
-- 두 카드에는 [Semgrep tool-fit report](https://github.com/serendipity-sec/platform/blob/main/experiments/n8n-claw-c/evidence/semgrep-summary.json) (SHA-256 `afa1ea124fc82d6742f33c0408fd4728e6be49aa01765cd3f21605c42c89fd60`)를 별도 `STATIC_ANALYSIS` evidence로 기록한다. Semgrep `1.181.0`, rule `flowdelta.n8n.agent-tool-write-without-ownership-check@0.4.0`의 `feature` 결과는 Memory Delete와 Memory Update finding을 냈고, `first-fix` 결과는 이 rule의 finding이 없다. `toolWorkflow`와 Telegram 등 일부 노드 유형은 `TARGET_TYPE_NOT_SUPPORTED`로 남으며 report의 `security_outcome`은 null이다. finding 부재는 안전성 증명이 아니다. 이 실험은 B가 생성한 C plan의 실행 기록이 아니다.
-- 카드에는 전체 agent 실행이 `NOT_RUN`임을 별도로 둔다. 기존 `observations.json`은 합성 수신부에 대한 선택 JavaScript replay이며, full n8n+LLM run이나 실제 DB를 뜻하지 않는다.
-- platform main의 C에는 별도 static-scan catalog `static-agent-tool-ownership@0.1.0`가 등록됐다. 기존 카드는 `n8n-claw-memory-static-scan@0.1.0-proposed`를 참조하고 B→C 통합은 완료되지 않았다. catalog ID/버전과 카드의 정적 artifact 연결은 [#78](https://github.com/serendipity-sec/platform/issues/78)에서 맞춘다. #81에서는 card template ID나 C plan을 임의로 바꾸지 않는다.
-- **#82:** 이 절의 file manifest, deterministic extraction, claim-level evidence references, 별도 draft path, 사람 검토·0.4.0 validation·명시적 promotion을 구현한다. 자동 생성만으로 `TEAM_AUTHORED`·검증 완료로 표시하거나 active search에 넣지 않는다.
-- **#80:** 기준을 적용한 뒤 #78/#79 공용 통합이 준비되면 사례에 필요한 자료원 하나만 adapter/명시적 수집 경로로 연결한다. 제한 레코드·재개·원본 hash를 검증하며 전체 feed mirror·무관 CVE·embedding/index는 포함하지 않는다.
-
-이 절은 CVE·GHSA·OSV 자료원과 starter-kit commit을 **2026-10-29**에 확인했다. Starter-kit 후보의 immutable runtime/package version이 확보되기 전에는 CVE-2025-56265의 적용성을 `UNKNOWN`으로 유지한다.
+카드의 evidence layer 대응은 source inspection = pinned workflow file 주장, static analysis = 위 Semgrep report, bounded/component replay = 합성 수신부에 대한 선택 JavaScript 실행으로 각각 제한한다. 전체 workflow·LLM 실행과 실제 backing-service effect인 database 실행은 `NOT_RUN`이다. C 측 catalog에는 `static-agent-tool-ownership@0.1.0`이 따로 등록됐지만 카드는 기존 `n8n-claw-memory-static-scan@0.1.0-proposed`와 `template_status=PROPOSED_NOT_REGISTERED`를 유지한다. Template 연결과 B→C 실행 경계는 #78에서 다룬다.
