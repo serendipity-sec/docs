@@ -83,7 +83,10 @@
     "slack/raw/2026-10-30/C0C8EGWPF33.jsonl": "e6152ede56438fd520233ffa5ffc7255560436593f66c3e9938a99e1a9d4cd4f",
     "slack/raw/2026-10-30/C0C8G9BDFAQ.jsonl": "fa7d59f61e47107ed21e6fb9edf69fcf99ff28c86648975ec66bc2754178cb6f",
     "slack/raw/2026-10-31/C0C8EGWPF33.jsonl": "87a8d04651341898a08b6b29cd5daff32cad3c5b09c035c46ed4345128584de2",
-    "slack/raw/2026-10-31/C0C8G9BDFAQ.jsonl": "17102395adcc975a551049d137a18997b6c154a16dc677975268572378b6625f"
+    "slack/raw/2026-10-31/C0C8G9BDFAQ.jsonl": "17102395adcc975a551049d137a18997b6c154a16dc677975268572378b6625f",
+    "slack/raw/2026-11-01/C0C2Y9JLKD3.jsonl": "cdb655c2808e15a9fcb85d9d51cdf83b138b856e4699bce25233f526db024efa",
+    "slack/raw/2026-11-01/C0C8EGWPF33.jsonl": "376a573ec22638b7d732e7bc9298a998bf52d4b86f830811e5d9605221a3bcbe",
+    "slack/raw/2026-11-01/C0C8G9BDFAQ.jsonl": "b384b86d7223a3e62d51351282975fc0bca9b7440d676b55fcfafc75efe73915"
   },
   "documents": {
     "meetings/slack/2026-09-23_2026-10-06-운영공지와-할일.md": "cb5ebab27f3d6e8de2abffd2bcf150dd292cf1173148a3b27e617dba1ff3c65f",
@@ -95,12 +98,13 @@
     "meetings/slack/2026-10-14-A-C-기능브랜치-push-보고.md": "5b04209b2dd980758fc267cf91fb17716eec81d2922be514356226556cfe4d07",
     "meetings/slack/2026-10-15-모임-연락과-반응-기록.md": "205a9483a7fb45be3e06623e2423998e18aa4882368b5c5139fdc36c9a8ca653",
     "meetings/slack/2026-10-15-정상주문-통합과-진행알림.md": "6e97ebae58bfb67b00b1ac21e06ab2b2adcd63e06c72405a3d85fc1e1edfe059",
-    "meetings/slack/2026-10-17-피드백-공유요청과-문서알림.md": "e003f4c2777d0d2cf4ce97aefa76422c0f65e17dbd1c1a2f82ba8997de9d9e4f",
+    "meetings/slack/2026-10-17-피드백-공유요청과-문서알림.md": "b0c90121eef3c5e3bdb231c0c43a6ebb627d9a62c0366f83bb72ae4908e839e5",
     "meetings/slack/2026-10-18-이슈배정과-검토일정-공지.md": "0595a15ff32ab9e194626f465e7942b6a681ac29f0f69532444841135d59237c",
     "meetings/slack/2026-10-20-Actions와-병합기준-질문.md": "d43ef0aa2dc2ce135bf15de7ec07709b297d3316a4eda5478e589b726529358c",
     "meetings/slack/2026-10-21-개인보고서-작성요청과-발표준비.md": "9a546e04ed073c50d36ee6e67d3ce72f58ca0b58c428dbc76eea3baacf9cabc4",
     "meetings/slack/2026-10-26-B-C-통합과-지식자동화-업무요청.md": "02c1a1dfd138106c0778bc6ed0c1d210660615f02f052f50d09896502e797f87",
     "meetings/slack/2026-10-29-교수피드백-기억요약과-시연보고.md": "a32e12495e09719e2f312fad7720faf23375edb340e6da48c3da09fb39387a47",
+    "meetings/slack/2026-10-31-리뷰요청과-연락기록.md": "58bcf0f63ecede73fac3fd067850f8941e4db744e1d110fa4492f4aa24c3119b",
     "proposals/slack/2026-09-20-추가주제-후속의견.md": "7d5cfd0e744eeb17984473f6b83ee0a4c4a389d39b6bdf2879360a918e0024ba",
     "proposals/slack/2026-10-01_2026-10-03-아키텍처-논의안.md": "42358fe413aa9bd6fbd914498245a9fae5b6b8f9c0ae1dc13ee909deb83e502d",
     "proposals/slack/2026-10-08-프로젝트-구현범위-질문.md": "40d6de35a568f9545f5b5ce75480730ab5a0bf538710428dd2fca14bd765a582",
@@ -109,14 +113,14 @@
     "proposals/slack/2026-10-13-로컬-사례저장과-서비스화-제안.md": "c6c7c17c335035feb165be30543278e51885689fbe209340a9a0e5359a3beccd",
     "proposals/slack/2026-10-15-이름참조-DATA-관계와-후속검토.md": "14ecf7b541624cc76c6d3dd8838153fc1b4c0f89aec7f6f83e0769b64784008d",
     "proposals/slack/2026-10-19-고정profile과-입력저장-파이프라인-구현보고.md": "f074adc2197de7c77c855e7b9b3a9b730cda1e3bd61abe157c869c8f357fc44f",
-    "proposals/slack/2026-10-26-C-정적검사-catalog-제안-알림.md": "a829526e2dcbd6c0bb18c645baff1bcfaaa942a598de55ad91117db4d96bb45b",
+    "proposals/slack/2026-10-26-C-정적검사-catalog-제안-알림.md": "55c45fb3288887ff929427160e08e48a046a64eacf04d406af5adb9cfc15348c",
     "proposals/slack/2026-10-27-DB-스키마-무결성-보강안.md": "4c81f4015cd73703f7cd59f7ec892ff52fb65528147912de012b6220c3acc191",
     "research/slack/2026-09-21_2026-10-06-공유자료-목록.md": "be2c398fc9a21d4c550780d0aa78f5165b01456ea8a3cb0e1faf12ee3f2d324b",
     "research/slack/2026-09-25-MCP-조사와-연구공백.md": "7f87a20b0926a99283776c4a9c7487fd61e891427be3715903b6db5abb5829ca",
     "research/slack/2026-10-19_2026-10-20-기억삭제사례와-A발표자료-공유목록.md": "216e0a1308fae3c633a4730c0269ec31867d71d78dc518bf7ac4dc9f9302e601",
     "research/slack/2026-10-26-Ni8mare-영상공유와-관련성질문.md": "8ea212ab7feec478c42aa5edbecc8404108788cd257f6cf1a9720b66ce8b86d9",
     "research/slack/2026-10-29-CVE-자료원과-카드근거-정리알림.md": "8a457a71f4f7c25de9b09265b804e5c4fe275889a1b36d5d7e3b69b01ed8d46b",
-    "slack/INDEX.md": "08fe20f811d332cfa6ea7095521ec684c699626edba4521b10b9bf63888f09eb"
+    "slack/INDEX.md": "9441b1783fc32cb4faed874133b4a181630cbe6a0a261cc22ff86c9f745a3f3e"
   },
   "generator": "Codex in the scheduled chat; no separate API key"
 }
