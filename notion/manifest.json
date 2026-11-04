@@ -9,31 +9,16 @@
     "include_subpages": true,
     "create_subpage_folders": true
   },
-  "content_fingerprint": "e613c9ac53c9104f018b41fcddef33159c78336fc09508b52b43e8d75138d37c",
+  "content_fingerprint": "828becf928da522b3dab870ef418f97e62a58f1265f55dafcfbbb3f32ed23533",
   "counts": {
-    "files": 58,
+    "files": 64,
     "notion_pages": 30,
-    "databases": 6,
-    "csv_files": 12,
+    "databases": 9,
+    "csv_files": 18,
     "attachments": 16
   },
   "coverage": "export_contents_verified; known_export_limitations_apply",
   "missing_local_links": [
-    {
-      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
-      "target": "%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/5%EB%B6%84%20%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%93%9C%20412c2d6e153783b4bc4701090a19eacd.csv",
-      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/5분 기록보드 412c2d6e153783b4bc4701090a19eacd.csv"
-    },
-    {
-      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
-      "target": "%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%207f2c2d6e153783c68483810f70767483_%ED%95%A0%20%EC%9D%BC%20f1ec2d6e15378268b87e07b06ee79024.csv",
-      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 7f2c2d6e153783c68483810f70767483_할 일 f1ec2d6e15378268b87e07b06ee79024.csv"
-    },
-    {
-      "source": "개인 페이지 & 공유된 페이지/캡스톤 팀 096c2d6e1537828d8e3a810d9a8976ac.md",
-      "target": "%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20da2c2d6e153782f29ead81c44a32f70f_%ED%95%A0%20%EC%9D%BC%20f1ec2d6e15378268b87e07b06ee79024.csv",
-      "resolved_export_path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 da2c2d6e153782f29ead81c44a32f70f_할 일 f1ec2d6e15378268b87e07b06ee79024.csv"
-    },
     {
       "source": "개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/README.md",
       "target": "research-evidence.md",
@@ -64,6 +49,38 @@
       "notion_id": "096c2d6e1537828d8e3a810d9a8976ac",
       "notion_url": "https://app.notion.com/p/096c2d6e1537828d8e3a810d9a8976ac",
       "title": "캡스톤 팀"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/5분 기록보드 412c2d6e153783b4bc4701090a19eacd.csv",
+      "sha256": "591eb30fb533a5cfe563853afd0d71e70d0355e2a83a35d806fc03280c105d6e",
+      "bytes": 68,
+      "notion_id": "412c2d6e153783b4bc4701090a19eacd",
+      "notion_url": "https://app.notion.com/p/412c2d6e153783b4bc4701090a19eacd",
+      "columns": [
+        "대분류",
+        "기록 주제",
+        "소분류",
+        "기록일자",
+        "작성자",
+        "주차"
+      ],
+      "row_count": 0
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/5분 기록보드 412c2d6e153783b4bc4701090a19eacd_all.csv",
+      "sha256": "93599ef3003086b3cf2217ea1c5ce00d3df63f9990f6fa73dded6512c5ac141b",
+      "bytes": 68,
+      "notion_id": "412c2d6e153783b4bc4701090a19eacd",
+      "notion_url": "https://app.notion.com/p/412c2d6e153783b4bc4701090a19eacd",
+      "columns": [
+        "기록 주제",
+        "기록일자",
+        "대분류",
+        "소분류",
+        "작성자",
+        "주차"
+      ],
+      "row_count": 0
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/PR & Issue 템플릿 629c2d6e153782f6b6f681a627362779.md",
@@ -351,6 +368,57 @@
       "notion_id": "767c2d6e1537833c8f140163d334b2dc",
       "notion_url": "https://app.notion.com/p/767c2d6e1537833c8f140163d334b2dc",
       "title": "제목 없음"
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 7f2c2d6e153783c68483810f70767483_캘린더 35ec2d6e15378301827587fb58bda4a5_all.csv",
+      "sha256": "e5a387a8d9b0f459d98ea313e69735c47dd1a7880fa0c65efa9d26374ccefe62",
+      "bytes": 25,
+      "notion_id": "35ec2d6e15378301827587fb58bda4a5",
+      "notion_url": "https://app.notion.com/p/35ec2d6e15378301827587fb58bda4a5",
+      "columns": [
+        "이름",
+        "날짜",
+        "태그"
+      ],
+      "row_count": 0
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 7f2c2d6e153783c68483810f70767483_할 일 f1ec2d6e15378268b87e07b06ee79024.csv",
+      "sha256": "9515449f12eeabd6134cb558fdf867ade7288f81477a36619ea32d5f2f7b63f1",
+      "bytes": 22,
+      "notion_id": "f1ec2d6e15378268b87e07b06ee79024",
+      "notion_url": "https://app.notion.com/p/f1ec2d6e15378268b87e07b06ee79024",
+      "columns": [
+        "할 일",
+        "담당자"
+      ],
+      "row_count": 0
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 7f2c2d6e153783c68483810f70767483_할 일 f1ec2d6e15378268b87e07b06ee79024_all.csv",
+      "sha256": "d8a5229b4b19aa464d208a72a565dea07d570fc94eaeae704cfdb230ffb92807",
+      "bytes": 46,
+      "notion_id": "f1ec2d6e15378268b87e07b06ee79024",
+      "notion_url": "https://app.notion.com/p/f1ec2d6e15378268b87e07b06ee79024",
+      "columns": [
+        "할 일",
+        "기간",
+        "담당자",
+        "상태",
+        "생성일"
+      ],
+      "row_count": 0
+    },
+    {
+      "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 da2c2d6e153782f29ead81c44a32f70f_할 일 f1ec2d6e15378268b87e07b06ee79024.csv",
+      "sha256": "f878d8e1ded9d430cb2ca8ce0c11e1ac3fc444e5a7da1e0edbc098e70f2e9184",
+      "bytes": 12,
+      "notion_id": "f1ec2d6e15378268b87e07b06ee79024",
+      "notion_url": "https://app.notion.com/p/f1ec2d6e15378268b87e07b06ee79024",
+      "columns": [
+        "할 일"
+      ],
+      "row_count": 0
     },
     {
       "path": "개인 페이지 & 공유된 페이지/캡스톤 팀/제출처 (공모전·학회) ec2c2d6e153783b0bde5015c50e30744.csv",
