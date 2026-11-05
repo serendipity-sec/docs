@@ -4,8 +4,8 @@
 
 브라우저의 공식 Markdown & CSV 내보내기를 저장합니다. 원본 파일의 바이트와 폴더 구조를 보존합니다.
 
-- 파일 58개 / Notion 페이지 30개 / 데이터베이스 6개
-- 내보내기에 없는 로컬 링크 7개. 댓글·보기 설정·페이지 권한은 완전 백업 범위가 아닙니다.
+- 파일 64개 / Notion 페이지 30개 / 데이터베이스 9개
+- 내보내기에 없는 로컬 링크 4개. 댓글·보기 설정·페이지 권한은 완전 백업 범위가 아닙니다.
 
 [팀 홈 사본](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80%20096c2d6e1537828d8e3a810d9a8976ac.md)
 
@@ -48,8 +48,11 @@
 
 | 파일 | 행 수 |
 |---|---|
+| [5분 기록보드 412c2d6e153783b4bc4701090a19eacd.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/5%EB%B6%84%20%EA%B8%B0%EB%A1%9D%EB%B3%B4%EB%93%9C%20412c2d6e153783b4bc4701090a19eacd.csv) | 0 |
 | [문서 3ebc2d6e153780aebc98e71e8af59f37.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EB%AC%B8%EC%84%9C%203ebc2d6e153780aebc98e71e8af59f37.csv) | 11 |
 | [선행연구·조사 현황 be7c2d6e153783e98cd201fc63705402.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%84%A0%ED%96%89%EC%97%B0%EA%B5%AC%C2%B7%EC%A1%B0%EC%82%AC%20%ED%98%84%ED%99%A9%20be7c2d6e153783e98cd201fc63705402.csv) | 1 |
+| [제목 없음 7f2c2d6e153783c68483810f70767483_할 일 f1ec2d6e15378268b87e07b06ee79024.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%207f2c2d6e153783c68483810f70767483_%ED%95%A0%20%EC%9D%BC%20f1ec2d6e15378268b87e07b06ee79024.csv) | 0 |
+| [제목 없음 da2c2d6e153782f29ead81c44a32f70f_할 일 f1ec2d6e15378268b87e07b06ee79024.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20da2c2d6e153782f29ead81c44a32f70f_%ED%95%A0%20%EC%9D%BC%20f1ec2d6e15378268b87e07b06ee79024.csv) | 0 |
 | [제출처 (공모전·학회) ec2c2d6e153783b0bde5015c50e30744.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%EC%A0%9C%EC%B6%9C%EC%B2%98%20%28%EA%B3%B5%EB%AA%A8%EC%A0%84%C2%B7%ED%95%99%ED%9A%8C%29%20ec2c2d6e153783b0bde5015c50e30744.csv) | 1 |
 | [팀원명 33cc2d6e1537839d966d81caf9d61527.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%ED%8C%80%EC%9B%90%EB%AA%85%2033cc2d6e1537839d966d81caf9d61527.csv) | 4 |
 | [회계록 2f0c2d6e1537830db695819d86af8087.csv](export/%EA%B0%9C%EC%9D%B8%20%ED%8E%98%EC%9D%B4%EC%A7%80%20%26%20%EA%B3%B5%EC%9C%A0%EB%90%9C%20%ED%8E%98%EC%9D%B4%EC%A7%80/%EC%BA%A1%EC%8A%A4%ED%86%A4%20%ED%8C%80/%ED%9A%8C%EA%B3%84%EB%A1%9D%202f0c2d6e1537830db695819d86af8087.csv) | 1 |
@@ -57,9 +60,6 @@
 
 ## 내보내기에 없는 링크
 
-- `개인 페이지 & 공유된 페이지/캡스톤 팀/5분 기록보드 412c2d6e153783b4bc4701090a19eacd.csv`
-- `개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 7f2c2d6e153783c68483810f70767483_할 일 f1ec2d6e15378268b87e07b06ee79024.csv`
-- `개인 페이지 & 공유된 페이지/캡스톤 팀/제목 없음 da2c2d6e153782f29ead81c44a32f70f_할 일 f1ec2d6e15378268b87e07b06ee79024.csv`
 - `개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/research-evidence.md`
 - `개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/execution-plan.md`
 - `개인 페이지 & 공유된 페이지/캡스톤 팀/문서/최종 설계/contracts.example.json`
