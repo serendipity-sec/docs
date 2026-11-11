@@ -114,14 +114,17 @@
     "slack/raw/2026-11-11/C0C2Y9JLKD3.jsonl": "911bb6428309dafa9299d89184eca47d9509e2e55f645f5a642e637950615ac3",
     "slack/raw/2026-11-11/C0C879U084V.jsonl": "3b23ceba8500c1c29b7ce1ae77590667436f42a5526c8c45bcf2bed71bd4469c",
     "slack/raw/2026-11-11/C0C8EGWPF33.jsonl": "52e6d94805ae1a684cae0e94d02148ceaea694adc0baa4723e861741b70e41e4",
-    "slack/raw/2026-11-11/C0C8G9BDFAQ.jsonl": "f5f2fb33683ea40aeb5fc0f7aba9c931cfd6a77cb55b9b8e3922391d5752466a"
+    "slack/raw/2026-11-11/C0C8G9BDFAQ.jsonl": "f5f2fb33683ea40aeb5fc0f7aba9c931cfd6a77cb55b9b8e3922391d5752466a",
+    "slack/raw/2026-11-12/C0C879U084V.jsonl": "55fe29499b52704dbe8d9177b412b602ace505f72b6a74445385e1713af4b37a",
+    "slack/raw/2026-11-12/C0C8EGWPF33.jsonl": "16dd5ae05e874660f602fe081a214216bcb3a4feb8d1320cea0c3043e6d9a656",
+    "slack/raw/2026-11-12/C0C8G9BDFAQ.jsonl": "429e919bbdfaca94aff7bcbdbd076583cbecf1e95ef00ab190d6f7ead1896dc9"
   },
   "documents": {
     "meetings/slack/2026-09-23_2026-10-06-운영공지와-할일.md": "cb5ebab27f3d6e8de2abffd2bcf150dd292cf1173148a3b27e617dba1ff3c65f",
     "meetings/slack/2026-10-08-회의변경과-역할분배-계획.md": "c438e098f559db3a1688f11aa000f07fa70b7c116870a6ad08b636fbbc05c2ce",
     "meetings/slack/2026-10-10-회의-진행여부-질문.md": "7856574e43aec7cd04cf4e8d89b3f773252dc392c6c5d740015c66148ae7a8b7",
     "meetings/slack/2026-10-11-FlowDelta-역할선택과-PR검토-공지.md": "5bb44ab70bb20e4955ef62e452198a935d2ca2439e4eaea37f0ac0f4609e0da9",
-    "meetings/slack/2026-10-11_2026-10-12-GitHub-알림-연동과-이벤트.md": "54078a7fe4693aaa04afa42b9189fa5803c2a7f0132cac0ad016ad01d9474d4d",
+    "meetings/slack/2026-10-11_2026-10-12-GitHub-알림-연동과-이벤트.md": "80d2a80529ee2ab5d3a5316eecb8b5cc204c4d1aa2fa087fadf985d17ec6d715",
     "meetings/slack/2026-10-13-정기회의-요점과-업무요청.md": "8c9a016ba912f59b6b801fbe471a8c98aadf4c110ce2b7d3972fa0de8c8be717",
     "meetings/slack/2026-10-14-A-C-기능브랜치-push-보고.md": "5b04209b2dd980758fc267cf91fb17716eec81d2922be514356226556cfe4d07",
     "meetings/slack/2026-10-15-모임-연락과-반응-기록.md": "205a9483a7fb45be3e06623e2423998e18aa4882368b5c5139fdc36c9a8ca653",
@@ -136,7 +139,7 @@
     "meetings/slack/2026-11-02-교수피드백-연구검증-업무요청.md": "4c6f3ee6906e6a0197c934dc46dcbcd3e8e5016895022d22ad14c3639feff031",
     "meetings/slack/2026-11-04-Codex-사용량-문제보고.md": "b2c917d6021c9d4a613effc7a7db1188ea4ed16ec4d01ba41aa247fe8f1f854e",
     "meetings/slack/2026-11-05-업무추적-정리와-검증요청.md": "45a0e5ced8b2bc90473745a4b7daa9e4a552849ebfa4b67c02d6110d6e005935",
-    "meetings/slack/2026-11-06-4개역할-재분배와-인계대기-공지.md": "3f17493a03f07a2ab693a873e5e28530ffde3c2743258bd5675ff95d01973000",
+    "meetings/slack/2026-11-06-4개역할-재분배와-인계대기-공지.md": "3423645cdcde0bc4ed243fc5641af25e579e140c9ad74d2c7f534c2a34f7b865",
     "meetings/slack/2026-11-10-서버실행-인증과-배포-업무요청.md": "e9578eb2803dd99daf2bd2bfee53317d7809b334df0b5d2749245339f6a7ab4e",
     "proposals/slack/2026-09-20-추가주제-후속의견.md": "7d5cfd0e744eeb17984473f6b83ee0a4c4a389d39b6bdf2879360a918e0024ba",
     "proposals/slack/2026-10-01_2026-10-03-아키텍처-논의안.md": "42358fe413aa9bd6fbd914498245a9fae5b6b8f9c0ae1dc13ee909deb83e502d",
@@ -156,9 +159,9 @@
     "research/slack/2026-10-19_2026-10-20-기억삭제사례와-A발표자료-공유목록.md": "216e0a1308fae3c633a4730c0269ec31867d71d78dc518bf7ac4dc9f9302e601",
     "research/slack/2026-10-26-Ni8mare-영상공유와-관련성질문.md": "8ea212ab7feec478c42aa5edbecc8404108788cd257f6cf1a9720b66ce8b86d9",
     "research/slack/2026-10-29-CVE-자료원과-카드근거-정리알림.md": "99d97c318e3fe653a2d49a7258129be6763e4ab581ffb7e3f9635ef414b201d0",
-    "research/slack/2026-11-02-n8n-선행연구와-비교군-조사목록.md": "5302a88b3c58645865e7a774975f208d180a1245c899a0f850bd2d85817f1f41",
-    "research/slack/2026-11-04-동적검증-판정기준-제안알림.md": "8db19bc071ef57ddaed2d3ebefce383e926dbe52ce97b497cb1735741637f359",
-    "slack/INDEX.md": "92c87a4746a7a6a84be416cc983e79c52f026212eeda1c8b5eb43f3d4a26e95e"
+    "research/slack/2026-11-02-n8n-선행연구와-비교군-조사목록.md": "7926b58907836a95d7fa0b3a285cececc1bf4f47ebdf4dd6728278054ecf5e60",
+    "research/slack/2026-11-04-동적검증-판정기준-제안알림.md": "dd49a9f5998d518c738599853c7ce686329851a18e93472af6f4ed166577d29d",
+    "slack/INDEX.md": "511a15819252c848e3eb87af829b339f33728362068e64a3e90f04dfbf8a3334"
   },
   "generator": "Codex in the scheduled chat; no separate API key"
 }
