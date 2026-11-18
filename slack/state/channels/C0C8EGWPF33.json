@@ -2,7 +2,7 @@
   "workspace_id": "T0C2Y9MNME1",
   "channel_id": "C0C8EGWPF33",
   "channel_name": "github-pr-alerts",
-  "last_changed_capture_at": "2026-11-17T18:28:06Z",
+  "last_changed_capture_at": "2026-11-18T16:02:25Z",
   "thread_parents": [
     "1791710605.771429",
     "1791732203.459009",
@@ -106,7 +106,8 @@
     "1794907762.255099",
     "1794914348.525689",
     "1794914638.699229",
-    "1794914640.010189"
+    "1794914640.010189",
+    "1794940821.915489"
   ],
   "complete": true
 }
