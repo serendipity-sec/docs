@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f7f7ef">
+  <meta name="description" content="n8n 워크플로우의 업데이트가 권한과 데이터에 미치는 영향을 FlowDelta가 어떻게 검증하는지 아홉 장의 그림으로 살펴봅니다.">
+  <title>FlowDelta · 워크플로우 보안 가이드</title>
+  <style>
+    :root {
+      --paper: #f7f7ef; --card: #fffff9; --ink: #153c32; --text: #25453a; --muted: #53685c;
+      --line: #c8d2c3; --pale: #e8eee1; --leaf: #cfed9b; --green: #287050; --forest: #143d33;
+      --forest-line: #507061; --peach: #ffc29d; --rust: #913f28; --blush: #f8e9dc;
+      --sans: "DM Sans", "Segoe UI", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+      --mono: "IBM Plex Mono", Consolas, Menlo, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    a { color: var(--green); text-underline-offset: .2em; }
+    button:focus-visible, a:focus-visible, summary:focus-visible, [tabindex="-1"]:focus-visible {
+      outline: 3px solid #c75726; outline-offset: 3px;
+    }
+    button:disabled { cursor: default; opacity: .4; }
+    h1, h2, h3, p, figure, ul, ol, dl, dd { margin: 0; }
+    button, summary { touch-action: manipulation; }
+    .ui { display: none !important; }
+    .deck .ui { display: inline-flex !important; }
+    .deck .ui[hidden] { display: none !important; }
+    .skip { position: fixed; top: -8rem; left: 1rem; z-index: 10; background: white; padding: .6rem; }
+    .skip:focus { top: .5rem; }
+    .sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    [hidden] { display: none !important; }
+    .app { max-width: 1600px; margin: auto; padding-inline: clamp(16px, 4.6vw, 78px); }
+    .topbar, .bottom { display: flex; align-items: center; gap: 16px; }
+    .topbar { min-height: 67px; border-bottom: 1px solid var(--line); }
+    .brand { display: inline-flex; gap: 10px; align-items: center; font-size: 23px; font-weight: 730; letter-spacing: -.075em; text-decoration: none; color: var(--ink); }
+    .logo { width: 27px; height: 27px; background: var(--ink); border-radius: 7px; position: relative; flex: none; }
+    .logo::before, .logo::after { content: ""; position: absolute; inset: 6px; background: var(--leaf); clip-path: polygon(45% 0, 100% 100%, 0 100%, 12% 78%, 64% 78%, 35% 23%); }
+    .logo::after { inset: 11px 12px 8px 7px; background: var(--peach); clip-path: polygon(40% 0, 100% 100%, 0 100%); }
+    .brand-sub { border-left: 1px solid var(--line); padding-left: 15px; color: var(--muted); font-size: 13px; font-weight: 600; }
+    .top-actions { display: flex; margin-left: auto; gap: 8px; }
+    .tool, .pager { display: inline-flex; align-items: center; justify-content: center; gap: .55em; min-height: 39px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 7px; background: transparent; font-weight: 650; font-size: 13px; }
+    .tool:hover, .pager:not(:disabled):hover { background: var(--pale); }
+    .glyph { display: inline-block; width: 15px; height: 15px; position: relative; flex: none; }
+    .glyph.menu { border-block: 1.6px solid; height: 12px; }
+    .glyph.menu::after { content: ""; display: block; margin-top: 3.7px; border-top: 1.5px solid; }
+    .glyph.expand { background: linear-gradient(currentColor,currentColor) left top / 6px 1.5px, linear-gradient(currentColor,currentColor) left top / 1.5px 6px, linear-gradient(currentColor,currentColor) right top / 6px 1.5px, linear-gradient(currentColor,currentColor) right top / 1.5px 6px, linear-gradient(currentColor,currentColor) left bottom / 6px 1.5px, linear-gradient(currentColor,currentColor) left bottom / 1.5px 6px, linear-gradient(currentColor,currentColor) right bottom / 6px 1.5px, linear-gradient(currentColor,currentColor) right bottom / 1.5px 6px; background-repeat: no-repeat; }
+    .glyph.book { width: 14px; height: 16px; border: 1.5px solid; border-radius: 2px; }
+    .glyph.book::before { content: ""; position: absolute; left: 3px; top: 0; bottom: 0; border-left: 1.3px solid; }
+    .stage { min-height: 0; }
+    .scene { width: 100%; max-width: 1320px; margin: auto; padding: 38px 0; border-bottom: 1px solid var(--line); }
+    .layout { display: grid; align-items: center; gap: clamp(24px, 4.6vw, 76px); }
+    .split { grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr); }
+    .wide { gap: clamp(16px, 2.8vh, 31px); }
+    .wide .intro { display: grid; grid-template-columns: 1.15fr .85fr; column-gap: 5%; align-items: end; }
+    .intro > * { min-width: 0; }
+    .kicker { display: flex; align-items: center; gap: 9px; color: var(--green); font-size: 13px; font-weight: 720; letter-spacing: .03em; margin-bottom: 15px; }
+    .kicker::before { content: ""; display: inline-block; width: 21px; height: 3px; background: var(--green); }
+    .wide .kicker { grid-column: 1 / -1; margin-bottom: 9px; }
+    .intro h1, .intro h2 { font-size: clamp(33px, 3.65vw, 59px); line-height: 1.23; letter-spacing: -.066em; font-weight: 770; text-wrap: balance; }
+    .intro h1 { font-size: clamp(42px, 4.9vw, 81px); }
+    .intro h1 em, .intro h2 em { font-style: normal; color: var(--green); }
+    .lead { font-size: clamp(15px, 1.32vw, 21px); color: var(--text); line-height: 1.72; letter-spacing: -.024em; max-width: 36em; margin-top: 19px; }
+    .wide .lead { margin: 0; }
+    .panel { border: 1px solid var(--line); border-radius: 18px; background: var(--card); padding: clamp(20px, 2.4vw, 36px); min-width: 0; }
+    .panel-head { display: flex; justify-content: space-between; gap: 8px 12px; align-items: center; font-size: 14px; font-weight: 700; letter-spacing: -.025em; }
+    .panel-head .qual, .qual { color: var(--muted); font-weight: 510; font-size: 12px; }
+    .dark { color: #f0f8e9; border-color: var(--forest); background-color: var(--forest); }
+    .dark .qual { color: #cbdbcd; }
+    .blueprint { background-image: radial-gradient(circle, #7798814d 1px, transparent 1.25px); background-position: 6px 6px; background-size: 18px 18px; }
+    .segments { display: inline-flex; flex-wrap: wrap; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); }
+    .segments button { padding: 6px 12px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: var(--muted); font-size: 13px; font-weight: 650; }
+    .segments button[aria-pressed="true"] { background: var(--ink); color: white; }
+    .segments button:hover:not([aria-pressed="true"]) { background: var(--pale); }
+    .dark .segments { background: #16372e; border-color: var(--forest-line); }
+    .dark .segments button { color: #dfebdd; }
+    .dark .segments button[aria-pressed="true"] { background: var(--leaf); color: var(--ink); }
+    .dark .segments button:hover:not([aria-pressed="true"]) { background: #2b5143; }
+    .diagram-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--muted); }
+    .dark .diagram-foot { border-color: var(--forest-line); color: #dce9db; }
+    .diagram-foot b { color: inherit; }
+    /* The map has two independent routes from the workflow to data. */
+    .map { position: relative; height: clamp(206px, 31vh, 302px); margin: 12px 0 10px; }
+    .route { position: absolute; color: var(--leaf); }
+    .route.trunk { left: 14%; width: 34%; top: 50%; border-top: 2px solid; }
+    .route.own { left: 48%; width: 36%; top: 22%; height: 28.6%; border-left: 2px solid; border-top: 2px solid; border-top-left-radius: 16px; }
+    .route.new { left: 48%; width: 36%; top: 50%; height: 28%; border-left: 2px dashed; border-bottom: 2px dashed; border-bottom-left-radius: 16px; color: var(--peach); }
+    .route.own::after, .route.new::after { content: ""; position: absolute; right: 13%; width: 7px; height: 7px; border: solid; border-width: 2px 2px 0 0; transform: rotate(45deg); }
+    .route.own::after { top: -5px; }
+    .route.new::after { bottom: -4px; }
+    .map-node { position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%); width: clamp(41px, 4vw, 59px); height: clamp(41px, 4vw, 59px); border: 1.5px solid #9ab89b; border-radius: 13px; background: #244c3f; display: grid; place-items: center; color: #e5f5db; z-index: 1; }
+    .map-node b { position: absolute; top: calc(100% + 4px); left: 50%; transform: translateX(-50%); border-radius: 4px; background: var(--forest); padding: 0 3px; white-space: nowrap; font-size: 14px; font-weight: 630; }
+    .map-node.request { --x: 12%; --y: 50%; }
+    .map-node.workflow { --x: 48%; --y: 50%; background: var(--leaf); border-color: var(--leaf); color: var(--ink); }
+    .map-node.workflow b { color: var(--leaf); }
+    .map-node.owned { --x: 85%; --y: 22%; }
+    .map-node.other { --x: 85%; --y: 78%; color: var(--peach); border: 1.5px dashed var(--peach); }
+    .cover[data-version="before"] .route.new { visibility: hidden; }
+    .cover[data-version="before"] .other { color: #a9bbae; border-color: #7d9485; }
+    .icon { position: relative; display: inline-block; width: 24px; height: 24px; flex: none; }
+    .icon.person::before, .icon.person::after { content: ""; position: absolute; border: 2px solid; left: 50%; transform: translateX(-50%); }
+    .icon.person::before { border-radius: 50%; width: 7px; height: 7px; top: 1px; }
+    .icon.person::after { border-radius: 9px 9px 2px 2px; width: 16px; height: 8px; bottom: 1px; }
+    .icon.flow::before, .icon.flow::after { content: ""; position: absolute; }
+    .icon.flow::before { left: 5px; top: 5px; width: 11px; height: 12px; border: solid; border-width: 2px 0 2px 2px; }
+    .icon.flow::after { top: 3px; left: 15px; width: 6px; height: 6px; background: currentColor; border-radius: 1px; box-shadow: 0 12px currentColor, -12px 6px currentColor; }
+    .icon.files::before, .icon.files::after { content: ""; position: absolute; width: 12px; height: 15px; border: 1.7px solid; border-radius: 2px; background: #244c3f; }
+    .icon.files::before { left: 3px; top: 2px; }
+    .icon.files::after { left: 8px; top: 6px; }
+    .cover-state { text-align: right; }
+    .cover-state::before { content: ""; display: inline-block; width: 17px; margin: 0 6px 3px 0; border-top: 2px dashed var(--peach); }
+    .cover[data-version="before"] .cover-state::before { border-top-style: solid; border-color: var(--leaf); }
+    /* Each policy applies to the same request-to-account chain. */
+    .chain { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: center; text-align: center; gap: 5px; margin: 25px 0; }
+    .chain .station { min-width: 0; font-size: 14px; font-weight: 700; }
+    .station .stamp { display: grid; place-items: center; width: 42px; height: 42px; margin: 0 auto 5px; background: var(--pale); border: 1px solid var(--line); border-radius: 11px; }
+    .station:last-child .stamp { background: var(--leaf); border-color: #aecf85; }
+    .icon.key::before, .icon.key::after { content: ""; position: absolute; }
+    .icon.key::before { width: 8px; height: 8px; border: 2px solid; border-radius: 50%; top: 3px; left: 2px; }
+    .icon.key::after { width: 12px; height: 6px; border: solid; border-width: 2px 2px 0 0; top: 13px; left: 10px; transform: rotate(39deg); }
+    .connector { color: var(--green); font-size: 21px; line-height: 1; }
+    .rules { border-top: 1px solid var(--line); padding-top: 16px; }
+    .policy-pair { margin-top: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+    .sample { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: var(--pale); }
+    .sample.limit { background: var(--blush); border-color: #e3c4af; color: var(--rust); }
+    .sample small, .sample strong { display: block; }
+    .sample small { font-size: 12px; }
+    .sample strong { font-size: clamp(16px,1.5vw,23px); margin-top: 2px; }
+    /* Project decisions form a single chronological line. */
+    .journey { list-style: none; padding: 0; margin: 22px 0 0; }
+    .journey li { position: relative; display: grid; grid-template-columns: 60px 1fr; column-gap: 19px; padding: 0 0 22px 20px; border-left: 2px solid var(--line); margin-left: 5px; }
+    .journey li:last-child { border-left-color: transparent; padding-bottom: 0; }
+    .journey li::before { content: ""; position: absolute; left: -6px; top: 6px; width: 7px; height: 7px; border: 2px solid var(--green); border-radius: 50%; background: var(--paper); }
+    .journey li:last-child::before { background: var(--leaf); }
+    .journey time { font-family: var(--mono); font-size: 14px; padding-top: 2px; color: var(--green); }
+    .journey b, .journey span { display: block; }
+    .journey b { font-size: clamp(17px,1.55vw,24px); line-height: 1.3; letter-spacing: -.035em; }
+    .journey span { margin-top: 4px; font-size: 14px; color: var(--muted); }
+    /* Two laboratory lanes always start from independent copies. */
+    .fixture { display: flex; align-items: center; gap: 7px 13px; flex-wrap: wrap; padding-bottom: 17px; border-bottom: 1px solid var(--line); }
+    .fixture b { font-size: 14px; }
+    .fixture span { border-left: 1px solid var(--line); padding-left: 13px; font-size: 14px; color: var(--muted); }
+    .lanes { margin: 9px 0 13px; }
+    .lane { display: grid; grid-template-columns: 1fr 27px 1.3fr 27px 1fr; align-items: center; gap: 8px; padding: 12px 0; text-align: center; }
+    .lane > strong, .lane > b, .lane > span:not(.connector) { border: 1px solid var(--line); background: var(--paper); border-radius: 9px; padding: 11px 7px; font-size: clamp(14px,1.35vw,21px); }
+    .lane > strong { color: var(--green); background: var(--pale); }
+    .lane.candidate > strong { background: var(--leaf); }
+    .lane > b { font-weight: 650; }
+    .lane > span:not(.connector) { background: var(--card); border-style: dashed; }
+    /* The architecture doubles as a six-stop selector. */
+    .arch-steps { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 14px; margin: 20px 0 15px; }
+    .arch-steps button { min-width: 0; position: relative; padding: 13px 7px; border-radius: 9px; border: 1px solid #71917c; background: #244c3f; color: #f2f8eb; line-height: 1.4; }
+    .arch-steps button:not(:last-child)::after { content: "›"; position: absolute; left: calc(100% + 3px); top: 50%; transform: translateY(-54%); color: #bbd6b5; font-size: 19px; }
+    .arch-steps small, .arch-steps b { display: block; }
+    .arch-steps small { font-size: 12px; color: #c6dac5; }
+    .arch-steps b { font-size: clamp(15px,1.32vw,20px); margin-top: 2px; }
+    .arch-steps button[aria-pressed="true"] { background: var(--leaf); color: var(--ink); border-color: var(--leaf); }
+    .arch-steps button[aria-pressed="true"] small { color: var(--ink); }
+    .arch-steps button:hover:not([aria-pressed="true"]) { background: #315d4b; }
+    .arch-out { background: #f0f5e8; color: var(--ink); border-radius: 10px; padding: 14px 18px; }
+    .arch-out > p { font-weight: 720; font-size: clamp(15px,1.38vw,21px); letter-spacing: -.027em; }
+    .arch-io { display: flex; gap: 4px 25px; flex-wrap: wrap; margin-top: 6px; color: var(--muted); font-size: 13px; }
+    .arch-io b { color: var(--green); margin-right: 5px; }
+    /* Evidence panels pair independent observations with the conclusion. */
+    .evidence .segments { margin: 17px 0 13px; }
+    .observations { display: grid; grid-template-columns: 1fr 28px 1fr; gap: 4px; align-items: center; }
+    .obs { border: 1px solid var(--line); border-radius: 9px; padding: 12px; }
+    .obs dt { font-size: 12px; color: var(--muted); }
+    .obs dd { margin-top: 2px; font-size: clamp(17px,1.65vw,24px); font-weight: 720; }
+    .obs[data-tone="risk"] { background: var(--blush); border-color: #dfbaa5; }
+    .obs[data-tone="risk"] dd { color: var(--rust); }
+    .obs[data-tone="clear"] { background: var(--pale); }
+    .obs[data-tone="unknown"] { background: var(--paper); border-style: dashed; }
+    .verdict { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 11px; }
+    .verdict b { font-size: clamp(19px,1.8vw,28px); letter-spacing: -.04em; }
+    .verdict p { margin-top: 3px; color: var(--muted); font-size: 14px; }
+    /* A question and its evidence sit on the same line for each tool. */
+    .comparison { width: 100%; border-collapse: collapse; text-align: left; margin-top: 12px; font-size: clamp(14px,1.22vw,19px); }
+    .comparison th, .comparison td { vertical-align: middle; padding: 13px 10px; border-bottom: 1px solid var(--line); }
+    .comparison th { padding-left: 0; width: 29%; }
+    .comparison td { color: var(--text); }
+    .comparison tr:last-child > * { border: 0; background: var(--pale); }
+    .comparison tr:last-child th { border-left: 3px solid var(--green); padding-left: 7px; }
+    .comparison span { display: block; color: var(--muted); font-size: 13px; margin-top: 3px; }
+    /* The case diagram represents one other user's synthetic record. */
+    .case-grid { margin-top: 15px; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 13px; }
+    .case-side { padding: 18px; border: 1px solid var(--line); border-top: 4px solid var(--green); border-radius: 10px; background: #f3f6eb; }
+    .case-side.risk { border-color: #e2c5b3; border-top-color: #bb6848; background: #fbefe4; }
+    .case-side h3 { font-size: 18px; letter-spacing: -.03em; }
+    .case-side p { font-size: 13px; color: var(--muted); }
+    .case-track { display: flex; justify-content: space-evenly; align-items: center; gap: 8px; margin: 15px 0 12px; }
+    .record { width: clamp(42px,4.2vw,61px); aspect-ratio: .82; border: 2px solid var(--green); border-radius: 5px; position: relative; background: var(--card); }
+    .record::before { content: ""; position: absolute; top: 27%; left: 20%; width: 56%; height: 14%; border-block: 2px solid var(--green); }
+    .record::after { content: ""; position: absolute; top: 63%; left: 20%; width: 34%; border-top: 2px solid var(--green); }
+    .record.gone { border: 2px dashed #ad6a52; background: transparent; }
+    .record.gone::before, .record.gone::after { display: none; }
+    .case-result { display: block; text-align: center; font-weight: 740; font-size: clamp(15px,1.45vw,22px); }
+    .risk .case-result { color: var(--rust); }
+    .scope { margin-top: 13px; color: var(--muted); font-size: 13px; }
+    .report-card { overflow: hidden; padding: 0; }
+    .report-card .panel-head { padding: 15px 21px; background: var(--forest); color: #f3f7ed; }
+    .report-card .panel-head .qual { color: #d0e1d0; }
+    .report-body { padding: 15px 21px; }
+    .report-body h3 { font-size: clamp(20px,2vw,31px); letter-spacing: -.05em; line-height: 1.28; margin-bottom: 9px; }
+    .report-row { display: grid; grid-template-columns: 68px 1fr; gap: 8px; border-top: 1px solid var(--line); padding: 7px 0; font-size: 14px; }
+    .report-row dt { color: var(--muted); }
+    .report-row dd { font-weight: 650; }
+    .milestones { margin-top: 13px; font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .milestones b { color: var(--ink); }
+    /* The chrome stays put, including on narrow touch screens. */
+    .bottom { min-height: 74px; border-top: 1px solid var(--line); justify-content: space-between; }
+    .meter, .turns { display: flex; align-items: center; gap: 10px; }
+    .counter { font: 650 15px/1 var(--mono); white-space: nowrap; }
+    .counter span { color: var(--muted); font-weight: 400; }
+    .bars { width: clamp(55px,8.5vw,132px); display: flex; gap: 3px; }
+    .bars i { height: 3px; background: var(--line); border-radius: 2px; flex: 1; }
+    .bars i.filled { background: var(--green); }
+    .current-name { font-size: 13px; color: var(--muted); }
+    .pager { min-width: 70px; }
+    .pager.next { color: #f8faef; background: var(--ink); border-color: var(--ink); }
+    .pager.next:not(:disabled):hover { background: var(--green); }
+    .turn-arrow { font: 20px/1 var(--sans); }
+    .deck, .deck body { height: 100%; overflow: hidden; }
+    .deck .app { display: grid; grid-template-rows: auto minmax(0,1fr) auto; height: 100vh; height: 100dvh; }
+    .deck .stage { overflow: auto; overscroll-behavior: contain; touch-action: pan-y pinch-zoom; }
+    .deck .scene { display: none; min-height: 100%; padding: clamp(12px,3vh,34px) 4px; border: 0; }
+    .deck .scene.active { display: grid; align-content: center; }
+    .deck .scene-notes { display: none; }
+    .deck .bottom.ui { display: flex !important; }
+    .scene-notes { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); }
+    .scene-notes summary { cursor: pointer; font-weight: 700; }
+    .notes-body h3 { font-size: 18px; margin: 15px 0 4px; letter-spacing: -.025em; }
+    .notes-body p, .notes-body li, .notes-body dd { color: var(--text); font-size: 15px; line-height: 1.75; }
+    .notes-body ul { padding-left: 20px; }
+    .notes-body .refs { margin-top: 14px; border-top: 1px solid var(--line); padding: 10px 0 0; list-style: none; }
+    .refs li { margin-top: 3px; }
+    .refs a { color: var(--green); }
+    dialog { width: min(570px, calc(100% - 28px)); max-height: min(82vh,740px); max-height: min(82dvh,740px); border: 1px solid var(--line); border-radius: 16px; padding: 0; color: var(--ink); background: var(--card); box-shadow: 0 20px 85px #112d2640; }
+    dialog[open] { display: flex; flex-direction: column; }
+    dialog::backdrop { background: #0a261ec2; }
+    .dialog-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; padding: 16px 20px; border-bottom: 1px solid var(--line); }
+    .dialog-head h2 { font-size: 21px; line-height: 1.35; letter-spacing: -.05em; }
+    .dialog-body { padding: 7px 20px 20px; overflow-y: auto; overscroll-behavior: contain; }
+    .toc { list-style: none; padding: 0; }
+    .toc a { display: flex; align-items: baseline; gap: 14px; padding: 8px 9px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 15px; text-decoration: none; }
+    .toc a:hover, .toc a[aria-current="page"] { background: var(--pale); }
+    .toc a span { font: 12px var(--mono); color: var(--green); }
+    .dialog-tools { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+    @media (prefers-reduced-motion: no-preference) {
+      .deck .scene.active .layout { animation: arrive .23s ease-out; }
+      @keyframes arrive { from { opacity: .65; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    }
+    @media (min-width: 1100px) and (min-height: 760px) {
+      .topbar { min-height: 78px; } .bottom { min-height: 86px; }
+      .split { gap: clamp(50px,6vw,100px); }
+      .panel { padding: 32px; } .report-card { padding: 0; }
+      .panel-head, .map-node b { font-size: 16px; }
+      .arch-steps { margin: 32px 0 24px; } .arch-steps button { padding: 19px 7px; }
+      .arch-out { padding: 19px 21px; }
+      .journey li { padding-bottom: 31px; } .journey li:last-child { padding-bottom: 0; }
+      .comparison th, .comparison td { padding-block: 18px; }
+      .case-track { margin: 21px 0; }
+    }
+    @media (max-width: 760px) and (min-height: 500px) {
+      .split, .wide .intro { grid-template-columns: 1fr; }
+      .layout { gap: clamp(14px,2.7vh,25px); }
+      .intro h1 { font-size: clamp(35px,6.8vw,52px); }
+      .intro h2 { font-size: clamp(28px,5.4vw,41px); }
+      .intro br { display: none; }
+      .lead, .wide .lead { margin-top: 9px; max-width: 100%; font-size: 16px; line-height: 1.52; }
+      .kicker, .wide .kicker { font-size: 12px; margin-bottom: 7px; }
+      .panel { padding: 18px; } .report-card { padding: 0; }
+      .topbar { min-height: 53px; } .bottom { min-height: 59px; }
+      .map { height: clamp(157px,25vh,230px); }
+      .chain { margin: 16px 0; }
+      .arch-steps { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 7px 13px; margin: 11px 0; }
+      .arch-steps button { padding: 5px; }
+      .arch-steps button:nth-child(3)::after { display: none; }
+      .arch-out { padding: 10px 12px; }
+      .arch-io { gap: 1px 14px; }
+      .comparison th, .comparison td { padding-block: 9px; }
+      .case-side { padding: 11px; }
+      .case-track { gap: 4px; margin: 11px 0; }
+      .current-name { display: none; }
+    }
+    @media (max-width: 520px) {
+      .app { padding-inline: 14px; }
+      .topbar, .bottom { gap: 7px; }
+      .brand { gap: 6px; font-size: 21px; }
+      .logo { width: 25px; height: 25px; }
+      .brand-sub { display: none; }
+      .top-actions { gap: 5px; }
+      .tool, .pager { min-height: 36px; padding: 5px 9px; font-size: 12px; }
+      .tool.fs { min-width: 36px; } .fs .fs-label { display: none; }
+      .meter, .turns { gap: 5px; }
+      .bars { width: 40px; gap: 2px; }
+      .counter { font-size: 13px; }
+      .pager { min-width: 39px; }
+      .pager.prev .pager-word { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+      .segments button { font-size: 12px; padding: 6px 8px; }
+      .panel { border-radius: 12px; }
+      .panel-head { font-size: 13px; }
+      .panel-head .qual, .qual, .scope { font-size: 12px; }
+      .diagram-foot { padding-top: 10px; font-size: 12px; }
+      .cover-state { max-width: 10em; }
+      .journey { margin-top: 14px; } .journey li { grid-template-columns: 44px 1fr; column-gap: 10px; padding: 0 0 15px 14px; }
+      .fixture { gap: 4px 8px; padding-bottom: 10px; } .fixture b, .fixture span { font-size: 12px; } .fixture span { padding-left: 8px; }
+      .lane { grid-template-columns: 1fr 13px 1.14fr 13px 1fr; gap: 3px; padding: 7px 0; }
+      .lane > strong, .lane > b, .lane > span:not(.connector) { font-size: 13px; padding: 9px 2px; }
+      .connector { font-size: 17px; }
+      .evidence .segments { margin: 11px 0; } .evidence .segments button { padding: 5px 7px; }
+      .obs { padding: 8px 9px; } .observations { grid-template-columns: 1fr 16px 1fr; }
+      .case-grid { gap: 6px; margin-top: 10px; } .case-side h3 { font-size: 15px; }
+      .case-side p { font-size: 12px; } .record { width: clamp(26px,8vw,39px); } .case-result { font-size: 14px; }
+      .report-card .panel-head, .report-body { padding: 11px 14px; }
+      .milestones { font-size: 12px; margin-top: 8px; }
+    }
+    @media (max-height: 690px) and (max-width: 760px) and (min-height: 500px) {
+      .deck .scene { padding-block: 8px; } .topbar { min-height: 45px; } .bottom { min-height: 47px; }
+      .layout { gap: 11px; } .intro h2 { font-size: clamp(25px,5.45vw,34px); } .intro h1 { font-size: clamp(30px,6.5vw,42px); }
+      .lead, .wide .lead { font-size: 14px; margin-top: 6px; }
+      .panel { padding: 12px; } .report-card { padding: 0; }
+      .map { height: 138px; margin: 8px 0 12px; } .map-node { width: 33px; height: 33px; border-radius: 8px; } .map-node b { font-size: 12px; top: 100%; }
+      .chain { margin: 9px 0; } .rules { padding-top: 8px; } .sample { padding: 7px 8px; }
+      .policy-pair { margin-top: 7px; } .chain .station { font-size: 13px; } .station .stamp { width: 32px; height: 32px; }
+      .arch-steps button { padding: 3px; } .arch-io { font-size: 12px; } .journey span { margin-top: 2px; font-size: 13px; }
+      .comparison th, .comparison td { padding-block: 6px; }
+    }
+    @media (max-width: 350px) and (min-height: 500px) {
+      .app { padding-inline: 10px; } .deck .scene { padding-inline: 1px; }
+      .deck .scene .layout { gap: 8px; }
+      .cover .diagram-foot { display: grid; grid-template-columns: auto 1fr; gap: 5px; }
+      .cover .segments { flex-wrap: nowrap; } .cover .segments button { padding: 5px 6px; }
+      .journey li { padding-bottom: 9px; } .journey b { font-size: 15px; }
+      .comparison { margin-top: 6px; } .comparison span { font-size: 12px; line-height: 1.4; }
+      .panel-head .qual { font-size: 11px; }
+      .report-row { padding: 4px 0; grid-template-columns: 59px 1fr; }
+      .evidence .segments { gap: 1px; } .evidence .segments button { padding-inline: 5px; }
+      .evidence .verdict { margin-top: 7px; padding-top: 6px; }
+      .case-side { padding: 7px; }
+    }
+    @media (min-width: 761px) and (max-height: 640px) {
+      .topbar { min-height: 48px; } .bottom { min-height: 52px; }
+      .deck .scene { padding-block: 8px; }
+    }
+    @media (max-height: 525px) and (min-width: 500px) {
+      .app { padding-inline: 16px; } .topbar { min-height: 38px; } .bottom { min-height: 40px; }
+      .deck .scene { padding-block: 6px; } .layout { gap: 14px; } .split { grid-template-columns: .78fr 1.22fr; }
+      .intro h1 { font-size: 34px; } .intro h2 { font-size: 25px; } .intro br { display: none; }
+      .kicker, .wide .kicker { margin-bottom: 4px; font-size: 11px; } .lead { margin-top: 5px; font-size: 13px; line-height: 1.5; }
+      .tool, .pager { min-height: 31px; padding: 3px 8px; } .panel { padding: 9px 13px; } .report-card { padding: 0; }
+      .map { height: 115px; margin: 4px 0 12px; } .map-node { width: 29px; height: 29px; border-radius: 7px; } .map-node b { font-size: 11px; }
+      .segments button { padding: 3px 8px; font-size: 12px; }
+      .diagram-foot, .rules { padding-top: 6px; } .chain { margin: 7px 0; } .station .stamp { height: 30px; width: 30px; }
+      .policy-pair { margin-top: 5px; } .sample { padding: 5px 8px; }
+      .journey { margin-top: 8px; } .journey li { padding-bottom: 7px; } .journey span { font-size: 12px; }
+      .wide .intro { grid-template-columns: 1.15fr .85fr; } .wide { gap: 8px; }
+      .arch-steps { grid-template-columns: repeat(6,minmax(0,1fr)); margin: 6px 0; gap: 10px; } .arch-steps button { padding: 4px 1px; } .arch-out { padding: 6px 9px; } .arch-io { margin: 2px 0 0; }
+      .evidence .segments { margin: 6px 0; } .obs { padding: 5px 7px; } .verdict { margin-top: 6px; padding-top: 5px; }
+      .fixture { padding-bottom: 6px; } .lanes { margin: 2px 0; } .lane { padding: 4px 0; } .lane > strong, .lane > b, .lane > span:not(.connector) { padding: 5px; }
+      .comparison { margin-top: 4px; } .comparison th, .comparison td { padding-block: 5px; } .comparison span { margin: 0; font-size: 12px; }
+      .case-grid { margin-top: 5px; } .case-side { padding: 7px 10px; } .case-track { margin: 4px 0; } .record { width: 25px; } .scope { margin-top: 5px; }
+      .report-card .panel-head, .report-body { padding: 5px 12px; } .report-row { padding: 3px 0; } .milestones { margin-top: 4px; }
+    }
+    @media (max-height: 350px) and (min-width: 500px) {
+      .app { padding-inline: 9px; } .deck .scene { padding: 3px 1px; }
+      .topbar { min-height: 34px; } .bottom { min-height: 34px; } .tool, .pager { min-height: 28px; }
+      .layout.split { grid-template-columns: .74fr 1.26fr; gap: 10px; }
+      .intro h1 { font-size: 27px; } .intro h2 { font-size: 21px; }
+      .lead, .wide .lead { font-size: 12px; line-height: 1.42; }
+      .panel-head, .panel-head .qual, .scope, .milestones { font-size: 11px; }
+      .map { height: 99px; } .sample strong { font-size: 14px; }
+      .journey li { grid-template-columns: 39px 1fr; column-gap: 7px; padding-left: 10px; }
+      .journey time, .journey span { font-size: 11px; } .journey b { font-size: 14px; }
+      .evidence .segments button { padding-inline: 5px; } .verdict p { font-size: 12px; }
+      .comparison th, .comparison td { padding-block: 3px; } .comparison span { line-height: 1.35; }
+      #case .wide { grid-template-columns: .7fr 1.3fr; } #case .intro { display: block; }
+      .case-grid { gap: 6px; } .case-side { padding: 7px; } .case-side h3, .case-result { font-size: 13px; }
+      .report-row { grid-template-columns: 48px 1fr; font-size: 12px; }
+      .scope, .milestones { line-height: 1.4; }
+    }
+    @media print {
+      @page { size: 300mm 169mm; margin: 11mm 15mm; }
+      html, body, .deck, .deck body { height: auto; overflow: visible; background: var(--paper); }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; animation: none !important; }
+      .app, .deck .app { display: block; height: auto; padding: 0; max-width: none; }
+      .topbar, .deck .bottom.ui, .scene-notes, dialog, .skip, .sr { display: none !important; }
+      .stage, .deck .stage { overflow: visible; }
+      .scene, .deck .scene { display: grid !important; align-content: center; min-height: 145mm; border: 0; padding: 0; break-after: page; break-inside: avoid; }
+      .scene:last-child { break-after: auto; }
+      .intro h1 { font-size: 46px; } .intro h2 { font-size: 37px; } .lead { font-size: 17px; }
+      .split { gap: 32px; grid-template-columns: .84fr 1.16fr; } .panel { padding: 20px; } .report-card { padding: 0; }
+      .map { height: 194px; } .wide .intro { grid-template-columns: 1.15fr .85fr; }
+      .arch-steps { grid-template-columns: repeat(6,minmax(0,1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 바로가기</a>
+  <div class="app">
+    <header class="topbar">
+      <a class="brand" href="#overview" aria-label="FlowDelta 첫 장"><span class="logo" aria-hidden="true"></span>FlowDelta</a>
+      <span class="brand-sub">프로젝트 가이드</span>
+      <div class="top-actions">
+        <button class="tool ui" id="contents" type="button" aria-haspopup="dialog"><i class="glyph menu" aria-hidden="true"></i>목차</button>
+        <button class="tool fs ui" id="full" type="button" aria-label="전체 화면" hidden><i class="glyph expand" aria-hidden="true"></i><span class="fs-label">전체 화면</span></button>
+      </div>
+    </header>
+    <main class="stage" id="main" tabindex="-1" aria-label="FlowDelta 프로젝트 소개">
+      <section class="scene active" id="overview" aria-labelledby="title-overview" data-name="프로젝트 소개">
+        <div class="layout split">
+          <div class="intro">
+            <p class="kicker">n8n 워크플로우 보안</p>
+            <h1 id="title-overview">업데이트 후에도<br> <em>내 자료만 볼까?</em></h1>
+            <p class="lead">n8n은 앱을 연결해 일을 자동화합니다. FlowDelta는 업데이트 전후에 같은 일을 시켜, 새 버전이 권한 밖의 데이터를 읽거나 바꾸는지 확인합니다.</p>
+          </div>
+          <figure class="panel dark blueprint cover" data-version="after">
+            <figcaption class="panel-head">업데이트 전후의 연결 <span class="qual">설명용 그림</span></figcaption>
+            <div class="map" aria-hidden="true">
+              <i class="route trunk"></i><i class="route own"></i><i class="route new"></i>
+              <span class="map-node request"><i class="icon person"></i><b>요청자</b></span>
+              <span class="map-node workflow"><i class="icon flow"></i><b>자동화</b></span>
+              <span class="map-node owned"><i class="icon files"></i><b>내 자료</b></span>
+              <span class="map-node other"><i class="icon files"></i><b>다른 사람의 자료</b></span>
+            </div>
+            <div class="diagram-foot">
+              <div class="segments ui" role="group" aria-label="그림에서 비교할 버전" data-controls="cover">
+                <button type="button" data-choice="before" aria-pressed="false">이전 버전</button>
+                <button type="button" data-choice="after" aria-pressed="true">업데이트 후</button>
+              </div>
+              <span class="cover-state" id="cover-state" aria-live="polite">타인 자료로 가는 새 경로</span>
+            </div>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>워크플로우란</h3>
+          <p>요청을 받아 일을 끝낼 때까지 어떤 단계를 어떤 순서로 실행할지 연결한 절차입니다. n8n은 각 단계를 노드라고 부릅니다. AI를 붙이면 모델의 판단에 따라 호출하는 도구와 그 도구에 전달하는 값이 달라질 수 있습니다.</p>
+          <h3>그림을 읽는 법</h3>
+          <p>이전 버전에는 요청자 자신의 자료로 가는 연결이 있습니다. 업데이트 후에는 다른 사람의 자료로 가는 경로가 추가됐습니다. 이 점선은 확인할 후보입니다. 실제로 권한 밖의 자료를 읽었는지는 실행 증거로 판정합니다.</p>
+          <ul class="refs"><li><a id="ref-n8n" href="https://docs.n8n.io/build/understand-workflows/">n8n 공식 문서 · 노드와 워크플로우</a></li><li><a id="ref-design" href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/final/README.md">팀 설계 · 프로젝트의 핵심 질문</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="why" aria-labelledby="title-why" data-name="워크플로우의 권한">
+        <div class="layout split">
+          <div class="intro">
+            <p class="kicker">워크플로우의 권한</p>
+            <h2 id="title-why">도구의 권한이<br> <em>더 넓을 수 있습니다.</em></h2>
+            <p class="lead">사람이 요청을 보내면 도구는 연결된 계정의 권한으로 움직입니다. 확인 단계가 바뀌면 평소 업무가 성공해도 남의 자료에 닿을 수 있습니다.</p>
+          </div>
+          <figure class="panel">
+            <figcaption class="panel-head">요청이 데이터에 닿는 과정 <span class="qual">업무 규칙 예시</span></figcaption>
+            <div class="chain" aria-label="요청자에서 워크플로우를 거쳐 연결 계정으로">
+              <div class="station"><span class="stamp"><i class="icon person" aria-hidden="true"></i></span>요청자</div><span class="connector" aria-hidden="true">→</span>
+              <div class="station"><span class="stamp"><i class="icon flow" aria-hidden="true"></i></span>조건 · AI 판단</div><span class="connector" aria-hidden="true">→</span>
+              <div class="station"><span class="stamp"><i class="icon key" aria-hidden="true"></i></span>연결 계정</div>
+            </div>
+            <div class="rules">
+              <div class="segments ui" role="group" aria-label="비교할 업무 규칙" data-controls="policy">
+                <button type="button" data-choice="owner" aria-pressed="true">누구의 자료?</button>
+                <button type="button" data-choice="action" aria-pressed="false">어떤 동작?</button>
+                <button type="button" data-choice="target" aria-pressed="false">어디로 전송?</button>
+              </div>
+              <div class="policy-pair" aria-live="polite">
+                <div class="sample"><small>허용 범위</small><strong id="policy-allow">내 주문 조회</strong></div>
+                <div class="sample limit"><small>규칙 위반</small><strong id="policy-deny">타인 주문 조회</strong></div>
+              </div>
+            </div>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>업무의 성공과 권한의 준수</h3>
+          <p>배송 상태를 안내하는 자동화를 생각해 보세요. 요청자에게 배송 상태를 정확히 알려줬어도, 처리 도중 다른 고객의 주문까지 읽었다면 소유권 규칙을 위반한 것입니다. 서비스 계정에 읽을 권한이 있어도 요청자가 그 자료의 소유자인지 확인해야 합니다.</p>
+          <h3>무엇을 검사하나</h3>
+          <p>누구의 자료인지, 조회 업무 중 자료를 변경했는지, 정보를 허용된 수신처에만 보냈는지를 살핍니다. 실제 업무에 적용할 때는 운영자가 정한 역할과 예외도 정책에 기록합니다.</p>
+          <ul class="refs"><li><a href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/final/README.md">팀 설계 · 업무와 보안 정책</a></li><li><a href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/research/2026-11-10-53-동적판정-프로토콜-초안.md">판정 설계 · 보호 자원과 금지 효과</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="product" aria-labelledby="title-product" data-name="기획 배경과 제품">
+        <div class="layout split">
+          <div class="intro">
+            <p class="kicker">기획 배경과 제품</p>
+            <h2 id="title-product">외부 도구는<br> <em>도입한 뒤에도 바뀝니다.</em></h2>
+            <p class="lead">그래서 팀은 업데이트를 시험하는 <strong>검사 엔진</strong>과, 도입할 사람이 버전별 검증 근거를 읽는 <strong>결과 포털</strong>을 기획했습니다.</p>
+          </div>
+          <figure class="panel">
+            <figcaption class="panel-head">팀의 질문이 좁혀진 과정 <span class="qual">2026년 팀 회의</span></figcaption>
+            <ol class="journey">
+              <li><time datetime="2026-09-15">09.15</time><div><b>믿고 연결해도 될까?</b><span>외부 AI 도구의 공급망 위험에서 출발</span></div></li>
+              <li><time datetime="2026-10-03">10.03</time><div><b>업데이트가 무엇을 바꿨을까?</b><span>워크플로우 변경 전후 검증에 집중</span></div></li>
+              <li><time datetime="2026-11-12">11.12</time><div><b>도입할 사람이 근거를 보려면?</b><span>용도·버전·검사 결과를 담은 포털 기획</span></div></li>
+            </ol>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>왜 업데이트에 집중했나</h3>
+          <p>첫 회의에서 팀은 외부 스킬과 MCP 서버처럼 AI에 연결하는 구성요소의 공급망 보안 사고에 주목했습니다. 남이 만든 기능이 바뀌면 그 변경도 업무에 들어옵니다. 그래서 어떤 워크플로우 변경이 기존 데이터·권한과 결합할 때 문제가 생기는지 조사하기로 했습니다.</p>
+          <h3>누가 무엇을 얻나</h3>
+          <p>개발자는 바뀐 위치와 다시 할 시험을 찾아 수정할 수 있습니다. 도입 담당자는 같은 워크플로우의 여러 버전에 대해 무엇을 검사했고 어디까지 확인했는지 비교합니다. 공개 화면으로 정제된 결과를 공유하고 관리자가 등록·검사를 요청하는 방향입니다.</p>
+          <ul class="refs"><li><a id="ref-start" href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/meetings/2026-09-15-01-팀구성및주제브레인스토밍.hwpx">9월 15일 · 팀 구성 및 주제 회의록</a></li><li><a id="ref-pivot" href="https://www.notion.so/3eec2d6e1537800caf44ea12e5aea35d">10월 3일 · 프로젝트 방향 회의</a></li><li><a id="ref-portal-design" href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/meetings/2026-11-12-01-회의록.md">11월 12일 · 포털 기획 회의록</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="method" aria-labelledby="title-method" data-name="두 버전의 비교">
+        <div class="layout wide">
+          <div class="intro">
+            <p class="kicker">두 버전의 비교</p>
+            <h2 id="title-method">같은 출발점에서<br> <em>두 버전을 실행합니다.</em></h2>
+            <p class="lead">같은 요청과 규칙을 적용합니다. 초기 데이터는 각각 복제해 한쪽 실행이 다른 쪽 결과를 바꾸지 않게 합니다.</p>
+          </div>
+          <figure class="panel">
+            <figcaption class="fixture"><b>같게 유지하는 조건</b><span>업무 요청·규칙</span><span>모델·실행 환경</span><span>초기 데이터</span></figcaption>
+            <div class="lanes">
+              <div class="lane"><strong>이전 버전</strong><i class="connector" aria-hidden="true">→</i><b>격리 실행 ①</b><i class="connector" aria-hidden="true">→</i><span>이전 기록</span></div>
+              <div class="lane candidate"><strong>후보 버전</strong><i class="connector" aria-hidden="true">→</i><b>격리 실행 ②</b><i class="connector" aria-hidden="true">→</i><span>후보 기록</span></div>
+            </div>
+            <div class="diagram-foot"><span><b>비교할 것</b> &nbsp; 업무가 끝났는가 · 실제로 어떤 데이터가 조회·변경·전송됐는가</span></div>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>검사 대상</h3>
+          <p>비교 단위는 같은 업무를 수행하는 n8n 워크플로우의 기준 버전과 도입 후보 버전입니다. 현재 워크플로우 변경 경로는 정책, 의존성, 모델과 환경 설정을 고정합니다. 각 버전에 같은 시작 상태의 별도 사본을 줍니다.</p>
+          <h3>어떤 변경에 결과를 연결하나</h3>
+          <p>두 버전에 여러 수정이 함께 들어갔다면 처음에는 그 변경 묶음에 결과를 연결합니다. 한 연결이 원인이었다고 좁히려면 해당 변경을 분리한 추가 비교가 필요합니다. 실행한 파일과 조건을 다시 찾을 수 있도록 참조와 해시를 남깁니다.</p>
+          <ul class="refs"><li><a id="ref-profile" href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/FIXED_PROFILE.md">구현 문서 · 고정 입력과 버전 비교</a></li><li><a href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/final/README.md">전체 설계 · 비교 조건과 초기 상태</a></li></ul>
+        </div></details>
+      </section>
+      <section class="scene" id="architecture" aria-labelledby="title-architecture" data-name="검사 아키텍처">
+        <div class="layout wide">
+          <div class="intro">
+            <p class="kicker">검사 아키텍처</p>
+            <h2 id="title-architecture">바뀐 연결을 따라<br> <em>필요한 시험을 고릅니다.</em></h2>
+            <p class="lead">A가 영향을 받을 경로를 찾고, B가 시험을 골라 C에 넘깁니다. 판정기는 C의 기록에 업무 규칙을 적용합니다.</p>
+          </div>
+          <figure class="panel dark blueprint">
+            <figcaption class="panel-head">검사 엔진에서 결과 포털까지 <span class="qual ui">단계를 눌러 살펴보기</span></figcaption>
+            <div class="arch-steps" role="group" aria-label="검사 단계" data-controls="arch">
+              <button type="button" data-choice="input" aria-pressed="false"><small>입력</small><b>조건 고정</b></button>
+              <button type="button" data-choice="a" aria-pressed="true"><small>분석 A</small><b>변경 추적</b></button>
+              <button type="button" data-choice="b" aria-pressed="false"><small>계획 B</small><b>시험 선택</b></button>
+              <button type="button" data-choice="c" aria-pressed="false"><small>실행 C</small><b>전후 관측</b></button>
+              <button type="button" data-choice="judge" aria-pressed="false"><small>판정</small><b>규칙 대조</b></button>
+              <button type="button" data-choice="report" aria-pressed="false"><small>보고</small><b>결과 공유</b></button>
+            </div>
+            <div class="arch-out" aria-live="polite" aria-atomic="true">
+              <p id="arch-text">바뀐 노드에서 어떤 데이터와 동작까지 연결되는지 따라갑니다.</p>
+              <div class="arch-io"><span><b>입력</b><span id="arch-in">두 버전의 노드와 연결</span></span><span><b>출력</b><span id="arch-next">변경 위치와 영향 후보 경로</span></span></div>
+            </div>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>입력에서 실행까지</h3>
+          <ul>
+            <li><strong>입력.</strong> 업무와 정책, 두 버전과 환경을 고정하고 원본을 추적할 수 있는 스냅샷을 만듭니다.</li>
+            <li><strong>A · 분석.</strong> 노드를 연결한 그래프에서 실행 순서와 데이터 이동을 따라갑니다. 변경 위치, 영향을 받을 수 있는 경로, 정적으로 분석할 수 있었던 범위를 남깁니다.</li>
+            <li><strong>B · 계획.</strong> 변경 경로와 정책을 바탕으로 시나리오 카드를 검색합니다. 카드는 시험이 적용되는 조건과 필요한 증거를 담습니다. 검색한 카드를 모델에 함께 주는 RAG 방식을 설계했고, 모델이 제안한 후보도 등록된 시험 목록과 허용 조건에 맞춰 확인합니다.</li>
+            <li><strong>C · 실행.</strong> 등록된 정적 검사는 구성상의 경고를 남깁니다. 지원하는 동적 시험은 전용 n8n 환경과 합성 서비스에서 두 버전을 실행하고 응답, 서비스 이벤트, 데이터의 전후 상태를 수집합니다.</li>
+          </ul>
+          <h3>판정과 공개</h3>
+          <p>검사 대상과 별도로 남긴 기록에 판정기가 미리 정한 정책을 적용합니다. 각 판정을 원본 변경·계획·실행과 연결하고 공개용 결과만 포털에 전달합니다. 포털에서 검사 요청을 대기열에 넣고 워커가 처리하는 방식은 서비스 설계에 포함돼 있습니다.</p>
+          <ul class="refs"><li><a id="ref-a" href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/ANALYSIS.md">A · 변경 및 영향 분석</a></li><li><a id="ref-b" href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/KNOWLEDGE.md">B · 카드 검색과 계획</a> · <a href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/KNOWLEDGE_OPERATIONS.md">공유 지식 저장소</a></li><li><a id="ref-runner" href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/PIPELINE_RUNNER.md">C · 등록 실행과 산출물 연결</a> · <a id="ref-static" href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/STATIC_SCAN.md">정적 검사</a></li><li><a href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/meetings/2026-11-12-01-회의록.md">검사 요청과 공개 결과의 서비스 설계</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="evidence" aria-labelledby="title-evidence" data-name="증거와 판정">
+        <div class="layout split">
+          <div class="intro">
+            <p class="kicker">증거와 판정</p>
+            <h2 id="title-evidence"><em>새로 생긴 위반</em>인지<br> 어떻게 알 수 있을까?</h2>
+            <p class="lead">응답이 성공해도 권한을 넘었을 수 있습니다. 두 버전의 서비스 기록과 실제 데이터 변화를 같은 업무 규칙에 대조합니다.</p>
+          </div>
+          <figure class="panel evidence">
+            <figcaption class="panel-head">두 버전의 관측을 바꿔 보기 <span class="qual">판정 원리 예시</span></figcaption>
+            <div class="segments ui" role="group" aria-label="비교할 관측 조합" data-controls="evidence">
+              <button type="button" data-choice="new" aria-pressed="true">후보만 위반</button>
+              <button type="button" data-choice="both" aria-pressed="false">양쪽 위반</button>
+              <button type="button" data-choice="fix" aria-pressed="false">수정 후 차단</button>
+              <button type="button" data-choice="missing" aria-pressed="false">기록 누락</button>
+            </div>
+            <div aria-live="polite" aria-atomic="true">
+              <div class="observations">
+                <dl class="obs" id="obs-before" data-tone="clear"><dt>이전 버전</dt><dd>차단 관측</dd></dl><span class="connector" aria-hidden="true">→</span>
+                <dl class="obs" id="obs-after" data-tone="risk"><dt>후보 버전</dt><dd>위반 관측</dd></dl>
+              </div>
+              <div class="verdict"><b id="verdict-title">이 시험에서 새 위반 확인</b><p id="verdict-description">이전 버전이 막았던 동작이 후보 버전에서 실제로 일어났습니다.</p></div>
+            </div>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>한 번의 실행에서 읽을 수 있는 결과</h3>
+          <p><strong>위반 관측</strong>은 금지된 효과가 실제로 발생했다는 독립 기록이 있을 때입니다. <strong>차단 관측</strong>은 보호 조건이 금지 동작을 거절한 증거가 있을 때입니다. <strong>위반 미관측</strong>은 필요한 관측을 마쳤고 시험 범위 안에서 위반이 발견되지 않았을 때입니다. <strong>판단 불가</strong>는 필요한 증거가 없거나 그 기록을 해당 실행에 연결할 수 없을 때입니다.</p>
+          <h3>두 버전을 함께 읽기</h3>
+          <p>이전에는 차단됐거나 완전한 관측에서 위반이 없었고 후보에서 위반이 관측되면 그 시험의 보안 회귀입니다. 양쪽에 위반이 있으면 기존 문제입니다. 수정 후에는 금지 동작이 차단됐는지와 정상 업무가 계속 되는지를 각각 검사합니다. 증거가 빠진 쪽이 있으면 새 위반 여부는 판단할 수 없습니다.</p>
+          <ul class="refs"><li><a id="ref-protocol" href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/research/2026-11-10-53-동적판정-프로토콜-초안.md">팀 연구 문서 · 동적 판정 프로토콜</a></li><li><a id="ref-judge" href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/ORDER_JUDGMENT.md">구현 문서 · 독립 증거와 주문 조회 판정</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="comparison" aria-labelledby="title-comparison" data-name="기존 도구와 차이">
+        <div class="layout split">
+          <div class="intro">
+            <p class="kicker">기존 도구와 차이</p>
+            <h2 id="title-comparison">이 변경이 <em>우리 업무의 규칙</em>을 어겼을까?</h2>
+            <p class="lead">FlowDelta는 변경에 맞는 시험을 골라 업무 규칙 위반을 확인합니다. 같은 시험 횟수에서 새 위반을 더 잘 찾는지는 평가할 과제입니다.</p>
+          </div>
+          <figure class="panel">
+            <figcaption class="panel-head">도구별로 확인할 수 있는 것</figcaption>
+            <table class="comparison">
+              <caption class="sr">n8n 기본 기능, 0xCD4 검사 도구, FlowDelta 설계가 답하는 질문</caption>
+              <tbody>
+                <tr><th scope="row">n8n</th><td><b>자동화의 구성과 이력</b><span>템플릿 탐색 · 버전 복원 · 환경 점검</span></td></tr>
+                <tr><th scope="row">0xCD4</th><td><b>위험 경로와 변경</b><span>정적 검사 · 일부 HTTP 동작의 전후 실행</span></td></tr>
+                <tr><th scope="row">FlowDelta</th><td><b>업무 규칙 위반 여부</b><span>변경별 시험 선택 · 실행 증거로 판정</span></td></tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>비교의 기준</h3>
+          <p>n8n의 템플릿 라이브러리는 업무에 쓸 자동화를 찾게 해줍니다. 버전 이력은 이전 구성을 열고 복원하게 해주며, Security Audit은 자격 증명·노드·인스턴스 등에서 흔한 구성 문제를 점검합니다.</p>
+          <p>0xCD4의 공개 도구는 내보낸 워크플로우를 정적으로 검사하고 위험 경로와 변경을 보여줍니다. 팀이 확인한 버전은 지원하는 HTTP 동작에 대해 격리된 전후 실행도 제공합니다.</p>
+          <h3>무엇을 검증할 계획인가</h3>
+          <p>FlowDelta의 가설은 변경 경로와 근거 카드를 바탕으로 시험을 고르면 같은 예산에서 회귀를 더 잘 찾는다는 것입니다. 고정 순서나 단순 검색을 쓰는 경우와 동일한 조건에서 비교할 예정입니다.</p>
+          <ul class="refs"><li><a id="ref-templates" href="https://docs.n8n.io/build/ways-of-building-workflows/use-templates.md">n8n 템플릿</a> · <a id="ref-history" href="https://docs.n8n.io/build/manage-workflows/view-change-history/">버전 이력</a> · <a id="ref-audit" href="https://docs.n8n.io/deploy/host-n8n/configure-n8n/security/run-security-audits/">Security Audit</a></li><li><a id="ref-peer" href="https://github.com/0xCD4/n8n-ai-agent-security-lab/blob/9d105b3bda7eeb7b382b16b0dc67e5e0c271c5d8/README.md">0xCD4 · 검사 도구 공식 문서</a></li><li><a id="ref-compare" href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/research/2026-11-11-52-비교군-적격성.md">팀의 비교 도구 조사</a> · <a id="ref-evaluation" href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/research/2026-11-12-56-평가-사전설정-초안.md">동일 예산 평가 설계</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="case" aria-labelledby="title-case" data-name="확인한 연구 사례">
+        <div class="layout wide">
+          <div class="intro">
+            <p class="kicker">확인한 연구 사례 · n8n-claw</p>
+            <h2 id="title-case">타인의 기억을<br> <em>지울 수 있었을까?</em></h2>
+            <p class="lead">일반 사용자는 자기 기억만 지울 수 있어야 합니다. 팀은 n8n-claw의 삭제 도구 두 버전에 같은 요청을 보내 타인의 기억이 남았는지 확인했습니다.</p>
+          </div>
+          <figure class="panel">
+            <figcaption class="panel-head">타인 소유의 가상 기억 한 건 <span class="qual">각 칸은 요청 전 → 후</span></figcaption>
+            <div class="case-grid">
+              <div class="case-side risk"><h3>소유자 검사 누락 버전</h3><div class="case-track" aria-hidden="true"><i class="record"></i><span class="connector">→</span><i class="record gone"></i></div><strong class="case-result">기억이 사라짐 · 위반</strong></div>
+              <div class="case-side"><h3>소유자 검사 보완 버전</h3><div class="case-track" aria-hidden="true"><i class="record"></i><span class="connector">→</span><i class="record"></i></div><strong class="case-result">기억이 남음 · 차단</strong></div>
+            </div>
+            <p class="scope">선택한 도구 코드와 합성 서비스에서 관측했습니다. 전체 n8n·실제 모델 경로는 별도 검증 대상입니다.</p>
+          </figure>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>관측한 효과</h3>
+          <p>기억 삭제 기능이 추가된 워크플로우에서 A는 도구와 에이전트의 연결 변화를 표시했습니다. 별도의 연구 실험에서는 선택한 도구 코드를 합성 환경에서 재생했고, 일반 사용자의 요청으로 다른 사용자의 가상 기억이 사라지는 상태 변화를 관측했습니다. 소유권 검사를 보완한 버전에서는 같은 동작이 차단됐습니다.</p>
+          <h3>어디까지 확인했나</h3>
+          <p>비교 대상은 고정한 도구 버전과 합성 수신부입니다. 전체 에이전트가 실제 모델을 통해 이 도구에 도달하는 경로는 별도로 확인해야 합니다. 팀이 고정한 공개 정적 검사 도구 다섯 개는 조사한 취약·보완 버전 쌍을 구분하지 못했습니다. 이 한 사례의 결과로 일반 탐지 성능을 추정할 수는 없습니다.</p>
+          <ul class="refs"><li><a id="ref-memory" href="https://github.com/serendipity-sec/platform/pull/57">연구 기록 · n8n-claw 기억 삭제 관측</a> · <a href="https://github.com/serendipity-sec/platform/pull/64">변경 분석 기록</a></li><li><a href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/research/2026-11-11-52-비교군-적격성.md">비교 조사 · 정적 검사 도구의 관측 범위</a></li></ul>
+        </div></details>
+      </section>
+
+      <section class="scene" id="report" aria-labelledby="title-report" data-name="사용 가치와 현재 상태">
+        <div class="layout split">
+          <div class="intro">
+            <p class="kicker">사용 가치와 현재 상태</p>
+            <h2 id="title-report">이 버전을 도입할지,<br> <em>근거를 보고 결정합니다.</em></h2>
+            <p class="lead">개발자는 고칠 연결을 찾고, 도입 담당자는 어느 버전을 어디까지 검증했는지 확인합니다. 포털에 담으려는 정보입니다.</p>
+          </div>
+          <div>
+            <figure class="panel report-card">
+              <figcaption class="panel-head">버전별 보안 보고서 <span class="qual">앞 사례를 이용한 설계 예시</span></figcaption>
+              <div class="report-body">
+                <h3>n8n-claw · 기억 삭제</h3>
+                <dl>
+                  <div class="report-row"><dt>검사 규칙</dt><dd>일반 사용자는 본인 기억만 삭제</dd></div>
+                  <div class="report-row"><dt>버전 차이</dt><dd>소유자 검사 보완 후 타인 삭제 차단</dd></div>
+                  <div class="report-row"><dt>확인 범위</dt><dd>선택한 도구 · 합성 서비스</dd></div>
+                  <div class="report-row"><dt>추가 검증</dt><dd>실제 모델을 포함한 전체 실행</dd></div>
+                </dl>
+              </div>
+            </figure>
+            <p class="milestones"><b>2026.11.18</b> &nbsp; 기본 검사 경로 연결 · 주문 변형과 AI 시험 선택은 통합 검토 중 · 포털 개발 기반 마련</p>
+          </div>
+        </div>
+        <details class="scene-notes"><summary>해설과 출처</summary><div class="notes-body">
+          <h3>기본 경로와 통합 현황 · 2026년 11월 18일</h3>
+          <p>고정 입력, A 분석, B의 카드 기반 계획, C 등록 검사가 연결됐습니다. 합성 정상 주문에서는 실제 n8n 실행과 증거 수집을 확인했고, 지원하는 주문 읽기는 별도 보고서에서 선택적으로 판정합니다. 실행 요약의 보안 결과는 비어 있으며 정상 완료와 보안 판정을 각각 읽어야 합니다.</p>
+          <p>주문 소유권 시험용 합성 환경은 구현됐습니다. 위험한 주문 변형의 실행·자동 판정, 일반 실행기의 공유 벡터 검색, 모델 기반 시험 선택과 평가 기록은 별도 PR에서 통합 검토 중입니다. 같은 예산에서 기준선과 비교하는 최종 평가는 남아 있습니다.</p>
+          <h3>신입이 코드를 따라가는 순서</h3>
+          <p><strong>docs</strong>에서 업무와 정책을 정한 이유를 읽고 <strong>platform</strong>에서 변경 분석, 시험 계획, 실행 기록, 판정의 연결을 봅니다. <strong>flowdelta-results-app</strong>에는 React 화면과 FastAPI 개발 기반, 정제된 공개 결과 계약과 합성 예제가 있습니다. 제품 화면·저장소 연동·운영 배포는 후속 작업입니다.</p>
+          <ul class="refs"><li><a href="https://github.com/serendipity-sec/docs/blob/40784cb39863d6cc97d9fb1cc3b994a9612d68ad/final/README.md">docs · 전체 설계</a> · <a href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/PIPELINE_RUNNER.md">platform · 통합 실행</a> · <a id="ref-results-app" href="https://github.com/serendipity-sec/flowdelta-results-app/blob/d8bf15d0ad4901e0f32a16b76b4d14d543b38a46/README.md">결과 앱 · 공개 계약</a></li><li><a href="https://github.com/serendipity-sec/platform/blob/c1ef141a55a744e294ac6aca0448de2684fba90a/docs/ORDER_JUDGMENT.md">정상 주문 판정</a> · <a id="ref-ownership" href="https://github.com/serendipity-sec/platform/pull/114">주문 시험 환경</a> · <a id="ref-order-pr" href="https://github.com/serendipity-sec/platform/pull/120">위험 변형 통합 PR</a></li><li><a id="ref-rag" href="https://github.com/serendipity-sec/platform/pull/123">공유 검색 PR</a> · <a href="https://github.com/serendipity-sec/platform/pull/124">AI 시험 선택 PR</a> · <a href="https://github.com/serendipity-sec/platform/pull/125">평가 기록 PR</a></li></ul>
+        </div></details>
+      </section>
+    </main>
+    <footer class="bottom ui" aria-label="페이지 이동">
+      <div class="meter"><span class="counter"><b id="number">01</b><span> / <span id="total">09</span></span></span><span class="bars" id="bars" aria-hidden="true"></span><span class="current-name" id="current-name">프로젝트 소개</span></div>
+      <div class="turns">
+        <button class="tool" type="button" id="details" aria-haspopup="dialog"><i class="glyph book" aria-hidden="true"></i>해설·출처</button>
+        <button class="pager prev" type="button" id="prev" disabled><span class="turn-arrow" aria-hidden="true">←</span><span class="pager-word">이전</span></button>
+        <button class="pager next" type="button" id="next"><span id="next-label">다음</span><span class="turn-arrow" id="next-arrow" aria-hidden="true">→</span></button>
+      </div>
+    </footer>
+  </div>
+  <p class="sr" id="announce" role="status" aria-live="polite" aria-atomic="true"></p>
+  <dialog id="reader" aria-labelledby="dialog-title">
+    <div class="dialog-head"><h2 id="dialog-title">목차</h2><button class="tool" id="close-reader" type="button" aria-label="창 닫기">닫기</button></div>
+    <div class="dialog-body" id="dialog-body"></div>
+  </dialog>
+  <script>
+    (() => {
+      const byId = id => document.getElementById(id);
+      const dialog = byId("reader");
+      if (typeof dialog.showModal !== "function") return;
+
+      const scenes = Array.from(document.querySelectorAll(".scene"));
+      const stage = byId("main");
+      const body = byId("dialog-body");
+      const prev = byId("prev");
+      const next = byId("next");
+      const sections = new Map(scenes.map(scene => [scene.id, scene]));
+      const sources = Array.from(document.querySelectorAll(".scene-notes .refs a"));
+      const sourceIds = new Map(sources.filter(link => link.id).map(link => [link.id, link]));
+      let current = 0;
+      const pageNumber = index => String(index + 1).padStart(2, "0");
+      const bars = scenes.map(() => byId("bars").appendChild(document.createElement("i")));
+      byId("total").textContent = String(scenes.length).padStart(2, "0");
+
+      const coverCopy = { before: "내 자료로 이어지는 경로", after: "타인 자료로 가는 새 경로" };
+      const policies = {
+        owner: ["내 주문 조회", "타인 주문 조회"],
+        action: ["배송 상태 읽기", "조회 중 주문 변경"],
+        target: ["승인된 수신처", "미승인 수신처"]
+      };
+      const architecture = {
+        input: ["검사할 두 버전에 같은 업무·정책·실행 조건을 지정합니다.", "워크플로우 두 버전과 업무 규칙", "비교할 버전과 초기 상태 사본"],
+        a: ["바뀐 노드에서 어떤 데이터와 동작까지 연결되는지 따라갑니다.", "두 버전의 노드와 연결", "변경 위치와 영향 후보 경로"],
+        b: ["관련 사례 카드를 검색해 이 경로에 맞는 등록 시험을 고릅니다.", "변경 경로·정책·사례 카드", "시험 계획과 수집할 근거"],
+        c: ["구성을 검사하고 지원하는 두 버전을 격리 실행해 기록을 모읍니다.", "시험 계획과 격리 환경", "정적 경고 또는 서비스 기록·상태 변화"],
+        judge: ["요청자와 자원에 실제로 일어난 일을 고정된 업무 규칙과 대조합니다.", "독립 기록과 정책", "실행별 판정과 근거"],
+        report: ["두 버전의 판정과 원본 변경을 묶어 공개용 결과로 정리합니다.", "전후 판정과 검사 범위", "버전별 검토 보고서"]
+      };
+      const comparisons = {
+        new: { before: ["차단 관측", "clear"], after: ["위반 관측", "risk"], title: "이 시험에서 새 위반 확인", explanation: "이전 버전이 막았던 동작이 후보 버전에서 실제로 일어났습니다." },
+        both: { before: ["위반 관측", "risk"], after: ["위반 관측", "risk"], title: "기존 문제가 이어짐", explanation: "같은 금지 효과가 두 버전에 모두 기록됐습니다." },
+        fix: { before: ["위반 관측", "risk"], after: ["차단 관측", "clear"], title: "이 시험에서 차단 확인", explanation: "수정 후 같은 동작을 거절한 기록이 있습니다. 정상 업무도 별도로 확인합니다." },
+        missing: { before: ["기록 불완전", "unknown"], after: ["위반 관측", "risk"], title: "새로 생겼는지 판단 불가", explanation: "후보의 위반은 확인됐습니다. 이전 버전의 기록이 부족해 두 결과를 비교할 수 없습니다." }
+      };
+
+      function displayObservation(element, observation) {
+        const [label, tone] = observation;
+        element.querySelector("dd").textContent = label;
+        element.dataset.tone = tone;
+      }
+
+      const renderChoice = {
+        cover(choice) {
+          document.querySelector(".cover").dataset.version = choice;
+          byId("cover-state").textContent = coverCopy[choice];
+        },
+        policy(choice) {
+          const [allow, deny] = policies[choice];
+          byId("policy-allow").textContent = allow;
+          byId("policy-deny").textContent = deny;
+        },
+        arch(choice) {
+          const [description, input, output] = architecture[choice];
+          byId("arch-text").textContent = description;
+          byId("arch-in").textContent = input;
+          byId("arch-next").textContent = output;
+        },
+        evidence(choice) {
+          const data = comparisons[choice];
+          displayObservation(byId("obs-before"), data.before);
+          displayObservation(byId("obs-after"), data.after);
+          byId("verdict-title").textContent = data.title;
+          byId("verdict-description").textContent = data.explanation;
+        }
+      };
+
+      function choose(button) {
+        const group = button.closest("[data-controls]");
+        for (const item of group.querySelectorAll("button")) {
+          item.setAttribute("aria-pressed", String(item === button));
+        }
+        renderChoice[group.dataset.controls](button.dataset.choice);
+      }
+
+      for (const group of document.querySelectorAll("[data-controls]")) {
+        group.addEventListener("click", event => {
+          const button = event.target.closest("button[data-choice]");
+          if (button) choose(button);
+        });
+      }
+
+      function showScene(scene) {
+        const index = scenes.indexOf(scene);
+        const oldScene = scenes[current];
+        const focusWasInScene = oldScene.contains(document.activeElement);
+        if (dialog.open) dialog.close();
+        for (const item of scenes) item.classList.toggle("active", item === scene);
+        current = index;
+        byId("number").textContent = pageNumber(index);
+        byId("current-name").textContent = scene.dataset.name;
+        bars.forEach((bar, i) => bar.classList.toggle("filled", i <= index));
+        prev.disabled = index === 0;
+        const isLast = index === scenes.length - 1;
+        byId("next-label").textContent = isLast ? "처음으로" : "다음";
+        byId("next-arrow").textContent = isLast ? "↺" : "→";
+        const heading = scene.querySelector("h1, h2");
+        byId("announce").textContent = (index + 1) + " / " + scenes.length + " · " + heading.textContent;
+        document.title = scene.dataset.name + " · FlowDelta";
+        stage.scrollTop = 0;
+        if (focusWasInScene && scene !== oldScene) {
+          heading.tabIndex = -1;
+          heading.focus({ preventScroll: true });
+        }
+      }
+
+      function goTo(index) {
+        if (index < 0 || index >= scenes.length) return;
+        const hash = "#" + scenes[index].id;
+        if (location.hash !== hash) location.hash = hash;
+        else showScene(scenes[index]);
+      }
+
+      function makeButton(label, handler) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "tool";
+        button.textContent = label;
+        button.addEventListener("click", handler);
+        return button;
+      }
+
+      function openReader(title, content) {
+        byId("dialog-title").textContent = title;
+        body.replaceChildren(content);
+        body.scrollTop = 0;
+        if (!dialog.open) dialog.showModal();
+        byId("close-reader").focus({ preventScroll: true });
+      }
+
+      function openNotes(scene, sourceId) {
+        const content = scene.querySelector(".notes-body").cloneNode(true);
+        const links = content.querySelectorAll("[id]");
+        let target;
+        for (const link of links) {
+          if (link.id === sourceId) target = link;
+          link.removeAttribute("id");
+        }
+        openReader(scene.dataset.name + " · 해설과 출처", content);
+        if (target) target.scrollIntoView({ block: "nearest" });
+      }
+
+      function openSources() {
+        const content = document.createElement("div");
+        content.className = "notes-body";
+        const urls = new Set();
+        for (const scene of scenes) {
+          const list = document.createElement("ul");
+          for (const source of scene.querySelectorAll(".refs a")) {
+            if (urls.has(source.href)) continue;
+            urls.add(source.href);
+            const link = source.cloneNode(true);
+            link.removeAttribute("id");
+            list.appendChild(document.createElement("li")).appendChild(link);
+          }
+          if (!list.children.length) continue;
+          const heading = document.createElement("h3");
+          heading.textContent = scene.dataset.name;
+          content.append(heading, list);
+        }
+        openReader("전체 근거 문서", content);
+      }
+
+      function openContents() {
+        const content = document.createDocumentFragment();
+        const list = document.createElement("ol");
+        list.className = "toc";
+        scenes.forEach((scene, index) => {
+          const link = document.createElement("a");
+          const number = document.createElement("span");
+          number.textContent = pageNumber(index);
+          link.href = "#" + scene.id;
+          link.append(number, scene.dataset.name);
+          if (index === current) link.setAttribute("aria-current", "page");
+          link.addEventListener("click", event => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            dialog.close();
+            goTo(index);
+          });
+          list.appendChild(document.createElement("li")).appendChild(link);
+        });
+        const actions = document.createElement("div");
+        actions.className = "dialog-tools";
+        actions.append(makeButton("전체 근거 문서", openSources), makeButton("인쇄 / PDF", () => {
+          dialog.close();
+          window.print();
+        }));
+        content.append(list, actions);
+        openReader("목차", content);
+      }
+
+      function readAddress() {
+        const id = location.hash.slice(1);
+        const source = sourceIds.get(id);
+        if (source) {
+          const scene = source.closest(".scene");
+          showScene(scene);
+          openNotes(scene, id);
+          return;
+        }
+        if (id === "sources") {
+          showScene(scenes[current]);
+          openSources();
+          return;
+        }
+        if (id.startsWith("part-") && Object.hasOwn(architecture, id.slice(5))) {
+          showScene(sections.get("architecture"));
+          const button = document.querySelector('[data-controls="arch"] [data-choice="' + id.slice(5) + '"]');
+          choose(button);
+          return;
+        }
+        if (id === "main") {
+          stage.focus({ preventScroll: true });
+          return;
+        }
+        showScene(sections.get(id) || scenes[0]);
+      }
+
+      byId("contents").addEventListener("click", openContents);
+      byId("details").addEventListener("click", () => openNotes(scenes[current]));
+      byId("close-reader").addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", event => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+      });
+      prev.addEventListener("click", () => goTo(current - 1));
+      next.addEventListener("click", () => goTo(current === scenes.length - 1 ? 0 : current + 1));
+      window.addEventListener("hashchange", readAddress);
+      document.addEventListener("keydown", event => {
+        if (dialog.open || event.defaultPrevented || event.isComposing || event.altKey || event.ctrlKey || event.metaKey) return;
+        const code = event.key;
+        const active = event.target;
+        if (active.closest("input, textarea, select, [contenteditable=true]")) return;
+        if (code === " " && active.closest("button, a, summary")) return;
+        const moves = { ArrowRight: current + 1, PageDown: current + 1, ArrowLeft: current - 1, PageUp: current - 1, Home: 0, End: scenes.length - 1, " ": event.shiftKey ? current - 1 : current + 1 };
+        if (!Object.hasOwn(moves, code)) return;
+        event.preventDefault();
+        if (!event.repeat) goTo(moves[code]);
+      });
+
+      let touchStart = null;
+      stage.addEventListener("touchstart", event => {
+        touchStart = null;
+        if (event.touches.length !== 1 || event.target.closest("button, a, summary") || (window.visualViewport?.scale || 1) > 1) return;
+        touchStart = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+      }, { passive: true });
+      stage.addEventListener("touchcancel", () => { touchStart = null; }, { passive: true });
+      stage.addEventListener("touchend", event => {
+        if (!touchStart) return;
+        const dx = event.changedTouches[0].clientX - touchStart.x;
+        const dy = event.changedTouches[0].clientY - touchStart.y;
+        touchStart = null;
+        if (event.touches.length || Math.abs(dx) < 52 || Math.abs(dx) < 1.6 * Math.abs(dy)) return;
+        goTo(current + (dx < 0 ? 1 : -1));
+      }, { passive: true });
+
+      const full = byId("full");
+      if (document.fullscreenEnabled) {
+        full.hidden = false;
+        full.addEventListener("click", async () => {
+          try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+          } catch {
+            byId("announce").textContent = "이 브라우저에서는 전체 화면 전환을 사용할 수 없습니다.";
+          }
+        });
+        document.addEventListener("fullscreenchange", () => {
+          const label = document.fullscreenElement ? "전체 화면 종료" : "전체 화면";
+          full.setAttribute("aria-label", label);
+          full.querySelector(".fs-label").textContent = label;
+        });
+      }
+      document.documentElement.classList.add("deck");
+      readAddress();
+    })();
+  </script>
+</body>
+</html>
