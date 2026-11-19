@@ -4,7 +4,7 @@
 
 자체 호스팅 n8n 사용자가 검증 이력이 있는 워크플로를 고르고, 자기 업무에 맞게 수정한 뒤 원본과 다시 비교할 수 있는 서비스를 제안합니다. **우선 의견을 듣고 싶은 것은 팀원이 함께 쓸 RAG용 DB 서버와 임베딩 모델 조합입니다.** 아래 후보 중 어떤 조합이 지금 코드와 팀 예산에 맞을까요? 다른 조합도 좋습니다.
 
-[전체 배포 그림 크게 보기](flowdelta-deployment.png) · [확대용 SVG](flowdelta-deployment.svg)
+[제품 범위·신청·엔진·배포·미결정 항목 상세 설계](detailed-design.md) · [전체 배포 그림 크게 보기](flowdelta-deployment.png) · [확대용 SVG](flowdelta-deployment.svg)
 
 ## 먼저 결정할 공용 DB와 임베딩 모델
 
