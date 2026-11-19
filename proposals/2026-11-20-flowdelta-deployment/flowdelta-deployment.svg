@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1680" height="1624" viewBox="0 0 1680 1624" role="img" aria-labelledby="title description">
+<title id="title">FlowDelta 전체 배포 아키텍처 · 2026년 11월 20일</title>
+<desc id="description">팀의 사전 검증과 두 종류의 사용자 재검증 신청, Vercel 결과 웹과 FastAPI, 비동기 큐, 로컬 검증 워커, 지식 카드와 임베딩 검색, OpenRouter GLM, Neon 결과 DB의 연결을 나타낸다. 각 기능에 구현·수정·신규를 적었으며 미결정 값은 빈 표 셀로 남겼다.</desc>
+<defs><marker id="arrow-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#526c7c"/></marker><marker id="arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M10 0 L0 5 L10 10 Z" fill="#526c7c"/></marker></defs>
+<rect x="0" y="0" width="1680" height="1624" rx="0" fill="#fafbf9" stroke="none" stroke-width="1.3"/>
+<text x="48" y="75" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="49.00" font-weight="700" text-anchor="start" fill="#172e40">FlowDelta 배포 아키텍처</text>
+<text x="1632" y="68" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="23.00" font-weight="700" text-anchor="end" fill="#475f70">2026. 11. 20.</text>
+<text x="50" y="120" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="25.00" font-weight="400" text-anchor="start" fill="#294359">자체 호스팅 n8n의 워크플로와 커뮤니티 노드 검증</text>
+<rect x="917" y="99" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="939.5" y="117" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="971" y="117" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">main에 반영</text>
+<rect x="1128" y="99" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="1150.5" y="117" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="1182" y="117" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">확장·연동 필요</text>
+<rect x="1372" y="99" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="1394.5" y="117" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="1426" y="117" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">새로 개발</text>
+<path d="M48 146 L1632 146" fill="none" stroke="#95a9b1" stroke-width="1.6"/>
+<text x="48" y="191" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="30.00" font-weight="700" text-anchor="start" fill="#172e40">서비스 요청과 결과 전달</text>
+<text x="1632" y="190" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.00" font-weight="400" text-anchor="end" fill="#475f70">화살표는 목표 배포의 데이터 흐름이며, 구현 상태는 기능별로 표시했다.</text>
+<rect x="428" y="215" width="392" height="371" rx="14" fill="#eef3f6" stroke="#c9d7dc" stroke-width="1.3"/>
+<text x="444" y="245" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="20.00" font-weight="700" text-anchor="start" fill="#294359">결과 웹과 API</text>
+<text x="804" y="245" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.00" font-weight="400" text-anchor="end" fill="#475f70">flowdelta-app</text>
+<rect x="1210" y="215" width="422" height="420" rx="14" fill="#edf4f0" stroke="#c9d7dc" stroke-width="1.3"/>
+<text x="1226" y="245" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="20.00" font-weight="700" text-anchor="start" fill="#294359">로컬 검증 환경</text>
+<text x="1616" y="245" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.00" font-weight="400" text-anchor="end" fill="#475f70">platform</text>
+<path d="M376 330 L448 330" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+<path d="M625 401 L625 435" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+<path d="M798 461 L852 461 L852 369 L893 369" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M1168 369 L1230 369" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M1420 317 L1420 341" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M1420 444 L1420 478" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M1230 428 L1194 428 L1194 476 L798 476" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M1230 518 L798 518" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M638 566 L638 618 L893 618" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+<g id="users">
+<rect x="48" y="262" width="328" height="212" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="65" y="296" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="26.00" font-weight="700" text-anchor="start" fill="#172e40">사용자</text>
+<text x="65" y="331" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="700" text-anchor="start" fill="#475f70">검증 신청</text>
+<text x="65" y="360" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="19.00" font-weight="400" text-anchor="start" fill="#294359">기존 워크플로 이전본 + 수정본</text>
+<text x="65" y="388" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="19.00" font-weight="400" text-anchor="start" fill="#294359">카탈로그 기준 버전 + 내 수정본</text>
+<path d="M65 405 L357 405" fill="none" stroke="#cdd9de" stroke-width="1.2"/>
+<text x="65" y="432" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="700" text-anchor="start" fill="#475f70">결과 열람</text>
+<text x="65" y="458" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="19.00" font-weight="400" text-anchor="start" fill="#294359">공개 버전 이력 · 나의 신청 결과</text>
+</g>
+<g id="web" aria-label="React · Vite  /  Vercel 배포">
+<rect x="448" y="260" width="350" height="141" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="464" y="294" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="23.00" font-weight="700" text-anchor="start" fill="#172e40">React · Vite  /  Vercel 배포</text>
+<rect x="464" y="305" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="323" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="518" y="323" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">검색·목록·상세 UI와 합성 데이터</text>
+<rect x="464" y="335" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="353" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="518" y="353" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.25" font-weight="400" text-anchor="start" fill="#294359">검증된 버전의 카탈로그·이력 연결</text>
+<rect x="464" y="365" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="383" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="518" y="383" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">신청 화면·신청 건별 결과</text>
+</g>
+<g id="api" aria-label="FastAPI  /  Vercel 배포 예정">
+<rect x="448" y="435" width="350" height="131" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="464" y="469" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="23.00" font-weight="700" text-anchor="start" fill="#172e40">FastAPI  /  Vercel 배포 예정</text>
+<rect x="464" y="476" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="494" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="518" y="494" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">상태 확인 경로</text>
+<rect x="464" y="504" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="522" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="518" y="522" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">신청 접수·건별 상태와 결과 조회</text>
+<rect x="464" y="532" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="550" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="518" y="550" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">공개 결과 게시·정정·철회·조회</text>
+</g>
+<text x="640" y="426" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="start" fill="#475f70">/api</text>
+<g id="queue" aria-label="비동기 작업 큐">
+<rect x="893" y="315" width="275" height="106" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="909" y="349" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">비동기 작업 큐</text>
+<rect x="909" y="375" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="931.5" y="393" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="963" y="393" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.00" font-weight="400" text-anchor="start" fill="#294359">신청 작업을 워커에 전달</text>
+</g>
+<rect x="1230" y="264" width="382" height="53" rx="9" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="1246" y="296" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="19.00" font-weight="700" text-anchor="start" fill="#294359">운영팀</text>
+<text x="1320" y="296" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">카탈로그용 버전 선정·사전 검사</text>
+<g id="localworker" aria-label="검증 워커 · Python / Docker">
+<rect x="1230" y="341" width="382" height="103" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="1246" y="375" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="22.00" font-weight="700" text-anchor="start" fill="#172e40">검증 워커 · Python / Docker</text>
+<rect x="1246" y="384" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="1268.5" y="402" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="1300" y="402" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">등록된 주문 조회 사례의 로컬 실행</text>
+<rect x="1246" y="412" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="1268.5" y="430" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="1300" y="430" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">신청 작업과 여러 사례의 검사 연결</text>
+</g>
+<g id="publisher" aria-label="결과 게시 모듈">
+<rect x="1230" y="478" width="382" height="90" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="1246" y="512" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">결과 게시 모듈</text>
+<rect x="1246" y="526" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="1268.5" y="544" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="1300" y="544" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">공개가 허용된 결과만 v2로 전송</text>
+</g>
+<text x="1016" y="466" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="400" text-anchor="middle" fill="#475f70">신청 건별 상태·결과 인계</text>
+<text x="1016" y="507" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="400" text-anchor="middle" fill="#475f70">공개 게시 · Bearer 인증</text>
+<text x="1440" y="469" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.00" font-weight="400" text-anchor="start" fill="#475f70">검증 기록</text>
+<text x="1230" y="618" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="400" text-anchor="start" fill="#475f70">원본 로그·입출력 본문은 로컬에 보관</text>
+<g id="resultdb" aria-label="Neon PostgreSQL · 결과 DB">
+<rect x="893" y="549" width="310" height="113" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="909" y="583" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="20.70" font-weight="700" text-anchor="start" fill="#172e40">Neon PostgreSQL · 결과 DB</text>
+<rect x="909" y="599" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="931.5" y="617" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="963" y="617" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.25" font-weight="400" text-anchor="start" fill="#294359">버전·검증 테이블과 공개 조회 뷰</text>
+<rect x="909" y="628" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="931.5" y="646" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="963" y="646" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.25" font-weight="400" text-anchor="start" fill="#294359">첫 등록·파생본·패키지 버전 반영</text>
+</g>
+<text x="756" y="607" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="middle" fill="#475f70">게시 저장 · 결과 조회</text>
+<path d="M49 508 L49 607" fill="none" stroke="#9aabb3" stroke-width="3.4"/>
+<text x="63" y="529" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="19.00" font-weight="700" text-anchor="start" fill="#172e40">공개 주소 응답</text>
+<text x="63" y="557" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">홈 200</text>
+<text x="63" y="584" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">/results · /api/health  404</text>
+<text x="48" y="652" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#475f70">운영 Neon에 실제 결과를 게시하고 웹에서 다시 읽는 전 과정은 확인 전이다.</text>
+<path d="M48 687 L1632 687" fill="none" stroke="#95a9b1" stroke-width="1.5"/>
+<text x="48" y="731" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="30.00" font-weight="700" text-anchor="start" fill="#172e40">검증 워커 내부와 외부 서비스</text>
+<text x="1632" y="730" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.00" font-weight="400" text-anchor="end" fill="#475f70">워크플로 검사와 패키지 자체 검사는 각각의 버전에 근거를 남긴다.</text>
+<path d="M378 824 L448 824" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M594 888 L594 962" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+<path d="M750 962 L750 920 L1037 920 L1037 888" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-start="url(#arrow-start)" marker-end="url(#arrow-end)"/>
+<path d="M1450 962 L1450 888" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M378 1017 L448 1017" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M799 1017 L866 1017" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M1193 1017 L1259 1017" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M213 1114 L213 1151" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M378 1194 L448 1194" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<path d="M904 1194 L1450 1194 L1450 1114" fill="none" stroke="#526c7c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-end)"/>
+<g id="cards" aria-label="보안 지식 카드">
+<rect x="48" y="757" width="330" height="131" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="64" y="791" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">보안 지식 카드</text>
+<rect x="64" y="811" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="86.5" y="829" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="118" y="829" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">출처 검증·카드 검토·버전 관리</text>
+<rect x="64" y="844" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="86.5" y="862" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="118" y="862" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.25" font-weight="400" text-anchor="start" fill="#294359">대상 노드와 변경 사례별 자료 확충</text>
+</g>
+<g id="vector" aria-label="임베딩과 벡터 검색">
+<rect x="448" y="757" width="351" height="131" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="464" y="791" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">임베딩과 벡터 검색</text>
+<rect x="464" y="811" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="829" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="518" y="829" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">로컬 PostgreSQL·pgvector 검색</text>
+<rect x="464" y="844" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="862" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="518" y="862" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="start" fill="#294359">공용 색인·팀원 접근·원본 근거 공유</text>
+</g>
+<g id="glm" aria-label="OpenRouter · 저비용 GLM">
+<rect x="866" y="757" width="327" height="131" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="882" y="791" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="23.00" font-weight="700" text-anchor="start" fill="#172e40">OpenRouter · 저비용 GLM</text>
+<rect x="882" y="813" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="904.5" y="831" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="936" y="831" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.50" font-weight="400" text-anchor="start" fill="#294359">A의 변경과 검색 근거로 시험 제안</text>
+</g>
+<text x="882" y="861" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.00" font-weight="400" text-anchor="start" fill="#475f70">등록 후보 선택 PR #124는 병합 전</text>
+<g id="report" aria-label="버전별 검증 보고서">
+<rect x="1259" y="757" width="373" height="131" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="1275" y="791" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">버전별 검증 보고서</text>
+<rect x="1275" y="811" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="1297.5" y="829" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="1329" y="829" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">보안·정상 기능·성능 결과 구분</text>
+<rect x="1275" y="844" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="1297.5" y="862" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="1329" y="862" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">검증 기준을 충족한 버전에 표시</text>
+</g>
+<text x="415" y="810" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.50" font-weight="400" text-anchor="middle" fill="#475f70">색인</text>
+<text x="609" y="928" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="start" fill="#475f70">질의·검색</text>
+<text x="895" y="909" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="middle" fill="#475f70">근거 전달 · 시험안 반환</text>
+<text x="1465" y="929" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="start" fill="#475f70">판정 근거</text>
+<g id="analysis" aria-label="A  입력·변경 분석">
+<rect x="48" y="962" width="330" height="152" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="64" y="996" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">A  입력·변경 분석</text>
+<rect x="64" y="1003" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="86.5" y="1021" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="118" y="1021" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">업무·정책·환경·초기 상태 고정</text>
+<rect x="64" y="1029" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="86.5" y="1047" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="118" y="1047" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">버전 해시·변경 노드·영향 경로</text>
+<rect x="64" y="1055" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="86.5" y="1073" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="118" y="1073" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.75" font-weight="400" text-anchor="start" fill="#294359">사용자 수정본의 기준 버전 연결</text>
+<rect x="64" y="1081" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="86.5" y="1099" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="118" y="1099" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">비교 이력 없는 첫 등록 처리</text>
+</g>
+<g id="planning" aria-label="B  시험 계획">
+<rect x="448" y="962" width="351" height="152" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="464" y="996" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">B  시험 계획</text>
+<rect x="464" y="1012" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="1030" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="518" y="1030" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">로컬 카드 검색·등록 시험 계획</text>
+<rect x="464" y="1044" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="1062" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="518" y="1062" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">공용 벡터 검색과 실행기 연결</text>
+<rect x="464" y="1076" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="1094" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="518" y="1094" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">근거에 맞는 시나리오 생성·검증</text>
+</g>
+<g id="execution" aria-label="C  워크플로 검사">
+<rect x="866" y="962" width="327" height="152" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="882" y="996" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">C  워크플로 검사</text>
+<rect x="882" y="1003" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="904.5" y="1021" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="936" y="1021" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="400" text-anchor="start" fill="#294359">등록 주문 전후 실행·증거 수집</text>
+<rect x="882" y="1029" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="904.5" y="1047" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="936" y="1047" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">일부 노드 코드의 정적 검사</text>
+<rect x="882" y="1055" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="904.5" y="1073" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="936" y="1073" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.50" font-weight="400" text-anchor="start" fill="#294359">다른 워크플로의 실행 설정 지원</text>
+<rect x="882" y="1081" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="904.5" y="1099" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="936" y="1099" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">노드·워크플로 성능 측정</text>
+</g>
+<g id="judgment" aria-label="독립 판정">
+<rect x="1259" y="962" width="373" height="152" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="1275" y="996" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="24.00" font-weight="700" text-anchor="start" fill="#172e40">독립 판정</text>
+<rect x="1275" y="1012" width="45" height="24" rx="5" fill="#ddf2e9" stroke="none" stroke-width="1.3"/>
+<text x="1297.5" y="1030" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#116049">구현</text>
+<text x="1329" y="1030" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="16.75" font-weight="400" text-anchor="start" fill="#294359">주문 정상 검사·한정된 보안 규칙 판정</text>
+<rect x="1275" y="1044" width="45" height="24" rx="5" fill="#fbe9cf" stroke="none" stroke-width="1.3"/>
+<text x="1297.5" y="1062" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#804702">수정</text>
+<text x="1329" y="1062" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">다른 사례의 정책·증거에 적용</text>
+</g>
+<text x="1275" y="1095" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="400" text-anchor="start" fill="#475f70">미지원·미평가·부분 수집을 따로 기록</text>
+<rect x="48" y="1151" width="330" height="86" rx="9" fill="#f1f5f5" stroke="#c5d4d9" stroke-width="1.3"/>
+<text x="64" y="1184" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="22.00" font-weight="700" text-anchor="start" fill="#172e40">커뮤니티·자체 제작 노드</text>
+<text x="64" y="1215" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">패키지 이름·버전 또는 소스 리비전</text>
+<g id="nodecheck" aria-label="노드 패키지 자체 검사">
+<rect x="448" y="1151" width="456" height="86" rx="10" fill="#ffffff" stroke="#bbcdd5" stroke-width="1.3"/>
+<text x="464" y="1185" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="22.00" font-weight="700" text-anchor="start" fill="#172e40">노드 패키지 자체 검사</text>
+<rect x="464" y="1196" width="45" height="24" rx="5" fill="#e7ebff" stroke="none" stroke-width="1.3"/>
+<text x="486.5" y="1214" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.00" font-weight="700" text-anchor="middle" fill="#3c4e9b">신규</text>
+<text x="518" y="1214" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.00" font-weight="400" text-anchor="start" fill="#294359">패키지 코드·의존성의 정적 검사</text>
+</g>
+<text x="1179" y="1181" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.00" font-weight="400" text-anchor="middle" fill="#475f70">검사 근거를 패키지·워크플로 버전에 연결</text>
+<path d="M48 1260 L1632 1260" fill="none" stroke="#95a9b1" stroke-width="1.5"/>
+<text x="48" y="1305" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="30.00" font-weight="700" text-anchor="start" fill="#172e40">배포 전에 결정할 값</text>
+<text x="1632" y="1304" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.00" font-weight="400" text-anchor="end" fill="#475f70">아래 빈칸은 팀이 아직 확정하지 않은 선택이다.</text>
+<rect x="48" y="1330" width="1584" height="232" rx="0" fill="#ffffff" stroke="#bdcdd2" stroke-width="1.3"/>
+<rect x="49" y="1331" width="1582" height="36" rx="0" fill="#eaf0f1" stroke="none" stroke-width="1.3"/>
+<path d="M495 1330 L495 1562" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<path d="M827 1330 L827 1562" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<path d="M1297 1330 L1297 1562" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<text x="63" y="1356" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="700" text-anchor="start" fill="#475f70">결정 항목</text>
+<text x="510" y="1356" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="700" text-anchor="start" fill="#475f70">결정값</text>
+<text x="842" y="1356" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="700" text-anchor="start" fill="#475f70">결정 항목</text>
+<text x="1312" y="1356" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="17.50" font-weight="700" text-anchor="start" fill="#475f70">결정값</text>
+<path d="M48 1367 L1632 1367" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<text x="63" y="1394" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">신청자 인증·권한</text>
+<text x="842" y="1394" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">팀 공용 임베딩 DB 서버·접근 경로</text>
+<path d="M48 1406 L1632 1406" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<text x="63" y="1433" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">작업 큐 제품·작업 전달 방식</text>
+<text x="842" y="1433" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">운영 임베딩 모델·모델 실행 위치</text>
+<path d="M48 1445 L1632 1445" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<text x="63" y="1472" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">상시 워커 장비·운영 담당</text>
+<text x="842" y="1472" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">OpenRouter에서 사용할 GLM 모델 ID</text>
+<path d="M48 1484 L1632 1484" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<text x="63" y="1511" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">신청 원본·결과의 저장 위치와 보존·공개 범위</text>
+<text x="842" y="1511" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">성능 지표·버전별 검증 표시 기준</text>
+<path d="M48 1523 L1632 1523" fill="none" stroke="#c9d6da" stroke-width="1.15"/>
+<text x="63" y="1550" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">첫 공개 워크플로·커뮤니티 노드 목록</text>
+<text x="842" y="1550" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="18.50" font-weight="400" text-anchor="start" fill="#294359">카드 근거 원본의 공유·보존 위치</text>
+<text x="48" y="1601" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.50" font-weight="700" text-anchor="start" fill="#475f70">확인한 코드</text>
+<a href="https://github.com/serendipity-sec/platform/tree/c1ef141a55a744e294ac6aca0448de2684fba90a" target="_blank">
+<text x="150" y="1601" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.50" font-weight="400" text-anchor="start" fill="#345a78">platform  c1ef141</text>
+</a>
+<a href="https://github.com/serendipity-sec/flowdelta-app/tree/993326b7ba0db266d6c2db4e8c4be80404edf378" target="_blank">
+<text x="345" y="1601" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.50" font-weight="400" text-anchor="start" fill="#345a78">flowdelta-app  993326b</text>
+</a>
+<a href="https://github.com/serendipity-sec/docs/pull/88/files" target="_blank">
+<text x="1632" y="1601" font-family="'Malgun Gothic','Noto Sans KR','Apple SD Gothic Neo','Segoe UI',sans-serif" font-size="15.50" font-weight="400" text-anchor="end" fill="#345a78">11월 19일 팀 면담 기록</text>
+</a>
+</svg>
